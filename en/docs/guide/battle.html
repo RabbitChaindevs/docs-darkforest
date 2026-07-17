@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Attack &amp; Defense | Dark Forest</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.darkforest.uk/en/img/og-image.svg"><meta data-rh="true" name="twitter:image" content="https://docs.darkforest.uk/en/img/og-image.svg"><meta data-rh="true" property="og:url" content="https://docs.darkforest.uk/en/docs/guide/battle"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" property="og:locale:alternate" content="zh"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Attack &amp; Defense | Dark Forest"><meta data-rh="true" name="description" content="Complete breakdown of the Dark Forest combat system"><meta data-rh="true" property="og:description" content="Complete breakdown of the Dark Forest combat system"><link data-rh="true" rel="icon" href="/en/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.darkforest.uk/en/docs/guide/battle"><link data-rh="true" rel="alternate" href="https://docs.darkforest.uk/docs/guide/battle" hreflang="zh"><link data-rh="true" rel="alternate" href="https://docs.darkforest.uk/en/docs/guide/battle" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.darkforest.uk/docs/guide/battle" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Attack & Defense","item":"https://docs.darkforest.uk/en/docs/guide/battle"}]}</script><link rel="stylesheet" href="/en/assets/css/styles.95df0250.css">
-<script src="/en/assets/js/runtime~main.ae978551.js" defer="defer"></script>
+<script src="/en/assets/js/runtime~main.ac33a49a.js" defer="defer"></script>
 <script src="/en/assets/js/main.2abd92f8.js" defer="defer"></script>
 </head>
 <body>
@@ -26,12 +26,12 @@
 <p>If an attack condition isn&#x27;t met, the attempt <strong>does not consume any resources</strong> — it simply tells you why the attack failed. This lets you experiment freely without worrying about wasted energy.</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_SAay" id="attack-cost">Attack Cost<a href="#attack-cost" class="hash-link" aria-label="Direct link to Attack Cost" title="Direct link to Attack Cost" translate="no">​</a></h2>
-<p>Each successful attack consumes:</p>
+<p>Each successful attack is limited to <strong>1 attack per second</strong>, and consumes:</p>
 <table><thead><tr><th>Resource</th><th>Cost</th></tr></thead><tbody><tr><td><strong>Energy</strong></td><td><code>50,000 + 50,000 × weapon level</code></td></tr><tr><td><strong>Weapon Durability</strong></td><td>1 point (when weapon durability &gt; 0)</td></tr><tr><td><strong>Attack Token</strong></td><td>1 token</td></tr></tbody></table>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_SAay" id="attack-token-system">Attack Token System<a href="#attack-token-system" class="hash-link" aria-label="Direct link to Attack Token System" title="Direct link to Attack Token System" translate="no">​</a></h2>
 <p>Attack tokens use a <strong>token bucket algorithm</strong> to limit attack frequency:</p>
-<table><thead><tr><th>Parameter</th><th>Formula</th><th>Description</th></tr></thead><tbody><tr><td><strong>Max Tokens</strong></td><td><code>3 + weapon level / 10</code>, cap <strong>10</strong></td><td>Auto-recover over time</td></tr><tr><td><strong>Recovery Interval</strong></td><td><code>300 - weapon level × 10</code> ms, min <strong>100ms</strong></td><td>1 token recovered per interval</td></tr><tr><td><strong>Cost</strong></td><td>1 token per attack</td><td></td></tr></tbody></table>
+<table><thead><tr><th>Parameter</th><th>Formula</th><th>Description</th></tr></thead><tbody><tr><td><strong>Max Tokens</strong></td><td><code>3 + weapon level / 10</code>, cap <strong>10</strong></td><td>Auto-recover over time</td></tr><tr><td><strong>Recovery Interval</strong></td><td><code>(300 - weapon level × 10) / 100</code> seconds, min <strong>1s</strong></td><td>1 token per interval</td></tr><tr><td><strong>Cost</strong></td><td>1 token per attack</td><td></td></tr></tbody></table>
 <blockquote>
 <p>💡 The higher your weapon level, the faster your attack tokens recover and the higher your cap.</p>
 </blockquote>
@@ -54,9 +54,10 @@
 <p>When a target&#x27;s health reaches zero:</p>
 <ol>
 <li class=""><strong>All remaining energy is plundered</strong> into your pending pool</li>
-<li class="">The target has one random system <strong>downgraded</strong> (randomly chosen from Collector/Weapon/Shield/Engine via on-chain randomness)</li>
+<li class="">The target has one random system <strong>downgraded</strong> (on BSC: downgrades the highest-level system; on chains with beacon chain randomness: randomly picks from Collector/Weapon/Shield/Engine)</li>
 <li class="">If the downgraded system&#x27;s level is still ≥ 1, the civilization survives and its durability is restored to 50%</li>
 <li class="">If all systems are level 1 (cannot be downgraded further), the civilization becomes <strong>ruins</strong></li>
+<li class="">The kill plunder stacks <strong>on top of</strong> the regular attack plunder</li>
 </ol>
 <h3 class="anchor anchorTargetStickyNavbar_SAay" id="ruins">Ruins<a href="#ruins" class="hash-link" aria-label="Direct link to Ruins" title="Direct link to Ruins" translate="no">​</a></h3>
 <p>A civilization in ruins:</p>

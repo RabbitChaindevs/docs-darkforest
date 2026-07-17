@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">空间跳跃与巡航 | Dark Forest</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.darkforest.uk/img/og-image.svg"><meta data-rh="true" name="twitter:image" content="https://docs.darkforest.uk/img/og-image.svg"><meta data-rh="true" property="og:url" content="https://docs.darkforest.uk/docs/guide/movement"><meta data-rh="true" property="og:locale" content="zh"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" name="docusaurus_locale" content="zh"><meta data-rh="true" name="docsearch:language" content="zh"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="空间跳跃与巡航 | Dark Forest"><meta data-rh="true" name="description" content="Dark Forest 移动系统详解"><meta data-rh="true" property="og:description" content="Dark Forest 移动系统详解"><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.darkforest.uk/docs/guide/movement"><link data-rh="true" rel="alternate" href="https://docs.darkforest.uk/docs/guide/movement" hreflang="zh"><link data-rh="true" rel="alternate" href="https://docs.darkforest.uk/en/docs/guide/movement" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.darkforest.uk/docs/guide/movement" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"空间跳跃与巡航","item":"https://docs.darkforest.uk/docs/guide/movement"}]}</script><link rel="stylesheet" href="/assets/css/styles.95df0250.css">
-<script src="/assets/js/runtime~main.0ad10c53.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.11b4c1b0.js" defer="defer"></script>
 <script src="/assets/js/main.a6723119.js" defer="defer"></script>
 </head>
 <body>
@@ -23,7 +23,8 @@
 <div class="language-text codeBlockContainer_ZGJx theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_kX1v"><pre tabindex="0" class="prism-code language-text codeBlock_TAPP thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_AdAo"><div class="token-line" style="color:#F8F8F2"><span class="token plain">startMove(x, y, z)</span><br></div></code></pre></div></div>
 <p>输入目标坐标 <code>(x, y, z)</code>，开始巡航。到达前可以随时取消（<code>cancelMove</code>）。</p>
 <h3 class="anchor anchorTargetStickyNavbar_SAay" id="速度">速度<a href="#速度" class="hash-link" aria-label="速度的直接链接" title="速度的直接链接" translate="no">​</a></h3>
-<div class="language-text codeBlockContainer_ZGJx theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_kX1v"><pre tabindex="0" class="prism-code language-text codeBlock_TAPP thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_AdAo"><div class="token-line" style="color:#F8F8F2"><span class="token plain">移动速度 = 10 + 5 × 引擎等级</span><br></div></code></pre></div></div>
+<div class="language-text codeBlockContainer_ZGJx theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_kX1v"><pre tabindex="0" class="prism-code language-text codeBlock_TAPP thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_AdAo"><div class="token-line" style="color:#F8F8F2"><span class="token plain">移动速度 = 10 + 5 × (引擎等级 - 1)</span><br></div></code></pre></div></div>
+<p>即 Lv1 = 10, Lv2 = 15, Lv10 = 55, Lv50 = 255。</p>
 <p>引擎等级越高，移动越快。</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_SAay" id="空间跳跃space-jump">空间跳跃（Space Jump）<a href="#空间跳跃space-jump" class="hash-link" aria-label="空间跳跃（Space Jump）的直接链接" title="空间跳跃（Space Jump）的直接链接" translate="no">​</a></h2>
@@ -31,7 +32,7 @@
 <h3 class="anchor anchorTargetStickyNavbar_SAay" id="消耗">消耗<a href="#消耗" class="hash-link" aria-label="消耗的直接链接" title="消耗的直接链接" translate="no">​</a></h3>
 <p>每次跳跃消耗随<strong>历史跳跃次数</strong>增加：</p>
 <table><thead><tr><th>资源</th><th>公式</th><th>上限</th></tr></thead><tbody><tr><td><strong>能源</strong></td><td><code>200,000 + 200,000 × √(历史跳跃次数)</code></td><td>16,500,000</td></tr><tr><td><strong>DFT</strong></td><td><code>10 + 10 × √(历史跳跃次数)</code></td><td>1,000 DFT</td></tr><tr><td><strong>引擎耐久</strong></td><td>1 点</td><td></td></tr></tbody></table>
-<h3 class="anchor anchorTargetStickyNavbar_SAay" id="冷 却">冷却<a href="#冷却" class="hash-link" aria-label="冷却的直接链接" title="冷却的直接链接" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_SAay" id="冷却">冷却<a href="#冷却" class="hash-link" aria-label="冷却的直接链接" title="冷却的直接链接" translate="no">​</a></h3>
 <p>每次跳跃后需要等待 <strong>1 小时</strong> 才能再次跳跃。</p>
 <h3 class="anchor anchorTargetStickyNavbar_SAay" id="副作用">副作用<a href="#副作用" class="hash-link" aria-label="副作用的直接链接" title="副作用的直接链接" translate="no">​</a></h3>
 <blockquote>

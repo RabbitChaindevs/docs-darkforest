@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">攻击与防御 | Dark Forest</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.darkforest.uk/img/og-image.svg"><meta data-rh="true" name="twitter:image" content="https://docs.darkforest.uk/img/og-image.svg"><meta data-rh="true" property="og:url" content="https://docs.darkforest.uk/docs/guide/battle"><meta data-rh="true" property="og:locale" content="zh"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" name="docusaurus_locale" content="zh"><meta data-rh="true" name="docsearch:language" content="zh"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="攻击与防御 | Dark Forest"><meta data-rh="true" name="description" content="Dark Forest 战斗系统全解析"><meta data-rh="true" property="og:description" content="Dark Forest 战斗系统全解析"><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.darkforest.uk/docs/guide/battle"><link data-rh="true" rel="alternate" href="https://docs.darkforest.uk/docs/guide/battle" hreflang="zh"><link data-rh="true" rel="alternate" href="https://docs.darkforest.uk/en/docs/guide/battle" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.darkforest.uk/docs/guide/battle" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"攻击与防御","item":"https://docs.darkforest.uk/docs/guide/battle"}]}</script><link rel="stylesheet" href="/assets/css/styles.95df0250.css">
-<script src="/assets/js/runtime~main.0ad10c53.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.11b4c1b0.js" defer="defer"></script>
 <script src="/assets/js/main.a6723119.js" defer="defer"></script>
 </head>
 <body>
@@ -26,12 +26,12 @@
 <p>上述条件不满足时，攻击<strong>不会消耗任何资源</strong>，只会提示原因。这让你可以自由尝试攻击而不必担心浪费能源。</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_SAay" id="攻击消耗">攻击消耗<a href="#攻击消耗" class="hash-link" aria-label="攻击消耗的直接链接" title="攻击消耗的直接链接" translate="no">​</a></h2>
-<p>每次成功攻击消耗：</p>
+<p>每次成功攻击存在 <strong>1 秒频率限制</strong>（每秒最多 1 次攻击），并消耗：</p>
 <table><thead><tr><th>项目</th><th>消耗</th></tr></thead><tbody><tr><td><strong>能源</strong></td><td><code>50,000 + 50,000 × 武器等级</code></td></tr><tr><td><strong>武器耐久</strong></td><td>1 点（武器耐久 &gt; 0 时）</td></tr><tr><td><strong>攻击代币</strong></td><td>1 个</td></tr></tbody></table>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_SAay" id="攻击代币系统">攻击代币系统<a href="#攻击代币系统" class="hash-link" aria-label="攻击代币系统的直接链接" title="攻击代币系统的直接链接" translate="no">​</a></h2>
 <p>攻击代币使用 <strong>令牌桶算法</strong> 限制攻击频率：</p>
-<table><thead><tr><th>参数</th><th>公式</th><th>说明</th></tr></thead><tbody><tr><td><strong>最大代币数</strong></td><td><code>3 + 武器等级/10</code>，上限 <strong>10</strong></td><td>随时间自动恢复</td></tr><tr><td><strong>恢复间隔</strong></td><td><code>300 - 武器等级 × 10</code> 毫秒，最小 <strong>100ms</strong></td><td>每间隔恢复 1 个</td></tr><tr><td><strong>消耗</strong></td><td>每次攻击消耗 1 个</td><td></td></tr></tbody></table>
+<table><thead><tr><th>参数</th><th>公式</th><th>说明</th></tr></thead><tbody><tr><td><strong>最大代币数</strong></td><td><code>3 + 武器等级/10</code>，上限 <strong>10</strong></td><td>随时间自动恢复</td></tr><tr><td><strong>恢复间隔</strong></td><td><code>(300 - 武器等级×10) / 100</code> 秒，最小 <strong>1 秒</strong></td><td>每间隔恢复 1 个</td></tr><tr><td><strong>消耗</strong></td><td>每次攻击消耗 1 个</td><td></td></tr></tbody></table>
 <blockquote>
 <p>💡 武器等级越高，攻击代币恢复越快，上限也越高。</p>
 </blockquote>
@@ -53,9 +53,9 @@
 <h3 class="anchor anchorTargetStickyNavbar_SAay" id="击败">击败<a href="#击败" class="hash-link" aria-label="击败的直接链接" title="击败的直接链接" translate="no">​</a></h3>
 <p>当目标生命值归零时：</p>
 <ol>
-<li class=""><strong>掠夺全部剩余能源</strong>到你的待领取池</li>
-<li class="">目标被<strong>降级</strong>一个随机系统（根据链上随机数选择采集/武器/护盾/引擎之一）</li>
-<li class="">如降级后系统等级仍 ≥ 1，文明存活，耐久恢复至 50%</li>
+<li class=""><strong>掠夺全部剩余能源</strong>（叠加在常规掠夺之上）到你的待领取池</li>
+<li class="">目标被<strong>降级</strong>一个随机系统（BSC 链上降级最高等级的系统，以太坊等有信标链的链上随机选择采集/武器/护盾/引擎之一）</li>
+<li class="">如降级后系统等级仍 ≥ 1，文明存活，耐久度恢复至 50%</li>
 <li class="">如所有系统等级都是 1（无法再降级），文明变成<strong>废墟</strong></li>
 </ol>
 <h3 class="anchor anchorTargetStickyNavbar_SAay" id="废墟">废墟<a href="#废墟" class="hash-link" aria-label="废墟的直接链接" title="废墟的直接链接" translate="no">​</a></h3>
