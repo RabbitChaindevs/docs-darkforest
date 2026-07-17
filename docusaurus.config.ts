@@ -7,8 +7,8 @@ const config: Config = {
   tagline: '链上星际文明策略游戏官方文档',
   favicon: 'img/favicon.svg',
 
-  url: 'https://rabbitchaindevs.github.io',
-  baseUrl: '/docs-darkforest/',
+  url: 'https://docs.darkforest.uk',
+  baseUrl: '/',
 
   organizationName: 'RabbitChaindevs',
   projectName: 'docs-darkforest',
