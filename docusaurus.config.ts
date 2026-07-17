@@ -7,14 +7,16 @@ const config: Config = {
   tagline: '链上星际文明策略游戏官方文档',
   favicon: 'img/favicon.svg',
 
-  url: 'https://docs.darkforest.uk',
-  baseUrl: '/',
+  url: 'https://rabbitchaindevs.github.io',
+  baseUrl: '/docs-darkforest/',
 
-  organizationName: 'dark-forest',
-  projectName: 'docs',
+  organizationName: 'RabbitChaindevs',
+  projectName: 'docs-darkforest',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+
+  trailingSlash: false,
 
   i18n: {
     defaultLocale: 'zh',
@@ -31,7 +33,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/dark-forest/docs/tree/main',
+          editUrl: 'https://github.com/RabbitChaindevs/docs-darkforest/tree/main',
           showLastUpdateTime: false,
         },
         blog: false,
@@ -63,7 +65,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://github.com/dark-forest',
+          href: 'https://github.com/RabbitChaindevs/docs-darkforest',
           label: 'GitHub',
           position: 'right',
         },
@@ -95,7 +97,7 @@ const config: Config = {
           title: '更多',
           items: [
             { label: '游戏官网', href: 'https://darkforest.uk' },
-            { label: 'GitHub', href: 'https://github.com/dark-forest' },
+            { label: 'GitHub', href: 'https://github.com/RabbitChaindevs/docs-darkforest' },
           ],
         },
       ],
