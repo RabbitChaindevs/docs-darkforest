@@ -1,0 +1,120 @@
+---
+sidebar_position: 1
+title: What Is an AI Agent
+description: Dark Forest AI Agent architecture and security mechanisms
+---
+
+# What Is an AI Agent
+
+An AI Agent is an **off-chain automated program** that performs game operations on behalf of your civilization. It is authorized through a **permission bitmask** and operates within **policy constraints**.
+
+---
+
+## What an Agent Can Do
+
+The agent's capabilities are controlled by **authorized permissions**:
+
+| Permission | Value | Action |
+|-----------|-------|--------|
+| COLLECT | 1 | Collect energy |
+| REPAIR | 2 | Repair systems |
+| CLAIM_COMBAT | 8 | Claim combat energy |
+| ATTACK | 32 | Attack |
+| UPGRADE | 64 | Upgrade systems |
+| JUMP | 128 | Space jump |
+| REBUILD | 256 | Rebuild civilization |
+| DONATE | 512 | Donate to totem |
+
+You can grant any combination of permissions to an agent (bitmask).
+
+---
+
+## Policy Constraints
+
+In addition to permissions, you can set **policy constraints** for the agent:
+
+| Constraint | Description |
+|-----------|-------------|
+| `minEnergyReserve` | Minimum energy reserve (agent won't spend below this) |
+| `minDftReserve` | Minimum DFT reserve |
+| `maxAttackPerHour` | Maximum attacks per hour |
+| `maxUpgradePerDay` | Maximum upgrades per day |
+| `maxSingleUpgradeCost` | Maximum DFT cost per upgrade |
+| `autoCollect` | Auto-collect energy |
+| `autoRepair` | Auto-repair systems |
+| `autoShieldRepair` | Auto-repair shield |
+| `autoUpgrade` | Auto-upgrade |
+| `autoAttack` | Auto-attack |
+
+---
+
+## Security Mechanisms
+
+### 1. On-Chain Registration
+
+The agent's policy is stored on the `DarkForestAgentRegistry.sol` contract and cannot be tampered with once set.
+
+### 2. Permission Separation
+
+- **Authorize**: You authorize the agent to act on your behalf
+- **Permission bitmask**: Fine-grained control over each operation
+- **Revocable**: `revokeAgent()` takes effect immediately
+
+### 3. Circuit Breakers
+
+```
+Attack frequency limit: max N per hour
+Upgrade frequency limit: max N per day
+Energy floor: never below X
+DFT floor: never below Y
+```
+
+### 4. Blacklist / Whitelist
+
+- **Blacklist**: Forbid attacking specific players
+- **Whitelist**: Only allow attacking specific players (blacklist is ignored when whitelist is active)
+
+---
+
+## Two-Layer Architecture
+
+```
+┌─────────────────────────────────────┐
+│         Off-Chain Agent             │
+│  ┌──────────────────────────────┐   │
+│  │ Strategy Engine (YAML config) │   │
+│  │ 4 preset strategies          │   │
+│  │ Custom strategy templates    │   │
+│  └──────────┬───────────────────┘   │
+│             │ via contract calls    │
+│             ▼                      │
+│  ┌──────────────────────────────┐   │
+│  │ Agent SDK                    │   │
+│  │ Calls contract methods       │   │
+│  │ (read/write)                 │   │
+│  └──────────────────────────────┘   │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│   On-Chain DarkForestAgentRegistry  │
+│  ┌──────────────────────────────┐   │
+│  │ Permission bitmask check     │   │
+│  │ Policy constraint check      │   │
+│  │ Rate limit check             │   │
+│  └──────────────────────────────┘   │
+└─────────────────────────────────────┘
+```
+
+---
+
+## Agent vs Manual Play
+
+| Comparison | Manual | AI Agent |
+|-----------|--------|----------|
+| Online requirement | Must be online often | 24/7 operation |
+| Response time | Latency | Instant |
+| Precision | Prone to errors | Strictly follows policy |
+| Security | Private key in wallet | Encrypted storage + on-chain constraints |
+
+**Recommended next step: [5-Minute Quickstart →](/docs/agent/quickstart)**

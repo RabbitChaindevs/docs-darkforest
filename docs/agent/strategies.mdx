@@ -1,0 +1,147 @@
+---
+sidebar_position: 3
+title: 策略模板详解
+description: Dark Forest AI Agent 四种预设策略详解和自定义指南
+---
+
+# 策略模板详解
+
+Agent 策略通过 YAML 配置文件定义。
+
+---
+
+## 策略文件结构
+
+```yaml
+agent:
+  name: "my-agent"
+  mode: "auto"          # auto | manual | dry-run
+
+limits:                 # 熔断保护（链上策略）
+  min_energy_reserve: 100000
+  min_dft_reserve: 10
+  max_attacks_per_hour: 5
+  max_upgrades_per_day: 3
+  max_single_upgrade_cost: 100
+
+combat:                 # 战斗策略
+  min_target_level: 1
+  max_target_level: 999
+  weapon_level: 1
+  only_attack_when_energy_above: 100000
+  blacklist: []         # 黑名单地址
+  whitelist: []         # 白名单地址（开启后只攻击这些）
+
+defense:                # 防御策略
+  auto_repair: true
+  min_durability_before_repair: 20
+  shield_regen_threshold: 50  # 护盾低于此比例时开始回复
+
+collection:             # 采集策略
+  enabled: true
+  interval_minutes: 60
+```
+
+---
+
+## 四种预设策略
+
+### 1. 激进策略（Aggressive）
+
+```yaml
+combat:
+  max_attacks_per_hour: 10
+  min_target_level: 0.5
+  weapon_level: max
+
+collection:
+  enabled: false  # 不采集，专注战斗
+```
+
+- ✅ 适合：高活跃、在线时间长、追求战斗收益
+- ❌ 风险：能源消耗大，可能被反杀
+
+### 2. 均衡策略（Balanced）
+
+```yaml
+combat:
+  max_attacks_per_hour: 5
+  min_target_level: 0.8
+  weapon_level: balanced
+
+collection:
+  enabled: true
+  interval_minutes: 30
+
+defense:
+  auto_repair: true
+  shield_regen_threshold: 60
+```
+
+- ✅ **推荐**：攻守平衡，适合大多数玩家
+
+### 3. 防御策略（Defensive）
+
+```yaml
+combat:
+  max_attacks_per_hour: 1
+  only_counterattack: true  # 只反击
+
+defense:
+  auto_repair: true
+  min_durability_before_repair: 50
+  shield_regen_threshold: 80
+
+collection:
+  enabled: true
+  interval_minutes: 15
+```
+
+- ✅ 适合：离线时间长、不想冒风险
+
+### 4. 农耕策略（Farmer）
+
+```yaml
+combat:
+  enabled: false  # 不战斗
+
+defense:
+  auto_repair: true
+  shield_regen_threshold: 90
+
+collection:
+  enabled: true
+  interval_minutes: 5
+```
+
+- ✅ 适合：前期发展、积累资源
+
+---
+
+## 自定义策略
+
+```bash
+# 复制模板
+cp templates/balanced.yaml my-strategy.yaml
+
+# 修改参数
+vim my-strategy.yaml
+
+# 使用自定义策略
+python -m dark_forest.cli run --strategy ./my-strategy.yaml
+```
+
+---
+
+## 熔断机制
+
+| 参数 | 说明 | 默认值 |
+|------|------|--------|
+| `max_attacks_per_hour` | 每小时最大攻击次数 | 10 |
+| `min_energy_reserve` | 最低能源保留 | 100,000 |
+| `min_dft_reserve` | 最低 DFT 保留 | 10 |
+| `max_upgrades_per_day` | 每天最大升级次数 | 5 |
+
+> ⚠️ 熔断参数是链上强制执行的，Agent 无法绕过。
+
+**推荐下一步：[合约地址 →](/docs/reference/addresses)**

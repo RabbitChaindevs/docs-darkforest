@@ -1,0 +1,56 @@
+---
+sidebar_position: 1
+title: 合约地址
+description: Dark Forest 所有已部署合约地址
+---
+
+# 合约地址
+
+所有合约部署在 **BNB Smart Chain 主网**（Chain ID: 56）。
+
+---
+
+## 核心合约
+
+| 合约 | 地址 | 说明 |
+|------|------|------|
+| **DarkForest** | `0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe` | 主入口合约，DELEGATECALL 调度中心 |
+| **DFT Token** | `0x1266e922fe34459efda34e7ee5caf327fbf138d7` | Dark Forest 代币（ERC-20） |
+| **Alliance** | `0x5f810a22359b678c01e72726149d387e79cd03f2` | 联盟系统 |
+| **Energy Market** | `0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955` | 能源订单簿市场 |
+| **Daily Minter** | `0x9b1c4e550fbf1c802495e6521ee5812e4264c95f` | 每日 DFT 分发 |
+| **Agent Registry** | `0x98233227e91829f7c424099f5d3bc86cf4d57f55` | AI Agent 策略注册表 |
+
+---
+
+## 合约架构
+
+```
+DarkForest（DELEGATECALL 入口）
+├── DELEGATECALL → DarkForestGameplay   （创建文明、升级系统）
+├── DELEGATECALL → DarkForestBattle      （攻击、修复护盾、护盾回复）
+├── DELEGATECALL → DarkForestMovement    （空间跳跃、追踪跳跃、巡航）
+└── DELEGATECALL → DarkForestAdmin       （采集、修复、重建、图腾、提现）
+
+DarkForestStorage（共享存储布局）
+→ 所有卫星合约继承 DarkForestStorage 以保证存储布局一致
+```
+
+---
+
+## BscScan 链接
+
+| 合约 | 链接 |
+|------|------|
+| DarkForest | [查看](https://bscscan.com/address/0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe) |
+| DFT Token | [查看](https://bscscan.com/token/0x1266e922fe34459efda34e7ee5caf327fbf138d7) |
+| Alliance | [查看](https://bscscan.com/address/0x5f810a22359b678c01e72726149d387e79cd03f2) |
+| Energy Market | [查看](https://bscscan.com/address/0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955) |
+| Daily Minter | [查看](https://bscscan.com/address/0x9b1c4e550fbf1c802495e6521ee5812e4264c95f) |
+| Agent Registry | [查看](https://bscscan.com/address/0x98233227e91829f7c424099f5d3bc86cf4d57f55) |
+
+---
+
+## 合约验证
+
+所有合约源码已在 BscScan 上验证（✅ 绿色勾号）。

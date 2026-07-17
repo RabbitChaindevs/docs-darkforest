@@ -1,0 +1,94 @@
+---
+sidebar_position: 2
+title: 5 分钟快速配置 AI Agent
+description: 在 Dark Forest 中配置你的第一个 AI Agent
+---
+
+# 5 分钟快速配置
+
+## 前置条件
+
+- Python 3.10+
+- 拥有一个 Dark Forest 文明
+- 钱包私钥（用于 Agent 签名交易）
+
+---
+
+## 第 1 步：安装 Agent
+
+```bash
+git clone https://github.com/dark-forest/agent.git
+cd agent
+pip install -r requirements.txt
+```
+
+## 第 2 步：导入私钥
+
+```bash
+python -m dark_forest.cli key import
+```
+
+私钥会被加密存储，不会明文保存。
+
+> ⚠️ 强烈建议使用**专门的游戏钱包**，不要用存有大额资产的主钱包。
+
+## 第 3 步：授权 Agent
+
+在游戏界面中为你的 Agent 钱包地址设置权限：
+
+- 勾选 Agent 需要的操作权限
+- 设置策略约束（攻击频率、资源保留量等）
+
+## 第 4 步：选择策略
+
+```bash
+# 查看可用策略
+python -m dark_forest.cli strategy list
+
+# 使用均衡策略（推荐）
+python -m dark_forest.cli strategy select balanced
+```
+
+四种预设策略：
+
+| 策略 | 风格 | 适合场景 |
+|------|------|----------|
+| `aggressive` | 激进攻击 | 高活跃玩家 |
+| `balanced` | 攻守平衡 | **推荐**，适合大多数玩家 |
+| `defensive` | 保守防御 | 离线时间长的玩家 |
+| `farmer` | 专注采集 | 专心发展 |
+
+## 第 5 步：启动
+
+```bash
+# 启动（默认平衡策略）
+python -m dark_forest.cli run
+
+# 指定策略
+python -m dark_forest.cli run --strategy aggressive
+```
+
+## 第 6 步：配置通知（可选）
+
+### Telegram
+
+```bash
+python -m dark_forest.cli config set notify.telegram.token YOUR_BOT_TOKEN
+python -m dark_forest.cli config set notify.telegram.chat_id YOUR_CHAT_ID
+```
+
+### Discord
+
+```bash
+python -m dark_forest.cli config set notify.discord.webhook YOUR_WEBHOOK_URL
+```
+
+---
+
+## 安全提醒
+
+1. 🔐 **使用独立游戏钱包**，设置合理的 DFT/能源保留底线
+2. 📉 **逐步开放权限**：先只给 COLLECT + REPAIR，确认稳定后再添加 ATTACK
+3. 🔄 **定期检查**：查看 Agent 运行日志和报告
+
+**推荐下一步：[策略模板详解 →](/docs/agent/strategies)**

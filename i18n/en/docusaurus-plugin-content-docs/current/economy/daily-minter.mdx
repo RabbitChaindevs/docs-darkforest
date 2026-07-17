@@ -1,0 +1,93 @@
+---
+sidebar_position: 3
+title: Daily Mint
+description: Dark Forest DailyMinter — daily DFT distribution mechanism
+---
+
+# Daily Mint
+
+The **DailyMinter** contract mints a fixed amount of DFT each day and distributes it evenly among active civilizations. **Claim it the same day or lose it** — unclaimed amounts do not accumulate.
+
+---
+
+## How to Claim
+
+### Requirements
+
+- You must have created a civilization **before midnight UTC** on the claim day
+- `distribute()` must have been called for that day (anyone can trigger it)
+- Each address can only claim once per day
+
+### Operation
+
+```
+claim()
+```
+
+Confirm the transaction (gas fee only).
+
+---
+
+## Minting Flow
+
+### Step 1: Distribute
+
+Anyone can call `distribute()`:
+
+1. The contract checks the last undistributed epoch
+2. Snapshots the current number of active civilizations
+3. Calculates `share per player = daily emission / active civilizations`
+4. Mints the total DFT to the contract
+5. `Daily emission = 1,152,575,342 DFT` (constant)
+
+### Step 2: Claim
+
+Players call `claim()`:
+
+1. Verifies you created a civilization before this epoch
+2. Verifies you haven't already claimed
+3. Transfers your share to your wallet
+
+### Step 3: Burn Remainder
+
+On the next `distribute()`, any DFT from the previous epoch that was not claimed is **burned** (reducing circulating supply).
+
+---
+
+## Timeline
+
+```
+Epoch 0      Epoch 1      Epoch 2
+   |            |            |
+UTC 00:00    UTC 00:00    UTC 00:00
+   ↑create civ  ↑distribute   ↑distribute
+                ↑claim        ↑claim
+                              ↑unclaimed burned
+```
+
+- Epochs are divided by UTC midnight
+- You can only claim the **most recently distributed** epoch
+- Miss an epoch and you can never claim it
+
+---
+
+## Key Parameters
+
+| Parameter | Value |
+|-----------|-------|
+| Daily Emission | **1,152,575,342 DFT** (constant) |
+| Total Distribution Period | **3,650 days** (~10 years) |
+| Total Supply Cap | **420,690,000,000,000 DFT** |
+| Claim Window | Within each epoch (typically 1 day) |
+
+---
+
+## Why Claim Daily
+
+1. 🆓 **Free DFT** — only costs gas, available every day
+2. 📉 **Unclaimed gets burned** — miss it and it's gone
+3. 📈 **Fewer players = more per person** — if active players decrease, each share increases
+
+> 💡 Set a daily reminder around UTC time to claim. If `distribute()` hasn't been called yet for the day, you can trigger it yourself — it only costs gas.
+
+**Recommended next step: [What Is an AI Agent →](/docs/agent/what-is-agent)**

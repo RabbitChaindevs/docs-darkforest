@@ -1,0 +1,101 @@
+---
+sidebar_position: 2
+title: Energy Market
+description: Dark Forest's order book energy market — buy and sell energy with DFT
+---
+
+# Energy Market
+
+The energy market is a **decentralized order book** where players can trade energy for DFT. It is powered by the `EnergyMarket.sol` contract.
+
+---
+
+## Selling Energy (Creating an Order)
+
+### Operation
+
+```
+createOrder(energyAmount, dftPrice)
+```
+
+1. Enter the **amount of energy** you want to sell
+2. Enter the **total price in DFT** you're asking for
+3. Confirm the transaction
+
+### Energy Locking
+
+When you create an order, the contract **immediately locks** your energy (marked as `energyReserved`), preventing you from spending it while the order is active.
+
+### Canceling an Order
+
+```
+cancelOrder(orderId)
+```
+
+- The order must be at least **3 seconds** old before cancellation (prevents same-block frontrunning)
+- After cancellation, the energy is unlocked
+
+---
+
+## Buying Energy (Filling an Order)
+
+### Operation
+
+```
+fillOrder(orderId, maxPrice)
+```
+
+1. Browse the list of active sell orders
+2. Select an order
+3. Enter the maximum price you're willing to accept
+4. Confirm the transaction
+
+### Fees
+
+The buyer pays a **1% DFT protocol fee**:
+
+```
+Energy Received = order energy amount
+DFT Paid = order price + order price × 1%
+```
+
+The 1% protocol fee accumulates in the contract and can be withdrawn by the admin.
+
+---
+
+## Market Parameters
+
+| Parameter | Value |
+|-----------|-------|
+| Protocol Fee | 1% (paid by buyer) |
+| Minimum Order Age | 3 seconds (before cancel/fill) |
+| Order Status | active / inactive (becomes inactive after cancel or fill) |
+
+---
+
+## Trade Example
+
+### Alice Sells Energy
+
+1. Alice creates a sell order: `createOrder(10000, 100 DFT)` — selling 10,000 energy for a total of 100 DFT
+2. The contract locks Alice's 10,000 energy
+
+### Bob Buys Energy
+
+1. Bob sees Alice's order
+2. Calls `fillOrder(orderId, 100)` — pays 101 DFT (including 1% fee)
+3. Alice receives 100 DFT
+4. Bob receives 10,000 energy (transferred from Alice's unlocked energy)
+
+---
+
+## Strategy Tips
+
+| Scenario | Suggestion |
+|----------|------------|
+| Need energy urgently for battle | Accept the lowest-priced sell orders |
+| Not in a hurry | Place a limit order and wait for the right price |
+| DFT price is rising | Sell energy for DFT to profit |
+| Surplus energy | List sell orders to earn DFT |
+
+**Recommended next step: [Daily Mint →](/docs/economy/daily-minter)**

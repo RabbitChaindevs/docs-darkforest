@@ -1,0 +1,74 @@
+---
+sidebar_position: 2
+title: 连接 BSC
+description: 配置 MetaMask 等钱包连接到 BNB Smart Chain 网络
+---
+
+# 连接 BSC 网络
+
+Dark Forest 部署在 **BNB Smart Chain (BSC)** 上，你需要将钱包切换到 BSC 网络才能与游戏交互。
+
+## 什么是 BSC？
+
+BNB Smart Chain 是 Binance 推出的区块链网络，具有：
+
+- **低交易费用** — 每次操作仅需几分钱
+- **高吞吐量** — 支持游戏高频交互需求
+- **EVM 兼容** — 支持 MetaMask 等主流钱包
+
+## 自动添加 BSC 网络
+
+最简单的方式是使用 Chainlist：
+
+1. 访问 [Chainlist](https://chainlist.org)
+2. 搜索 "BNB Smart Chain"
+3. 点击 "Connect Wallet" 并授权
+4. 点击 "Add to MetaMask"
+5. 确认添加
+
+## 手动配置
+
+你也可以手动添加 BSC 网络：
+
+### MetaMask 添加 BSC
+
+1. 点击 MetaMask 右上角的网络选择下拉菜单
+2. 点击 "添加网络"
+3. 填写以下信息：
+
+| 配置项 | 值 |
+|--------|------|
+| **网络名称** | BNB Smart Chain |
+| **RPC URL** | `https://bsc-dataseed.binance.org` |
+| **链 ID** | `56` |
+| **货币符号** | `BNB` |
+| **区块浏览器** | `https://bscscan.com` |
+
+4. 点击 "保存"
+
+### 备用 RPC 节点
+
+如果主 RPC 拥堵，你可以使用备用节点：
+
+| 提供商 | RPC URL |
+|--------|---------|
+| Binance 官方 | `https://bsc-dataseed1.binance.org` |
+| Ankr | `https://rpc.ankr.com/bsc` |
+| PublicNode | `https://bsc.publicnode.com` |
+
+## 获取 BNB
+
+在 BSC 上进行任何操作都需要 BNB 作为 Gas 费。获取方式：
+
+1. **中心化交易所** — 从 Binance、OKX 等交易所购买 BNB 并提现到 BSC 网络
+2. **跨链桥** — 通过跨链桥将其他网络的 BNB 转移到 BSC
+
+:::caution
+提现时**务必选择 BSC 网络（BEP-20）**，否则资金可能会丢失！
+:::
+
+## 验证连接
+
+配置完成后，在钱包中切换至 BNB Smart Chain 网络。如果链 ID 显示为 `56`，余额显示正确的 BNB 数量，则配置成功。
+
+准备好钱包和网络后，下一步是 [获取 DFT 代币](/docs/quickstart/get-dft)。
