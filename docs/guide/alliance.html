@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">联盟系统 | Dark Forest</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.darkforest.uk/img/og-image.svg"><meta data-rh="true" name="twitter:image" content="https://docs.darkforest.uk/img/og-image.svg"><meta data-rh="true" property="og:url" content="https://docs.darkforest.uk/docs/guide/alliance"><meta data-rh="true" property="og:locale" content="zh"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" name="docusaurus_locale" content="zh"><meta data-rh="true" name="docsearch:language" content="zh"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="联盟系统 | Dark Forest"><meta data-rh="true" name="description" content="Dark Forest 联盟创建、管理、退出机制详解"><meta data-rh="true" property="og:description" content="Dark Forest 联盟创建、管理、退出机制详解"><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.darkforest.uk/docs/guide/alliance"><link data-rh="true" rel="alternate" href="https://docs.darkforest.uk/docs/guide/alliance" hreflang="zh"><link data-rh="true" rel="alternate" href="https://docs.darkforest.uk/en/docs/guide/alliance" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.darkforest.uk/docs/guide/alliance" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"联盟系统","item":"https://docs.darkforest.uk/docs/guide/alliance"}]}</script><link rel="stylesheet" href="/assets/css/styles.95df0250.css">
-<script src="/assets/js/runtime~main.11b4c1b0.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.803ad882.js" defer="defer"></script>
 <script src="/assets/js/main.a6723119.js" defer="defer"></script>
 </head>
 <body>
@@ -54,16 +54,13 @@
 </ul>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_SAay" id="联盟管理">联盟管理<a href="#联盟管理" class="hash-link" aria-label="联盟管理的直接链接" title="联盟管理的直接链接" translate="no">​</a></h2>
-<table><thead><tr><th>操作</th><th>权限</th><th>说明</th></tr></thead><tbody><tr><td>转移盟主</td><td>盟主</td><td>转让给其他成员</td></tr><tr><td>解散联盟</td><td>盟主</td><td>清空所有成员，删除联盟</td></tr><tr><td>踢出成员</td><td>盟主</td><td>成员数较多时 Gas 费用会增加</td></tr><tr><td>领取退款</td><td>成员</td><td>领取退出成员留下的 DFT 罚款</td></tr></tbody></table>
+<table><thead><tr><th>操作</th><th>权限</th><th>说明</th></tr></thead><tbody><tr><td>转移盟主</td><td>盟主</td><td>转让给其他成员</td></tr><tr><td>解散联盟</td><td>盟主</td><td>清空所有成员，删除联盟</td></tr><tr><td>踢出成员</td><td>盟主</td><td>成员数较多时 Gas 费用会增加</td></tr><tr><td>领取退款</td><td>成员</td><td>调用 <code>claimRefund()</code> 领取退出成员留下的 DFT 罚款</td></tr></tbody></table>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_SAay" id="联盟防御加成">联盟防御加成<a href="#联盟防御加成" class="hash-link" aria-label="联盟防御加成的直接链接" title="联盟防御加成的直接链接" translate="no">​</a></h2>
 <p>联盟提供额外的防御加成：</p>
-<div class="language-text codeBlockContainer_ZGJx theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_kX1v"><pre tabindex="0" class="prism-code language-text codeBlock_TAPP thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_AdAo"><div class="token-line" style="color:#F8F8F2"><span class="token plain">联盟防御加成 = (盟友在线数 - 1) × 8 × (1 + 图腾等级 × 0.5%)</span><br></div></code></pre></div></div>
-<p>这意味着：</p>
-<ul>
-<li class="">盟友越多，每人防御越高</li>
-<li class="">图腾等级提升会放大盟友带来的防御加成</li>
-</ul>
+<div class="language-text codeBlockContainer_ZGJx theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_kX1v"><pre tabindex="0" class="prism-code language-text codeBlock_TAPP thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_AdAo"><div class="token-line" style="color:#F8F8F2"><span class="token plain">联盟防御加成 = (联盟总人数 - 1) × 8 × (1 + 图腾 等级 × 0.5%)</span><br></div></code></pre></div></div>
+<p>此加成对所有成员生效，无论个人是否捐赠过图腾。</p>
+<p>图表等级会放大联盟人数带来的防御加成：</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_SAay" id="解散联盟">解散联盟<a href="#解散联盟" class="hash-link" aria-label="解散联盟的直接链接" title="解散联盟的直接链接" translate="no">​</a></h2>
 <p>盟主可以解散联盟：</p>
