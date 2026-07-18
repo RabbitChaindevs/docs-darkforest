@@ -1,98 +1,98 @@
 ---
 sidebar_position: 3
-title: Space Jump & Cruise
-description: Detailed breakdown of the Dark Forest movement system
+title: خلائی چھلانگ اور سفر
+description: ڈارک فاریسٹ کے حرکتی نظام کا تفصیلی تجزیہ
 ---
 
-# Space Jump & Cruise
+# خلائی چھلانگ اور سفر
 
-## Cruise
+## سفر (Cruise)
 
-Cruise is the standard method of movement. The engine propels your civilization toward a target coordinate.
+سفر حرکت کا معیاری طریقہ ہے۔ انجن آپ کی تہذیب کو ہدف کے کوآرڈینیٹس کی طرف لے جاتا ہے۔
 
-### Conditions
-- Engine durability > 0
-- Target coordinates are within your radar range
+### شرائط
+- انجن کی پائیداری > 0
+- ہدف کے کوآرڈینیٹس آپ کی ریڈار رینج کے اندر ہوں
 
-### Operation
+### عمل
 
 ```
 startMove(x, y, z)
 ```
 
-Enter the target coordinates `(x, y, z)` to begin cruising. You can cancel at any time before arrival (`cancelMove`).
+ہدف کے کوآرڈینیٹ `(x, y, z)` درج کریں تاکہ سفر شروع ہو۔ آپ پہنچنے سے پہلے کسی بھی وقت منسوخ کر سکتے ہیں (`cancelMove`)۔
 
-### Speed
+### رفتار
 
 ```
-Move Speed = 10 + 5 × (engine level - 1)
+حرکت کی رفتار = 10 + 5 × (انجن کی سطح - 1)
 
-So Lv1 = 10, Lv2 = 15, Lv10 = 55, Lv50 = 255.
+تو Lv1 = 10, Lv2 = 15, Lv10 = 55, Lv50 = 255.
 ```
 
-The higher your engine level, the faster you move.
+آپ کے انجن کی سطح جتنی زیادہ ہوگی، آپ اتنی تیزی سے حرکت کریں گے۔
 
 ---
 
-## Space Jump
+## خلائی چھلانگ (Space Jump)
 
-A space jump instantly teleports you to a new deterministic coordinate. It is much faster than cruising but comes with serious side effects.
+خلائی چھلانگ فوری طور پر آپ کو ایک نئے معینہ کوآرڈینیٹ پر ٹیلی پورٹ کرتی ہے۔ یہ سفر سے کہیں زیادہ تیز ہے لیکن سنگین ضمنی اثرات کے ساتھ آتی ہے۔
 
-### Cost
+### لاگت
 
-Each jump's cost increases with **historical jump count**:
+ہر چھلانگ کی لاگت **تاریخی چھلانگوں کی تعداد** کے ساتھ بڑھتی ہے:
 
-| Resource | Formula | Cap |
+| وسیلہ | فارمولا | حد |
 |----------|---------|-----|
-| **Energy** | `200,000 + 200,000 × √(historical jumps)` | 16,500,000 |
-| **DFT** | `10 + 10 × √(historical jumps)` | 1,000 DFT |
-| **Engine Durability** | 1 point | |
+| **توانائی** | `200,000 + 200,000 × √(تاریخی چھلانگیں)` | 16,500,000 |
+| **DFT** | `10 + 10 × √(تاریخی چھلانگیں)` | 1,000 DFT |
+| **انجن کی پائیداری** | 1 پوائنٹ | |
 
-### Cooldown
+### کولڈاؤن
 
-After each jump, you must wait **1 hour** before jumping again.
+ہر چھلانگ کے بعد، آپ کو دوبارہ چھلانگ لگانے سے پہلے **1 گھنٹہ** انتظار کرنا ہوگا۔
 
-### Side Effects
+### ضمنی اثرات
 
-> ⚠️ Space jump inflicts heavy damage on your vessel:
+> ⚠️ خلائی چھلانگ آپ کے جہاز کو شدید نقصان پہنچاتی ہے:
 >
-> **Shield HP resets to 10% of maximum**
+> **ڈھال HP زیادہ سے زیادہ کے 10% پر ری سیٹ ہو جاتی ہے**
 >
-> Your defense will be extremely fragile after jumping. Make sure you jump in a safe area or prepare defensively.
+> چھلانگ کے بعد آپ کا دفاع انتہائی کمزور ہو جائے گا۔ یقینی بنائیں کہ آپ محفوظ علاقے میں چھلانگ لگائیں یا دفاعی طور پر تیار رہیں۔
 
-### Coordinate Assignment
+### کوآرڈینیٹ تفویض
 
-The new coordinates after a jump are assigned by a deterministic algorithm (similar to civilization creation). You cannot manually choose your destination.
+چھلانگ کے بعد نئے کوآرڈینیٹ ایک معینہ الگورتھم (تہذیب کی تخلیق کی طرح) کے ذریعے تفویض کیے جاتے ہیں۔ آپ دستی طور پر اپنی منزل کا انتخاب نہیں کر سکتے۔
 
 ---
 
-## Tracking Jump
+## تعاقبی چھلانگ (Tracking Jump)
 
-A tracking jump lets you jump directly to a target civilization's location.
+تعاقبی چھلانگ آپ کو براہ راست ہدف کی تہذیب کے مقام پر چھلانگ لگانے دیتی ہے۔
 
-### Conditions
+### شرائط
 
-- Your **radar level ≥ 20**
-- The target is **within your radar scan range**
+- آپ کا **ریڈار لیول ≥ 20**
+- ہدف **آپ کی ریڈار اسکین رینج کے اندر** ہے
 
-### Cost
+### لاگت
 
-Same as a regular space jump (energy + DFT + engine durability), and shares the same cooldown.
+باقاعدہ خلائی چھلانگ کی طرح (توانائی + DFT + انجن کی پائیداری)، اور اسی کولڈاؤن کا اشتراک کرتی ہے۔
 
 ---
 
-## Comparison
+## موازنہ
 
-| Method | Cost | Speed | Use Case |
+| طریقہ | لاگت | رفتار | استعمال کا معاملہ |
 |--------|------|-------|----------|
-| Cruise | Time only | Slow | Short-distance movement, exploration |
-| Space Jump | Energy + DFT + Shield HP | Instant | Long-distance travel, evading tracking jumps |
-| Tracking Jump | Energy + DFT + Shield HP | Instant | Chasing targets, assisting allies |
+| سفر | صرف وقت | سست | مختصر فاصلے کی حرکت، تلاش |
+| خلائی چھلانگ | توانائی + DFT + ڈھال HP | فوری | لمبے فاصلے کا سفر، تعاقبی چھلانگوں سے بچنا |
+| تعاقبی چھلانگ | توانائی + DFT + ڈھال HP | فوری | اہداف کا پیچھا کرنا، اتحادیوں کی مدد کرنا |
 
 ---
 
-## Post-Alliance Non-Aggression Protocol
+## اتحاد کے بعد عدم جارحیت کا پروٹوکول
 
-After leaving an alliance, you and the former alliance **cannot attack each other for 24 hours** (Leave Cooldown), preventing tactical abuse of the alliance system.
+اتحاد چھوڑنے کے بعد، آپ اور سابقہ اتحاد **24 گھنٹے تک ایک دوسرے پر حملہ نہیں کر سکتے** (چھوڑنے کا کولڈاؤن)، جو اتحاد کے نظام کے تکنیکی استحصال کو روکتا ہے۔
 
-**Recommended next step: [Energy System →](/docs/guide/energy)**
+**تجویز کردہ اگلا مرحلہ: [توانائی کا نظام →](/docs/guide/energy)**

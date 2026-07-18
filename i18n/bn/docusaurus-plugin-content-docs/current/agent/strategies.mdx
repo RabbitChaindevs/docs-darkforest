@@ -1,52 +1,52 @@
 ---
 sidebar_position: 3
-title: Strategy Templates
-description: Detailed breakdown of Dark Forest AI Agent's four preset strategies and custom configuration guide
+title: কৌশল টেমপ্লেট
+description: ডার্ক ফরেস্ট AI এজেন্টের চারটি প্রিসেট কৌশল এবং কাস্টম কনফিগারেশন গাইডের বিস্তারিত বিবরণ
 ---
 
-# Strategy Templates
+# কৌশল টেমপ্লেট
 
-Agent strategies are defined using YAML configuration files.
+এজেন্ট কৌশলগুলি YAML কনফিগারেশন ফাইল ব্যবহার করে সংজ্ঞায়িত করা হয়।
 
 ---
 
-## Strategy File Structure
+## কৌশল ফাইল কাঠামো
 
 ```yaml
 agent:
   name: "my-agent"
   mode: "auto"          # auto | manual | dry-run
 
-limits:                 # Circuit breaker (on-chain policy)
+limits:                 # সার্কিট ব্রেকার (অন-চেইন নীতি)
   min_energy_reserve: 100000
   min_dft_reserve: 10
   max_attacks_per_hour: 5
   max_upgrades_per_day: 3
   max_single_upgrade_cost: 100
 
-combat:                 # Combat strategy
+combat:                 # যুদ্ধ কৌশল
   min_target_level: 1
   max_target_level: 999
   weapon_level: 1
   only_attack_when_energy_above: 100000
-  blacklist: []         # Blacklisted addresses
-  whitelist: []         # Whitelisted addresses (only attack these)
+  blacklist: []         # ব্ল্যাকলিস্টেড ঠিকানা
+  whitelist: []         # হোয়াইটলিস্টেড ঠিকানা (শুধুমাত্র এদের আক্রমণ)
 
-defense:                # Defense strategy
+defense:                # প্রতিরক্ষা কৌশল
   auto_repair: true
   min_durability_before_repair: 20
-  shield_regen_threshold: 50   # Start shield regen below this %
+  shield_regen_threshold: 50   # এই %-এর নিচে ঢাল পুনর্জন্ম শুরু
 
-collection:             # Collection strategy
+collection:             # সংগ্রহ কৌশল
   enabled: true
   interval_minutes: 60
 ```
 
 ---
 
-## Four Preset Strategies
+## চারটি প্রিসেট কৌশল
 
-### 1. Aggressive
+### 1. আক্রমণাত্মক (Aggressive)
 
 ```yaml
 combat:
@@ -55,13 +55,13 @@ combat:
   weapon_level: max
 
 collection:
-  enabled: false  # No gathering, pure combat
+  enabled: false  # কোন সংগ্রহ নয়, সম্পূর্ণ যুদ্ধ
 ```
 
-- ✅ Good for: highly active players who want combat rewards
-- ❌ Risk: high energy consumption, risk of being counterattacked
+- ✅ ভালো: অত্যন্ত সক্রিয় খেলোয়াড়দের জন্য যারা যুদ্ধ পুরস্কার চান
+- ❌ ঝুঁকি: উচ্চ শক্তি খরচ, পাল্টা আক্রমণের ঝুঁকি
 
-### 2. Balanced
+### 2. ভারসাম্যপূর্ণ (Balanced)
 
 ```yaml
 combat:
@@ -78,14 +78,14 @@ defense:
   shield_regen_threshold: 60
 ```
 
-- ✅ **Recommended**: balanced offense and defense, suitable for most players
+- ✅ **প্রস্তাবিত**: ভারসাম্যপূর্ণ আক্রমণ ও প্রতিরক্ষা, অধিকাংশ খেলোয়াড়ের জন্য উপযোগী
 
-### 3. Defensive
+### 3. প্রতিরক্ষামূলক (Defensive)
 
 ```yaml
 combat:
   max_attacks_per_hour: 1
-  only_counterattack: true  # Only counterattack
+  only_counterattack: true  # শুধুমাত্র পাল্টা আক্রমণ
 
 defense:
   auto_repair: true
@@ -97,13 +97,13 @@ collection:
   interval_minutes: 15
 ```
 
-- ✅ Good for: players who are offline for long periods and want to avoid risk
+- ✅ ভালো: খেলোয়াড়দের জন্য যারা দীর্ঘ সময় অফলাইনে থাকেন এবং ঝুঁকি এড়াতে চান
 
-### 4. Farmer
+### 4. কৃষক (Farmer)
 
 ```yaml
 combat:
-  enabled: false  # No combat
+  enabled: false  # কোন যুদ্ধ নয়
 
 defense:
   auto_repair: true
@@ -114,34 +114,34 @@ collection:
   interval_minutes: 5
 ```
 
-- ✅ Good for: early-game development and resource accumulation
+- ✅ ভালো: প্রারম্ভিক-গেম উন্নয়ন এবং সম্পদ সঞ্চয়ের জন্য
 
 ---
 
-## Custom Strategy
+## কাস্টম কৌশল
 
 ```bash
-# Copy the template
+# টেমপ্লেট কপি করুন
 cp templates/balanced.yaml my-strategy.yaml
 
-# Edit parameters
+# প্যারামিটার সম্পাদনা করুন
 vim my-strategy.yaml
 
-# Use custom strategy
+# কাস্টম কৌশল ব্যবহার করুন
 python -m dark_forest.cli run --strategy ./my-strategy.yaml
 ```
 
 ---
 
-## Circuit Breaker Parameters
+## সার্কিট ব্রেকার প্যারামিটার
 
-| Parameter | Description | Default |
+| প্যারামিটার | বিবরণ | ডিফল্ট |
 |-----------|-------------|---------|
-| `max_attacks_per_hour` | Max attacks per hour | 10 |
-| `min_energy_reserve` | Minimum energy reserve | 100,000 |
-| `min_dft_reserve` | Minimum DFT reserve | 10 |
-| `max_upgrades_per_day` | Max upgrades per day | 5 |
+| `max_attacks_per_hour` | প্রতি ঘন্টায় সর্বোচ্চ আক্রমণ | 10 |
+| `min_energy_reserve` | ন্যূনতম শক্তি মজুদ | 100,000 |
+| `min_dft_reserve` | ন্যূনতম DFT মজুদ | 10 |
+| `max_upgrades_per_day` | প্রতিদিন সর্বোচ্চ আপগ্রেড | 5 |
 
-> ⚠️ Circuit breaker parameters are enforced on-chain. The agent cannot bypass them.
+> ⚠️ সার্কিট ব্রেকার প্যারামিটারগুলি অন-চেইনে প্রয়োগ করা হয়। এজেন্ট সেগুলি বাইপাস করতে পারে না।
 
-**Recommended next step: [Contract Addresses →](/docs/reference/addresses)**
+**প্রস্তাবিত পরবর্তী ধাপ: [কন্ট্র্যাক্ট ঠিকানা →](/docs/reference/addresses)**

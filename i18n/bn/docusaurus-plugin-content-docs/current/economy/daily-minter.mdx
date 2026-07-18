@@ -1,93 +1,93 @@
 ---
 sidebar_position: 3
-title: Daily Mint
-description: Dark Forest DailyMinter — daily DFT distribution mechanism
+title: দৈনিক মিন্ট
+description: ডার্ক ফরেস্ট DailyMinter — দৈনিক DFT বিতরণ প্রক্রিয়া
 ---
 
-# Daily Mint
+# দৈনিক মিন্ট
 
-The **DailyMinter** contract mints a fixed amount of DFT each day and distributes it evenly among active civilizations. **Claim it the same day or lose it** — unclaimed amounts do not accumulate.
+**DailyMinter** কন্ট্র্যাক্ট প্রতিদিন একটি নির্দিষ্ট পরিমাণ DFT মিন্ট করে এবং এটি সক্রিয় সভ্যতার মধ্যে সমানভাবে বিতরণ করে। **একই দিনে দাবি করুন নতুবা হারান** — দাবি না করা পরিমাণ জমা হয় না।
 
 ---
 
-## How to Claim
+## কীভাবে দাবি করবেন
 
-### Requirements
+### প্রয়োজনীয়তা
 
-- You must have created a civilization **before midnight UTC** on the claim day
-- `distribute()` must have been called for that day (anyone can trigger it)
-- Each address can only claim once per day
+- আপনি দাবির দিন **UTC মধ্যরাতের আগে** একটি সভ্যতা তৈরি করেছেন
+- সেদিন `distribute()` কল করা হয়েছে (যে কেউ এটি ট্রিগার করতে পারে)
+- প্রতিটি ঠিকানা প্রতিদিন শুধুমাত্র একবার দাবি করতে পারে
 
-### Operation
+### অপারেশন
 
 ```
 claim()
 ```
 
-Confirm the transaction (gas fee only).
+লেনদেন নিশ্চিত করুন (শুধুমাত্র গ্যাস ফি)।
 
 ---
 
-## Minting Flow
+## মিন্টিং প্রবাহ
 
-### Step 1: Distribute
+### ধাপ 1: বিতরণ
 
-Anyone can call `distribute()`:
+যে কেউ `distribute()` কল করতে পারে:
 
-1. The contract checks the last undistributed epoch
-2. Snapshots the current number of active civilizations
-3. Calculates `share per player = daily emission / active civilizations`
-4. Mints the total DFT to the contract
-5. `Daily emission = 1,152,575,342 DFT` (constant)
+1. কন্ট্র্যাক্ট শেষ অবিতরণ যুগ পরীক্ষা করে
+2. বর্তমান সক্রিয় সভ্যতার সংখ্যার স্ন্যাপশট নেয়
+3. `প্রতি খেলোয়াড়ে ভাগ = দৈনিক নির্গমন / সক্রিয় সভ্যতা` গণনা করে
+4. মোট DFT কন্ট্র্যাক্টে মিন্ট করে
+5. `দৈনিক নির্গমন = 1,152,575,342 DFT` (স্থির)
 
-### Step 2: Claim
+### ধাপ 2: দাবি
 
-Players call `claim()`:
+খেলোয়াড়রা `claim()` কল করে:
 
-1. Verifies you created a civilization before this epoch
-2. Verifies you haven't already claimed
-3. Transfers your share to your wallet
+1. যাচাই করে যে আপনি এই যুগের আগে সভ্যতা তৈরি করেছেন
+2. যাচাই করে যে আপনি ইতিমধ্যে দাবি করেননি
+3. আপনার ভাগ আপনার ওয়ালেটে স্থানান্তর করে
 
-### Step 3: Burn Remainder
+### ধাপ 3: অবশিষ্টাংশ পোড়ানো
 
-On the next `distribute()`, any DFT from the previous epoch that was not claimed is **burned** (reducing circulating supply).
+পরবর্তী `distribute()`-এ, পূর্ববর্তী যুগের কোনো DFT যা দাবি করা হয়নি তা **পুড়িয়ে ফেলা হয়** (প্রচলন সরবরাহ হ্রাস করে)।
 
 ---
 
-## Timeline
+## সময়রেখা
 
 ```
-Epoch 0      Epoch 1      Epoch 2
+যুগ 0        যুগ 1        যুগ 2
    |            |            |
 UTC 00:00    UTC 00:00    UTC 00:00
-   ↑create civ  ↑distribute   ↑distribute
-                ↑claim        ↑claim
-                              ↑unclaimed burned
+   ↑সভ্যতা তৈরি  ↑বিতরণ       ↑বিতরণ
+                 ↑দাবি        ↑দাবি
+                              ↑অদাবিকৃত পোড়ানো
 ```
 
-- Epochs are divided by UTC midnight
-- You can only claim the **most recently distributed** epoch
-- Miss an epoch and you can never claim it
+- যুগগুলি UTC মধ্যরাত দ্বারা বিভক্ত
+- আপনি শুধুমাত্র **সর্বশেষ বিতরণকৃত** যুগ দাবি করতে পারেন
+- একটি যুগ মিস করলে আপনি তা কখনই দাবি করতে পারবেন না
 
 ---
 
-## Key Parameters
+## মূল প্যারামিটার
 
-| Parameter | Value |
+| প্যারামিটার | মান |
 |-----------|-------|
-| Daily Emission | **1,152,575,342 DFT** (constant) |
-| Total Distribution Period | **3,650 days** (~10 years) |
-| Total Supply Cap | **4,206,900,000,000 DFT** (~4.2 trillion) |
-| Claim Window | Within each epoch (typically 1 day) |
+| দৈনিক নির্গমন | **১,১৫২,৫৭৫,৩৪২ DFT** (স্থির) |
+| মোট বিতরণ সময়কাল | **৩,৬৫০ দিন** (~১০ বছর) |
+| মোট সরবরাহ সীমা | **৪,২০৬,৯০০,০০০,০০০ DFT** (~৪.২ ট্রিলিয়ন) |
+| দাবি উইন্ডো | প্রতিটি যুগের মধ্যে (সাধারণত ১ দিন) |
 
 ---
 
-## Why Claim Daily
+## কেন দৈনিক দাবি করবেন
 
-1. 🆓 **Free DFT** — only costs gas, available every day
-2. 📉 **Unclaimed gets burned** — miss it and it's gone
-3. 📈 **Fewer players = more per person** — if active players decrease, each share increases
+1. 🆓 **বিনামূল্যে DFT** — শুধুমাত্র গ্যাস খরচ, প্রতিদিন উপলব্ধ
+2. 📉 **অদাবিকৃত পোড়ানো হয়** — মিস করলে শেষ
+3. 📈 **কম খেলোয়াড় = প্রতি ব্যক্তি বেশি** — সক্রিয় খেলোয়াড় কমলে, প্রতিটি ভাগ বাড়ে
 
-> 💡 Set a daily reminder around UTC time to claim. If `distribute()` hasn't been called yet for the day, you can trigger it yourself — it only costs gas.
+> 💡 দাবি করতে UTC সময়ের কাছাকাছি একটি দৈনিক অনুস্মারক সেট করুন। যদি সেদিন `distribute()` এখনও কল না করা হয়ে থাকে, আপনি নিজেই এটি ট্রিগার করতে পারেন — এতে শুধু গ্যাস খরচ হয়।
 
-**Recommended next step: [What Is an AI Agent →](/docs/agent/what-is-agent)**
+**প্রস্তাবিত পরবর্তী ধাপ: [AI এজেন্ট কী →](/docs/agent/what-is-agent)**

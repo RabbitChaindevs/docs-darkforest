@@ -1,93 +1,93 @@
 ---
 sidebar_position: 3
-title: Daily Mint
-description: Dark Forest DailyMinter — daily DFT distribution mechanism
+title: Ежедневный майнинг
+description: DailyMinter Dark Forest — механизм ежедневного распределения DFT
 ---
 
-# Daily Mint
+# Ежедневный майнинг
 
-The **DailyMinter** contract mints a fixed amount of DFT each day and distributes it evenly among active civilizations. **Claim it the same day or lose it** — unclaimed amounts do not accumulate.
+Контракт **DailyMinter** создаёт фиксированное количество DFT каждый день и распределяет его поровну среди активных цивилизаций. **Получите в тот же день или потеряете** — невостребованные суммы не накапливаются.
 
 ---
 
-## How to Claim
+## Как получить
 
-### Requirements
+### Требования
 
-- You must have created a civilization **before midnight UTC** on the claim day
-- `distribute()` must have been called for that day (anyone can trigger it)
-- Each address can only claim once per day
+- Вы должны создать цивилизацию **до полуночи UTC** в день получения
+- `distribute()` должен быть вызван за этот день (любой может его запустить)
+- Каждый адрес может получить только один раз в день
 
-### Operation
+### Операция
 
 ```
 claim()
 ```
 
-Confirm the transaction (gas fee only).
+Подтвердите транзакцию (только газовая комиссия).
 
 ---
 
-## Minting Flow
+## Процесс майнинга
 
-### Step 1: Distribute
+### Шаг 1: Распределение
 
-Anyone can call `distribute()`:
+Любой может вызвать `distribute()`:
 
-1. The contract checks the last undistributed epoch
-2. Snapshots the current number of active civilizations
-3. Calculates `share per player = daily emission / active civilizations`
-4. Mints the total DFT to the contract
-5. `Daily emission = 1,152,575,342 DFT` (constant)
+1. Контракт проверяет последнюю нераспределённую эпоху
+2. Делает снимок текущего количества активных цивилизаций
+3. Вычисляет `доля на игрока = дневная эмиссия / активные цивилизации`
+4. Создаёт общее количество DFT в контракте
+5. `Дневная эмиссия = 1 152 575 342 DFT` (константа)
 
-### Step 2: Claim
+### Шаг 2: Получение
 
-Players call `claim()`:
+Игроки вызывают `claim()`:
 
-1. Verifies you created a civilization before this epoch
-2. Verifies you haven't already claimed
-3. Transfers your share to your wallet
+1. Проверяет, что вы создали цивилизацию до этой эпохи
+2. Проверяет, что вы ещё не получили
+3. Переводит вашу долю в ваш кошелёк
 
-### Step 3: Burn Remainder
+### Шаг 3: Сжигание остатка
 
-On the next `distribute()`, any DFT from the previous epoch that was not claimed is **burned** (reducing circulating supply).
+При следующем `distribute()` любой DFT из предыдущей эпохи, который не был получен, **сжигается** (уменьшая циркулирующее предложение).
 
 ---
 
-## Timeline
+## Временная шкала
 
 ```
-Epoch 0      Epoch 1      Epoch 2
+Эпоха 0      Эпоха 1      Эпоха 2
    |            |            |
 UTC 00:00    UTC 00:00    UTC 00:00
-   ↑create civ  ↑distribute   ↑distribute
-                ↑claim        ↑claim
-                              ↑unclaimed burned
+   ↑создать цив ↑распределить ↑распределить
+                ↑получить     ↑получить
+                              ↑неполученное сожжено
 ```
 
-- Epochs are divided by UTC midnight
-- You can only claim the **most recently distributed** epoch
-- Miss an epoch and you can never claim it
+- Эпохи разделены полуночью UTC
+- Вы можете получить только **самую последнюю распределённую** эпоху
+- Пропустите эпоху — и вы никогда не сможете её получить
 
 ---
 
-## Key Parameters
+## Ключевые параметры
 
-| Parameter | Value |
-|-----------|-------|
-| Daily Emission | **1,152,575,342 DFT** (constant) |
-| Total Distribution Period | **3,650 days** (~10 years) |
-| Total Supply Cap | **4,206,900,000,000 DFT** (~4.2 trillion) |
-| Claim Window | Within each epoch (typically 1 day) |
+| Параметр | Значение |
+|----------|----------|
+| Дневная эмиссия | **1 152 575 342 DFT** (константа) |
+| Общий период распределения | **3 650 дней** (~10 лет) |
+| Общий лимит эмиссии | **4 206 900 000 000 DFT** (~4,2 триллиона) |
+| Окно получения | В пределах каждой эпохи (обычно 1 день) |
 
 ---
 
-## Why Claim Daily
+## Зачем получать ежедневно
 
-1. 🆓 **Free DFT** — only costs gas, available every day
-2. 📉 **Unclaimed gets burned** — miss it and it's gone
-3. 📈 **Fewer players = more per person** — if active players decrease, each share increases
+1. 🆓 **Бесплатный DFT** — только газовая комиссия, доступен каждый день
+2. 📉 **Неполученное сжигается** — пропустите, и оно исчезнет
+3. 📈 **Меньше игроков = больше на человека** — если активных игроков становится меньше, доля каждого увеличивается
 
-> 💡 Set a daily reminder around UTC time to claim. If `distribute()` hasn't been called yet for the day, you can trigger it yourself — it only costs gas.
+> 💡 Установите ежедневное напоминание около времени UTC для получения. Если `distribute()` ещё не был вызван за сегодня, вы можете запустить его сами — это стоит только газовой комиссии.
 
-**Recommended next step: [What Is an AI Agent →](/docs/agent/what-is-agent)**
+**Рекомендуемый следующий шаг: [Что такое ИИ-агент →](/docs/agent/what-is-agent)**

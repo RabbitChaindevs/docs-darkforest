@@ -1,98 +1,98 @@
 ---
 sidebar_position: 3
-title: Space Jump & Cruise
-description: Detailed breakdown of the Dark Forest movement system
+title: Saut spatial et croisière
+description: Analyse détaillée du système de déplacement de Dark Forest
 ---
 
-# Space Jump & Cruise
+# Saut spatial et croisière
 
-## Cruise
+## Croisière
 
-Cruise is the standard method of movement. The engine propels your civilization toward a target coordinate.
+La croisière est la méthode standard de déplacement. Le moteur propulse votre civilisation vers des coordonnées cibles.
 
 ### Conditions
-- Engine durability > 0
-- Target coordinates are within your radar range
+- Durabilité du moteur > 0
+- Les coordonnées cibles sont dans votre portée radar
 
-### Operation
+### Opération
 
 ```
 startMove(x, y, z)
 ```
 
-Enter the target coordinates `(x, y, z)` to begin cruising. You can cancel at any time before arrival (`cancelMove`).
+Entrez les coordonnées cibles `(x, y, z)` pour commencer la croisière. Vous pouvez annuler à tout moment avant l'arrivée (`cancelMove`).
 
-### Speed
+### Vitesse
 
 ```
-Move Speed = 10 + 5 × (engine level - 1)
+Vitesse de déplacement = 10 + 5 × (niveau du moteur - 1)
 
-So Lv1 = 10, Lv2 = 15, Lv10 = 55, Lv50 = 255.
+Soit Nv1 = 10, Nv2 = 15, Nv10 = 55, Nv50 = 255.
 ```
 
-The higher your engine level, the faster you move.
+Plus votre niveau de moteur est élevé, plus vous vous déplacez vite.
 
 ---
 
-## Space Jump
+## Saut spatial
 
-A space jump instantly teleports you to a new deterministic coordinate. It is much faster than cruising but comes with serious side effects.
+Un saut spatial vous téléporte instantanément vers de nouvelles coordonnées déterministes. C'est beaucoup plus rapide que la croisière mais entraîne de sérieux effets secondaires.
 
-### Cost
+### Coût
 
-Each jump's cost increases with **historical jump count**:
+Chaque saut augmente avec le **nombre historique de sauts** :
 
-| Resource | Formula | Cap |
-|----------|---------|-----|
-| **Energy** | `200,000 + 200,000 × √(historical jumps)` | 16,500,000 |
-| **DFT** | `10 + 10 × √(historical jumps)` | 1,000 DFT |
-| **Engine Durability** | 1 point | |
+| Ressource | Formule | Plafond |
+|-----------|---------|---------|
+| **Énergie** | `200 000 + 200 000 × √(sauts historiques)` | 16 500 000 |
+| **DFT** | `10 + 10 × √(sauts historiques)` | 1 000 DFT |
+| **Durabilité du moteur** | 1 point | |
 
-### Cooldown
+### Refroidissement
 
-After each jump, you must wait **1 hour** before jumping again.
+Après chaque saut, vous devez attendre **1 heure** avant de sauter à nouveau.
 
-### Side Effects
+### Effets secondaires
 
-> ⚠️ Space jump inflicts heavy damage on your vessel:
+> ⚠️ Le saut spatial inflige de lourds dégâts à votre vaisseau :
 >
-> **Shield HP resets to 10% of maximum**
+> **Les PV du bouclier sont réinitialisés à 10 % du maximum**
 >
-> Your defense will be extremely fragile after jumping. Make sure you jump in a safe area or prepare defensively.
+> Votre défense sera extrêmement fragile après le saut. Assurez-vous de sauter dans une zone sûre ou préparez-vous défensivement.
 
-### Coordinate Assignment
+### Attribution des coordonnées
 
-The new coordinates after a jump are assigned by a deterministic algorithm (similar to civilization creation). You cannot manually choose your destination.
+Les nouvelles coordonnées après un saut sont attribuées par un algorithme déterministe (similaire à la création de civilisation). Vous ne pouvez pas choisir manuellement votre destination.
 
 ---
 
-## Tracking Jump
+## Saut de poursuite
 
-A tracking jump lets you jump directly to a target civilization's location.
+Un saut de poursuite vous permet de sauter directement à l'emplacement d'une civilisation cible.
 
 ### Conditions
 
-- Your **radar level ≥ 20**
-- The target is **within your radar scan range**
+- Votre **niveau de radar ≥ 20**
+- La cible est **dans votre portée de scan radar**
 
-### Cost
+### Coût
 
-Same as a regular space jump (energy + DFT + engine durability), and shares the same cooldown.
-
----
-
-## Comparison
-
-| Method | Cost | Speed | Use Case |
-|--------|------|-------|----------|
-| Cruise | Time only | Slow | Short-distance movement, exploration |
-| Space Jump | Energy + DFT + Shield HP | Instant | Long-distance travel, evading tracking jumps |
-| Tracking Jump | Energy + DFT + Shield HP | Instant | Chasing targets, assisting allies |
+Identique à un saut spatial régulier (énergie + DFT + durabilité du moteur), et partage le même temps de refroidissement.
 
 ---
 
-## Post-Alliance Non-Aggression Protocol
+## Comparaison
 
-After leaving an alliance, you and the former alliance **cannot attack each other for 24 hours** (Leave Cooldown), preventing tactical abuse of the alliance system.
+| Méthode | Coût | Vitesse | Cas d'utilisation |
+|---------|------|---------|-------------------|
+| Croisière | Temps seulement | Lent | Déplacement courte distance, exploration |
+| Saut spatial | Énergie + DFT + PV du bouclier | Instantané | Voyage longue distance, esquive de sauts de poursuite |
+| Saut de poursuite | Énergie + DFT + PV du bouclier | Instantané | Poursuite de cibles, assistance aux alliés |
 
-**Recommended next step: [Energy System →](/docs/guide/energy)**
+---
+
+## Protocole de non-agression post-alliance
+
+Après avoir quitté une alliance, vous et l'ancienne alliance **ne pouvez pas vous attaquer mutuellement pendant 24 heures** (délai de refroidissement de sortie), empêchant l'utilisation tactique abusive du système d'alliance.
+
+**Prochaine étape recommandée : [Système d'énergie →](/docs/guide/energy)**

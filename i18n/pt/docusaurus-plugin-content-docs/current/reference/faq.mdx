@@ -1,148 +1,148 @@
 ---
 sidebar_position: 3
 title: FAQ
-description: Frequently asked questions about Dark Forest
+description: Perguntas frequentes sobre Dark Forest
 ---
 
 # FAQ
 
-## Getting Started
+## Primeiros Passos
 
-### How much does it cost to create a civilization?
+### Quanto custa criar uma civilização?
 
-The entry fee starts at **0.01 BNB** and grows linearly to **0.05 BNB** (reaching the maximum after 365 days). You also need a small amount of BNB for gas fees.
+A taxa de entrada começa em **0,01 BNB** e cresce linearmente até **0,05 BNB** (atingindo o máximo após 365 dias). Você também precisa de uma pequena quantidade de BNB para taxas de gas.
 
-### What is DFT used for?
+### Para que serve o DFT?
 
-DFT is used for space jumps, system upgrades, rebuilding a civilization, alliance exit fines, and buying energy on the energy market.
+DFT é usado para saltos espaciais, upgrades de sistemas, reconstruir uma civilização, multas de saída de aliança e comprar energia no mercado de energia.
 
-### How long does new player protection last?
+### Quanto dura a proteção para novos jogadores?
 
-**24 hours**. During this period, other players cannot attack you.
-
----
-
-## Gameplay
-
-### Why can't I attack a certain civilization?
-
-These are the possible soft gate reasons (no resources are consumed):
-
-- The target is in new player protection (< 24 hours old)
-- You and the target are in the same alliance
-- There's an active exit cooldown between you (24 hours)
-- The target is outside your radar range
-- You are the target
-
-### I'm running low on energy. What can I do?
-
-- Upgrade your **Energy Collector** for higher passive output
-- **Plunder** energy by attacking other civilizations
-- Buy energy on the **Energy Market** using DFT
-- **Invite new players** for reward energy
-- Cut back on unnecessary actions (e.g., non-essential shield repairs)
-
-### Why did my shield drop to zero after a space jump?
-
-Space jumps inflict heavy damage on your vessel: **Shield HP resets to 10% of maximum**. Be careful after jumping:
-
-1. Repair your shield immediately after jumping
-2. Avoid jumping near combat zones
-3. Alliance members can assist with repairs after a jump
-
-### What happens when durability hits zero?
-
-| System | Durability = 0 Consequence |
-|--------|---------------------------|
-| Collector | Stops producing energy |
-| Weapon | Attack power is halved |
-| Shield | Shield becomes ineffective (no defense) |
-| Engine | Cannot cruise or jump |
+**24 horas**. Durante este período, outros jogadores não podem atacá-lo.
 
 ---
 
-## Economy
+## Jogabilidade
 
-### What is the total supply of DFT?
+### Por que não posso atacar uma determinada civilização?
 
-**~4.2 trillion (4,206,900,000,000) DFT** — this is the hard cap. Approximately 1.15 trillion DFT is minted daily and distributed among active players.
+Estas são as possíveis razões de porta suave (nenhum recurso é consumido):
 
-### Are there fees for trading DFT?
+- O alvo está em proteção de novos jogadores (< 24 horas de existência)
+- Você e o alvo estão na mesma aliança
+- Há um resfriamento de saída ativo entre vocês (24 horas)
+- O alvo está fora do seu alcance de radar
+- Você é o alvo
 
-A **2.5% total fee** (1% development + 1.5% marketing) applies only when trading on a DEX like PancakeSwap. Regular transfers are fee-free.
+### Estou ficando sem energia. O que posso fazer?
 
-### Can unclaimed DFT from the daily mint accumulate?
+- Melhore seu **Coletor de Energia** para maior produção passiva
+- **Saquee** energia atacando outras civilizações
+- Compre energia no **Mercado de Energia** usando DFT
+- **Convide novos jogadores** para obter energia de recompensa
+- Reduza ações desnecessárias (por exemplo, reparos de escudo não essenciais)
 
-**No.** DFT from each epoch must be claimed within that epoch. If not claimed, the next `distribute()` call burns the remainder.
+### Por que meu escudo caiu para zero após um salto espacial?
+
+Saltos espaciais causam danos severos à sua nave: **O HP do Escudo é redefinido para 10% do máximo**. Tenha cuidado após saltar:
+
+1. Repare seu escudo imediatamente após o salto
+2. Evite saltar perto de zonas de combate
+3. Membros da aliança podem ajudar com reparos após um salto
+
+### O que acontece quando a durabilidade chega a zero?
+
+| Sistema | Consequência com Durabilidade = 0 |
+|---------|-----------------------------------|
+| Coletor | Para de produzir energia |
+| Armas | O poder de ataque é reduzido pela metade |
+| Escudo | O escudo se torna ineficaz (sem defesa) |
+| Motor | Não pode navegar nem saltar |
 
 ---
 
-## Alliance
+## Economia
 
-### Is there a penalty for leaving an alliance?
+### Qual é o fornecimento total de DFT?
 
-Yes, you must pay **100 DFT + 10 DFT × current member count**. This DFT is distributed to the remaining alliance members.
+**~4,2 trilhões (4.206.900.000.000) DFT** — este é o limite rígido. Aproximadamente 1,15 trilhão de DFT é cunhado diariamente e distribuído entre os jogadores ativos.
 
-### How long after leaving an alliance can I attack again?
+### Há taxas para negociar DFT?
 
-**24-hour cooldown**. During this period, you and the former alliance cannot attack each other.
+Uma **taxa total de 2,5%** (1% desenvolvimento + 1,5% marketing) é aplicada apenas ao negociar em uma DEX como PancakeSwap. Transferências regulares são gratuitas.
 
-### What is the maximum alliance size?
+### O DFT não reivindicado da mineração diária pode acumular?
 
-**100 members.**
+**Não.** O DFT de cada época deve ser reivindicado dentro dessa época. Se não for reivindicado, a próxima chamada `distribute()` queima o remanescente.
 
 ---
 
-## Rebuild (Rebirth)
+## Aliança
 
-### What conditions are needed to rebuild?
+### Há penalidade por sair de uma aliança?
 
-Your civilization must be in **ruins state** (defeated, with all systems reduced to Lv 1).
+Sim, você deve pagar **100 DFT + 10 DFT × número atual de membros**. Este DFT é distribuído aos membros restantes da aliança.
 
-### Does rebuilding reset newbie protection?
+### Quanto tempo depois de sair de uma aliança posso atacar novamente?
 
-Yes. Rebuilding resets `creationTime` to the current timestamp, so the **24-hour newbie protection restarts**.
+**Resfriamento de 24 horas**. Durante este período, você e a antiga aliança não podem se atacar.
 
-### What is the maximum health cap?
+### Qual é o tamanho máximo da aliança?
 
-**20,000**. Initial health is 3,000. Health does not regenerate automatically in combat and can only be reset to 10,000 via rebuilding.
+**100 membros.**
 
-### How much does a rebuild cost?
+---
 
-- **Energy**: `500,000 × (10000 + rebirth count × 1200) / 10000`, cap 10,000,000 (20×)
-- **DFT**: `100 + 10 × rebirth count`, cap 2,000 DFT
+## Reconstruir (Renascimento)
 
-### What are the benefits of rebuilding?
+### Quais condições são necessárias para reconstruir?
 
-Each rebuild grants **+12% (1200 bps)** combat boost, benefiting both attack and defense. Stacks up to **300% (30000 bps)**.
+Sua civilização deve estar em **estado de ruínas** (derrotada, com todos os sistemas reduzidos a Nv 1).
+
+### Reconstruir reinicia a proteção de novos jogadores?
+
+Sim. Reconstruir redefine `creationTime` para o timestamp atual, então a **proteção de novos jogadores de 24 horas é reiniciada**.
+
+### Qual é o limite máximo de saúde?
+
+**20.000**. A saúde inicial é de 3.000. A saúde não se regenera automaticamente em combate e só pode ser redefinida para 10.000 através da reconstrução.
+
+### Quanto custa uma reconstrução?
+
+- **Energia**: `500.000 × (10000 + número de renascimentos × 1200) / 10000`, teto 10.000.000 (20×)
+- **DFT**: `100 + 10 × número de renascimentos`, teto 2.000 DFT
+
+### Quais são os benefícios de reconstruir?
+
+Cada reconstrução concede **+12% (1200 bps)** de bônus de combate, beneficiando tanto o ataque quanto a defesa. Acumula até **300% (30000 bps)**.
 
 ---
 
 ## AI Agent
 
-### Is the Agent safe?
+### O Agent é seguro?
 
-The agent system has multiple layers of security:
+O sistema de agente tem múltiplas camadas de segurança:
 
-1. **Permission bitmask**: fine-grained control over each operation
-2. **On-chain policies**: circuit breaker parameters that cannot be bypassed
-3. **Instantly revocable**: `revokeAgent()` takes effect immediately
-4. **Encrypted storage**: private keys are encrypted locally
+1. **Máscara de permissões**: controle granular sobre cada operação
+2. **Políticas on-chain**: parâmetros de disjuntor que não podem ser ignorados
+3. **Revogável instantaneamente**: `revokeAgent()` tem efeito imediato
+4. **Armazenamento criptografado**: chaves privadas são criptografadas localmente
 
-We recommend using a **dedicated game wallet** to run an agent.
+Recomendamos usar uma **carteira de jogo dedicada** para executar um agente.
 
-### Can the agent auto-attack?
+### O agente pode atacar automaticamente?
 
-Yes, as long as you grant the `ATTACK` permission and set `autoAttack: true`. You can also configure blacklists and whitelists to control attack targets.
+Sim, desde que você conceda a permissão `ATTACK` e configure `autoAttack: true`. Você também pode configurar listas negras e brancas para controlar os alvos de ataque.
 
 ---
 
-## Technical
+## Técnico
 
-### Is the contract source code open?
+### O código-fonte do contrato é aberto?
 
-Yes. All contract source code is open-source on GitHub and verified on BscScan.
+Sim. Todo o código-fonte dos contratos é open-source no GitHub e verificado no BscScan.
 
-### How can I view transaction details?
+### Como posso ver os detalhes da transação?
 
-Paste your transaction hash (TXID) into [BscScan](https://bscscan.com).
+Cole o hash da sua transação (TXID) no [BscScan](https://bscscan.com).

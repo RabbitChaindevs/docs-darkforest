@@ -1,41 +1,41 @@
 ---
 sidebar_position: 2
-title: Glossary
-description: Dark Forest game terminology explained
+title: فرہنگ
+description: ڈارک فاریسٹ گیم کی اصطلاحات کی وضاحت
 ---
 
-# Glossary
+# فرہنگ
 
-| Term | Description |
+| اصطلاح | تفصیل |
 |------|-------------|
-| **Civilization** | The player's in-game identity with its own levels, attributes, and coordinates |
-| **Energy** | The basic in-game resource used for upgrades, attacks, movement, and repairs |
-| **DFT** | Dark Forest Token, an ERC-20 token used for jumps, upgrades, alliance exit fines, and more |
-| **Coordinates** | A civilization's position in 3D space `(x, y, z)`, assigned via a deterministic algorithm |
-| **Total Level** | The sum of all system levels; affects daily upkeep costs |
-| **Scan Range** | Your detection radius: `1000 + 150×lv + 5×lv²`; determines who you can attack or track |
-| **Attack Power** | `900 + 10 × level²`; the core attribute of the Weapon system |
-| **Defense** | `540 + 6 × level²`; the core attribute of the Shield system |
-| **Shield HP** | `3600 + 15 × level²`; absorbs incoming damage |
-| **Engine Speed** | `10 + 5 × level`; cruise speed |
-| **Collection Rate** | `3 + 10 × √(level - 1)` energy/second |
-| **Durability** | Each system's working state, consumed over time or through use |
-| **Daily Upkeep** | `2,000 × total level / day`; proportionally deducted over time |
-| **Entry Fee** | BNB paid when creating a civilization, ranging from 0.01 to 0.05 BNB linear growth |
-| **Anchor Formula** | The formula for calculating upgrade costs based on daily output and anchor days |
-| **Anchor Days** | Level 1–100: 1–30 days; 100–1000: 30–60 days; 1000+: 60 days (capped) |
-| **Cruise** | Standard movement method — moves toward target coordinates at constant speed |
-| **Space Jump** | Instant teleport to new coordinates, costs energy + DFT, shield drops to 10% |
-| **Tracking Jump** | Instant jump to a target's location; requires Radar Lv20+ and target in range |
-| **Attack Token** | Token bucket algorithm limiting attack frequency; max 3–10 tokens |
-| **Plunder Ratio** | `5% + weapon level × 0.5%`; portion of target energy plundered on victory |
-| **New Player Protection** | Cannot be attacked for the first 24 hours after creation |
-| **Ruins** | A civilization that cannot be downgraded further after defeat; can be revived via Rebuild |
-| **Rebuild / Rebirth** | Revives a ruined civilization, costs energy + DFT, grants combat boost |
-| **Combat Boost** | +12% per rebuild, max 300% (30000 bps) |
-| **Alliance** | A player organization for collaboration, max 100 members |
-| **Leave Cooldown** | 24-hour mutual non-aggression period after leaving an alliance |
-| **Totem** | An alliance-wide buff system; donate energy to upgrade for defense bonuses |
-| **Epoch** | DailyMinter's time unit, from UTC midnight to the next UTC midnight |
-| **DELEGATECALL** | Contract architecture pattern where the main contract delegates logic to satellite contracts |
-| **Soft Gate** | When attack conditions aren't met, the game shows the reason without consuming resources |
+| **تہذیب (Civilization)** | کھلاڑی کی گیم میں شناخت جس کی اپنی سطحیں، خصوصیات اور کوآرڈینیٹس ہیں |
+| **توانائی (Energy)** | گیم کا بنیادی وسیلہ جو اپ گریڈ، حملوں، حرکت اور مرمت کے لیے استعمال ہوتا ہے |
+| **DFT** | ڈارک فاریسٹ ٹوکن، ایک ERC-20 ٹوکن جو چھلانگوں، اپ گریڈ، اتحاد چھوڑنے کے جرمانے اور مزید کے لیے استعمال ہوتا ہے |
+| **کوآرڈینیٹس (Coordinates)** | تہذیب کا تین جہتی خلا میں مقام `(x, y, z)`، ایک معینہ الگورتھم کے ذریعے تفویض کردہ |
+| **کل سطح (Total Level)** | تمام نظاموں کی سطحوں کا مجموعہ؛ یومیہ دیکھ بھال کے اخراجات کو متاثر کرتا ہے |
+| **اسکین رینج (Scan Range)** | آپ کا پتہ لگانے کا رداس: `1000 + 150×lv + 5×lv²`؛ طے کرتا ہے کہ آپ کس پر حملہ یا تعاقب کر سکتے ہیں |
+| **حملہ کی طاقت (Attack Power)** | `900 + 10 × سطح²`؛ ہتھیار کے نظام کی بنیادی خصوصیت |
+| **دفاع (Defense)** | `540 + 6 × سطح²`؛ ڈھال کے نظام کی بنیادی خصوصیت |
+| **ڈھال HP (Shield HP)** | `3600 + 15 × سطح²`؛ آنے والے نقصان کو جذب کرتا ہے |
+| **انجن کی رفتار (Engine Speed)** | `10 + 5 × سطح`؛ سفر کی رفتار |
+| **جمع کرنے کی شرح (Collection Rate)** | `3 + 10 × √(سطح - 1)` توانائی/سیکنڈ |
+| **پائیداری (Durability)** | ہر نظام کی کام کرنے کی حالت، وقت کے ساتھ یا استعمال سے خرچ ہوتی ہے |
+| **یومیہ دیکھ بھال (Daily Upkeep)** | `2,000 × کل سطح / دن`؛ وقت کے ساتھ متناسب طور پر کاٹا جاتا ہے |
+| **انٹری فیس (Entry Fee)** | تہذیب بناتے وقت ادا کی جانے والی BNB، 0.01 سے 0.05 BNB تک لکیری اضافہ |
+| **اینکر فارمولا (Anchor Formula)** | یومیہ پیداوار اور اینکر دنوں کی بنیاد پر اپ گریڈ کے اخراجات کا حساب لگانے کا فارمولا |
+| **اینکر دن (Anchor Days)** | سطح 1–100: 1–30 دن؛ 100–1000: 30–60 دن؛ 1000+: 60 دن (حد کے ساتھ) |
+| **سفر (Cruise)** | حرکت کا معیاری طریقہ — ہدف کے کوآرڈینیٹس کی طرف مستقل رفتار سے حرکت |
+| **خلائی چھلانگ (Space Jump)** | نئے کوآرڈینیٹس پر فوری منتقلی، توانائی + DFT خرچ کرتی ہے، ڈھال 10% رہ جاتی ہے |
+| **تعاقبی چھلانگ (Tracking Jump)** | ہدف کے مقام پر فوری چھلانگ؛ ریڈار Lv20+ اور ہدف رینج میں ہونا ضروری |
+| **حملہ ٹوکن (Attack Token)** | ٹوکن بکٹ الگورتھم جو حملہ کی فریکوئنسی کو محدود کرتا ہے؛ زیادہ سے زیادہ 3–10 ٹوکن |
+| **لوٹ کا تناسب (Plunder Ratio)** | `5% + ہتھیار کی سطح × 0.5%`؛ فتح پر ہدف کی توانائی کا لوٹا جانے والا حصہ |
+| **نئے کھلاڑی کا تحفظ (New Player Protection)** | تخلیق کے بعد پہلے 24 گھنٹے حملہ نہیں کیا جا سکتا |
+| **کھنڈر (Ruins)** | وہ تہذیب جسے شکست کے بعد مزید نیچے نہیں کیا جا سکتا؛ تعمیر نو کے ذریعے زندہ کیا جا سکتا ہے |
+| **تعمیر نو / پنر جنم (Rebuild / Rebirth)** | تباہ شدہ تہذیب کو زندہ کرتا ہے، توانائی + DFT خرچ کرتا ہے، جنگی بڑھوتری دیتا ہے |
+| **جنگی بڑھوتری (Combat Boost)** | +12% فی تعمیر نو، زیادہ سے زیادہ 300% (30000 bps) |
+| **اتحاد (Alliance)** | تعاون کے لیے کھلاڑیوں کی تنظیم، زیادہ سے زیادہ 100 اراکین |
+| **چھوڑنے کا کولڈاؤن (Leave Cooldown)** | اتحاد چھوڑنے کے بعد 24 گھنٹے کا باہمی عدم جارحیت کا دورانیہ |
+| **ٹوٹم (Totem)** | اتحاد گیر بڑھوتری کا نظام؛ دفاعی بونس کے لیے توانائی عطیہ کریں |
+| **ایپوک (Epoch)** | DailyMinter کا وقت کا اکائی، UTC آدھی رات سے اگلی UTC آدھی رات تک |
+| **DELEGATECALL** | کنٹریکٹ آرکیٹیکچر کا نمونہ جہاں مرکزی کنٹریکٹ منطق کو سیٹلائٹ کنٹریکٹس کو سونپتا ہے |
+| **سافٹ گیٹ (Soft Gate)**** | جب حملہ کے شرائط پورے نہیں ہوتے، گیم وسائل خرچ کیے بغیر وجہ دکھاتا ہے |

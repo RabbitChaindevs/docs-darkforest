@@ -1,120 +1,120 @@
 ---
 sidebar_position: 1
-title: What Is an AI Agent
-description: Dark Forest AI Agent architecture and security mechanisms
+title: Что такое ИИ-агент
+description: Архитектура и механизмы безопасности ИИ-агента Dark Forest
 ---
 
-# What Is an AI Agent
+# Что такое ИИ-агент
 
-An AI Agent is an **off-chain automated program** that performs game operations on behalf of your civilization. It is authorized through a **permission bitmask** and operates within **policy constraints**.
-
----
-
-## What an Agent Can Do
-
-The agent's capabilities are controlled by **authorized permissions**:
-
-| Permission | Value | Action |
-|-----------|-------|--------|
-| COLLECT | 1 | Collect energy |
-| REPAIR | 2 | Repair systems |
-| CLAIM_COMBAT | 8 | Claim combat energy |
-| ATTACK | 32 | Attack |
-| UPGRADE | 64 | Upgrade systems |
-| JUMP | 128 | Space jump |
-| REBUILD | 256 | Rebuild civilization |
-| DONATE | 512 | Donate to totem |
-
-You can grant any combination of permissions to an agent (bitmask).
+ИИ-агент — это **офчейн-автоматизированная программа**, выполняющая игровые операции от имени вашей цивилизации. Он авторизуется через **маску разрешений** и действует в рамках **политических ограничений**.
 
 ---
 
-## Policy Constraints
+## Что может агент
 
-In addition to permissions, you can set **policy constraints** for the agent:
+Возможности агента контролируются **авторизованными разрешениями**:
 
-| Constraint | Description |
-|-----------|-------------|
-| `minEnergyReserve` | Minimum energy reserve (agent won't spend below this) |
-| `minDftReserve` | Minimum DFT reserve |
-| `maxAttackPerHour` | Maximum attacks per hour |
-| `maxUpgradePerDay` | Maximum upgrades per day |
-| `maxSingleUpgradeCost` | Maximum DFT cost per upgrade |
-| `autoCollect` | Auto-collect energy |
-| `autoRepair` | Auto-repair systems |
-| `autoShieldRepair` | Auto-repair shield |
-| `autoUpgrade` | Auto-upgrade |
-| `autoAttack` | Auto-attack |
+| Разрешение | Значение | Действие |
+|-----------|---------|----------|
+| COLLECT | 1 | Сбор энергии |
+| REPAIR | 2 | Ремонт систем |
+| CLAIM_COMBAT | 8 | Получение боевой энергии |
+| ATTACK | 32 | Атака |
+| UPGRADE | 64 | Улучшение систем |
+| JUMP | 128 | Космический прыжок |
+| REBUILD | 256 | Восстановление цивилизации |
+| DONATE | 512 | Пожертвование тотему |
+
+Вы можете предоставить агенту любую комбинацию разрешений (битовая маска).
 
 ---
 
-## Security Mechanisms
+## Политические ограничения
 
-### 1. On-Chain Registration
+В дополнение к разрешениям вы можете установить **политические ограничения** для агента:
 
-The agent's policy is stored on the `DarkForestAgentRegistry.sol` contract and cannot be tampered with once set.
+| Ограничение | Описание |
+|------------|----------|
+| `minEnergyReserve` | Минимальный резерв энергии (агент не будет тратить ниже этого) |
+| `minDftReserve` | Минимальный резерв DFT |
+| `maxAttackPerHour` | Максимум атак в час |
+| `maxUpgradePerDay` | Максимум улучшений в день |
+| `maxSingleUpgradeCost` | Максимальная стоимость DFT за одно улучшение |
+| `autoCollect` | Автосбор энергии |
+| `autoRepair` | Авторемонт систем |
+| `autoShieldRepair` | Авторемонт щита |
+| `autoUpgrade` | Автоулучшение |
+| `autoAttack` | Автоатака |
 
-### 2. Permission Separation
+---
 
-- **Authorize**: You authorize the agent to act on your behalf
-- **Permission bitmask**: Fine-grained control over each operation
-- **Revocable**: `revokeAgent()` takes effect immediately
+## Механизмы безопасности
 
-### 3. Circuit Breakers
+### 1. Ончейн-регистрация
+
+Политика агента хранится в контракте `DarkForestAgentRegistry.sol` и не может быть изменена после установки.
+
+### 2. Разделение разрешений
+
+- **Авторизация**: Вы авторизуете агента действовать от вашего имени
+- **Маска разрешений**: Тонкий контроль над каждой операцией
+- **Отзываемость**: `revokeAgent()` вступает в силу немедленно
+
+### 3. Автоматические выключатели
 
 ```
-Attack frequency limit: max N per hour
-Upgrade frequency limit: max N per day
-Energy floor: never below X
-DFT floor: never below Y
+Лимит частоты атак: макс N в час
+Лимит частоты улучшений: макс N в день
+Минимум энергии: никогда ниже X
+Минимум DFT: никогда ниже Y
 ```
 
-### 4. Blacklist / Whitelist
+### 4. Чёрный список / Белый список
 
-- **Blacklist**: Forbid attacking specific players
-- **Whitelist**: Only allow attacking specific players (blacklist is ignored when whitelist is active)
+- **Чёрный список**: Запретить атаку конкретных игроков
+- **Белый список**: Разрешить атаку только определённых игроков (чёрный список игнорируется, когда активен белый список)
 
 ---
 
-## Two-Layer Architecture
+## Двухуровневая архитектура
 
 ```
 ┌─────────────────────────────────────┐
-│         Off-Chain Agent             │
+│         Офчейн-агент                │
 │  ┌──────────────────────────────┐   │
-│  │ Strategy Engine (YAML config) │   │
-│  │ 4 preset strategies          │   │
-│  │ Custom strategy templates    │   │
+│  │ Стратегический движок (YAML) │   │
+│  │ 4 предустановленные стратегии│   │
+│  │ Шаблоны пользовательских     │   │
 │  └──────────┬───────────────────┘   │
-│             │ via contract calls    │
+│             │ через вызовы контракта│
 │             ▼                      │
 │  ┌──────────────────────────────┐   │
-│  │ Agent SDK                    │   │
-│  │ Calls contract methods       │   │
-│  │ (read/write)                 │   │
+│  │ SDK агента                   │   │
+│  │ Вызывает методы контракта    │   │
+│  │ (чтение/запись)              │   │
 │  └──────────────────────────────┘   │
 └──────────────┬──────────────────────┘
                │
                ▼
 ┌─────────────────────────────────────┐
-│   On-Chain DarkForestAgentRegistry  │
+│   Ончейн DarkForestAgentRegistry    │
 │  ┌──────────────────────────────┐   │
-│  │ Permission bitmask check     │   │
-│  │ Policy constraint check      │   │
-│  │ Rate limit check             │   │
+│  │ Проверка маски разрешений    │   │
+│  │ Проверка ограничений политики│   │
+│  │ Проверка лимита частоты      │   │
 │  └──────────────────────────────┘   │
 └─────────────────────────────────────┘
 ```
 
 ---
 
-## Agent vs Manual Play
+## Агент vs ручная игра
 
-| Comparison | Manual | AI Agent |
-|-----------|--------|----------|
-| Online requirement | Must be online often | 24/7 operation |
-| Response time | Latency | Instant |
-| Precision | Prone to errors | Strictly follows policy |
-| Security | Private key in wallet | Encrypted storage + on-chain constraints |
+| Сравнение | Вручную | ИИ-агент |
+|-----------|---------|----------|
+| Требование онлайн | Нужно быть часто онлайн | Работа 24/7 |
+| Время реакции | Задержка | Мгновенно |
+| Точность | Подвержено ошибкам | Строго следует политике |
+| Безопасность | Приватный ключ в кошельке | Зашифрованное хранение + ончейн-ограничения |
 
-**Recommended next step: [5-Minute Quickstart →](/docs/agent/quickstart)**
+**Рекомендуемый следующий шаг: [Быстрый старт за 5 минут →](/docs/agent/quickstart)**

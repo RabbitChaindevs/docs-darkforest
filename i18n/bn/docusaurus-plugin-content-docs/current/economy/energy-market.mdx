@@ -1,102 +1,102 @@
 ---
 sidebar_position: 2
-title: Energy Market
-description: Dark Forest's order book energy market — buy and sell energy with DFT
+title: শক্তি বাজার
+description: ডার্ক ফরেস্টের অর্ডার বুক শক্তি বাজার — DFT-এর সাথে শক্তি কিনুন এবং বিক্রি করুন
 ---
 
-# Energy Market
+# শক্তি বাজার
 
-The energy market is a **decentralized order book** where players can trade energy for DFT. It is powered by the `EnergyMarket.sol` contract.
+শক্তি বাজার হল একটি **বিকেন্দ্রীভূত অর্ডার বুক** যেখানে খেলোয়াড়রা DFT-এর বিনিময়ে শক্তি লেনদেন করতে পারেন। এটি `EnergyMarket.sol` কন্ট্র্যাক্ট দ্বারা চালিত।
 
 ---
 
-## Selling Energy (Creating an Order)
+## শক্তি বিক্রি (অর্ডার তৈরি)
 
-### Operation
+### অপারেশন
 
 ```
 createOrder(energyAmount, dftPrice)
 ```
 
-1. Enter the **amount of energy** you want to sell
-2. Enter the **total price in DFT** you're asking for
-3. Confirm the transaction
+1. আপনি যে **শক্তির পরিমাণ** বিক্রি করতে চান তা লিখুন
+2. আপনি যে **DFT-এ মোট মূল্য** চাচ্ছেন তা লিখুন
+3. লেনদেন নিশ্চিত করুন
 
-### Energy Locking
+### শক্তি লক করা
 
-When you create an order, the contract **immediately locks** your energy (marked as `energyReserved`), preventing you from spending it while the order is active.
+যখন আপনি একটি অর্ডার তৈরি করেন, কন্ট্র্যাক্ট আপনার শক্তি **তাৎক্ষণিকভাবে লক** করে (`energyReserved` হিসাবে চিহ্নিত), যা অর্ডার সক্রিয় থাকাকালীন এটি ব্যয় করতে বাধা দেয়।
 
-### Canceling an Order
+### অর্ডার বাতিল
 
 ```
 cancelOrder(orderId)
 ```
 
-- The order must be at least **3 seconds** old before cancellation (prevents same-block frontrunning)
-- After cancellation, the energy is unlocked
+- বাতিলের আগে অর্ডারকে কমপক্ষে **3 সেকেন্ড** পুরানো হতে হবে (একই ব্লকের ফ্রন্টরানিং প্রতিরোধ করে)
+- বাতিলের পরে, শক্তি আনলক হয়ে যায়
 
 ---
 
-## Buying Energy (Filling an Order)
+## শক্তি কেনা (অর্ডার পূরণ)
 
-### Operation
+### অপারেশন
 
 ```
 fillOrder(orderId, maxPrice)
 ```
 
-1. Browse the list of active sell orders
-2. Select an order
-3. Enter the maximum price you're willing to accept
-4. Confirm the transaction
+1. সক্রিয় বিক্রয় অর্ডারের তালিকা ব্রাউজ করুন
+2. একটি অর্ডার নির্বাচন করুন
+3. আপনি যে সর্বোচ্চ মূল্য গ্রহণ করতে ইচ্ছুক তা লিখুন
+4. লেনদেন নিশ্চিত করুন
 
-### Fees
+### ফি
 
-A **1% DFT protocol fee** is deducted from the seller's proceeds:
+বিক্রেতার প্রাপ্তি থেকে **1% DFT প্রোটোকল ফি** কাটা হয়:
 
 ```
-Buyer pays = order price (exact listing price)
-Seller receives = order price × 99%
-Protocol fee = order price × 1% (accumulated in contract)
+ক্রেতা প্রদান করে = অর্ডার মূল্য (নির্দিষ্ট তালিকাভুক্ত মূল্য)
+বিক্রেতা পায় = অর্ডার মূল্য × 99%
+প্রোটোকল ফি = অর্ডার মূল্য × 1% (কন্ট্র্যাক্টে জমা)
 ```
 
-The 1% protocol fee accumulates in the contract and can be withdrawn by the admin.
+1% প্রোটোকল ফি কন্ট্র্যাক্টে জমা হয় এবং অ্যাডমিন দ্বারা উত্তোলন করা যেতে পারে।
 
 ---
 
-## Market Parameters
+## বাজার প্যারামিটার
 
-| Parameter | Value |
+| প্যারামিটার | মান |
 |-----------|-------|
-| Protocol Fee | 1% (deducted from seller) |
-| Minimum Order Age | 3 seconds (before cancel/fill) |
-| Order Status | active / inactive (becomes inactive after cancel or fill) |
+| প্রোটোকল ফি | 1% (বিক্রেতা থেকে কাটা) |
+| ন্যূনতম অর্ডার বয়স | 3 সেকেন্ড (বাতিল/পূরণের আগে) |
+| অর্ডার অবস্থা | সক্রিয় / নিষ্ক্রিয় (বাতিল বা পূরণের পরে নিষ্ক্রিয় হয়) |
 
 ---
 
-## Trade Example
+## লেনদেনের উদাহরণ
 
-### Alice Sells Energy
+### এলিস শক্তি বিক্রি করে
 
-1. Alice creates a sell order: `createOrder(10000, 100 DFT)` — selling 10,000 energy for a total of 100 DFT
-2. The contract locks Alice's 10,000 energy
+1. এলিস একটি বিক্রয় অর্ডার তৈরি করে: `createOrder(10000, 100 DFT)` — 10,000 শক্তি মোট 100 DFT-তে বিক্রি করছে
+2. কন্ট্র্যাক্ট এলিসের 10,000 শক্তি লক করে
 
-### Bob Buys Energy
+### বব শক্তি কেনে
 
-1. Bob sees Alice's order
-2. Calls `fillOrder(orderId, 100)` — pays exactly 100 DFT
-3. Alice receives 99 DFT (100 - 1% fee)
-4. 1 DFT is accumulated as protocol fee
+1. বব এলিসের অর্ডার দেখে
+2. `fillOrder(orderId, 100)` কল করে — ঠিক 100 DFT প্রদান করে
+3. এলিস 99 DFT পায় (100 - 1% ফি)
+4. 1 DFT প্রোটোকল ফি হিসাবে জমা হয়
 
 ---
 
-## Strategy Tips
+## কৌশল টিপস
 
-| Scenario | Suggestion |
+| পরিস্থিতি | পরামর্শ |
 |----------|------------|
-| Need energy urgently for battle | Accept the lowest-priced sell orders |
-| Not in a hurry | Place a limit order and wait for the right price |
-| DFT price is rising | Sell energy for DFT to profit |
-| Surplus energy | List sell orders to earn DFT |
+| যুদ্ধের জন্য জরুরি শক্তি প্রয়োজন | সর্বনিম্ন মূল্যের বিক্রয় অর্ডার গ্রহণ করুন |
+| তাড়াহুড়ো নেই | একটি লিমিট অর্ডার রাখুন এবং সঠিক মূল্যের অপেক্ষা করুন |
+| DFT-এর দাম বাড়ছে | লাভের জন্য DFT-এর বিনিময়ে শক্তি বিক্রি করুন |
+| উদ্বৃত্ত শক্তি | DFT উপার্জনের জন্য বিক্রয় অর্ডার তালিকাভুক্ত করুন |
 
-**Recommended next step: [Daily Mint →](/docs/economy/daily-minter)**
+**প্রস্তাবিত পরবর্তী ধাপ: [দৈনিক মিন্ট →](/docs/economy/daily-minter)**

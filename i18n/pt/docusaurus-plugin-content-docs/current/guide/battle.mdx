@@ -1,152 +1,152 @@
 ---
 sidebar_position: 2
-title: Attack & Defense
-description: Complete breakdown of the Dark Forest combat system
+title: Ataque e Defesa
+description: Detalhamento completo do sistema de combate do Dark Forest
 ---
 
-# Attack & Defense
+# Ataque e Defesa
 
-## Attack Conditions
+## Condições de Ataque
 
-### Who Can You Attack?
+### Quem Você Pode Atacar?
 
-- The target must exist and not be destroyed (not in ruin state)
-- The target must not be in its **24-hour new player protection** window
-- The target must be within your **radar scan range** (distance ≤ your radar range)
-- You cannot attack yourself
-- You cannot attack members of your own alliance (you must leave first)
-- You cannot attack someone who left your alliance in the last **24 hours** (mutual cooldown)
+- O alvo deve existir e não estar destruído (não em estado de ruína)
+- O alvo não deve estar em sua janela de **proteção de 24 horas para novos jogadores**
+- O alvo deve estar dentro do seu **alcance de escaneamento de radar** (distância ≤ seu alcance de radar)
+- Você não pode atacar a si mesmo
+- Você não pode atacar membros da sua própria aliança (deve sair primeiro)
+- Você não pode atacar alguém que saiu da sua aliança nas últimas **24 horas** (resfriamento mútuo)
 
-### Soft Gate
+### Porta Suave
 
-If an attack condition isn't met, the attempt **does not consume any resources** — it simply tells you why the attack failed. This lets you experiment freely without worrying about wasted energy.
-
----
-
-## Attack Cost
-
-Each successful attack is limited to **1 attack per second**, and consumes:
-
-| Resource | Cost |
-|----------|------|
-| **Energy** | `50,000 + 50,000 × weapon level` |
-| **Weapon Durability** | 1 point (when weapon durability > 0) |
-| **Attack Token** | 1 token |
+Se uma condição de ataque não for atendida, a tentativa **não consome nenhum recurso** — ela simplesmente informa por que o ataque falhou. Isso permite que você experimente livremente sem se preocupar com energia desperdiçada.
 
 ---
 
-## Attack Token System
+## Custo de Ataque
 
-Attack tokens use a **token bucket algorithm** to limit attack frequency:
+Cada ataque bem-sucedido é limitado a **1 ataque por segundo** e consome:
 
-| Parameter | Formula | Description |
-|-----------|---------|-------------|
-| **Max Tokens** | `3 + weapon level / 10`, cap **10** | Auto-recover over time |
-| **Recovery Interval** | `(300 - weapon level × 10) / 100` seconds, min **1s** | 1 token per interval |
-| **Cost** | 1 token per attack | |
-
-> 💡 The higher your weapon level, the faster your attack tokens recover and the higher your cap.
+| Recurso | Custo |
+|---------|-------|
+| **Energia** | `50.000 + 50.000 × nível de arma` |
+| **Durabilidade da Arma** | 1 ponto (quando durabilidade da arma > 0) |
+| **Token de Ataque** | 1 token |
 
 ---
 
-## Damage Calculation
+## Sistema de Tokens de Ataque
 
-### Attacker
+Os tokens de ataque usam um **algoritmo de balde de tokens** para limitar a frequência de ataque:
 
-```
-Base Attack = 900 + 10 × attacker weapon level²
-If weapon durability = 0, attack is halved
-Final Attack = Base Attack × (1 + combat boost / 10000)
-```
+| Parâmetro | Fórmula | Descrição |
+|-----------|---------|-----------|
+| **Máx. Tokens** | `3 + nível de arma / 10`, teto **10** | Recuperam automaticamente com o tempo |
+| **Intervalo de Recuperação** | `(300 - nível de arma × 10) / 100` segundos, mín **1s** | 1 token por intervalo |
+| **Custo** | 1 token por ataque | |
 
-### Defender
-
-```
-Base Defense = 540 + 6 × defender shield level²
-Alliance Defense Bonus = (allies - 1) × 8 × (1 + totem level × 0.5%)
-Final Defense = Base Defense × (1 + combat boost / 10000) + Alliance Bonus
-```
-
-### Final Damage
-
-```
-Shield Damage = Attack + 200 - Defense (if > 0)
-Health Damage = (Attack - Defense) × 2 (if > 0)
-
-If Shield Damage > remaining Shield HP:
-  overflow × 3 converts to Health Damage
-```
+> 💡 Quanto maior o nível da sua arma, mais rápido seus tokens de ataque se recuperam e maior seu limite.
 
 ---
 
-## Plunder
+## Cálculo de Dano
 
-After winning a battle, you plunder energy from the target:
-
-```
-Plunder Ratio = 5% + weapon level × 0.5%
-Plundered Energy = target's current energy × plunder ratio
-```
-
-Plundered energy goes into a **pending combat energy** pool, which you must manually claim.
-
----
-
-## Defeat & Destruction
-
-### Defeat
-
-When a target's health reaches zero:
-
-1. **All remaining energy is plundered** into your pending pool
-2. The target has one random system **downgraded** (on BSC: downgrades the highest-level system; on chains with beacon chain randomness: randomly picks from Collector/Weapon/Shield/Engine)
-3. If the downgraded system's level is still ≥ 1, the civilization survives and its durability is restored to 50%
-4. If all systems are level 1 (cannot be downgraded further), the civilization becomes **ruins**
-5. The kill plunder stacks **on top of** the regular attack plunder
-
-### Ruins
-
-A civilization in ruins:
-- Is removed from the active civilization list
-- Cannot be attacked
-- Can be revived via the **Rebuild** function
-
-### Combat Boost (Rebirth Boost)
-
-Each Rebuild grants **+1200 bps** (12%) combat boost, stacking up to **30000 bps** (3× multiplier).
-Both attack and defense benefit from this boost.
-
----
-
-## Shield Regeneration
-
-### Auto Regeneration
+### Atacante
 
 ```
-Regen Amount = 50 + shield level²
-Energy Cost = regen amount (1:1 ratio)
+Ataque Base = 900 + 10 × nível de arma do atacante²
+Se durabilidade da arma = 0, o ataque é reduzido pela metade
+Ataque Final = Ataque Base × (1 + bônus de combate / 10000)
 ```
 
-### Manual Repair
+### Defensor
 
 ```
-Energy Cost = repair amount × 4
+Defesa Base = 540 + 6 × nível de escudo do defensor²
+Bônus de Defesa da Aliança = (aliados - 1) × 8 × (1 + nível do totem × 0.5%)
+Defesa Final = Defesa Base × (1 + bônus de combate / 10000) + Bônus da Aliança
 ```
 
-### Alliance Assistance
+### Dano Final
 
 ```
-Energy Cost = repair amount × 1 (paid by ally)
-Allies can repair shields for each other
+Dano no Escudo = Ataque + 200 - Defesa (se > 0)
+Dano na Saúde = (Ataque - Defesa) × 2 (se > 0)
+
+Se Dano no Escudo > HP restante do Escudo:
+  excedente × 3 converte em Dano na Saúde
 ```
 
 ---
 
-## Defense Strategy
+## Saque
 
-1. **Keep energy reserves > 7× daily upkeep** — prevents energy depletion that would stop shield regeneration
-2. **Repair durability regularly** — systems at zero durability are extremely vulnerable
-3. **Upgrade shield level** — shield HP and defense both scale with level squared
-4. **Join an alliance and upgrade the totem** — alliance defense bonuses are significant
+Após vencer uma batalha, você saqueia energia do alvo:
 
-**Recommended next step: [Space Jump & Cruise →](/docs/guide/movement)**
+```
+Taxa de Saque = 5% + nível de arma × 0.5%
+Energia Saqueada = energia atual do alvo × taxa de saque
+```
+
+A energia saqueada vai para um pool de **energia de combate pendente**, que você deve reivindicar manualmente.
+
+---
+
+## Derrota e Destruição
+
+### Derrota
+
+Quando a saúde de um alvo chega a zero:
+
+1. **Toda a energia restante é saqueada** para seu pool pendente
+2. O alvo tem um sistema aleatório **rebaixado** (na BSC: rebaixa o sistema de nível mais alto; em chains com aleatoriedade beacon chain: escolhe aleatoriamente entre Coletor/Armas/Escudo/Motor)
+3. Se o nível do sistema rebaixado ainda for ≥ 1, a civilização sobrevive e sua durabilidade é restaurada para 50%
+4. Se todos os sistemas estiverem no nível 1 (não podem ser mais rebaixados), a civilização se torna **ruínas**
+5. O saque por eliminação é acumulado **além do** saque de ataque regular
+
+### Ruínas
+
+Uma civilização em ruínas:
+- É removida da lista de civilizações ativas
+- Não pode ser atacada
+- Pode ser revivida através da função **Reconstruir**
+
+### Bônus de Combate (Impulso de Renascimento)
+
+Cada Reconstrução concede **+1200 bps** (12%) de bônus de combate, acumulando até **30000 bps** (multiplicador de 3×).
+Tanto o ataque quanto a defesa se beneficiam deste bônus.
+
+---
+
+## Regeneração do Escudo
+
+### Regeneração Automática
+
+```
+Quantidade de Regeneração = 50 + nível de escudo²
+Custo de Energia = quantidade de regeneração (proporção 1:1)
+```
+
+### Reparo Manual
+
+```
+Custo de Energia = quantidade de reparo × 4
+```
+
+### Assistência da Aliança
+
+```
+Custo de Energia = quantidade de reparo × 1 (pago pelo aliado)
+Aliados podem reparar escudos uns dos outros
+```
+
+---
+
+## Estratégia de Defesa
+
+1. **Mantenha reservas de energia > 7× a manutenção diária** — evita o esgotamento de energia que interromperia a regeneração do escudo
+2. **Repare a durabilidade regularmente** — sistemas com durabilidade zero são extremamente vulneráveis
+3. **Aumente o nível do escudo** — HP e defesa do escudo escalam com o nível ao quadrado
+4. **Entre em uma aliança e melhore o totem** — os bônus defensivos da aliança são significativos
+
+**Próximo passo recomendado: [Salto e Cruzeiro Espacial →](/docs/guide/movement)**

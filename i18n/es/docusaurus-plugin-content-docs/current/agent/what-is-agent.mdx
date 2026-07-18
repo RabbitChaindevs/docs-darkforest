@@ -1,120 +1,125 @@
 ---
 sidebar_position: 1
-title: What Is an AI Agent
-description: Dark Forest AI Agent architecture and security mechanisms
+title: ¿Qué es un AI Agent?
+description: Arquitectura del AI Agent de Dark Forest y mecanismos de seguridad
 ---
 
-# What Is an AI Agent
+# ¿Qué es un AI Agent?
 
-An AI Agent is an **off-chain automated program** that performs game operations on behalf of your civilization. It is authorized through a **permission bitmask** and operates within **policy constraints**.
-
----
-
-## What an Agent Can Do
-
-The agent's capabilities are controlled by **authorized permissions**:
-
-| Permission | Value | Action |
-|-----------|-------|--------|
-| COLLECT | 1 | Collect energy |
-| REPAIR | 2 | Repair systems |
-| CLAIM_COMBAT | 8 | Claim combat energy |
-| ATTACK | 32 | Attack |
-| UPGRADE | 64 | Upgrade systems |
-| JUMP | 128 | Space jump |
-| REBUILD | 256 | Rebuild civilization |
-| DONATE | 512 | Donate to totem |
-
-You can grant any combination of permissions to an agent (bitmask).
+Un AI Agent es un **programa automatizado fuera de cadena** que realiza operaciones del juego en nombre de tu civilización. Está autorizado a través de una **máscara de permisos** y opera dentro de **restricciones de políticas**.
 
 ---
 
-## Policy Constraints
+## Lo que un Agent Puede Hacer
 
-In addition to permissions, you can set **policy constraints** for the agent:
+Las capacidades del agente están controladas por **permisos autorizados**:
 
-| Constraint | Description |
-|-----------|-------------|
-| `minEnergyReserve` | Minimum energy reserve (agent won't spend below this) |
-| `minDftReserve` | Minimum DFT reserve |
-| `maxAttackPerHour` | Maximum attacks per hour |
-| `maxUpgradePerDay` | Maximum upgrades per day |
-| `maxSingleUpgradeCost` | Maximum DFT cost per upgrade |
-| `autoCollect` | Auto-collect energy |
-| `autoRepair` | Auto-repair systems |
-| `autoShieldRepair` | Auto-repair shield |
-| `autoUpgrade` | Auto-upgrade |
-| `autoAttack` | Auto-attack |
+| Permiso | Valor | Acción |
+|---------|-------|--------|
+| COLLECT | 1 | Recolectar energía |
+| REPAIR | 2 | Reparar sistemas |
+| CLAIM_COMBAT | 8 | Reclamar energía de combate |
+| ATTACK | 32 | Atacar |
+| UPGRADE | 64 | Mejorar sistemas |
+| JUMP | 128 | Salto espacial |
+| REBUILD | 256 | Reconstruir civilización |
+| DONATE | 512 | Donar al tótem |
+
+Puedes conceder cualquier combinación de permisos a un agente (máscara de bits).
 
 ---
 
-## Security Mechanisms
+## Restricciones de Políticas
 
-### 1. On-Chain Registration
+Además de los permisos, puedes establecer **restricciones de políticas** para el agente:
 
-The agent's policy is stored on the `DarkForestAgentRegistry.sol` contract and cannot be tampered with once set.
+| Restricción | Descripción |
+|-------------|-------------|
+| `minEnergyReserve` | Reserva mínima de energía (el agente no gastará por debajo de esto) |
+| `minDftReserve` | Reserva mínima de DFT |
+| `maxAttackPerHour` | Máximo de ataques por hora |
+| `maxUpgradePerDay` | Máximo de mejoras por día |
+| `maxSingleUpgradeCost` | Costo máximo de DFT por mejora |
+| `autoCollect` | Recolectar energía automáticamente |
+| `autoRepair` | Reparar sistemas automáticamente |
+| `autoShieldRepair` | Reparar escudo automáticamente |
+| `autoUpgrade` | Mejorar automáticamente |
+| `autoAttack` | Atacar automáticamente |
 
-### 2. Permission Separation
+---
 
-- **Authorize**: You authorize the agent to act on your behalf
-- **Permission bitmask**: Fine-grained control over each operation
-- **Revocable**: `revokeAgent()` takes effect immediately
+## Mecanismos de Seguridad
 
-### 3. Circuit Breakers
+### 1. Registro en Cadena
+
+La política del agente se almacena en el contrato `DarkForestAgentRegistry.sol` y no puede ser manipulada una vez establecida.
+
+### 2. Separación de Permisos
+
+- **Autorizar**: Autorizas al agente para actuar en tu nombre
+- **Máscara de permisos**: Control granular sobre cada operación
+- **Revocable**: `revokeAgent()` tiene efecto inmediato
+
+### 3. Interruptores de Seguridad
 
 ```
-Attack frequency limit: max N per hour
-Upgrade frequency limit: max N per day
-Energy floor: never below X
-DFT floor: never below Y
+Límite de frecuencia de ataque: máx. N por hora
+Límite de frecuencia de mejora: máx. N por día
+Límite mínimo de energía: nunca por debajo de X
+Límite mínimo de DFT: nunca por debajo de Y
 ```
 
-### 4. Blacklist / Whitelist
+### 4. Lista Negra / Lista Blanca
 
-- **Blacklist**: Forbid attacking specific players
-- **Whitelist**: Only allow attacking specific players (blacklist is ignored when whitelist is active)
+- **Lista negra**: Prohibir atacar a jugadores específicos
+- **Lista blanca**: Solo permitir atacar a jugadores específicos (la lista negra se ignora cuando la lista blanca está activa)
 
 ---
 
-## Two-Layer Architecture
+## Arquitectura de Dos Capas
 
 ```
 ┌─────────────────────────────────────┐
-│         Off-Chain Agent             │
+│         Agente Fuera de Cadena      │
 │  ┌──────────────────────────────┐   │
-│  │ Strategy Engine (YAML config) │   │
-│  │ 4 preset strategies          │   │
-│  │ Custom strategy templates    │   │
+│  │ Motor de Estrategia (YAML)    │   │
+│  │ 4 estrategias predefinidas   │   │
+│  │ Plantillas de estrategia     │   │
+│  │ personalizadas               │   │
 │  └──────────┬───────────────────┘   │
-│             │ via contract calls    │
+│             │ vía llamadas a        │
+│             │ contratos             │
 │             ▼                      │
 │  ┌──────────────────────────────┐   │
 │  │ Agent SDK                    │   │
-│  │ Calls contract methods       │   │
-│  │ (read/write)                 │   │
+│  │ Llama métodos del contrato   │   │
+│  │ (lectura/escritura)          │   │
 │  └──────────────────────────────┘   │
 └──────────────┬──────────────────────┘
                │
                ▼
 ┌─────────────────────────────────────┐
-│   On-Chain DarkForestAgentRegistry  │
+│   En Cadena DarkForestAgentRegistry │
 │  ┌──────────────────────────────┐   │
-│  │ Permission bitmask check     │   │
-│  │ Policy constraint check      │   │
-│  │ Rate limit check             │   │
+│  │ Verificación de máscara de   │   │
+│  │ permisos                     │   │
+│  │ Verificación de restricciones│   │
+│  │ de políticas                 │   │
+│  │ Verificación de límite de    │   │
+│  │ frecuencia                   │   │
 │  └──────────────────────────────┘   │
 └─────────────────────────────────────┘
 ```
 
 ---
 
-## Agent vs Manual Play
+## Agent vs Juego Manual
 
-| Comparison | Manual | AI Agent |
-|-----------|--------|----------|
-| Online requirement | Must be online often | 24/7 operation |
-| Response time | Latency | Instant |
-| Precision | Prone to errors | Strictly follows policy |
-| Security | Private key in wallet | Encrypted storage + on-chain constraints |
+| Comparación | Manual | AI Agent |
+|-------------|--------|----------|
+| Requisito de conexión | Debe estar conectado a menudo | Operación 24/7 |
+| Tiempo de respuesta | Latencia | Instantáneo |
+| Precisión | Propenso a errores | Sigue estrictamente la política |
+| Seguridad | Clave privada en la billetera | Almacenamiento cifrado + restricciones en cadena |
 
-**Recommended next step: [5-Minute Quickstart →](/docs/agent/quickstart)**
+**Siguiente paso recomendado: [Configuración en 5 Minutos →](/docs/agent/quickstart)**

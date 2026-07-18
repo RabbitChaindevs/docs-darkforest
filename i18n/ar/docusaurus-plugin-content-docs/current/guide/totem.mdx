@@ -1,93 +1,93 @@
 ---
 sidebar_position: 6
-title: Totem System
-description: Dark Forest alliance totems — donating, upgrading, and defense bonuses
+title: نظام الطوطم
+description: طواطم تحالف Dark Forest — التبرع والترقية ومكافآت الدفاع
 ---
 
-# Totem System
+# نظام الطوطم
 
-The totem is an alliance-wide buff system. Members donate energy to upgrade it, granting defense bonuses to all members.
-
----
-
-## How It Works
-
-1. **Donate energy**: Alliance members donate energy to the totem pool
-2. **Accumulate to the threshold**: Once the totem's energy reaches the upgrade cost, the leader triggers the upgrade
-3. **Receive the bonus**: All members gain a defense bonus
+الطوطم هو نظام تعزيز على مستوى التحالف. يتبرع الأعضاء بالطاقة لترقيته، مما يمنح مكافآت دفاعية لجميع الأعضاء.
 
 ---
 
-## Donating Energy
+## كيف يعمل
 
-### Operation
+1. **تبرع بالطاقة**: يتبرع أعضاء التحالف بالطاقة لمجمع الطوطم
+2. **التراكم حتى الحد**: بمجرد وصول طاقة الطوطم إلى تكلفة الترقية، يقوم القائد بتشغيل الترقية
+3. **الحصول على المكافأة**: يحصل جميع الأعضاء على مكافأة دفاعية
+
+---
+
+## التبرع بالطاقة
+
+### العملية
 
 ```
 donateToTotem(allianceId, amount)
 ```
 
-- Each donation resets your donation timer (48-hour expiry)
-- Only members with valid donations benefit from the totem's bonus
+- كل تبرع يعيد ضبط مؤقت التبرع الخاص بك (تنتهي صلاحيته بعد 48 ساعة)
+- فقط الأعضاء الذين لديهم تبرعات سارية يستفيدون من مكافأة الطوطم
 
-### Donation Requirements
+### متطلبات التبرع
 
-- Each donation must be spaced by a minimum interval (anti-spam)
-- The donation expires after 48 hours (must re-donate to stay active)
+- يجب أن يكون كل تبرع مفصولاً بفاصل زمني أدنى (مكافحة البريد العشوائي)
+- ينتهي التبرع بعد 48 ساعة (يجب إعادة التبرع للبقاء نشطاً)
 
 ---
 
-## Upgrading the Totem
+## ترقية الطوطم
 
-### Cost Formula
+### معادلة التكلفة
 
 ```
-Next Upgrade Cost = 20,000,000 × N × (N + 5) / 10
-Where N = current totem level + 1
+تكلفة الترقية التالية = 20,000,000 × N × (N + 5) / 10
+حيث N = مستوى الطوطم الحالي + 1
 ```
 
-| Level | Energy Required |
+| المستوى | الطاقة المطلوبة |
 |-------|----------------|
-| Lv 0 → 1 | 12,000,000 |
-| Lv 1 → 2 | 42,000,000 |
-| Lv 2 → 3 | 96,000,000 |
-| Lv 10 → 11 | 330,000,000 |
+| المستوى 0 ← 1 | 12,000,000 |
+| المستوى 1 ← 2 | 42,000,000 |
+| المستوى 2 ← 3 | 96,000,000 |
+| المستوى 10 ← 11 | 330,000,000 |
 
-### Operation
+### العملية
 
-Only the **alliance leader** can trigger upgrades:
+فقط **قائد التحالف** يمكنه تشغيل الترقيات:
 
 ```
 upgradeTotem(allianceId)
 ```
 
-The upgrade consumes energy from the totem pool and increases the totem level by 1.
+تستهلك الترقية الطاقة من مجمع الطوطم وتزيد مستوى الطوطم بمقدار 1.
 
 ---
 
-## Totem Effect
+## تأثير الطوطم
 
 ```
-Alliance Defense Bonus = (total members - 1) × 8 × (1 + totem level × 0.5%)
+مكافأة دفاع التحالف = (إجمالي الأعضاء - 1) × 8 × (1 + مستوى الطوطم × 0.5%)
 ```
 
-| Totem Level | Bonus Coefficient |
+| مستوى الطوطم | معامل المكافأة |
 |-------------|-------------------|
-| Lv 0 | 0% (no bonus) |
-| Lv 10 | +5% |
-| Lv 20 | +10% |
-| Lv 100 | +50% |
+| المستوى 0 | 0% (لا مكافأة) |
+| المستوى 10 | +5% |
+| المستوى 20 | +10% |
+| المستوى 100 | +50% |
 
-Example: a 50-member alliance with a level 20 totem:
+مثال: تحالف من 50 عضواً مع طوطم مستوى 20:
 ```
-Bonus = (50-1) × 8 × (1 + 20 × 0.5%) = 392 × 1.1 = 431.2 defense
+المكافأة = (50-1) × 8 × (1 + 20 × 0.5%) = 392 × 1.1 = 431.2 دفاع
 ```
 
 ---
 
-## Strategy Tips
+## نصائح استراتيجية
 
-1. **Members should donate regularly** — small frequent donations are more effective than one large lump sum
-2. **Leaders should upgrade promptly** — upgrade as soon as the totem pool reaches the threshold
-3. **High totem level + many allies = significant defensive advantage**
+1. **يجب على الأعضاء التبرع بانتظام** — التبرعات الصغيرة المتكررة أكثر فعالية من مبلغ كبير واحد
+2. **يجب على القادة الترقية فوراً** — قم بالترقية بمجرد وصول مجمع الطوطم إلى الحد المطلوب
+3. **مستوى طوطم مرتفع + حلفاء كثيرون = ميزة دفاعية كبيرة**
 
-**Recommended next step: [DFT Token Overview →](/docs/economy/dft-overview)**
+**الخطوة التالية الموصى بها: [نظرة عامة على رمز DFT →](/docs/economy/dft-overview)**

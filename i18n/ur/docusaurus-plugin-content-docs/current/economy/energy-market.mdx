@@ -1,102 +1,102 @@
 ---
 sidebar_position: 2
-title: Energy Market
-description: Dark Forest's order book energy market — buy and sell energy with DFT
+title: توانائی مارکیٹ
+description: ڈارک فاریسٹ کا آرڈر بک توانائی مارکیٹ — DFT کے ساتھ توانائی خریدیں اور بیچیں
 ---
 
-# Energy Market
+# توانائی مارکیٹ
 
-The energy market is a **decentralized order book** where players can trade energy for DFT. It is powered by the `EnergyMarket.sol` contract.
+توانائی مارکیٹ ایک **وکندریقرت آرڈر بک** ہے جہاں کھلاڑی DFT کے لیے توانائی کی تجارت کر سکتے ہیں۔ یہ `EnergyMarket.sol` کنٹریکٹ کے ذریعے چلتی ہے۔
 
 ---
 
-## Selling Energy (Creating an Order)
+## توانائی بیچنا (آرڈر بنانا)
 
-### Operation
+### عمل
 
 ```
 createOrder(energyAmount, dftPrice)
 ```
 
-1. Enter the **amount of energy** you want to sell
-2. Enter the **total price in DFT** you're asking for
-3. Confirm the transaction
+1. وہ **توانائی کی مقدار** درج کریں جو آپ بیچنا چاہتے ہیں
+2. وہ **DFT میں کل قیمت** درج کریں جو آپ مانگ رہے ہیں
+3. لین دین کی تصدیق کریں
 
-### Energy Locking
+### توانائی لاک کرنا
 
-When you create an order, the contract **immediately locks** your energy (marked as `energyReserved`), preventing you from spending it while the order is active.
+جب آپ آرڈر بناتے ہیں، تو کنٹریکٹ **فوری طور پر آپ کی توانائی لاک** کر دیتا ہے (`energyReserved` کے طور پر نشان زد)، جو آرڈر کے فعال ہونے کے دوران آپ کو اسے خرچ کرنے سے روکتا ہے۔
 
-### Canceling an Order
+### آرڈر منسوخ کرنا
 
 ```
 cancelOrder(orderId)
 ```
 
-- The order must be at least **3 seconds** old before cancellation (prevents same-block frontrunning)
-- After cancellation, the energy is unlocked
+- منسوخی سے پہلے آرڈر کم از کم **3 سیکنڈ** پرانا ہونا چاہیے (اسی بلاک کے فرنٹ رننگ کو روکتا ہے)
+- منسوخی کے بعد، توانائی غیر مقفل ہو جاتی ہے
 
 ---
 
-## Buying Energy (Filling an Order)
+## توانائی خریدنا (آرڈر پُر کرنا)
 
-### Operation
+### عمل
 
 ```
 fillOrder(orderId, maxPrice)
 ```
 
-1. Browse the list of active sell orders
-2. Select an order
-3. Enter the maximum price you're willing to accept
-4. Confirm the transaction
+1. فعال فروخت کے آرڈرز کی فہرست براؤز کریں
+2. ایک آرڈر منتخب کریں
+3. زیادہ سے زیادہ قیمت درج کریں جسے آپ قبول کرنے کو تیار ہیں
+4. لین دین کی تصدیق کریں
 
-### Fees
+### فیسیں
 
-A **1% DFT protocol fee** is deducted from the seller's proceeds:
+بیچنے والے کی آمدنی سے **1% DFT پروٹوکول فیس** کاٹی جاتی ہے:
 
 ```
-Buyer pays = order price (exact listing price)
-Seller receives = order price × 99%
-Protocol fee = order price × 1% (accumulated in contract)
+خریدار ادا کرتا ہے = آرڈر کی قیمت (عین لسٹنگ قیمت)
+بیچنے والے کو ملتا ہے = آرڈر کی قیمت × 99%
+پروٹوکول فیس = آرڈر کی قیمت × 1% (کنٹریکٹ میں جمع)
 ```
 
-The 1% protocol fee accumulates in the contract and can be withdrawn by the admin.
+1% پروٹوکول فیس کنٹریکٹ میں جمع ہوتی ہے اور ایڈمن اسے نکال سکتا ہے۔
 
 ---
 
-## Market Parameters
+## مارکیٹ کے پیرامیٹرز
 
-| Parameter | Value |
+| پیرامیٹر | قدر |
 |-----------|-------|
-| Protocol Fee | 1% (deducted from seller) |
-| Minimum Order Age | 3 seconds (before cancel/fill) |
-| Order Status | active / inactive (becomes inactive after cancel or fill) |
+| پروٹوکول فیس | 1% (بیچنے والے سے کاٹی جاتی ہے) |
+| کم از کم آرڈر کی عمر | 3 سیکنڈ (منسوخی/پُر کرنے سے پہلے) |
+| آرڈر کی حالت | فعال / غیر فعال (منسوخی یا پُر کرنے کے بعد غیر فعال ہو جاتا ہے) |
 
 ---
 
-## Trade Example
+## تجارت کی مثال
 
-### Alice Sells Energy
+### ایلس توانائی بیچتی ہے
 
-1. Alice creates a sell order: `createOrder(10000, 100 DFT)` — selling 10,000 energy for a total of 100 DFT
-2. The contract locks Alice's 10,000 energy
+1. ایلس ایک فروخت کا آرڈر بناتی ہے: `createOrder(10000, 100 DFT)` — 10,000 توانائی کل 100 DFT میں بیچ رہی ہے
+2. کنٹریکٹ ایلس کی 10,000 توانائی لاک کرتا ہے
 
-### Bob Buys Energy
+### باب توانائی خریدتا ہے
 
-1. Bob sees Alice's order
-2. Calls `fillOrder(orderId, 100)` — pays exactly 100 DFT
-3. Alice receives 99 DFT (100 - 1% fee)
-4. 1 DFT is accumulated as protocol fee
+1. باب ایلس کا آرڈر دیکھتا ہے
+2. `fillOrder(orderId, 100)` کال کرتا ہے — عین 100 DFT ادا کرتا ہے
+3. ایلس کو 99 DFT ملتا ہے (100 - 1% فیس)
+4. 1 DFT پروٹوکول فیس کے طور پر جمع ہوتا ہے
 
 ---
 
-## Strategy Tips
+## حکمت عملی کے نکات
 
-| Scenario | Suggestion |
+| منظرنامہ | مشورہ |
 |----------|------------|
-| Need energy urgently for battle | Accept the lowest-priced sell orders |
-| Not in a hurry | Place a limit order and wait for the right price |
-| DFT price is rising | Sell energy for DFT to profit |
-| Surplus energy | List sell orders to earn DFT |
+| جنگ کے لیے فوری توانائی درکار ہے | سب سے کم قیمت والے فروخت کے آرڈر قبول کریں |
+| جلدی نہیں ہے | لمٹ آرڈر دیں اور مناسب قیمت کا انتظار کریں |
+| DFT کی قیمت بڑھ رہی ہے | منافع کے لیے توانائی DFT کے عوض بیچیں |
+| اضافی توانائی ہے | DFT کمانے کے لیے فروخت کے آرڈر لگائیں |
 
-**Recommended next step: [Daily Mint →](/docs/economy/daily-minter)**
+**تجویز کردہ اگلا مرحلہ: [یومیہ منٹ →](/docs/economy/daily-minter)**

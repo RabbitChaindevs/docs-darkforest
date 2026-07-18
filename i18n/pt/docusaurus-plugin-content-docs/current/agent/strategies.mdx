@@ -1,52 +1,52 @@
 ---
 sidebar_position: 3
-title: Strategy Templates
-description: Detailed breakdown of Dark Forest AI Agent's four preset strategies and custom configuration guide
+title: Modelos de Estratégia
+description: Detalhamento completo das quatro estratégias predefinidas do AI Agent do Dark Forest e guia de configuração personalizada
 ---
 
-# Strategy Templates
+# Modelos de Estratégia
 
-Agent strategies are defined using YAML configuration files.
+As estratégias do agente são definidas usando arquivos de configuração YAML.
 
 ---
 
-## Strategy File Structure
+## Estrutura do Arquivo de Estratégia
 
 ```yaml
 agent:
-  name: "my-agent"
+  name: "meu-agente"
   mode: "auto"          # auto | manual | dry-run
 
-limits:                 # Circuit breaker (on-chain policy)
+limits:                 # Disjuntor (política on-chain)
   min_energy_reserve: 100000
   min_dft_reserve: 10
   max_attacks_per_hour: 5
   max_upgrades_per_day: 3
   max_single_upgrade_cost: 100
 
-combat:                 # Combat strategy
+combat:                 # Estratégia de combate
   min_target_level: 1
   max_target_level: 999
   weapon_level: 1
   only_attack_when_energy_above: 100000
-  blacklist: []         # Blacklisted addresses
-  whitelist: []         # Whitelisted addresses (only attack these)
+  blacklist: []         # Endereços na lista negra
+  whitelist: []         # Endereços na lista branca (atacar apenas estes)
 
-defense:                # Defense strategy
+defense:                # Estratégia de defesa
   auto_repair: true
   min_durability_before_repair: 20
-  shield_regen_threshold: 50   # Start shield regen below this %
+  shield_regen_threshold: 50   # Iniciar regeneração do escudo abaixo deste %
 
-collection:             # Collection strategy
+collection:             # Estratégia de coleta
   enabled: true
   interval_minutes: 60
 ```
 
 ---
 
-## Four Preset Strategies
+## Quatro Estratégias Predefinidas
 
-### 1. Aggressive
+### 1. Agressiva
 
 ```yaml
 combat:
@@ -55,13 +55,13 @@ combat:
   weapon_level: max
 
 collection:
-  enabled: false  # No gathering, pure combat
+  enabled: false  # Sem coleta, combate puro
 ```
 
-- ✅ Good for: highly active players who want combat rewards
-- ❌ Risk: high energy consumption, risk of being counterattacked
+- ✅ Bom para: jogadores muito ativos que querem recompensas de combate
+- ❌ Risco: alto consumo de energia, risco de ser contra-atacado
 
-### 2. Balanced
+### 2. Equilibrada
 
 ```yaml
 combat:
@@ -78,14 +78,14 @@ defense:
   shield_regen_threshold: 60
 ```
 
-- ✅ **Recommended**: balanced offense and defense, suitable for most players
+- ✅ **Recomendada**: ataque e defesa equilibrados, adequada para a maioria dos jogadores
 
-### 3. Defensive
+### 3. Defensiva
 
 ```yaml
 combat:
   max_attacks_per_hour: 1
-  only_counterattack: true  # Only counterattack
+  only_counterattack: true  # Apenas contra-atacar
 
 defense:
   auto_repair: true
@@ -97,13 +97,13 @@ collection:
   interval_minutes: 15
 ```
 
-- ✅ Good for: players who are offline for long periods and want to avoid risk
+- ✅ Bom para: jogadores que ficam offline por longos períodos e querem evitar riscos
 
-### 4. Farmer
+### 4. Fazendeira
 
 ```yaml
 combat:
-  enabled: false  # No combat
+  enabled: false  # Sem combate
 
 defense:
   auto_repair: true
@@ -114,34 +114,34 @@ collection:
   interval_minutes: 5
 ```
 
-- ✅ Good for: early-game development and resource accumulation
+- ✅ Bom para: desenvolvimento em estágio inicial e acumulação de recursos
 
 ---
 
-## Custom Strategy
+## Estratégia Personalizada
 
 ```bash
-# Copy the template
-cp templates/balanced.yaml my-strategy.yaml
+# Copiar o modelo
+cp templates/balanced.yaml minha-estrategia.yaml
 
-# Edit parameters
-vim my-strategy.yaml
+# Editar parâmetros
+vim minha-estrategia.yaml
 
-# Use custom strategy
-python -m dark_forest.cli run --strategy ./my-strategy.yaml
+# Usar estratégia personalizada
+python -m dark_forest.cli run --strategy ./minha-estrategia.yaml
 ```
 
 ---
 
-## Circuit Breaker Parameters
+## Parâmetros do Disjuntor
 
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `max_attacks_per_hour` | Max attacks per hour | 10 |
-| `min_energy_reserve` | Minimum energy reserve | 100,000 |
-| `min_dft_reserve` | Minimum DFT reserve | 10 |
-| `max_upgrades_per_day` | Max upgrades per day | 5 |
+| Parâmetro | Descrição | Valor Padrão |
+|-----------|-----------|-------------|
+| `max_attacks_per_hour` | Máx. ataques por hora | 10 |
+| `min_energy_reserve` | Reserva mínima de energia | 100.000 |
+| `min_dft_reserve` | Reserva mínima de DFT | 10 |
+| `max_upgrades_per_day` | Máx. upgrades por dia | 5 |
 
-> ⚠️ Circuit breaker parameters are enforced on-chain. The agent cannot bypass them.
+> ⚠️ Os parâmetros do disjuntor são aplicados on-chain. O agente não pode ignorá-los.
 
-**Recommended next step: [Contract Addresses →](/docs/reference/addresses)**
+**Próximo passo recomendado: [Endereços de Contratos →](/docs/reference/addresses)**

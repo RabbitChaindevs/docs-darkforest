@@ -1,102 +1,102 @@
 ---
 sidebar_position: 2
-title: Energy Market
-description: Dark Forest's order book energy market — buy and sell energy with DFT
+title: سوق الطاقة
+description: سوق طاقة Dark Forest القائم على دفتر الأوامر — شراء وبيع الطاقة باستخدام DFT
 ---
 
-# Energy Market
+# سوق الطاقة
 
-The energy market is a **decentralized order book** where players can trade energy for DFT. It is powered by the `EnergyMarket.sol` contract.
+سوق الطاقة هو **دفتر أوامر لامركزي** حيث يمكن للاعبين تداول الطاقة مقابل DFT. يعمل بواسطة عقد `EnergyMarket.sol`.
 
 ---
 
-## Selling Energy (Creating an Order)
+## بيع الطاقة (إنشاء أمر)
 
-### Operation
+### العملية
 
 ```
 createOrder(energyAmount, dftPrice)
 ```
 
-1. Enter the **amount of energy** you want to sell
-2. Enter the **total price in DFT** you're asking for
-3. Confirm the transaction
+1. أدخل **كمية الطاقة** التي تريد بيعها
+2. أدخل **السعر الإجمالي بـ DFT** الذي تطلبه
+3. قم بتأكيد المعاملة
 
-### Energy Locking
+### قفل الطاقة
 
-When you create an order, the contract **immediately locks** your energy (marked as `energyReserved`), preventing you from spending it while the order is active.
+عند إنشاء أمر، يقوم العقد **بقفل طاقتك فوراً** (موسومة كـ `energyReserved`)، مما يمنعك من إنفاقها أثناء نشاط الأمر.
 
-### Canceling an Order
+### إلغاء أمر
 
 ```
 cancelOrder(orderId)
 ```
 
-- The order must be at least **3 seconds** old before cancellation (prevents same-block frontrunning)
-- After cancellation, the energy is unlocked
+- يجب أن يكون عمر الأمر **3 ثوانٍ على الأقل** قبل الإلغاء (يمنع التقدم على نفس الكتلة)
+- بعد الإلغاء، يتم فتح الطاقة
 
 ---
 
-## Buying Energy (Filling an Order)
+## شراء الطاقة (تنفيذ أمر)
 
-### Operation
+### العملية
 
 ```
 fillOrder(orderId, maxPrice)
 ```
 
-1. Browse the list of active sell orders
-2. Select an order
-3. Enter the maximum price you're willing to accept
-4. Confirm the transaction
+1. تصفح قائمة أوامر البيع النشطة
+2. اختر أمراً
+3. أدخل الحد الأقصى للسعر الذي ترغب في قبوله
+4. قم بتأكيد المعاملة
 
-### Fees
+### الرسوم
 
-A **1% DFT protocol fee** is deducted from the seller's proceeds:
+يتم خصم **رسوم بروتوكول DFT بنسبة 1%** من أرباح البائع:
 
 ```
-Buyer pays = order price (exact listing price)
-Seller receives = order price × 99%
-Protocol fee = order price × 1% (accumulated in contract)
+يدفع المشتري = سعر الأمر (سعر الإدراج بالضبط)
+يستلم البائع = سعر الأمر × 99%
+رسوم البروتوكول = سعر الأمر × 1% (تتراكم في العقد)
 ```
 
-The 1% protocol fee accumulates in the contract and can be withdrawn by the admin.
+رسوم البروتوكول بنسبة 1% تتراكم في العقد ويمكن للمسؤول سحبها.
 
 ---
 
-## Market Parameters
+## معاملات السوق
 
-| Parameter | Value |
+| المعامل | القيمة |
 |-----------|-------|
-| Protocol Fee | 1% (deducted from seller) |
-| Minimum Order Age | 3 seconds (before cancel/fill) |
-| Order Status | active / inactive (becomes inactive after cancel or fill) |
+| رسوم البروتوكول | 1% (مخصومة من البائع) |
+| الحد الأدنى لعمر الأمر | 3 ثوانٍ (قبل الإلغاء/التنفيذ) |
+| حالة الأمر | نشط / غير نشط (يصبح غير نشط بعد الإلغاء أو التنفيذ) |
 
 ---
 
-## Trade Example
+## مثال تجاري
 
-### Alice Sells Energy
+### أليس تبيع الطاقة
 
-1. Alice creates a sell order: `createOrder(10000, 100 DFT)` — selling 10,000 energy for a total of 100 DFT
-2. The contract locks Alice's 10,000 energy
+1. أليس تنشئ أمر بيع: `createOrder(10000, 100 DFT)` — تبيع 10,000 طاقة مقابل 100 DFT
+2. العقد يقفل 10,000 طاقة من أليس
 
-### Bob Buys Energy
+### بوب يشتري الطاقة
 
-1. Bob sees Alice's order
-2. Calls `fillOrder(orderId, 100)` — pays exactly 100 DFT
-3. Alice receives 99 DFT (100 - 1% fee)
-4. 1 DFT is accumulated as protocol fee
+1. بوب يرى أمر أليس
+2. يستدعي `fillOrder(orderId, 100)` — يدفع بالضبط 100 DFT
+3. أليس تستلم 99 DFT (100 - 1% رسوم)
+4. 1 DFT يتراكم كرسوم بروتوكول
 
 ---
 
-## Strategy Tips
+## نصائح استراتيجية
 
-| Scenario | Suggestion |
+| السيناريو | الاقتراح |
 |----------|------------|
-| Need energy urgently for battle | Accept the lowest-priced sell orders |
-| Not in a hurry | Place a limit order and wait for the right price |
-| DFT price is rising | Sell energy for DFT to profit |
-| Surplus energy | List sell orders to earn DFT |
+| تحتاج طاقة بشكل عاجل للمعركة | اقبل أوامر البيع بأقل سعر |
+| لست في عجلة من أمرك | ضع أمر حد وانتظر السعر المناسب |
+| سعر DFT في ارتفاع | بع الطاقة مقابل DFT للربح |
+| لديك طاقة فائضة | ادرج أوامر بيع لكسب DFT |
 
-**Recommended next step: [Daily Mint →](/docs/economy/daily-minter)**
+**الخطوة التالية الموصى بها: [السك اليومي →](/docs/economy/daily-minter)**

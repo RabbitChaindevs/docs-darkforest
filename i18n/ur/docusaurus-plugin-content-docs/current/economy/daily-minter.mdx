@@ -1,93 +1,93 @@
 ---
 sidebar_position: 3
-title: Daily Mint
-description: Dark Forest DailyMinter — daily DFT distribution mechanism
+title: یومیہ منٹ
+description: ڈارک فاریسٹ DailyMinter — یومیہ DFT تقسیم کا طریقہ کار
 ---
 
-# Daily Mint
+# یومیہ منٹ
 
-The **DailyMinter** contract mints a fixed amount of DFT each day and distributes it evenly among active civilizations. **Claim it the same day or lose it** — unclaimed amounts do not accumulate.
+**DailyMinter** کنٹریکٹ ہر روز ایک مقررہ مقدار میں DFT منٹ کرتا ہے اور اسے فعال تہذیبوں میں یکساں طور پر تقسیم کرتا ہے۔ **اسی دن کلیم کریں ورنہ کھو دیں گے** — غیر کلیم شدہ رقم جمع نہیں ہوتی۔
 
 ---
 
-## How to Claim
+## کلیم کرنے کا طریقہ
 
-### Requirements
+### شرائط
 
-- You must have created a civilization **before midnight UTC** on the claim day
-- `distribute()` must have been called for that day (anyone can trigger it)
-- Each address can only claim once per day
+- آپ نے کلیم کے دن **UTC آدھی رات سے پہلے** ایک تہذیب بنائی ہو
+- اس دن کے لیے `distribute()` کال کیا گیا ہو (کوئی بھی اسے متحرک کر سکتا ہے)
+- ہر ایڈریس صرف ایک بار فی دن کلیم کر سکتا ہے
 
-### Operation
+### عمل
 
 ```
 claim()
 ```
 
-Confirm the transaction (gas fee only).
+لین دین کی تصدیق کریں (صرف گیس فیس)۔
 
 ---
 
-## Minting Flow
+### منٹنگ کا بہاؤ
 
-### Step 1: Distribute
+### مرحلہ 1: تقسیم
 
-Anyone can call `distribute()`:
+کوئی بھی `distribute()` کال کر سکتا ہے:
 
-1. The contract checks the last undistributed epoch
-2. Snapshots the current number of active civilizations
-3. Calculates `share per player = daily emission / active civilizations`
-4. Mints the total DFT to the contract
-5. `Daily emission = 1,152,575,342 DFT` (constant)
+1. کنٹریکٹ آخری غیر تقسیم شدہ ایپوک چیک کرتا ہے
+2. فعال تہذیبوں کی موجودہ تعداد کا سنیپ شاٹ لیتا ہے
+3. `فی کھلاڑی حصہ = یومیہ اخراج / فعال تہذیبیں` شمار کرتا ہے
+4. کل DFT کنٹریکٹ کو منٹ کرتا ہے
+5. `یومیہ اخراج = 1,152,575,342 DFT` (مستقل)
 
-### Step 2: Claim
+### مرحلہ 2: کلیم
 
-Players call `claim()`:
+کھلاڑی `claim()` کال کرتے ہیں:
 
-1. Verifies you created a civilization before this epoch
-2. Verifies you haven't already claimed
-3. Transfers your share to your wallet
+1. تصدیق کرتا ہے کہ آپ نے اس ایپوک سے پہلے تہذیب بنائی تھی
+2. تصدیق کرتا ہے کہ آپ نے پہلے ہی کلیم نہیں کیا
+3. آپ کا حصہ آپ کے والٹ میں منتقل کرتا ہے
 
-### Step 3: Burn Remainder
+### مرحلہ 3: باقیات کو جلانا
 
-On the next `distribute()`, any DFT from the previous epoch that was not claimed is **burned** (reducing circulating supply).
+اگلے `distribute()` پر، پچھلے ایپوک سے کوئی بھی DFT جو کلیم نہیں کیا گیا **جلا دیا جاتا ہے** (گردش میں سپلائی کم کرتا ہے)۔
 
 ---
 
-## Timeline
+## ٹائم لائن
 
 ```
-Epoch 0      Epoch 1      Epoch 2
+ایپوک 0      ایپوک 1      ایپوک 2
    |            |            |
 UTC 00:00    UTC 00:00    UTC 00:00
-   ↑create civ  ↑distribute   ↑distribute
-                ↑claim        ↑claim
-                              ↑unclaimed burned
+   ↑تہذیب بنائیں  ↑تقسیم کریں   ↑تقسیم کریں
+                 ↑کلیم کریں    ↑کلیم کریں
+                               ↑غیر کلیم شدہ جلایا گیا
 ```
 
-- Epochs are divided by UTC midnight
-- You can only claim the **most recently distributed** epoch
-- Miss an epoch and you can never claim it
+- ایپوکس UTC آدھی رات سے تقسیم ہوتے ہیں
+- آپ صرف **سب سے حالیہ تقسیم شدہ** ایپوک کلیم کر سکتے ہیں
+- ایک ایپوک چھوڑ دیں تو آپ اسے کبھی کلیم نہیں کر سکتے
 
 ---
 
-## Key Parameters
+## اہم پیرامیٹرز
 
-| Parameter | Value |
+| پیرامیٹر | قدر |
 |-----------|-------|
-| Daily Emission | **1,152,575,342 DFT** (constant) |
-| Total Distribution Period | **3,650 days** (~10 years) |
-| Total Supply Cap | **4,206,900,000,000 DFT** (~4.2 trillion) |
-| Claim Window | Within each epoch (typically 1 day) |
+| یومیہ اخراج | **1,152,575,342 DFT** (مستقل) |
+| کل تقسیم کی مدت | **3,650 دن** (~10 سال) |
+| کل سپلائی کی حد | **4,206,900,000,000 DFT** (~4.2 ٹریلین) |
+| کلیم کی ونڈو | ہر ایپوک کے اندر (عام طور پر 1 دن) |
 
 ---
 
-## Why Claim Daily
+## یومیہ کلیم کیوں کریں
 
-1. 🆓 **Free DFT** — only costs gas, available every day
-2. 📉 **Unclaimed gets burned** — miss it and it's gone
-3. 📈 **Fewer players = more per person** — if active players decrease, each share increases
+1. 🆓 **مفت DFT** — صرف گیس کی لاگت، ہر روز دستیاب
+2. 📉 **غیر کلیم شدہ جلا دیا جاتا ہے** — چھوڑیں تو ختم ہو جاتا ہے
+3. 📈 **کم کھلاڑی = فی شخص زیادہ** — اگر فعال کھلاڑی کم ہوں تو ہر حصہ بڑھ جاتا ہے
 
-> 💡 Set a daily reminder around UTC time to claim. If `distribute()` hasn't been called yet for the day, you can trigger it yourself — it only costs gas.
+> 💡 کلیم کرنے کے لیے UTC وقت کے قریب یومیہ یاد دہانی سیٹ کریں۔ اگر دن کے لیے `distribute()` ابھی تک کال نہیں کیا گیا، تو آپ خود اسے متحرک کر سکتے ہیں — اس میں صرف گیس خرچ ہوتی ہے۔
 
-**Recommended next step: [What Is an AI Agent →](/docs/agent/what-is-agent)**
+**تجویز کردہ اگلا مرحلہ: [AI ایجنٹ کیا ہے →](/docs/agent/what-is-agent)**

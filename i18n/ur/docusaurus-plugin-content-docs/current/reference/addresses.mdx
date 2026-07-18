@@ -1,56 +1,56 @@
 ---
 sidebar_position: 1
-title: Contract Addresses
-description: All deployed contract addresses for Dark Forest
+title: کنٹریکٹ ایڈریسز
+description: ڈارک فاریسٹ کے تمام تعینات کردہ کنٹریکٹ ایڈریسز
 ---
 
-# Contract Addresses
+# کنٹریکٹ ایڈریسز
 
-All contracts are deployed on **BNB Smart Chain Mainnet** (Chain ID: 56).
+تمام کنٹریکٹس **BNB Smart Chain Mainnet** (Chain ID: 56) پر تعینات ہیں۔
 
 ---
 
-## Core Contracts
+## بنیادی کنٹریکٹس
 
-| Contract | Address | Description |
+| کنٹریکٹ | ایڈریس | تفصیل |
 |----------|---------|-------------|
-| **DarkForest** | `0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe` | Main entry contract, DELEGATECALL dispatch hub |
-| **DFT Token** | `0x1266e922fe34459efda34e7ee5caf327fbf138d7` | Dark Forest token (ERC-20) |
-| **Alliance** | `0x5f810a22359b678c01e72726149d387e79cd03f2` | Alliance system |
-| **Energy Market** | `0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955` | Energy order book market |
-| **Daily Minter** | `0x9b1c4e550fbf1c802495e6521ee5812e4264c95f` | Daily DFT distribution |
-| **Agent Registry** | `0x98233227e91829f7c424099f5d3bc86cf4d57f55` | AI Agent policy registry |
+| **DarkForest** | `0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe` | مرکزی داخلہ کنٹریکٹ، DELEGATECALL ڈسپیچ ہب |
+| **DFT ٹوکن** | `0x1266e922fe34459efda34e7ee5caf327fbf138d7` | ڈارک فاریسٹ ٹوکن (ERC-20) |
+| **اتحاد** | `0x5f810a22359b678c01e72726149d387e79cd03f2` | اتحاد کا نظام |
+| **توانائی مارکیٹ** | `0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955` | توانائی آرڈر بک مارکیٹ |
+| **یومیہ منٹر** | `0x9b1c4e550fbf1c802495e6521ee5812e4264c95f` | یومیہ DFT تقسیم |
+| **ایجنٹ رجسٹری** | `0x98233227e91829f7c424099f5d3bc86cf4d57f55` | AI ایجنٹ پالیسی رجسٹری |
 
 ---
 
-## Contract Architecture
+## کنٹریکٹ آرکیٹیکچر
 
 ```
-DarkForest (DELEGATECALL entry)
-├── DELEGATECALL → DarkForestGameplay   (create civ, upgrade systems)
-├── DELEGATECALL → DarkForestBattle      (attack, repair shield, shield regen)
-├── DELEGATECALL → DarkForestMovement    (space jump, tracking jump, cruise)
-└── DELEGATECALL → DarkForestAdmin       (collect, repair, rebuild, totem, withdraw)
+DarkForest (DELEGATECALL داخلہ)
+├── DELEGATECALL → DarkForestGameplay   (تہذیب بنانا، سسٹم اپ گریڈ)
+├── DELEGATECALL → DarkForestBattle      (حملہ، ڈھال کی مرمت، ڈھال کی بحالی)
+├── DELEGATECALL → DarkForestMovement    (خلائی چھلانگ، تعاقبی چھلانگ، سفر)
+└── DELEGATECALL → DarkForestAdmin       (جمع، مرمت، تعمیر نو، ٹوٹم، نکالنا)
 
-DarkForestStorage (shared storage layout)
-→ All satellite contracts inherit DarkForestStorage for consistent layout
+DarkForestStorage (مشترکہ اسٹوریج لے آؤٹ)
+→ تمام سیٹلائٹ کنٹریکٹس مستقل لے آؤٹ کے لیے DarkForestStorage سے وراثت پاتے ہیں
 ```
 
 ---
 
-## BscScan Links
+## BscScan لنکس
 
-| Contract | Link |
+| کنٹریکٹ | لنک |
 |----------|------|
-| DarkForest | [View](https://bscscan.com/address/0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe) |
-| DFT Token | [View](https://bscscan.com/token/0x1266e922fe34459efda34e7ee5caf327fbf138d7) |
-| Alliance | [View](https://bscscan.com/address/0x5f810a22359b678c01e72726149d387e79cd03f2) |
-| Energy Market | [View](https://bscscan.com/address/0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955) |
-| Daily Minter | [View](https://bscscan.com/address/0x9b1c4e550fbf1c802495e6521ee5812e4264c95f) |
-| Agent Registry | [View](https://bscscan.com/address/0x98233227e91829f7c424099f5d3bc86cf4d57f55) |
+| DarkForest | [دیکھیں](https://bscscan.com/address/0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe) |
+| DFT ٹوکن | [دیکھیں](https://bscscan.com/token/0x1266e922fe34459efda34e7ee5caf327fbf138d7) |
+| اتحاد | [دیکھیں](https://bscscan.com/address/0x5f810a22359b678c01e72726149d387e79cd03f2) |
+| توانائی مارکیٹ | [دیکھیں](https://bscscan.com/address/0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955) |
+| یومیہ منٹر | [دیکھیں](https://bscscan.com/address/0x9b1c4e550fbf1c802495e6521ee5812e4264c95f) |
+| ایجنٹ رجسٹری | [دیکھیں](https://bscscan.com/address/0x98233227e91829f7c424099f5d3bc86cf4d57f55) |
 
 ---
 
-## Contract Verification
+## کنٹریکٹ کی تصدیق
 
-All contract source code has been verified on BscScan (✅ green checkmark).
+تمام کنٹریکٹ سورس کوڈ BscScan پر تصدیق شدہ ہیں (✅ سبز نشان)۔

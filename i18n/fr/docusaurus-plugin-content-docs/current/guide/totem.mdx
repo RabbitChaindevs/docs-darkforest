@@ -1,93 +1,93 @@
 ---
 sidebar_position: 6
-title: Totem System
-description: Dark Forest alliance totems — donating, upgrading, and defense bonuses
+title: Système de totem
+description: Totems d'alliance Dark Forest — dons, améliorations et bonus de défense
 ---
 
-# Totem System
+# Système de totem
 
-The totem is an alliance-wide buff system. Members donate energy to upgrade it, granting defense bonuses to all members.
-
----
-
-## How It Works
-
-1. **Donate energy**: Alliance members donate energy to the totem pool
-2. **Accumulate to the threshold**: Once the totem's energy reaches the upgrade cost, the leader triggers the upgrade
-3. **Receive the bonus**: All members gain a defense bonus
+Le totem est un système de buff à l'échelle de l'alliance. Les membres donnent de l'énergie pour l'améliorer, accordant des bonus de défense à tous les membres.
 
 ---
 
-## Donating Energy
+## Comment ça fonctionne
 
-### Operation
-
-```
-donateToTotem(allianceId, amount)
-```
-
-- Each donation resets your donation timer (48-hour expiry)
-- Only members with valid donations benefit from the totem's bonus
-
-### Donation Requirements
-
-- Each donation must be spaced by a minimum interval (anti-spam)
-- The donation expires after 48 hours (must re-donate to stay active)
+1. **Donnez de l'énergie** : Les membres de l'alliance donnent de l'énergie à la réserve du totem
+2. **Accumulez jusqu'au seuil** : Une fois que l'énergie du totem atteint le coût d'amélioration, le chef déclenche l'amélioration
+3. **Recevez le bonus** : Tous les membres gagnent un bonus de défense
 
 ---
 
-## Upgrading the Totem
+## Donner de l'énergie
 
-### Cost Formula
+### Opération
 
 ```
-Next Upgrade Cost = 20,000,000 × N × (N + 5) / 10
-Where N = current totem level + 1
+donateToTotem(allianceId, montant)
 ```
 
-| Level | Energy Required |
-|-------|----------------|
-| Lv 0 → 1 | 12,000,000 |
-| Lv 1 → 2 | 42,000,000 |
-| Lv 2 → 3 | 96,000,000 |
-| Lv 10 → 11 | 330,000,000 |
+- Chaque don réinitialise votre minuteur de don (expiration après 48 heures)
+- Seuls les membres avec des dons valides bénéficient du bonus du totem
 
-### Operation
+### Conditions de don
 
-Only the **alliance leader** can trigger upgrades:
+- Chaque don doit être espacé d'un intervalle minimum (anti-spam)
+- Le don expire après 48 heures (vous devez redonner pour rester actif)
+
+---
+
+## Améliorer le totem
+
+### Formule de coût
+
+```
+Prochain coût d'amélioration = 20 000 000 × N × (N + 5) / 10
+Où N = niveau actuel du totem + 1
+```
+
+| Niveau | Énergie requise |
+|--------|-----------------|
+| Nv 0 → 1 | 12 000 000 |
+| Nv 1 → 2 | 42 000 000 |
+| Nv 2 → 3 | 96 000 000 |
+| Nv 10 → 11 | 330 000 000 |
+
+### Opération
+
+Seul le **chef d'alliance** peut déclencher les améliorations :
 
 ```
 upgradeTotem(allianceId)
 ```
 
-The upgrade consumes energy from the totem pool and increases the totem level by 1.
+L'amélioration consomme de l'énergie de la réserve du totem et augmente le niveau du totem de 1.
 
 ---
 
-## Totem Effect
+## Effet du totem
 
 ```
-Alliance Defense Bonus = (total members - 1) × 8 × (1 + totem level × 0.5%)
+Bonus de défense d'alliance = (nombre total de membres - 1) × 8 × (1 + niveau de totem × 0,5 %)
 ```
 
-| Totem Level | Bonus Coefficient |
-|-------------|-------------------|
-| Lv 0 | 0% (no bonus) |
-| Lv 10 | +5% |
-| Lv 20 | +10% |
-| Lv 100 | +50% |
+| Niveau de totem | Coefficient de bonus |
+|-----------------|----------------------|
+| Nv 0 | 0 % (aucun bonus) |
+| Nv 10 | +5 % |
+| Nv 20 | +10 % |
+| Nv 100 | +50 % |
 
-Example: a 50-member alliance with a level 20 totem:
+Exemple : une alliance de 50 membres avec un totem de niveau 20 :
 ```
-Bonus = (50-1) × 8 × (1 + 20 × 0.5%) = 392 × 1.1 = 431.2 defense
+Bonus = (50-1) × 8 × (1 + 20 × 0,5 %) = 392 × 1,1 = 431,2 défense
 ```
 
 ---
 
-## Strategy Tips
+## Conseils stratégiques
 
-1. **Members should donate regularly** — small frequent donations are more effective than one large lump sum
-2. **Leaders should upgrade promptly** — upgrade as soon as the totem pool reaches the threshold
-3. **High totem level + many allies = significant defensive advantage**
+1. **Les membres devraient donner régulièrement** — de petits dons fréquents sont plus efficaces qu'un seul gros montant
+2. **Les chefs devraient améliorer rapidement** — améliorez dès que la réserve du totem atteint le seuil
+3. **Niveau de totem élevé + nombreux alliés = avantage défensif significatif**
 
-**Recommended next step: [DFT Token Overview →](/docs/economy/dft-overview)**
+**Prochaine étape recommandée : [Aperçu du token DFT →](/docs/economy/dft-overview)**

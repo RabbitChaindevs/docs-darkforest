@@ -1,107 +1,107 @@
 ---
 sidebar_position: 1
-title: Civilization Development & Upgrades
-description: Detailed breakdown of Dark Forest's six systems and upgrade strategies
+title: Développement et améliorations de la civilisation
+description: Analyse détaillée des six systèmes de Dark Forest et stratégies d'amélioration
 ---
 
-# Civilization Development & Upgrades
+# Développement et améliorations de la civilisation
 
-Your civilization is made up of **six systems**, each of which can be independently upgraded. System levels determine your collection efficiency, combat power, and survivability.
-
----
-
-## The Six Systems
-
-| System ID | Name | Function | Core Formula |
-|-----------|------|----------|--------------|
-| 0 | **Energy Collector** | Passive energy per second | `3 + 10 × √(level - 1)` energy/s |
-| 1 | **Weapon System** | Attack power | `900 + 10 × level²` |
-| 2 | **Shield System** | Defense & shield HP | HP: `3600 + 15 × level²`, Defense: `540 + 6 × level²` |
-| 3 | **Radar System** | Scan range | `1000 + 150 × level + 5 × level²` |
-| 4 | **Engine System** | Movement speed | `10 + 5 × (level-1)` → Lv1=10, Lv10=55 |
+Votre civilisation est composée de **six systèmes**, chacun pouvant être amélioré indépendamment. Les niveaux des systèmes déterminent votre efficacité de collecte, votre puissance de combat et votre capacité de survie.
 
 ---
 
-## Upgrade Costs
+## Les six systèmes
 
-Upgrade costs are calculated using the **Anchor Formula**, based on the system type and current level:
+| ID | Nom | Fonction | Formule principale |
+|----|-----|----------|--------------------|
+| 0 | **Collecteur d'énergie** | Énergie passive par seconde | `3 + 10 × √(niveau - 1)` énergie/s |
+| 1 | **Système d'arme** | Puissance d'attaque | `900 + 10 × niveau²` |
+| 2 | **Système de bouclier** | Défense et PV du bouclier | PV : `3600 + 15 × niveau²`, Défense : `540 + 6 × niveau²` |
+| 3 | **Système radar** | Portée de scan | `1000 + 150 × niveau + 5 × niveau²` |
+| 4 | **Système moteur** | Vitesse de déplacement | `10 + 5 × (niveau-1)` → Nv1=10, Nv10=55 |
 
-### Level Brackets
+---
 
-| Level Range | Anchor Days (cost equivalent) |
-|-------------|-------------------------------|
-| 1 – 100 | 1 → 30 days of energy/DFT output |
-| 100 – 1000 | 30 → 60 days of output |
-| 1000+ | 60 days of output (capped) |
+## Coûts d'amélioration
 
-### System Upgrade Multipliers
+Les coûts d'amélioration sont calculés à l'aide de la **formule d'ancrage**, basée sur le type de système et le niveau actuel :
 
-| System | Energy/DFT Multiplier |
-|--------|----------------------|
-| Collector (0) | 1× |
-| Weapon (1) | 4× |
-| Shield (2) | 4× |
+### Paliers de niveaux
+
+| Plage de niveaux | Jours d'ancrage (équivalent en coût) |
+|------------------|---------------------------------------|
+| 1 – 100 | 1 → 30 jours de production d'énergie/DFT |
+| 100 – 1000 | 30 → 60 jours de production |
+| 1000+ | 60 jours de production (plafonné) |
+
+### Multiplicateurs d'amélioration par système
+
+| Système | Multiplicateur énergie/DFT |
+|---------|---------------------------|
+| Collecteur (0) | 1× |
+| Arme (1) | 4× |
+| Bouclier (2) | 4× |
 | Radar (3) | 8× |
-| Engine (4) | 16× |
+| Moteur (4) | 16× |
 
-### Upgrade Cost Formula
+### Formule du coût d'amélioration
 
 ```
-Upgrade Cost = Anchor Days × Daily Output × System Multiplier
+Coût d'amélioration = Jours d'ancrage × Production quotidienne × Multiplicateur du système
 ```
 
-"Daily Output" scales with your civilization's level — the higher your level, the more you produce per day, creating a **positive feedback loop**.
+La "Production quotidienne" évolue avec le niveau de votre civilisation — plus votre niveau est élevé, plus vous produisez par jour, créant une **boucle de rétroaction positive**.
 
 ---
 
-## Daily Upkeep
+## Entretien quotidien
 
-Your civilization consumes energy every day as maintenance:
+Votre civilisation consomme de l'énergie chaque jour comme maintenance :
 
 ```
-Daily Upkeep = 2,000 × Total Level
+Entretien quotidien = 2 000 × Niveau total
 ```
 
-Upkeep is deducted from your energy proportionally over time and is settled automatically whenever you perform any action (via `_deductUpkeep`).
+L'entretien est déduit de votre énergie proportionnellement au fil du temps et est réglé automatiquement lorsque vous effectuez une action (via `_deductUpkeep`).
 
-> ⚠️ If you don't have enough energy to cover upkeep, your systems will still function, but your energy balance will go negative. You'll need to replenish it promptly.
+> ⚠️ Si vous n'avez pas assez d'énergie pour couvrir l'entretien, vos systèmes continueront de fonctionner, mais votre solde d'énergie deviendra négatif. Vous devrez le reconstituer rapidement.
 
 ---
 
-## Durability System
+## Système de durabilité
 
-Each system has durability that decreases over time or with use:
+Chaque système a une durabilité qui diminue avec le temps ou l'utilisation :
 
-| System | Base Durability | Per-Level Increase |
-|--------|----------------|--------------------|
-| Collector | 86,400 seconds (1 day) | +7,200 seconds (2 hours) |
-| Weapon | 60 | +15 |
-| Shield | 40 | +10 |
-| Engine | 30 | +6 |
+| Système | Durabilité de base | Augmentation par niveau |
+|---------|--------------------|-------------------------|
+| Collecteur | 86 400 secondes (1 jour) | +7 200 secondes (2 heures) |
+| Arme | 60 | +15 |
+| Bouclier | 40 | +10 |
+| Moteur | 30 | +6 |
 
-### Durability Consumption
+### Consommation de durabilité
 
-- **Collector**: decays over time, losing 1 durability per second
-- **Weapon**: loses 1 durability per attack (at 0 durability, attack power is halved)
-- **Shield**: loses 1 durability each time it's hit
-- **Engine**: loses 1 durability per jump
+- **Collecteur** : se dégrade avec le temps, perd 1 de durabilité par seconde
+- **Arme** : perd 1 de durabilité par attaque (à 0 de durabilité, la puissance d'attaque est réduite de moitié)
+- **Bouclier** : perd 1 de durabilité à chaque impact
+- **Moteur** : perd 1 de durabilité par saut
 
-### Repair Costs
+### Coûts de réparation
 
-| System | Repair Cost |
-|--------|-------------|
-| Collector | 1 energy/second |
-| Weapon | 3 energy/point |
-| Shield | 4 energy/point |
-| Engine | 5 energy/point |
+| Système | Coût de réparation |
+|---------|--------------------|
+| Collecteur | 1 énergie/seconde |
+| Arme | 3 énergie/point |
+| Bouclier | 4 énergie/point |
+| Moteur | 5 énergie/point |
 
 ---
 
-## Upgrade Strategy Tips
+## Conseils stratégiques d'amélioration
 
-1. **Prioritize the Collector** — energy is the foundation of everything. A high-level collector lets you accumulate resources faster
-2. **Balance Weapon and Shield** — Weapon level affects attack power and plunder ratio; Shield level affects HP and defense
-3. **Radar determines your attack range** — you can only attack targets within your radar's reach
-4. **Engine affects movement speed** — exploration and pursuit both depend on engine upgrades
+1. **Priorisez le collecteur** — l'énergie est le fondement de tout. Un collecteur de haut niveau vous permet d'accumuler des ressources plus rapidement
+2. **Équilibrez arme et bouclier** — le niveau de l'arme affecte la puissance d'attaque et le ratio de pillage ; le niveau du bouclier affecte les PV et la défense
+3. **Le radar détermine votre portée d'attaque** — vous ne pouvez attaquer que les cibles à portée de votre radar
+4. **Le moteur affecte la vitesse de déplacement** — l'exploration et la poursuite dépendent toutes deux des améliorations du moteur
 
-**Recommended next step: [Attack & Defense →](/docs/guide/battle)**
+**Prochaine étape recommandée : [Attaque et défense →](/docs/guide/battle)**

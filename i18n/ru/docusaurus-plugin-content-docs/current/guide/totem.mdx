@@ -1,93 +1,93 @@
 ---
 sidebar_position: 6
-title: Totem System
-description: Dark Forest alliance totems — donating, upgrading, and defense bonuses
+title: Система тотемов
+description: Тотемы альянсов Dark Forest — пожертвования, улучшения и бонусы к защите
 ---
 
-# Totem System
+# Система тотемов
 
-The totem is an alliance-wide buff system. Members donate energy to upgrade it, granting defense bonuses to all members.
-
----
-
-## How It Works
-
-1. **Donate energy**: Alliance members donate energy to the totem pool
-2. **Accumulate to the threshold**: Once the totem's energy reaches the upgrade cost, the leader triggers the upgrade
-3. **Receive the bonus**: All members gain a defense bonus
+Тотем — это система баффа для всего альянса. Участники жертвуют энергию для его улучшения, предоставляя бонусы к защите всем участникам.
 
 ---
 
-## Donating Energy
+## Как это работает
 
-### Operation
-
-```
-donateToTotem(allianceId, amount)
-```
-
-- Each donation resets your donation timer (48-hour expiry)
-- Only members with valid donations benefit from the totem's bonus
-
-### Donation Requirements
-
-- Each donation must be spaced by a minimum interval (anti-spam)
-- The donation expires after 48 hours (must re-donate to stay active)
+1. **Жертвуйте энергию**: Участники альянса жертвуют энергию в пул тотема
+2. **Накопите до порога**: Когда энергия тотема достигает стоимости улучшения, лидер запускает улучшение
+3. **Получите бонус**: Все участники получают бонус к защите
 
 ---
 
-## Upgrading the Totem
+## Пожертвование энергии
 
-### Cost Formula
-
-```
-Next Upgrade Cost = 20,000,000 × N × (N + 5) / 10
-Where N = current totem level + 1
-```
-
-| Level | Energy Required |
-|-------|----------------|
-| Lv 0 → 1 | 12,000,000 |
-| Lv 1 → 2 | 42,000,000 |
-| Lv 2 → 3 | 96,000,000 |
-| Lv 10 → 11 | 330,000,000 |
-
-### Operation
-
-Only the **alliance leader** can trigger upgrades:
+### Операция
 
 ```
-upgradeTotem(allianceId)
+donateToTotem(idАльянса, количество)
 ```
 
-The upgrade consumes energy from the totem pool and increases the totem level by 1.
+- Каждое пожертвование сбрасывает ваш таймер пожертвования (истекает через 48 часов)
+- Только участники с активными пожертвованиями получают бонус тотема
+
+### Требования к пожертвованиям
+
+- Каждое пожертвование должно быть с минимальным интервалом (анти-спам)
+- Пожертвование истекает через 48 часов (нужно жертвовать снова, чтобы оставаться активным)
 
 ---
 
-## Totem Effect
+## Улучшение тотема
+
+### Формула стоимости
 
 ```
-Alliance Defense Bonus = (total members - 1) × 8 × (1 + totem level × 0.5%)
+Стоимость следующего улучшения = 20 000 000 × N × (N + 5) / 10
+Где N = текущий уровень тотема + 1
 ```
 
-| Totem Level | Bonus Coefficient |
-|-------------|-------------------|
-| Lv 0 | 0% (no bonus) |
-| Lv 10 | +5% |
-| Lv 20 | +10% |
-| Lv 100 | +50% |
+| Уровень | Требуемая энергия |
+|---------|------------------|
+| Ур 0 → 1 | 12 000 000 |
+| Ур 1 → 2 | 42 000 000 |
+| Ур 2 → 3 | 96 000 000 |
+| Ур 10 → 11 | 330 000 000 |
 
-Example: a 50-member alliance with a level 20 totem:
+### Операция
+
+Только **лидер альянса** может запускать улучшения:
+
 ```
-Bonus = (50-1) × 8 × (1 + 20 × 0.5%) = 392 × 1.1 = 431.2 defense
+upgradeTotem(idАльянса)
+```
+
+Улучшение потребляет энергию из пула тотема и увеличивает уровень тотема на 1.
+
+---
+
+## Эффект тотема
+
+```
+Бонус защиты альянса = (всего участников - 1) × 8 × (1 + уровень тотема × 0,5%)
+```
+
+| Уровень тотема | Коэффициент бонуса |
+|----------------|-------------------|
+| Ур 0 | 0% (нет бонуса) |
+| Ур 10 | +5% |
+| Ур 20 | +10% |
+| Ур 100 | +50% |
+
+Пример: альянс из 50 участников с тотемом 20-го уровня:
+```
+Бонус = (50-1) × 8 × (1 + 20 × 0,5%) = 392 × 1,1 = 431,2 защиты
 ```
 
 ---
 
-## Strategy Tips
+## Советы по стратегии
 
-1. **Members should donate regularly** — small frequent donations are more effective than one large lump sum
-2. **Leaders should upgrade promptly** — upgrade as soon as the totem pool reaches the threshold
-3. **High totem level + many allies = significant defensive advantage**
+1. **Участники должны жертвовать регулярно** — небольшие частые пожертвования эффективнее одного крупного
+2. **Лидеры должны улучшать своевременно** — улучшайте, как только пул тотема достигает порога
+3. **Высокий уровень тотема + много союзников = значительное оборонительное преимущество**
 
-**Recommended next step: [DFT Token Overview →](/docs/economy/dft-overview)**
+**Рекомендуемый следующий шаг: [Обзор токена DFT →](/docs/economy/dft-overview)**

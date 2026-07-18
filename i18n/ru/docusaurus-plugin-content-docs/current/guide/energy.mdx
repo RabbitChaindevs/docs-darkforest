@@ -1,98 +1,98 @@
 ---
 sidebar_position: 4
-title: Energy System
-description: Complete guide to acquiring, consuming, and managing energy in Dark Forest
+title: Система энергии
+description: Полное руководство по получению, потреблению и управлению энергией в Dark Forest
 ---
 
-# Energy System
+# Система энергии
 
-Energy is the most fundamental resource in Dark Forest. Almost every operation — upgrades, attacks, movement, and repairs — requires energy.
-
----
-
-## Earning Energy
-
-### 1. Energy Collector (Passive Output)
-
-```
-Collection Rate = 3 + 10 × √(collector level - 1)   energy/s
-```
-
-For each player you invited, the rate increases further.
-
-**Collector Durability**: The collector loses 1 durability per second.
-
-| Collector Level | Output per Second | Max Collector Durability |
-|----------------|-------------------|--------------------------|
-| Lv 1 | 3 | 1 day |
-| Lv 10 | ~33 | 1 day + 18 hours |
-| Lv 50 | ~73 | 1 day + 4 days |
-| Lv 100 | ~103 | 1 day + 8.3 days |
-
-> ⚠️ When collector durability runs out, production stops. You need to repair it for collection to resume.
-
-### 2. Combat Plunder
-
-After winning a battle against another civilization, you plunder a portion of their energy:
-
-```
-Plunder Ratio = 5% + weapon level × 0.5%
-```
-
-Plundered energy goes into a **pending pool** (pendingCombatEnergy), which you must manually claim.
-
-### 3. Invite Rewards
-
-For each new player you successfully invite (they enter your address when creating their civilization):
-
-- **You** receive 150 energy
-- **The invitee** receives 150 energy
-
-### 4. Energy Market
-
-See [Energy Market](/docs/economy/energy-market).
+Энергия — самый основной ресурс в Dark Forest. Почти все операции — улучшения, атаки, передвижение и ремонт — требуют энергии.
 
 ---
 
-## Spending Energy
+## Получение энергии
 
-| Use Case | Cost |
-|----------|------|
-| **Daily Upkeep** | `2,000 × total level` / day |
-| **System Upgrades** | Anchor Formula (see Civilization guide) |
-| **Attack** | `50,000 + 50,000 × weapon level` |
-| **Space Jump** | `200,000 + 200,000 × √(jump count)`, cap 16.5M |
-| **Repair Collector** | `1 energy / second` |
-| **Repair Weapon** | `3 energy / point` |
-| **Repair Shield** | `4 energy / point` |
-| **Repair Engine** | `5 energy / point` |
-| **Shield Regen** | `regen amount × 1` (auto regen) |
-| **Shield Repair** | `repair amount × 4` (manual repair) |
-| **Alliance Shield Assist** | `repair amount × 1` (paid by ally) |
-| **Totem Donation** | Custom amount |
-| **Rebuild** | Base 500,000, increases with rebirth count |
+### 1. Сборщик энергии (Пассивная выработка)
+
+```
+Скорость сбора = 3 + 10 × √(уровень сборщика - 1)   эн./с
+```
+
+За каждого приглашённого вами игрока скорость дополнительно увеличивается.
+
+**Прочность сборщика**: Сборщик теряет 1 прочность в секунду.
+
+| Уровень сборщика | Выработка в секунду | Макс. прочность сборщика |
+|-----------------|--------------------|-------------------------|
+| Ур 1 | 3 | 1 день |
+| Ур 10 | ~33 | 1 день + 18 часов |
+| Ур 50 | ~73 | 1 день + 4 дня |
+| Ур 100 | ~103 | 1 день + 8,3 дня |
+
+> ⚠️ Когда прочность сборщика заканчивается, производство останавливается. Вам нужно отремонтировать его, чтобы возобновить сбор.
+
+### 2. Боевой грабёж
+
+После победы в бою над другой цивилизацией вы грабите часть её энергии:
+
+```
+Коэффициент грабежа = 5% + уровень оружия × 0,5%
+```
+
+Ограбленная энергия поступает в **ожидающий пул** (pendingCombatEnergy), который вы должны забрать вручную.
+
+### 3. Награды за приглашения
+
+За каждого успешно приглашённого нового игрока (он вводит ваш адрес при создании цивилизации):
+
+- **Вы** получаете 150 энергии
+- **Приглашённый** получает 150 энергии
+
+### 4. Рынок энергии
+
+См. [Рынок энергии](/docs/economy/energy-market).
 
 ---
 
-## Energy Management
+## Трата энергии
 
-### Daily Upkeep
+| Использование | Стоимость |
+|---------------|-----------|
+| **Ежедневное обслуживание** | `2 000 × общий уровень` / день |
+| **Улучшение систем** | Формула якоря (см. руководство по цивилизации) |
+| **Атака** | `50 000 + 50 000 × уровень оружия` |
+| **Космический прыжок** | `200 000 + 200 000 × √(количество прыжков)`, макс 16,5М |
+| **Ремонт сборщика** | `1 энергия / секунда` |
+| **Ремонт оружия** | `3 энергии / единица` |
+| **Ремонт щита** | `4 энергии / единица` |
+| **Ремонт двигателя** | `5 энергии / единица` |
+| **Регенерация щита** | `количество регенерации × 1` (авторегенерация) |
+| **Ремонт щита** | `количество ремонта × 4` (ручной ремонт) |
+| **Помощь щита альянса** | `количество ремонта × 1` (оплачивается союзником) |
+| **Пожертвование тотему** | Произвольная сумма |
+| **Восстановление** | База 500 000, увеличивается с количеством возрождений |
 
-Upkeep is deducted proportionally over time whenever you perform any action:
+---
+
+## Управление энергией
+
+### Ежедневное обслуживание
+
+Обслуживание списывается пропорционально с течением времени при любом действии:
 
 ```
-Current Upkeep = 2,000 × total level × (time since last action / 86400)
+Текущее обслуживание = 2 000 × общий уровень × (время с последнего действия / 86400)
 ```
 
-### Reserved Energy
+### Зарезервированная энергия
 
-Energy placed in sell orders on the energy market is locked (`energyReserved`). Upkeep stops being deducted once `energy - reserved` reaches zero.
+Энергия, размещённая в ордерах на продажу на рынке энергии, блокируется (`energyReserved`). Обслуживание перестаёт списываться, когда `энергия - зарезервированная` достигает нуля.
 
-### Tips
+### Советы
 
-1. **Keep energy > 1 month's upkeep** — prevents frequent depletion from routine actions
-2. **Prioritize collector upgrades** — a high-level collector is key to passive income
-3. **Calculate costs before attacking** — make sure the plunder is worth the investment
-4. **Repair collector durability regularly** — avoid collection interruptions
+1. **Держите энергию > 1 месяца обслуживания** — предотвращает частое истощение от рутинных действий
+2. **В первую очередь улучшайте сборщик** — сборщик высокого уровня — ключ к пассивному доходу
+3. **Рассчитывайте затраты перед атакой** — убедитесь, что грабёж стоит вложений
+4. **Регулярно ремонтируйте прочность сборщика** — избегайте перерывов в сборе
 
-**Recommended next step: [Alliance System →](/docs/guide/alliance)**
+**Рекомендуемый следующий шаг: [Система альянсов →](/docs/guide/alliance)**

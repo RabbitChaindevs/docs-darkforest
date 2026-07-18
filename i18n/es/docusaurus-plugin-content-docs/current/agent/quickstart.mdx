@@ -1,20 +1,20 @@
 ---
 sidebar_position: 2
-title: 5-Minute AI Agent Quickstart
-description: Configure your first AI Agent in Dark Forest
+title: Configuración Rápida del AI Agent en 5 Minutos
+description: Configura tu primer AI Agent en Dark Forest
 ---
 
-# 5-Minute Quickstart
+# Configuración Rápida en 5 Minutos
 
-## Prerequisites
+## Prerrequisitos
 
 - Python 3.10+
-- An active Dark Forest civilization
-- Your wallet's private key (for the agent to sign transactions)
+- Una civilización activa de Dark Forest
+- La clave privada de tu billetera (para que el agente firme transacciones)
 
 ---
 
-## Step 1: Install the Agent
+## Paso 1: Instalar el Agent
 
 ```bash
 git clone https://github.com/dark-forest/agent.git
@@ -22,73 +22,73 @@ cd agent
 pip install -r requirements.txt
 ```
 
-## Step 2: Import Your Private Key
+## Paso 2: Importar tu Clave Privada
 
 ```bash
 python -m dark_forest.cli key import
 ```
 
-The private key is stored encrypted, never in plain text.
+La clave privada se almacena cifrada, nunca en texto plano.
 
-> ⚠️ It is highly recommended to use a **dedicated game wallet** — do not use your main wallet that holds significant assets.
+> ⚠️ Se recomienda encarecidamente usar una **billetera de juego dedicada** — no uses tu billetera principal que tiene activos importantes.
 
-## Step 3: Authorize the Agent
+## Paso 3: Autorizar el Agent
 
-In the game interface, set permissions for your agent's wallet address:
+En la interfaz del juego, establece los permisos para la dirección de la billetera de tu agente:
 
-- Check the operation permissions the agent needs
-- Set policy constraints (attack frequency, resource reserves, etc.)
+- Marca los permisos de operación que necesita el agente
+- Establece las restricciones de políticas (frecuencia de ataque, reservas de recursos, etc.)
 
-## Step 4: Choose a Strategy
+## Paso 4: Elegir una Estrategia
 
 ```bash
-# List available strategies
+# Listar estrategias disponibles
 python -m dark_forest.cli strategy list
 
-# Use the balanced strategy (recommended)
+# Usar la estrategia equilibrada (recomendada)
 python -m dark_forest.cli strategy select balanced
 ```
 
-Four preset strategies:
+Cuatro estrategias predefinidas:
 
-| Strategy | Style | Best For |
-|----------|-------|----------|
-| `aggressive` | Aggressive attacker | Highly active players |
-| `balanced` | Balanced offense/defense | **Recommended**, suits most players |
-| `defensive` | Conservative defense | Players who are often offline |
-| `farmer` | Focus on gathering | Peaceful development |
+| Estrategia | Estilo | Mejor para |
+|------------|--------|------------|
+| `aggressive` | Atacante agresivo | Jugadores muy activos |
+| `balanced` | Ataque/defensa equilibrados | **Recomendada**, adecuada para la mayoría |
+| `defensive` | Defensa conservadora | Jugadores que suelen estar desconectados |
+| `farmer` | Enfoque en recolección | Desarrollo pacífico |
 
-## Step 5: Launch
+## Paso 5: Iniciar
 
 ```bash
-# Start (default balanced strategy)
+# Iniciar (estrategia equilibrada por defecto)
 python -m dark_forest.cli run
 
-# Specify a strategy
+# Especificar una estrategia
 python -m dark_forest.cli run --strategy aggressive
 ```
 
-## Step 6: Configure Notifications (Optional)
+## Paso 6: Configurar Notificaciones (Opcional)
 
 ### Telegram
 
 ```bash
-python -m dark_forest.cli config set notify.telegram.token YOUR_BOT_TOKEN
-python -m dark_forest.cli config set notify.telegram.chat_id YOUR_CHAT_ID
+python -m dark_forest.cli config set notify.telegram.token TU_TOKEN_DE_BOT
+python -m dark_forest.cli config set notify.telegram.chat_id TU_CHAT_ID
 ```
 
 ### Discord
 
 ```bash
-python -m dark_forest.cli config set notify.discord.webhook YOUR_WEBHOOK_URL
+python -m dark_forest.cli config set notify.discord.webhook TU_URL_DE_WEBHOOK
 ```
 
 ---
 
-## Security Reminders
+## Recordatorios de Seguridad
 
-1. 🔐 **Use a dedicated game wallet** with reasonable DFT/energy reserve limits
-2. 📉 **Open permissions gradually** — start with only COLLECT + REPAIR, then add ATTACK once you're confident it's stable
-3. 🔄 **Check in regularly** — review the agent's logs and reports
+1. 🔐 **Usa una billetera de juego dedicada** con límites razonables de reserva de DFT/energía
+2. 📉 **Abre los permisos gradualmente** — comienza solo con COLLECT + REPAIR, luego añade ATTACK una vez que estés seguro de que es estable
+3. 🔄 **Revisa regularmente** — consulta los registros e informes del agente
 
-**Recommended next step: [Strategy Templates →](/docs/agent/strategies)**
+**Siguiente paso recomendado: [Plantillas de Estrategia →](/docs/agent/strategies)**

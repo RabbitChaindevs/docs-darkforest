@@ -1,52 +1,52 @@
 ---
 sidebar_position: 3
-title: Strategy Templates
-description: Detailed breakdown of Dark Forest AI Agent's four preset strategies and custom configuration guide
+title: Шаблоны стратегий
+description: Детальный разбор четырёх предустановленных стратегий ИИ-агента Dark Forest и руководство по пользовательской настройке
 ---
 
-# Strategy Templates
+# Шаблоны стратегий
 
-Agent strategies are defined using YAML configuration files.
+Стратегии агента определяются с помощью YAML-файлов конфигурации.
 
 ---
 
-## Strategy File Structure
+## Структура файла стратегии
 
 ```yaml
 agent:
   name: "my-agent"
   mode: "auto"          # auto | manual | dry-run
 
-limits:                 # Circuit breaker (on-chain policy)
+limits:                 # Автоматический выключатель (ончейн-политика)
   min_energy_reserve: 100000
   min_dft_reserve: 10
   max_attacks_per_hour: 5
   max_upgrades_per_day: 3
   max_single_upgrade_cost: 100
 
-combat:                 # Combat strategy
+combat:                 # Боевая стратегия
   min_target_level: 1
   max_target_level: 999
   weapon_level: 1
   only_attack_when_energy_above: 100000
-  blacklist: []         # Blacklisted addresses
-  whitelist: []         # Whitelisted addresses (only attack these)
+  blacklist: []         # Адреса в чёрном списке
+  whitelist: []         # Адреса в белом списке (атаковать только эти)
 
-defense:                # Defense strategy
+defense:                # Оборонительная стратегия
   auto_repair: true
   min_durability_before_repair: 20
-  shield_regen_threshold: 50   # Start shield regen below this %
+  shield_regen_threshold: 50   # Начать реген. щита ниже этого %
 
-collection:             # Collection strategy
+collection:             # Стратегия сбора
   enabled: true
   interval_minutes: 60
 ```
 
 ---
 
-## Four Preset Strategies
+## Четыре предустановленные стратегии
 
-### 1. Aggressive
+### 1. Агрессивная
 
 ```yaml
 combat:
@@ -55,13 +55,13 @@ combat:
   weapon_level: max
 
 collection:
-  enabled: false  # No gathering, pure combat
+  enabled: false  # Нет сбора, только бой
 ```
 
-- ✅ Good for: highly active players who want combat rewards
-- ❌ Risk: high energy consumption, risk of being counterattacked
+- ✅ Подходит для: очень активных игроков, желающих боевых наград
+- ❌ Риск: высокое потребление энергии, риск контратаки
 
-### 2. Balanced
+### 2. Сбалансированная
 
 ```yaml
 combat:
@@ -78,14 +78,14 @@ defense:
   shield_regen_threshold: 60
 ```
 
-- ✅ **Recommended**: balanced offense and defense, suitable for most players
+- ✅ **Рекомендуется**: сбалансированная атака и защита, подходит большинству игроков
 
-### 3. Defensive
+### 3. Оборонительная
 
 ```yaml
 combat:
   max_attacks_per_hour: 1
-  only_counterattack: true  # Only counterattack
+  only_counterattack: true  # Только контратака
 
 defense:
   auto_repair: true
@@ -97,13 +97,13 @@ collection:
   interval_minutes: 15
 ```
 
-- ✅ Good for: players who are offline for long periods and want to avoid risk
+- ✅ Подходит для: игроков, которые долго находятся офлайн и хотят избежать риска
 
-### 4. Farmer
+### 4. Фермерская
 
 ```yaml
 combat:
-  enabled: false  # No combat
+  enabled: false  # Нет боя
 
 defense:
   auto_repair: true
@@ -114,34 +114,34 @@ collection:
   interval_minutes: 5
 ```
 
-- ✅ Good for: early-game development and resource accumulation
+- ✅ Подходит для: развития на ранних этапах и накопления ресурсов
 
 ---
 
-## Custom Strategy
+## Пользовательская стратегия
 
 ```bash
-# Copy the template
+# Скопируйте шаблон
 cp templates/balanced.yaml my-strategy.yaml
 
-# Edit parameters
+# Отредактируйте параметры
 vim my-strategy.yaml
 
-# Use custom strategy
+# Используйте пользовательскую стратегию
 python -m dark_forest.cli run --strategy ./my-strategy.yaml
 ```
 
 ---
 
-## Circuit Breaker Parameters
+## Параметры автоматического выключателя
 
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `max_attacks_per_hour` | Max attacks per hour | 10 |
-| `min_energy_reserve` | Minimum energy reserve | 100,000 |
-| `min_dft_reserve` | Minimum DFT reserve | 10 |
-| `max_upgrades_per_day` | Max upgrades per day | 5 |
+| Параметр | Описание | По умолчанию |
+|----------|----------|--------------|
+| `max_attacks_per_hour` | Макс. атак в час | 10 |
+| `min_energy_reserve` | Минимальный резерв энергии | 100 000 |
+| `min_dft_reserve` | Минимальный резерв DFT | 10 |
+| `max_upgrades_per_day` | Макс. улучшений в день | 5 |
 
-> ⚠️ Circuit breaker parameters are enforced on-chain. The agent cannot bypass them.
+> ⚠️ Параметры автоматического выключателя применяются ончейн. Агент не может их обойти.
 
-**Recommended next step: [Contract Addresses →](/docs/reference/addresses)**
+**Рекомендуемый следующий шаг: [Адреса контрактов →](/docs/reference/addresses)**

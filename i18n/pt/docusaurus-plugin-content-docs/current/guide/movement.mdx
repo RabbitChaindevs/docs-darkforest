@@ -1,98 +1,98 @@
 ---
 sidebar_position: 3
-title: Space Jump & Cruise
-description: Detailed breakdown of the Dark Forest movement system
+title: Salto e Cruzeiro Espacial
+description: Detalhamento completo do sistema de movimento do Dark Forest
 ---
 
-# Space Jump & Cruise
+# Salto e Cruzeiro Espacial
 
-## Cruise
+## Cruzeiro
 
-Cruise is the standard method of movement. The engine propels your civilization toward a target coordinate.
+O cruzeiro é o método padrão de movimento. O motor impulsiona sua civilização em direção a uma coordenada alvo.
 
-### Conditions
-- Engine durability > 0
-- Target coordinates are within your radar range
+### Condições
+- Durabilidade do motor > 0
+- As coordenadas alvo estão dentro do seu alcance de radar
 
-### Operation
+### Operação
 
 ```
 startMove(x, y, z)
 ```
 
-Enter the target coordinates `(x, y, z)` to begin cruising. You can cancel at any time before arrival (`cancelMove`).
+Insira as coordenadas alvo `(x, y, z)` para iniciar o cruzeiro. Você pode cancelar a qualquer momento antes da chegada (`cancelMove`).
 
-### Speed
+### Velocidade
 
 ```
-Move Speed = 10 + 5 × (engine level - 1)
+Velocidade de Movimento = 10 + 5 × (nível do motor - 1)
 
-So Lv1 = 10, Lv2 = 15, Lv10 = 55, Lv50 = 255.
+Então Nv1 = 10, Nv2 = 15, Nv10 = 55, Nv50 = 255.
 ```
 
-The higher your engine level, the faster you move.
+Quanto maior o nível do seu motor, mais rápido você se move.
 
 ---
 
-## Space Jump
+## Salto Espacial
 
-A space jump instantly teleports you to a new deterministic coordinate. It is much faster than cruising but comes with serious side effects.
+Um salto espacial teletransporta você instantaneamente para uma nova coordenada determinística. É muito mais rápido que o cruzeiro, mas traz sérios efeitos colaterais.
 
-### Cost
+### Custo
 
-Each jump's cost increases with **historical jump count**:
+Cada salto aumenta seu custo com o **número histórico de saltos**:
 
-| Resource | Formula | Cap |
-|----------|---------|-----|
-| **Energy** | `200,000 + 200,000 × √(historical jumps)` | 16,500,000 |
-| **DFT** | `10 + 10 × √(historical jumps)` | 1,000 DFT |
-| **Engine Durability** | 1 point | |
+| Recurso | Fórmula | Teto |
+|---------|---------|------|
+| **Energia** | `200.000 + 200.000 × √(saltos históricos)` | 16.500.000 |
+| **DFT** | `10 + 10 × √(saltos históricos)` | 1.000 DFT |
+| **Durabilidade do Motor** | 1 ponto | |
 
-### Cooldown
+### Resfriamento
 
-After each jump, you must wait **1 hour** before jumping again.
+Após cada salto, você deve esperar **1 hora** antes de saltar novamente.
 
-### Side Effects
+### Efeitos Colaterais
 
-> ⚠️ Space jump inflicts heavy damage on your vessel:
+> ⚠️ O salto espacial causa danos severos à sua nave:
 >
-> **Shield HP resets to 10% of maximum**
+> **O HP do Escudo é redefinido para 10% do máximo**
 >
-> Your defense will be extremely fragile after jumping. Make sure you jump in a safe area or prepare defensively.
+> Sua defesa ficará extremamente frágil após o salto. Certifique-se de saltar em uma área segura ou prepare-se defensivamente.
 
-### Coordinate Assignment
+### Atribuição de Coordenadas
 
-The new coordinates after a jump are assigned by a deterministic algorithm (similar to civilization creation). You cannot manually choose your destination.
-
----
-
-## Tracking Jump
-
-A tracking jump lets you jump directly to a target civilization's location.
-
-### Conditions
-
-- Your **radar level ≥ 20**
-- The target is **within your radar scan range**
-
-### Cost
-
-Same as a regular space jump (energy + DFT + engine durability), and shares the same cooldown.
+As novas coordenadas após um salto são atribuídas por um algoritmo determinístico (semelhante à criação de civilizações). Você não pode escolher manualmente seu destino.
 
 ---
 
-## Comparison
+## Salto de Rastreamento
 
-| Method | Cost | Speed | Use Case |
-|--------|------|-------|----------|
-| Cruise | Time only | Slow | Short-distance movement, exploration |
-| Space Jump | Energy + DFT + Shield HP | Instant | Long-distance travel, evading tracking jumps |
-| Tracking Jump | Energy + DFT + Shield HP | Instant | Chasing targets, assisting allies |
+Um salto de rastreamento permite que você salte diretamente para a localização de uma civilização alvo.
+
+### Condições
+
+- Seu **nível de radar ≥ 20**
+- O alvo está **dentro do seu alcance de escaneamento de radar**
+
+### Custo
+
+Igual a um salto espacial regular (energia + DFT + durabilidade do motor) e compartilha o mesmo resfriamento.
 
 ---
 
-## Post-Alliance Non-Aggression Protocol
+## Comparação
 
-After leaving an alliance, you and the former alliance **cannot attack each other for 24 hours** (Leave Cooldown), preventing tactical abuse of the alliance system.
+| Método | Custo | Velocidade | Caso de Uso |
+|--------|-------|------------|-------------|
+| Cruzeiro | Apenas tempo | Lenta | Movimento de curta distância, exploração |
+| Salto Espacial | Energia + DFT + HP do Escudo | Instantâneo | Viagens de longa distância, evadir saltos de rastreamento |
+| Salto de Rastreamento | Energia + DFT + HP do Escudo | Instantâneo | Perseguir alvos, ajudar aliados |
 
-**Recommended next step: [Energy System →](/docs/guide/energy)**
+---
+
+## Protocolo de Não Agressão Pós-Aliança
+
+Após sair de uma aliança, você e a antiga aliança **não podem se atacar por 24 horas** (Resfriamento de Saída), evitando o abuso tático do sistema de alianças.
+
+**Próximo passo recomendado: [Sistema de Energia →](/docs/guide/energy)**

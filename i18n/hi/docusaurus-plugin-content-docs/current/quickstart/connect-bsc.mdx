@@ -1,74 +1,74 @@
 ---
 sidebar_position: 2
-title: Connect to BSC
-description: How to configure MetaMask and other wallets for the BNB Smart Chain network
+title: BSC से कनेक्ट करें
+description: MetaMask और अन्य वॉलेट को BNB स्मार्ट चेन नेटवर्क के लिए कॉन्फ़िगर करने का तरीका
 ---
 
-# Connect to BSC
+# BSC से कनेक्ट करें
 
-Dark Forest is deployed on **BNB Smart Chain (BSC)**. You need to switch your wallet to the BSC network to interact with the game.
+डार्क फ़ॉरेस्ट **BNB स्मार्ट चेन (BSC)** पर तैनात है। गेम के साथ इंटरैक्ट करने के लिए आपको अपने वॉलेट को BSC नेटवर्क पर स्विच करना होगा।
 
-## What Is BSC?
+## BSC क्या है?
 
-BNB Smart Chain is a blockchain network launched by Binance, offering:
+BNB स्मार्ट चेन बिनेंस द्वारा लॉन्च किया गया एक ब्लॉकचेन नेटवर्क है, जो प्रदान करता है:
 
-- **Low transaction fees** — each operation costs just fractions of a cent
-- **High throughput** — built for high-frequency game interactions
-- **EVM compatible** — works with MetaMask and other主流 wallets
+- **कम लेन-देन शुल्क** — प्रत्येक ऑपरेशन की लागत एक सेंट के अंश मात्र
+- **उच्च थ्रूपुट** — उच्च-आवृत्ति गेम इंटरैक्शन के लिए निर्मित
+- **EVM संगत** — MetaMask और अन्य मुख्यधारा वॉलेट के साथ काम करता है
 
-## Auto-Add BSC Network
+## स्वचालित रूप से BSC नेटवर्क जोड़ें
 
-The easiest way is to use Chainlist:
+सबसे आसान तरीका Chainlist का उपयोग करना है:
 
-1. Visit [Chainlist](https://chainlist.org)
-2. Search for "BNB Smart Chain"
-3. Click "Connect Wallet" and authorize
-4. Click "Add to MetaMask"
-5. Confirm the addition
+1. [Chainlist](https://chainlist.org) पर जाएँ
+2. "BNB स्मार्ट चेन" खोजें
+3. "वॉलेट कनेक्ट करें" पर क्लिक करें और अधिकृत करें
+4. "MetaMask में जोड़ें" पर क्लिक करें
+5. जोड़ने की पुष्टि करें
 
-## Manual Configuration
+## मैन्युअल कॉन्फ़िगरेशन
 
-You can also add the BSC network manually:
+आप BSC नेटवर्क को मैन्युअल रूप से भी जोड़ सकते हैं:
 
-### Adding BSC to MetaMask
+### MetaMask में BSC जोड़ना
 
-1. Click the network dropdown in the top-right corner of MetaMask
-2. Click "Add Network"
-3. Fill in the following details:
+1. MetaMask के ऊपरी-दाएँ कोने में नेटवर्क ड्रॉपडाउन पर क्लिक करें
+2. "नेटवर्क जोड़ें" पर क्लिक करें
+3. निम्नलिखित विवरण भरें:
 
-| Setting | Value |
+| सेटिंग | मान |
 |---------|-------|
-| **Network Name** | BNB Smart Chain |
+| **नेटवर्क नाम** | BNB स्मार्ट चेन |
 | **RPC URL** | `https://bsc-dataseed.binance.org` |
-| **Chain ID** | `56` |
-| **Currency Symbol** | `BNB` |
-| **Block Explorer** | `https://bscscan.com` |
+| **चेन ID** | `56` |
+| **मुद्रा प्रतीक** | `BNB` |
+| **ब्लॉक एक्सप्लोरर** | `https://bscscan.com` |
 
-4. Click "Save"
+4. "सहेजें" पर क्लिक करें
 
-### Backup RPC Nodes
+### बैकअप RPC नोड्स
 
-If the main RPC is congested, you can use backup nodes:
+यदि मुख्य RPC भीड़भाड़ वाला है, तो आप बैकअप नोड्स का उपयोग कर सकते हैं:
 
-| Provider | RPC URL |
+| प्रदाता | RPC URL |
 |----------|---------|
-| Binance Official | `https://bsc-dataseed1.binance.org` |
+| बिनेंस आधिकारिक | `https://bsc-dataseed1.binance.org` |
 | Ankr | `https://rpc.ankr.com/bsc` |
 | PublicNode | `https://bsc.publicnode.com` |
 
-## Getting BNB
+## BNB प्राप्त करना
 
-Every operation on BSC requires BNB for gas fees. Here's how to get some:
+BSC पर प्रत्येक ऑपरेशन के लिए गैस शुल्क के रूप में BNB की आवश्यकता होती है। कुछ BNB प्राप्त करने का तरीका:
 
-1. **Centralized exchange** — buy BNB from Binance, OKX, etc. and withdraw to the BSC network
-2. **Cross-chain bridge** — transfer BNB from other networks to BSC via a bridge
+1. **केंद्रीकृत एक्सचेंज** — Binance, OKX आदि से BNB खरीदें और BSC नेटवर्क पर निकालें
+2. **क्रॉस-चेन ब्रिज** — ब्रिज के माध्यम से अन्य नेटवर्क से BSC में BNB स्थानांतरित करें
 
 :::caution
-When withdrawing, **make sure to select the BSC network (BEP-20)** or you may lose your funds!
+निकासी करते समय, **BSC नेटवर्क (BEP-20) चुनना सुनिश्चित करें** अन्यथा आप अपने फंड खो सकते हैं!
 :::
 
-## Verify Your Connection
+## अपना कनेक्शन सत्यापित करें
 
-After configuration, switch to the BNB Smart Chain network in your wallet. If the Chain ID shows `56` and your balance displays the correct BNB amount, you're all set.
+कॉन्फ़िगरेशन के बाद, अपने वॉलेट में BNB स्मार्ट चेन नेटवर्क पर स्विच करें। यदि चेन ID `56` दिखाती है और आपका बैलेंस सही BNB राशि प्रदर्शित करता है, तो आप तैयार हैं।
 
-Once your wallet and network are ready, the next step is to [Get DFT Tokens](/docs/quickstart/get-dft).
+एक बार आपका वॉलेट और नेटवर्क तैयार हो जाए, तो अगला कदम है [DFT टोकन प्राप्त करें](/docs/quickstart/get-dft)।

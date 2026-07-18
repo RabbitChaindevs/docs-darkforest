@@ -4,23 +4,23 @@
     "description": "The title of the footer links column with title=Docs in the footer"
   },
   "link.title.Community": {
-    "message": "Community",
+    "message": "Communauté",
     "description": "The title of the footer links column with title=Community in the footer"
   },
   "link.title.More": {
-    "message": "More",
+    "message": "Plus",
     "description": "The title of the footer links column with title=More in the footer"
   },
   "link.item.label.Quickstart": {
-    "message": "Quickstart",
+    "message": "Démarrage rapide",
     "description": "The label of footer link with label=Quickstart linking to /docs/quickstart/install-wallet"
   },
   "link.item.label.Game Guide": {
-    "message": "Game Guide",
+    "message": "Guide de jeu",
     "description": "The label of footer link with label=Game Guide linking to /docs/guide/civilization"
   },
   "link.item.label.Economy": {
-    "message": "Economy",
+    "message": "Économie",
     "description": "The label of footer link with label=Economy linking to /docs/economy/dft-overview"
   },
   "link.item.label.Discord": {
@@ -32,7 +32,7 @@
     "description": "The label of footer link with label=Twitter linking to https://twitter.com/darkforest"
   },
   "link.item.label.Game Website": {
-    "message": "Game Website",
+    "message": "Site du jeu",
     "description": "The label of footer link with label=Game Website linking to https://darkforest.uk"
   },
   "link.item.label.GitHub": {
@@ -40,7 +40,7 @@
     "description": "The label of footer link with label=GitHub linking to https://github.com/RabbitChaindevs/docs-darkforest"
   },
   "copyright": {
-    "message": "© 2026 Dark Forest. Built on BNB Chain.",
+    "message": "© 2026 Dark Forest. Construit sur BNB Chain.",
     "description": "The footer copyright"
   }
 }

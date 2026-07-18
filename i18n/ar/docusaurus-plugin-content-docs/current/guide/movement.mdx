@@ -1,98 +1,98 @@
 ---
 sidebar_position: 3
-title: Space Jump & Cruise
-description: Detailed breakdown of the Dark Forest movement system
+title: القفز الفضائي والانطلاق
+description: تحليل تفصيلي لنظام الحركة في Dark Forest
 ---
 
-# Space Jump & Cruise
+# القفز الفضائي والانطلاق
 
-## Cruise
+## الانطلاق (Cruise)
 
-Cruise is the standard method of movement. The engine propels your civilization toward a target coordinate.
+الانطلاق هو الطريقة القياسية للحركة. يدفع المحرك حضارتك نحو إحداثيات الهدف.
 
-### Conditions
-- Engine durability > 0
-- Target coordinates are within your radar range
+### الشروط
+- متانة المحرك > 0
+- إحداثيات الهدف ضمن نطاق الرادار الخاص بك
 
-### Operation
+### العملية
 
 ```
 startMove(x, y, z)
 ```
 
-Enter the target coordinates `(x, y, z)` to begin cruising. You can cancel at any time before arrival (`cancelMove`).
+أدخل إحداثيات الهدف `(x, y, z)` لبدء الانطلاق. يمكنك الإلغاء في أي وقت قبل الوصول (`cancelMove`).
 
-### Speed
+### السرعة
 
 ```
-Move Speed = 10 + 5 × (engine level - 1)
+سرعة الحركة = 10 + 5 × (مستوى المحرك - 1)
 
-So Lv1 = 10, Lv2 = 15, Lv10 = 55, Lv50 = 255.
+إذن المستوى1 = 10، المستوى2 = 15، المستوى10 = 55، المستوى50 = 255.
 ```
 
-The higher your engine level, the faster you move.
+كلما ارتفع مستوى محركك، زادت سرعة حركتك.
 
 ---
 
-## Space Jump
+## القفز الفضائي (Space Jump)
 
-A space jump instantly teleports you to a new deterministic coordinate. It is much faster than cruising but comes with serious side effects.
+القفز الفضائي ينقلك فوراً إلى إحداثيات حتمية جديدة. إنه أسرع بكثير من الانطلاق لكنه يأتي بآثار جانبية خطيرة.
 
-### Cost
+### التكلفة
 
-Each jump's cost increases with **historical jump count**:
+تزداد تكلفة كل قفزة مع **عدد القفزات التاريخي**:
 
-| Resource | Formula | Cap |
+| المورد | المعادلة | الحد الأقصى |
 |----------|---------|-----|
-| **Energy** | `200,000 + 200,000 × √(historical jumps)` | 16,500,000 |
-| **DFT** | `10 + 10 × √(historical jumps)` | 1,000 DFT |
-| **Engine Durability** | 1 point | |
+| **الطاقة** | `200,000 + 200,000 × √(القفزات التاريخية)` | 16,500,000 |
+| **DFT** | `10 + 10 × √(القفزات التاريخية)` | 1,000 DFT |
+| **متانة المحرك** | نقطة واحدة | |
 
-### Cooldown
+### فترة التبريد
 
-After each jump, you must wait **1 hour** before jumping again.
+بعد كل قفزة، يجب أن تنتظر **ساعة واحدة** قبل القفز مرة أخرى.
 
-### Side Effects
+### الآثار الجانبية
 
-> ⚠️ Space jump inflicts heavy damage on your vessel:
+> ⚠️ القفز الفضائي يلحق ضرراً كبيراً بمركبتك:
 >
-> **Shield HP resets to 10% of maximum**
+> **تتم إعادة تعيين نقاط حياة الدرع إلى 10% من الحد الأقصى**
 >
-> Your defense will be extremely fragile after jumping. Make sure you jump in a safe area or prepare defensively.
+> سيكون دفاعك هشاً للغاية بعد القفز. تأكد من القفز في منطقة آمنة أو استعد دفاعياً.
 
-### Coordinate Assignment
+### تعيين الإحداثيات
 
-The new coordinates after a jump are assigned by a deterministic algorithm (similar to civilization creation). You cannot manually choose your destination.
+يتم تعيين الإحداثيات الجديدة بعد القفز بواسطة خوارزمية حتمية (مشابهة لإنشاء الحضارة). لا يمكنك اختيار وجهتك يدوياً.
 
 ---
 
-## Tracking Jump
+## القفز التعقبي (Tracking Jump)
 
-A tracking jump lets you jump directly to a target civilization's location.
+القفز التعقبي يتيح لك القفز مباشرة إلى موقع حضارة هدف.
 
-### Conditions
+### الشروط
 
-- Your **radar level ≥ 20**
-- The target is **within your radar scan range**
+- **مستوى الرادار ≥ 20**
+- الهدف **ضمن نطاق مسح الرادار الخاص بك**
 
-### Cost
+### التكلفة
 
-Same as a regular space jump (energy + DFT + engine durability), and shares the same cooldown.
+نفس تكلفة القفز الفضائي العادي (طاقة + DFT + متانة محرك)، ويتشارك نفس فترة التبريد.
 
 ---
 
-## Comparison
+## المقارنة
 
-| Method | Cost | Speed | Use Case |
+| الطريقة | التكلفة | السرعة | حالة الاستخدام |
 |--------|------|-------|----------|
-| Cruise | Time only | Slow | Short-distance movement, exploration |
-| Space Jump | Energy + DFT + Shield HP | Instant | Long-distance travel, evading tracking jumps |
-| Tracking Jump | Energy + DFT + Shield HP | Instant | Chasing targets, assisting allies |
+| الانطلاق | الوقت فقط | بطيء | حركة قصيرة المسافة، استكشاف |
+| القفز الفضائي | طاقة + DFT + نقاط حياة الدرع | فوري | سفر طويل المسافة، تفادي القفزات التعقبية |
+| القفز التعقبي | طاقة + DFT + نقاط حياة الدرع | فوري | مطاردة الأهداف، مساعدة الحلفاء |
 
 ---
 
-## Post-Alliance Non-Aggression Protocol
+## بروتوكول عدم الاعتداء بعد التحالف
 
-After leaving an alliance, you and the former alliance **cannot attack each other for 24 hours** (Leave Cooldown), preventing tactical abuse of the alliance system.
+بعد مغادرة التحالف، لا يمكنك أنت والتحالف السابق **مهاجمة بعضكما البعض لمدة 24 ساعة** (فترة تبريد المغادرة)، مما يمنع الاستغلال التكتيكي لنظام التحالف.
 
-**Recommended next step: [Energy System →](/docs/guide/energy)**
+**الخطوة التالية الموصى بها: [نظام الطاقة →](/docs/guide/energy)**

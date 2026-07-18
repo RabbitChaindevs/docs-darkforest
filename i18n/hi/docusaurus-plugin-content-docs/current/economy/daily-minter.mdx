@@ -1,93 +1,93 @@
 ---
 sidebar_position: 3
-title: Daily Mint
-description: Dark Forest DailyMinter — daily DFT distribution mechanism
+title: दैनिक मिंट
+description: डार्क फ़ॉरेस्ट DailyMinter — दैनिक DFT वितरण तंत्र
 ---
 
-# Daily Mint
+# दैनिक मिंट
 
-The **DailyMinter** contract mints a fixed amount of DFT each day and distributes it evenly among active civilizations. **Claim it the same day or lose it** — unclaimed amounts do not accumulate.
+**DailyMinter** कॉन्ट्रैक्ट प्रतिदिन एक निश्चित मात्रा में DFT मिंट करता है और इसे सक्रिय सभ्यताओं के बीच समान रूप से वितरित करता है। **उसी दिन दावा करें या इसे खो दें** — बिना दावा की गई राशि जमा नहीं होती।
 
 ---
 
-## How to Claim
+## दावा कैसे करें
 
-### Requirements
+### आवश्यकताएँ
 
-- You must have created a civilization **before midnight UTC** on the claim day
-- `distribute()` must have been called for that day (anyone can trigger it)
-- Each address can only claim once per day
+- आपने दावा के दिन **UTC मध्यरात्रि से पहले** एक सभ्यता बनाई होनी चाहिए
+- उस दिन `distribute()` कॉल किया गया होना चाहिए (कोई भी इसे ट्रिगर कर सकता है)
+- प्रत्येक पता प्रति दिन केवल एक बार दावा कर सकता है
 
-### Operation
+### संचालन
 
 ```
 claim()
 ```
 
-Confirm the transaction (gas fee only).
+लेन-देन की पुष्टि करें (केवल गैस शुल्क)।
 
 ---
 
-## Minting Flow
+## मिंटिंग प्रवाह
 
-### Step 1: Distribute
+### चरण 1: वितरण
 
-Anyone can call `distribute()`:
+कोई भी `distribute()` कॉल कर सकता है:
 
-1. The contract checks the last undistributed epoch
-2. Snapshots the current number of active civilizations
-3. Calculates `share per player = daily emission / active civilizations`
-4. Mints the total DFT to the contract
-5. `Daily emission = 1,152,575,342 DFT` (constant)
+1. कॉन्ट्रैक्ट अंतिम अवितरित युग की जाँच करता है
+2. वर्तमान सक्रिय सभ्यताओं की संख्या का स्नैपशॉट लेता है
+3. `प्रति खिलाड़ी हिस्सा = दैनिक उत्सर्जन / सक्रिय सभ्यताएँ` की गणना करता है
+4. कुल DFT कॉन्ट्रैक्ट को मिंट करता है
+5. `दैनिक उत्सर्जन = 1,152,575,342 DFT` (स्थिर)
 
-### Step 2: Claim
+### चरण 2: दावा
 
-Players call `claim()`:
+खिलाड़ी `claim()` कॉल करते हैं:
 
-1. Verifies you created a civilization before this epoch
-2. Verifies you haven't already claimed
-3. Transfers your share to your wallet
+1. सत्यापित करता है कि आपने इस युग से पहले सभ्यता बनाई थी
+2. सत्यापित करता है कि आपने पहले ही दावा नहीं किया है
+3. आपका हिस्सा आपके वॉलेट में स्थानांतरित करता है
 
-### Step 3: Burn Remainder
+### चरण 3: शेष बर्न
 
-On the next `distribute()`, any DFT from the previous epoch that was not claimed is **burned** (reducing circulating supply).
+अगले `distribute()` पर, पिछले युग का कोई भी DFT जो दावा नहीं किया गया था, **जला दिया जाता है** (प्रचलन आपूर्ति को कम करता है)।
 
 ---
 
-## Timeline
+## समयरेखा
 
 ```
-Epoch 0      Epoch 1      Epoch 2
+युग 0        युग 1        युग 2
    |            |            |
 UTC 00:00    UTC 00:00    UTC 00:00
-   ↑create civ  ↑distribute   ↑distribute
-                ↑claim        ↑claim
-                              ↑unclaimed burned
+   ↑सभ्यता बनाएँ  ↑वितरण       ↑वितरण
+                 ↑दावा        ↑दावा
+                              ↑बिना दावा जला दिया
 ```
 
-- Epochs are divided by UTC midnight
-- You can only claim the **most recently distributed** epoch
-- Miss an epoch and you can never claim it
+- युग UTC मध्यरात्रि द्वारा विभाजित होते हैं
+- आप केवल **सबसे हाल ही में वितरित** युग का दावा कर सकते हैं
+- एक युग चूक गए तो इसे कभी दावा नहीं कर सकते
 
 ---
 
-## Key Parameters
+## मुख्य पैरामीटर
 
-| Parameter | Value |
+| पैरामीटर | मान |
 |-----------|-------|
-| Daily Emission | **1,152,575,342 DFT** (constant) |
-| Total Distribution Period | **3,650 days** (~10 years) |
-| Total Supply Cap | **4,206,900,000,000 DFT** (~4.2 trillion) |
-| Claim Window | Within each epoch (typically 1 day) |
+| दैनिक उत्सर्जन | **1,152,575,342 DFT** (स्थिर) |
+| कुल वितरण अवधि | **3,650 दिन** (~10 वर्ष) |
+| कुल आपूर्ति सीमा | **4,206,900,000,000 DFT** (~4.2 ट्रिलियन) |
+| दावा विंडो | प्रत्येक युग के भीतर (आमतौर पर 1 दिन) |
 
 ---
 
-## Why Claim Daily
+## दैनिक दावा क्यों करें
 
-1. 🆓 **Free DFT** — only costs gas, available every day
-2. 📉 **Unclaimed gets burned** — miss it and it's gone
-3. 📈 **Fewer players = more per person** — if active players decrease, each share increases
+1. 🆓 **मुफ़्त DFT** — केवल गैस की लागत, हर दिन उपलब्ध
+2. 📉 **बिना दावा जला दिया जाता है** — चूक गए तो खत्म
+3. 📈 **कम खिलाड़ी = प्रति व्यक्ति अधिक** — यदि सक्रिय खिलाड़ी घटते हैं, प्रत्येक हिस्सा बढ़ता है
 
-> 💡 Set a daily reminder around UTC time to claim. If `distribute()` hasn't been called yet for the day, you can trigger it yourself — it only costs gas.
+> 💡 UTC समय के आसपास दावा करने के लिए दैनिक अनुस्मारक सेट करें। यदि उस दिन `distribute()` अभी तक कॉल नहीं किया गया है, तो आप इसे स्वयं ट्रिगर कर सकते हैं — इसमें केवल गैस की लागत है।
 
-**Recommended next step: [What Is an AI Agent →](/docs/agent/what-is-agent)**
+**अनुशंसित अगला कदम: [AI एजेंट क्या है →](/docs/agent/what-is-agent)**

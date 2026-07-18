@@ -4,7 +4,7 @@
     "description": "The title in the navbar"
   },
   "logo.alt": {
-    "message": "Dark Forest Logo",
+    "message": "Logo Dark Forest",
     "description": "The alt text of navbar logo"
   },
   "item.label.📚 Docs": {
@@ -12,7 +12,7 @@
     "description": "Navbar item with label 📚 Docs"
   },
   "item.label.🎮 Game": {
-    "message": "🎮 Game",
+    "message": "🎮 Jeu",
     "description": "Navbar item with label 🎮 Game"
   },
   "item.label.GitHub": {

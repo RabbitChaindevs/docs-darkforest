@@ -1,18 +1,18 @@
 {
   "theme.ErrorPageContent.title": {
-    "message": "This page crashed.",
+    "message": "এই পেজটি ক্র্যাশ হয়েছে।",
     "description": "The title of the fallback page when the page crashed"
   },
   "theme.BackToTopButton.buttonAriaLabel": {
-    "message": "Scroll back to top",
+    "message": "পেছনে উপরে স্ক্রোল করুন",
     "description": "The ARIA label for the back to top button"
   },
   "theme.blog.archive.title": {
-    "message": "Archive",
+    "message": "আর্কাইভ",
     "description": "The page & hero title of the blog archive page"
   },
   "theme.blog.archive.description": {
-    "message": "Archive",
+    "message": "আর্কাইভ",
     "description": "The page & hero description of the blog archive page"
   },
   "theme.blog.paginator.navAriaLabel": {
@@ -24,7 +24,7 @@
     "description": "The label used to navigate to the newer blog posts page (previous page)"
   },
   "theme.blog.paginator.olderEntries": {
-    "message": "পুরানো এন্ট্রি",
+    "message": "পুরনো এন্ট্রি",
     "description": "The label used to navigate to the older blog posts page (next page)"
   },
   "theme.blog.post.paginator.navAriaLabel": {
@@ -36,31 +36,31 @@
     "description": "The blog post button label to navigate to the newer/previous post"
   },
   "theme.blog.post.paginator.olderPost": {
-    "message": "পুরানো পোস্ট",
+    "message": "পুরনো পোস্ট",
     "description": "The blog post button label to navigate to the older/next post"
   },
   "theme.tags.tagsPageLink": {
-    "message": "সমস্ত ট্যাগ্স দেখুন",
+    "message": "সব ট্যাগ দেখুন",
     "description": "The label of the link targeting the tag list page"
   },
   "theme.colorToggle.ariaLabel.mode.system": {
-    "message": "system mode",
+    "message": "সিস্টেম মোড",
     "description": "The name for the system color mode"
   },
   "theme.colorToggle.ariaLabel.mode.light": {
-    "message": "light mode",
+    "message": "লাইট মোড",
     "description": "The name for the light color mode"
   },
   "theme.colorToggle.ariaLabel.mode.dark": {
-    "message": "dark mode",
+    "message": "ডার্ক মোড",
     "description": "The name for the dark color mode"
   },
   "theme.colorToggle.ariaLabel": {
-    "message": "Switch between dark and light mode (currently {mode})",
+    "message": "ডার্ক এবং লাইট মোডের মধ্যে স্যুইচ করুন (বর্তমানে {mode})",
     "description": "The ARIA label for the color mode toggle"
   },
   "theme.docs.breadcrumbs.navAriaLabel": {
-    "message": "Breadcrumbs",
+    "message": "ব্রেডক্রাম্ব",
     "description": "The ARIA label for the breadcrumbs"
   },
   "theme.docs.paginator.navAriaLabel": {
@@ -76,22 +76,22 @@
     "description": "The label used to navigate to the next doc"
   },
   "theme.docs.tagDocListPageTitle.nDocsTagged": {
-    "message": "One doc tagged|{count} docs tagged",
-    "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+    "message": "একটি ডক ট্যাগ করা হয়েছে|{count} ডক্স ট্যাগ করা হয়েছে",
+    "description": "Pluralized label for \"{count} docs tagged\""
   },
   "theme.docs.tagDocListPageTitle": {
-    "message": "{nDocsTagged} with \"{tagName}\"",
+    "message": "{nDocsTagged} \"{tagName}\" দিয়ে",
     "description": "The title of the page for a docs tag"
   },
   "theme.docs.versionBadge.label": {
-    "message": "Version: {versionLabel}"
+    "message": "ভার্সন: {versionLabel}"
   },
   "theme.docs.versions.unreleasedVersionLabel": {
-    "message": "এটি {siteTitle} {versionLabel} এর জন্যে অপ্রকাশিত ডকুমেন্টেশন।",
+    "message": "এটি {siteTitle} {versionLabel} ভ্যার্সনের জন্য অপ্রকাশিত ডকুমেন্টেশন।",
     "description": "The label used to tell the user that he's browsing an unreleased doc version"
   },
   "theme.docs.versions.unmaintainedVersionLabel": {
-    "message": "এটি {siteTitle} {versionLabel} এর জন্যে ডকুমেন্টেশন, যা আর সক্রিয়ভাবে রক্ষণাবেক্ষণ করা হয় না।",
+    "message": "এটি {siteTitle} {versionLabel} এর জন্য ডকুমেন্টেশন, যা আর সক্রিয়ভাবে রক্ষণাবেক্ষণ করা হয় না।",
     "description": "The label used to tell the user that he's browsing an unmaintained doc version"
   },
   "theme.docs.versions.latestVersionSuggestionLabel": {
@@ -99,15 +99,15 @@
     "description": "The label used to tell the user to check the latest version"
   },
   "theme.docs.versions.latestVersionLinkLabel": {
-    "message": "লেটেস্ট ভার্সন",
+    "message": "সর্বশেষ ভার্সন",
     "description": "The label used for the latest version suggestion link label"
   },
   "theme.common.editThisPage": {
-    "message": "এই পেজটি এডিট করুন",
+    "message": "এই পেজটি সম্পাদনা করুন",
     "description": "The link label to edit the current page"
   },
   "theme.common.headingLinkTitle": {
-    "message": "{heading} এর সঙ্গে সরাসরি লিংকড",
+    "message": "{heading} এর সরাসরি লিঙ্ক",
     "description": "Title for link to heading"
   },
   "theme.lastUpdated.atDate": {
@@ -115,47 +115,47 @@
     "description": "The words used to describe on which date a page has been last updated"
   },
   "theme.lastUpdated.byUser": {
-    "message": "{user} দ্বারা",
+    "message": " {user} দ্বারা",
     "description": "The words used to describe by who the page has been last updated"
   },
   "theme.lastUpdated.lastUpdatedAtBy": {
-    "message": "সর্বশেষ সংষ্করণ{atDate}{byUser}",
+    "message": "সর্বশেষ আপডেট{atDate}{byUser}",
     "description": "The sentence used to display when a page has been last updated, and by who"
   },
   "theme.navbar.mobileVersionsDropdown.label": {
-    "message": "Versions",
+    "message": "ভার্সন",
     "description": "The label for the navbar versions dropdown on mobile view"
   },
   "theme.NotFound.title": {
-    "message": "পেজটি খুঁজে পাওয়া যায়নি",
+    "message": "পেজ পাওয়া যায়নি",
     "description": "The title of the 404 page"
   },
   "theme.tags.tagsListLabel": {
-    "message": "ট্যাগ্স:",
+    "message": "ট্যাগ:",
     "description": "The label alongside a tag list"
   },
   "theme.admonition.caution": {
-    "message": "caution",
+    "message": "সতর্কতা",
     "description": "The default label used for the Caution admonition (:::caution)"
   },
   "theme.admonition.danger": {
-    "message": "danger",
+    "message": "বিপদ",
     "description": "The default label used for the Danger admonition (:::danger)"
   },
   "theme.admonition.info": {
-    "message": "info",
+    "message": "তথ্য",
     "description": "The default label used for the Info admonition (:::info)"
   },
   "theme.admonition.note": {
-    "message": "note",
+    "message": "নোট",
     "description": "The default label used for the Note admonition (:::note)"
   },
   "theme.admonition.tip": {
-    "message": "tip",
+    "message": "টিপ",
     "description": "The default label used for the Tip admonition (:::tip)"
   },
   "theme.admonition.warning": {
-    "message": "warning",
+    "message": "সতর্কীকরণ",
     "description": "The default label used for the Warning admonition (:::warning)"
   },
   "theme.AnnouncementBar.closeButtonAriaLabel": {
@@ -163,39 +163,39 @@
     "description": "The ARIA label for close button of announcement bar"
   },
   "theme.blog.sidebar.navAriaLabel": {
-    "message": "সাম্প্রতিক ব্লগ পোস্ট নেভিগেশন",
+    "message": "ব্লগ সাম্প্রতিক পোস্ট নেভিগেশন",
     "description": "The ARIA label for recent posts in the blog sidebar"
   },
   "theme.DocSidebarItem.expandCategoryAriaLabel": {
-    "message": "Expand sidebar category '{label}'",
+    "message": "সাইডবার ক্যাটাগরি '{label}' প্রসারিত করুন",
     "description": "The ARIA label to expand the sidebar category"
   },
   "theme.DocSidebarItem.collapseCategoryAriaLabel": {
-    "message": "Collapse sidebar category '{label}'",
+    "message": "সাইডবার ক্যাটাগরি '{label}' সঙ্কুচিত করুন",
     "description": "The ARIA label to collapse the sidebar category"
   },
   "theme.IconExternalLink.ariaLabel": {
-    "message": "(opens in new tab)",
+    "message": "(নতুন ট্যাবে খোলে)",
     "description": "The ARIA label for the external link icon"
   },
-  "theme.navbar.mobileLanguageDropdown.label": {
-    "message": "Languages",
-    "description": "The label for the mobile language switcher dropdown"
-  },
   "theme.NavBar.navAriaLabel": {
-    "message": "Main",
+    "message": "প্রধান",
     "description": "The ARIA label for the main navigation"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "ভাষা",
+    "description": "The label for the mobile language switcher dropdown"
   },
   "theme.NotFound.p1": {
     "message": "আপনি যা খুঁজছিলেন তা আমরা খুঁজে পাইনি।",
     "description": "The first paragraph of the 404 page"
   },
   "theme.NotFound.p2": {
-    "message": "দয়া করে সাইটের মালিকের সাথে যোগাযোগ করুন যা আপনাকে মূল URL এর সাথে যুক্ত করেছে এবং তাদের লিঙ্কটি ভাঙ্গা রয়েছে তা তাদের জানান।",
+    "message": "দয়া করে সেই সাইটের মালিকের সাথে যোগাযোগ করুন যা আপনাকে মূল URL-এ লিঙ্ক করেছে এবং তাদের জানান যে তাদের লিঙ্কটি ভাঙা।",
     "description": "The 2nd paragraph of the 404 page"
   },
   "theme.TOCCollapsible.toggleButtonLabel": {
-    "message": "এই পেজ এ রয়েছে",
+    "message": "এই পেজে রয়েছে",
     "description": "The label used by the button on the collapsible TOC component"
   },
   "theme.blog.post.readMore": {
@@ -203,19 +203,19 @@
     "description": "The label used in blog post item excerpts to link to full blog posts"
   },
   "theme.blog.post.readMoreLabel": {
-    "message": "Read more about {title}",
+    "message": "{title} সম্পর্কে আরও পড়ুন",
     "description": "The ARIA label for the link to full blog posts from excerpts"
   },
   "theme.blog.post.readingTime.plurals": {
-    "message": "এক মিনিট পড়া|{readingTime} মিনিট পড়া",
-    "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+    "message": "এক মিনিট পড়া|{readingTime} মিনিট পড়া",
+    "description": "Pluralized label for \"{readingTime} min read\""
   },
   "theme.CodeBlock.copy": {
-    "message": "কপি",
+    "message": "কপি করুন",
     "description": "The copy button label on code blocks"
   },
   "theme.CodeBlock.copied": {
-    "message": "কপিড",
+    "message": "কপি হয়েছে",
     "description": "The copied button label on code blocks"
   },
   "theme.CodeBlock.copyButtonAriaLabel": {
@@ -223,59 +223,59 @@
     "description": "The ARIA label for copy code blocks button"
   },
   "theme.CodeBlock.wordWrapToggle": {
-    "message": "Toggle word wrap",
+    "message": "ওয়ার্ড র্যাপ টগল করুন",
     "description": "The title attribute for toggle word wrapping button of code block lines"
   },
   "theme.docs.breadcrumbs.home": {
-    "message": "Home page",
+    "message": "হোম পেজ",
     "description": "The ARIA label for the home page in the breadcrumbs"
   },
   "theme.docs.sidebar.collapseButtonTitle": {
-    "message": "সাইডবারটি সঙ্কুচিত করুন",
+    "message": "সাইডবার সঙ্কুচিত করুন",
     "description": "The title attribute for collapse button of doc sidebar"
   },
   "theme.docs.sidebar.collapseButtonAriaLabel": {
-    "message": "সাইডবারটি সঙ্কুচিত করুন",
+    "message": "সাইডবার সঙ্কুচিত করুন",
     "description": "The title attribute for collapse button of doc sidebar"
   },
   "theme.docs.sidebar.navAriaLabel": {
-    "message": "Docs sidebar",
+    "message": "ডক্স সাইডবার",
     "description": "The ARIA label for the sidebar navigation"
   },
-  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
-    "message": "Expand the dropdown",
-    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
-  },
-  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
-    "message": "Collapse the dropdown",
-    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
-  },
   "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
-    "message": "Close navigation bar",
+    "message": "নেভিগেশন বার বন্ধ করুন",
     "description": "The ARIA label for close button of mobile sidebar"
   },
   "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
-    "message": "← মেন মেনুতে যান",
-    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+    "message": "← প্রধান মেনুতে ফিরে যান",
+    "description": "The label of the back button to return to main menu"
   },
   "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
-    "message": "Toggle navigation bar",
+    "message": "নেভিগেশন বার টগল করুন",
     "description": "The ARIA label for hamburger menu button of mobile navigation"
   },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "ড্রপডাউন প্রসারিত করুন",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "ড্রপডাউন সঙ্কুচিত করুন",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
   "theme.docs.sidebar.expandButtonTitle": {
-    "message": "সাইডবারটি প্রসারিত করুন",
+    "message": "সাইডবার প্রসারিত করুন",
     "description": "The ARIA label and title attribute for expand button of doc sidebar"
   },
   "theme.docs.sidebar.expandButtonAriaLabel": {
-    "message": "সাইডবারটি প্রসারিত করুন",
+    "message": "সাইডবার প্রসারিত করুন",
     "description": "The ARIA label and title attribute for expand button of doc sidebar"
   },
   "theme.blog.post.plurals": {
-    "message": "একটি পোস্ট|{count} পোস্টস",
-    "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+    "message": "একটি পোস্ট|{count} পোস্ট",
+    "description": "Pluralized label for \"{count} posts\""
   },
   "theme.blog.tagTitle": {
-    "message": "{nPosts} সঙ্গে ট্যাগ্গেড \"{tagName}\" ",
+    "message": "{nPosts} \"{tagName}\" ট্যাগ সহ",
     "description": "The title of the page for a blog tag"
   },
   "theme.blog.author.pageTitle": {
@@ -283,47 +283,47 @@
     "description": "The title of the page for a blog author"
   },
   "theme.blog.authorsList.pageTitle": {
-    "message": "Authors",
+    "message": "লেখক",
     "description": "The title of the authors page"
   },
   "theme.blog.authorsList.viewAll": {
-    "message": "View All Authors",
+    "message": "সব লেখক দেখুন",
     "description": "The label of the link targeting the blog authors page"
   },
   "theme.blog.author.noPosts": {
-    "message": "This author has not written any posts yet.",
+    "message": "এই লেখক এখনও কোনো পোস্ট লেখেননি।",
     "description": "The text for authors with 0 blog post"
   },
   "theme.contentVisibility.unlistedBanner.title": {
-    "message": "Unlisted page",
+    "message": "অতালিকাভুক্ত পেজ",
     "description": "The unlisted content banner title"
   },
   "theme.contentVisibility.unlistedBanner.message": {
-    "message": "This page is unlisted. Search engines will not index it, and only users having a direct link can access it.",
+    "message": "এই পেজটি অতালিকাভুক্ত। সার্চ ইঞ্জিন এটি ইনডেক্স করবে না, এবং শুধুমাত্র সরাসরি লিঙ্ক থাকা ব্যবহারকারীরা এটি অ্যাক্সেস করতে পারবেন।",
     "description": "The unlisted content banner message"
   },
   "theme.contentVisibility.draftBanner.title": {
-    "message": "Draft page",
+    "message": "খসড়া পেজ",
     "description": "The draft content banner title"
   },
   "theme.contentVisibility.draftBanner.message": {
-    "message": "This page is a draft. It will only be visible in dev and be excluded from the production build.",
+    "message": "এই পেজটি একটি খসড়া। এটি শুধুমাত্র ডেভ-এ দৃশ্যমান হবে এবং প্রোডাকশন বিল্ড থেকে বাদ দেওয়া হবে।",
     "description": "The draft content banner message"
   },
   "theme.docs.DocCard.categoryDescription.plurals": {
-    "message": "1 item|{count} items",
-    "description": "The default description for a category card in the generated index about how many items this category includes"
+    "message": "1 আইটেম|{count} আইটেম",
+    "description": "The default description for a category card"
   },
   "theme.ErrorPageContent.tryAgain": {
-    "message": "Try again",
-    "description": "The label of the button to try again rendering when the React error boundary captures an error"
+    "message": "পুনরায় চেষ্টা করুন",
+    "description": "The label of the button to try again rendering"
   },
   "theme.common.skipToMainContent": {
-    "message": "স্কিপ করে মূল কন্টেন্ট এ যান",
-    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+    "message": "মূল বিষয়বস্তুতে যান",
+    "description": "The skip to content label used for accessibility"
   },
   "theme.tags.tagsPageTitle": {
-    "message": "ট্যাগ্স",
+    "message": "ট্যাগ",
     "description": "The title of the tag list page"
   }
 }

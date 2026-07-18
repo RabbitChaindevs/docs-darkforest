@@ -1,46 +1,46 @@
 {
   "link.title.Docs": {
-    "message": "Docs",
-    "description": "The title of the footer links column with title=Docs in the footer"
+    "message": "دستاویزات",
+    "description": "فوٹر لنکس کالم کا عنوان جس کا عنوان=Docs ہے"
   },
   "link.title.Community": {
-    "message": "Community",
-    "description": "The title of the footer links column with title=Community in the footer"
+    "message": "کمیونٹی",
+    "description": "فوٹر لنکس کالم کا عنوان جس کا عنوان=Community ہے"
   },
   "link.title.More": {
-    "message": "More",
-    "description": "The title of the footer links column with title=More in the footer"
+    "message": "مزید",
+    "description": "فوٹر لنکس کالم کا عنوان جس کا عنوان=More ہے"
   },
   "link.item.label.Quickstart": {
-    "message": "Quickstart",
-    "description": "The label of footer link with label=Quickstart linking to /docs/quickstart/install-wallet"
+    "message": "فوری آغاز",
+    "description": "فوٹر لنک کا لیبل جس کا لیبل=Quickstart ہے"
   },
   "link.item.label.Game Guide": {
-    "message": "Game Guide",
-    "description": "The label of footer link with label=Game Guide linking to /docs/guide/civilization"
+    "message": "گیم گائیڈ",
+    "description": "فوٹر لنک کا لیبل جس کا لیبل=Game Guide ہے"
   },
   "link.item.label.Economy": {
-    "message": "Economy",
-    "description": "The label of footer link with label=Economy linking to /docs/economy/dft-overview"
+    "message": "معیشت",
+    "description": "فوٹر لنک کا لیبل جس کا لیبل=Economy ہے"
   },
   "link.item.label.Discord": {
-    "message": "Discord",
-    "description": "The label of footer link with label=Discord linking to https://discord.gg/darkforest"
+    "message": "ڈسکارڈ",
+    "description": "فوٹر لنک کا لیبل جس کا لیبل=Discord ہے"
   },
   "link.item.label.Twitter": {
-    "message": "Twitter",
-    "description": "The label of footer link with label=Twitter linking to https://twitter.com/darkforest"
+    "message": "ٹویٹر",
+    "description": "فوٹر لنک کا لیبل جس کا لیبل=Twitter ہے"
   },
   "link.item.label.Game Website": {
-    "message": "Game Website",
-    "description": "The label of footer link with label=Game Website linking to https://darkforest.uk"
+    "message": "گیم ویب سائٹ",
+    "description": "فوٹر لنک کا لیبل جس کا لیبل=Game Website ہے"
   },
   "link.item.label.GitHub": {
     "message": "GitHub",
-    "description": "The label of footer link with label=GitHub linking to https://github.com/RabbitChaindevs/docs-darkforest"
+    "description": "فوٹر لنک کا لیبل جس کا لیبل=GitHub ہے"
   },
   "copyright": {
-    "message": "© 2026 Dark Forest. Built on BNB Chain.",
-    "description": "The footer copyright"
+    "message": "© 2026 ڈارک فاریسٹ۔ BNB Chain پر بنایا گیا۔",
+    "description": "فوٹر کاپی رائٹ"
   }
 }

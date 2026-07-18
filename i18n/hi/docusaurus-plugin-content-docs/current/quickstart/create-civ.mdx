@@ -1,59 +1,59 @@
 ---
 sidebar_position: 4
-title: Create Your First Civilization
-description: Complete guide to creating a civilization in Dark Forest
+title: अपनी पहली सभ्यता बनाएँ
+description: डार्क फ़ॉरेस्ट में सभ्यता बनाने की संपूर्ण गाइड
 ---
 
-# Create Your First Civilization
+# अपनी पहली सभ्यता बनाएँ
 
-## Prerequisites
+## आवश्यक शर्तें
 
-- MetaMask installed and connected to BSC mainnet
-- **0.01 ~ 0.05 BNB** in your wallet (entry fee, which grows linearly over time from the minimum to the maximum)
-- At least **1 DFT** (for subsequent upgrades)
+- MetaMask इंस्टॉल हो और BSC मेननेट से कनेक्ट हो
+- आपके वॉलेट में **0.01 ~ 0.05 BNB** (प्रवेश शुल्क, जो न्यूनतम से अधिकतम तक समय के साथ रैखिक रूप से बढ़ता है)
+- कम से कम **1 DFT** (बाद के अपग्रेड के लिए)
 
-## Creation Steps
+## निर्माण चरण
 
-### Step 1: Access the Game
+### चरण 1: गेम तक पहुँचें
 
-Open **[darkforest.uk](https://darkforest.uk)** and click **"Connect Wallet"** in the top-right corner.
+**[darkforest.uk](https://darkforest.uk)** खोलें और ऊपरी-दाएँ कोने में **"वॉलेट कनेक्ट करें"** पर क्लिक करें।
 
-### Step 2: Name Your Civilization
+### चरण 2: अपनी सभ्यता का नाम दें
 
-The civilization name can be **1–32 bytes**, supporting letters, numbers, and symbols.
+सभ्यता का नाम **1–32 बाइट** हो सकता है, जो अक्षरों, संख्याओं और प्रतीकों को सपोर्ट करता है।
 
-### Step 3: Enter an Invite Code (Optional)
+### चरण 3: आमंत्रण कोड दर्ज करें (वैकल्पिक)
 
-If you have an inviter's wallet address, you can enter it here. Both you and the inviter will receive **150 Energy** as a reward.
+यदि आपके पास आमंत्रित करने वाले का वॉलेट पता है, तो आप इसे यहाँ दर्ज कर सकते हैं। आपको और आमंत्रित करने वाले दोनों को पुरस्कार के रूप में **150 ऊर्जा** मिलेगी।
 
-### Step 4: Confirm Creation
+### चरण 4: निर्माण की पुष्टि करें
 
-Click **"Create Civilization"** — MetaMask will pop up a transaction confirmation. The transaction includes:
+**"सभ्यता बनाएँ"** पर क्लिक करें — MetaMask एक लेन-देन पुष्टिकरण पॉप अप करेगा। लेन-देन में शामिल है:
 
-- **Entry fee**: 0.01 BNB (minimum, increases linearly to 0.05 BNB over 365 days)
-- **Gas fee**: A small amount of BNB
+- **प्रवेश शुल्क**: 0.01 BNB (न्यूनतम, 365 दिनों में रैखिक रूप से बढ़कर 0.05 BNB)
+- **गैस शुल्क**: थोड़ी मात्रा में BNB
 
-Confirm and wait for the transaction to finalize on-chain (about 3–5 seconds).
+पुष्टि करें और लेन-देन को ऑन-चेन अंतिम रूप देने की प्रतीक्षा करें (लगभग 3–5 सेकंड)।
 
-## Initial State
+## प्रारंभिक स्थिति
 
-After successful creation, your civilization starts with:
+सफल निर्माण के बाद, आपकी सभ्यता इसके साथ शुरू होती है:
 
-| Attribute | Initial Value |
+| विशेषता | प्रारंभिक मान |
 |-----------|---------------|
-| Energy | **2,000** |
-| Health | **3,000** |
-| Scan Range | **1,000** |
-| All System Levels | **Lv 1** (Collector, Weapon, Shield, Radar, Engine) |
-| Shield HP | **3,615** (3600 + 15 × 1²) |
-| Position | Deterministic coordinates (derived from your address and a nonce) |
+| ऊर्जा | **2,000** |
+| स्वास्थ्य | **3,000** |
+| स्कैन रेंज | **1,000** |
+| सभी सिस्टम स्तर | **Lv 1** (कलेक्टर, वेपन, शील्ड, रडार, इंजन) |
+| शील्ड HP | **3,615** (3600 + 15 × 1²) |
+| स्थिति | नियतात्मक निर्देशांक (आपके पते और एक नॉन्स से व्युत्पन्न) |
 
-## Coordinate Assignment
+## निर्देशांक असाइनमेंट
 
-Your civilization is assigned a **deterministic coordinate** `(x, y, z)`, computed via a hash of your wallet address, creation time, and the total number of civilizations. Each civilization's coordinates are unique.
+आपकी सभ्यता को एक **नियतात्मक निर्देशांक** `(x, y, z)` सौंपा गया है, जो आपके वॉलेट पते, निर्माण समय और कुल सभ्यताओं की संख्या के हैश के माध्यम से गणना की जाती है। प्रत्येक सभ्यता के निर्देशांक अद्वितीय हैं।
 
-## New Player Protection
+## नए खिलाड़ी सुरक्षा
 
-> 🛡️ Newly created civilizations have a **24-hour** protection period. During this time, other players cannot attack you.
+> 🛡️ नवनिर्मित सभ्यताओं के पास **24 घंटे** की सुरक्षा अवधि होती है। इस दौरान, अन्य खिलाड़ी आप पर हमला नहीं कर सकते।
 
-**Recommended next step: [Civilization Development & Upgrades →](/docs/guide/civilization)**
+**अनुशंसित अगला कदम: [सभ्यता विकास और अपग्रेड →](/docs/guide/civilization)**

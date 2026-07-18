@@ -1,93 +1,93 @@
 ---
 sidebar_position: 3
-title: Daily Mint
-description: Dark Forest DailyMinter — daily DFT distribution mechanism
+title: Minería Diaria
+description: DailyMinter de Dark Forest — mecanismo de distribución diaria de DFT
 ---
 
-# Daily Mint
+# Minería Diaria
 
-The **DailyMinter** contract mints a fixed amount of DFT each day and distributes it evenly among active civilizations. **Claim it the same day or lose it** — unclaimed amounts do not accumulate.
+El contrato **DailyMinter** acuña una cantidad fija de DFT cada día y la distribuye equitativamente entre las civilizaciones activas. **Reclámalo el mismo día o piérdelo** — las cantidades no reclamadas no se acumulan.
 
 ---
 
-## How to Claim
+## Cómo Reclamar
 
-### Requirements
+### Requisitos
 
-- You must have created a civilization **before midnight UTC** on the claim day
-- `distribute()` must have been called for that day (anyone can trigger it)
-- Each address can only claim once per day
+- Debes haber creado una civilización **antes de la medianoche UTC** del día de reclamo
+- `distribute()` debe haberse llamado para ese día (cualquiera puede activarlo)
+- Cada dirección solo puede reclamar una vez por día
 
-### Operation
+### Operación
 
 ```
 claim()
 ```
 
-Confirm the transaction (gas fee only).
+Confirma la transacción (solo tarifa de gas).
 
 ---
 
-## Minting Flow
+## Flujo de Acuñación
 
-### Step 1: Distribute
+### Paso 1: Distribuir
 
-Anyone can call `distribute()`:
+Cualquiera puede llamar a `distribute()`:
 
-1. The contract checks the last undistributed epoch
-2. Snapshots the current number of active civilizations
-3. Calculates `share per player = daily emission / active civilizations`
-4. Mints the total DFT to the contract
-5. `Daily emission = 1,152,575,342 DFT` (constant)
+1. El contrato verifica la última época no distribuida
+2. Toma una instantánea del número actual de civilizaciones activas
+3. Calcula `participación por jugador = emisión diaria / civilizaciones activas`
+4. Acuña el DFT total en el contrato
+5. `Emisión diaria = 1.152.575.342 DFT` (constante)
 
-### Step 2: Claim
+### Paso 2: Reclamar
 
-Players call `claim()`:
+Los jugadores llaman a `claim()`:
 
-1. Verifies you created a civilization before this epoch
-2. Verifies you haven't already claimed
-3. Transfers your share to your wallet
+1. Verifica que creaste una civilización antes de esta época
+2. Verifica que aún no has reclamado
+3. Transfiere tu participación a tu billetera
 
-### Step 3: Burn Remainder
+### Paso 3: Quemar el Remanente
 
-On the next `distribute()`, any DFT from the previous epoch that was not claimed is **burned** (reducing circulating supply).
+En el próximo `distribute()`, cualquier DFT de la época anterior que no fue reclamado se **quema** (reduciendo el suministro circulante).
 
 ---
 
-## Timeline
+## Cronología
 
 ```
-Epoch 0      Epoch 1      Epoch 2
+Época 0      Época 1      Época 2
    |            |            |
 UTC 00:00    UTC 00:00    UTC 00:00
-   ↑create civ  ↑distribute   ↑distribute
-                ↑claim        ↑claim
-                              ↑unclaimed burned
+   ↑crear civ  ↑distribuir   ↑distribuir
+               ↑reclamar     ↑reclamar
+                              ↑no reclamado quemado
 ```
 
-- Epochs are divided by UTC midnight
-- You can only claim the **most recently distributed** epoch
-- Miss an epoch and you can never claim it
+- Las épocas se dividen por la medianoche UTC
+- Solo puedes reclamar la época **distribuida más recientemente**
+- Si te pierdes una época, nunca podrás reclamarla
 
 ---
 
-## Key Parameters
+## Parámetros Clave
 
-| Parameter | Value |
+| Parámetro | Valor |
 |-----------|-------|
-| Daily Emission | **1,152,575,342 DFT** (constant) |
-| Total Distribution Period | **3,650 days** (~10 years) |
-| Total Supply Cap | **4,206,900,000,000 DFT** (~4.2 trillion) |
-| Claim Window | Within each epoch (typically 1 day) |
+| Emisión Diaria | **1.152.575.342 DFT** (constante) |
+| Período Total de Distribución | **3.650 días** (~10 años) |
+| Suministro Máximo Total | **4.206.900.000.000 DFT** (~4,2 billones) |
+| Ventana de Reclamo | Dentro de cada época (normalmente 1 día) |
 
 ---
 
-## Why Claim Daily
+## Por Qué Reclamar a Diario
 
-1. 🆓 **Free DFT** — only costs gas, available every day
-2. 📉 **Unclaimed gets burned** — miss it and it's gone
-3. 📈 **Fewer players = more per person** — if active players decrease, each share increases
+1. 🆓 **DFT Gratis** — solo cuesta gas, disponible todos los días
+2. 📉 **Lo no reclamado se quema** — si te lo pierdes, desaparece
+3. 📈 **Menos jugadores = más por persona** — si los jugadores activos disminuyen, cada participación aumenta
 
-> 💡 Set a daily reminder around UTC time to claim. If `distribute()` hasn't been called yet for the day, you can trigger it yourself — it only costs gas.
+> 💡 Establece un recordatorio diario alrededor de la hora UTC para reclamar. Si `distribute()` aún no se ha llamado hoy, puedes activarlo tú mismo — solo cuesta gas.
 
-**Recommended next step: [What Is an AI Agent →](/docs/agent/what-is-agent)**
+**Siguiente paso recomendado: [¿Qué es un AI Agent? →](/docs/agent/what-is-agent)**

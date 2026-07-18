@@ -1,20 +1,20 @@
 ---
 sidebar_position: 2
-title: 5-Minute AI Agent Quickstart
-description: Configure your first AI Agent in Dark Forest
+title: ৫ মিনিটে AI এজেন্ট দ্রুত শুরু
+description: ডার্ক ফরেস্টে আপনার প্রথম AI এজেন্ট কনফিগার করুন
 ---
 
-# 5-Minute Quickstart
+# ৫ মিনিটে দ্রুত শুরু
 
-## Prerequisites
+## পূর্বশর্ত
 
 - Python 3.10+
-- An active Dark Forest civilization
-- Your wallet's private key (for the agent to sign transactions)
+- একটি সক্রিয় ডার্ক ফরেস্ট সভ্যতা
+- আপনার ওয়ালেটের প্রাইভেট কী (এজেন্টের লেনদেনে স্বাক্ষরের জন্য)
 
 ---
 
-## Step 1: Install the Agent
+## ধাপ ১: এজেন্ট ইনস্টল করুন
 
 ```bash
 git clone https://github.com/dark-forest/agent.git
@@ -22,53 +22,53 @@ cd agent
 pip install -r requirements.txt
 ```
 
-## Step 2: Import Your Private Key
+## ধাপ ২: আপনার প্রাইভেট কী আমদানি করুন
 
 ```bash
 python -m dark_forest.cli key import
 ```
 
-The private key is stored encrypted, never in plain text.
+প্রাইভেট কী এনক্রিপ্টেড সংরক্ষিত হয়, কখনো প্লেইন টেক্সটে নয়।
 
-> ⚠️ It is highly recommended to use a **dedicated game wallet** — do not use your main wallet that holds significant assets.
+> ⚠️ একটি **ডেডিকেটেড গেম ওয়ালেট** ব্যবহার করার জন্য দৃঢ়ভাবে সুপারিশ করা হয় — আপনার মূল ওয়ালেট ব্যবহার করবেন না যাতে উল্লেখযোগ্য সম্পদ রয়েছে।
 
-## Step 3: Authorize the Agent
+## ধাপ ৩: এজেন্টকে অনুমোদন করুন
 
-In the game interface, set permissions for your agent's wallet address:
+গেম ইন্টারফেসে, আপনার এজেন্টের ওয়ালেট ঠিকানার জন্য অনুমতি সেট করুন:
 
-- Check the operation permissions the agent needs
-- Set policy constraints (attack frequency, resource reserves, etc.)
+- এজেন্টের প্রয়োজনীয় অপারেশন অনুমতি চেক করুন
+- নীতি সীমাবদ্ধতা সেট করুন (আক্রমণ ফ্রিকোয়েন্সি, সম্পদ মজুদ, ইত্যাদি)
 
-## Step 4: Choose a Strategy
+## ধাপ ৪: একটি কৌশল বেছে নিন
 
 ```bash
-# List available strategies
+# উপলব্ধ কৌশল তালিকাভুক্ত করুন
 python -m dark_forest.cli strategy list
 
-# Use the balanced strategy (recommended)
+# ভারসাম্যপূর্ণ কৌশল ব্যবহার করুন (প্রস্তাবিত)
 python -m dark_forest.cli strategy select balanced
 ```
 
-Four preset strategies:
+চারটি প্রিসেট কৌশল:
 
-| Strategy | Style | Best For |
+| কৌশল | শৈলী | সেরা জন্য |
 |----------|-------|----------|
-| `aggressive` | Aggressive attacker | Highly active players |
-| `balanced` | Balanced offense/defense | **Recommended**, suits most players |
-| `defensive` | Conservative defense | Players who are often offline |
-| `farmer` | Focus on gathering | Peaceful development |
+| `aggressive` | আক্রমণাত্মক | অত্যন্ত সক্রিয় খেলোয়াড় |
+| `balanced` | ভারসাম্যপূর্ণ আক্রমণ/প্রতিরক্ষা | **প্রস্তাবিত**, অধিকাংশ খেলোয়াড়ের জন্য উপযোগী |
+| `defensive` | রক্ষণশীল প্রতিরক্ষা | যারা প্রায়ই অফলাইনে থাকেন |
+| `farmer` | সংগ্রহে মনোযোগ | শান্তিপূর্ণ উন্নয়ন |
 
-## Step 5: Launch
+## ধাপ ৫: চালু করুন
 
 ```bash
-# Start (default balanced strategy)
+# শুরু করুন (ডিফল্ট ভারসাম্যপূর্ণ কৌশল)
 python -m dark_forest.cli run
 
-# Specify a strategy
+# একটি কৌশল নির্দিষ্ট করুন
 python -m dark_forest.cli run --strategy aggressive
 ```
 
-## Step 6: Configure Notifications (Optional)
+## ধাপ ৬: বিজ্ঞপ্তি কনফিগার করুন (ঐচ্ছিক)
 
 ### Telegram
 
@@ -85,10 +85,10 @@ python -m dark_forest.cli config set notify.discord.webhook YOUR_WEBHOOK_URL
 
 ---
 
-## Security Reminders
+## নিরাপত্তা অনুস্মারক
 
-1. 🔐 **Use a dedicated game wallet** with reasonable DFT/energy reserve limits
-2. 📉 **Open permissions gradually** — start with only COLLECT + REPAIR, then add ATTACK once you're confident it's stable
-3. 🔄 **Check in regularly** — review the agent's logs and reports
+1. 🔐 **একটি ডেডিকেটেড গেম ওয়ালেট ব্যবহার করুন** যুক্তিসঙ্গত DFT/শক্তি মজুদ সীমা সহ
+2. 📉 **ধীরে ধীরে অনুমতি খুলুন** — শুধুমাত্র COLLECT + REPAIR দিয়ে শুরু করুন, তারপর স্থিতিশীল হলে ATTACK যোগ করুন
+3. 🔄 **নিয়মিত চেক করুন** — এজেন্টের লগ এবং রিপোর্ট পর্যালোচনা করুন
 
-**Recommended next step: [Strategy Templates →](/docs/agent/strategies)**
+**প্রস্তাবিত পরবর্তী ধাপ: [কৌশল টেমপ্লেট →](/docs/agent/strategies)**

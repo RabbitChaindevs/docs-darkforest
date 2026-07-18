@@ -1,22 +1,22 @@
 {
   "title": {
     "message": "Dark Forest",
-    "description": "The title in the navbar"
+    "description": "نیویگیشن بار میں عنوان"
   },
   "logo.alt": {
-    "message": "Dark Forest Logo",
-    "description": "The alt text of navbar logo"
+    "message": "ڈارک فاریسٹ لوگو",
+    "description": "نیویگیشن بار لوگو کا متبادل متن"
   },
   "item.label.📚 Docs": {
-    "message": "📚 Docs",
-    "description": "Navbar item with label 📚 Docs"
+    "message": "📚 دستاویزات",
+    "description": "نیویگیشن بار آئٹم جس کا لیبل 📚 Docs ہے"
   },
   "item.label.🎮 Game": {
-    "message": "🎮 Game",
-    "description": "Navbar item with label 🎮 Game"
+    "message": "🎮 گیم",
+    "description": "نیویگیشن بار آئٹم جس کا لیبل 🎮 Game ہے"
   },
   "item.label.GitHub": {
     "message": "GitHub",
-    "description": "Navbar item with label GitHub"
+    "description": "نیویگیشن بار آئٹم جس کا لیبل GitHub ہے"
   }
 }

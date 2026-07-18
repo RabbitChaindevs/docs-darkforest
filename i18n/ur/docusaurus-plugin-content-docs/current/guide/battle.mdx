@@ -1,152 +1,152 @@
 ---
 sidebar_position: 2
-title: Attack & Defense
-description: Complete breakdown of the Dark Forest combat system
+title: حملہ اور دفاع
+description: ڈارک فاریسٹ کے جنگی نظام کا مکمل تجزیہ
 ---
 
-# Attack & Defense
+# حملہ اور دفاع
 
-## Attack Conditions
+## حملہ کے شرائط
 
-### Who Can You Attack?
+### آپ کس پر حملہ کر سکتے ہیں؟
 
-- The target must exist and not be destroyed (not in ruin state)
-- The target must not be in its **24-hour new player protection** window
-- The target must be within your **radar scan range** (distance ≤ your radar range)
-- You cannot attack yourself
-- You cannot attack members of your own alliance (you must leave first)
-- You cannot attack someone who left your alliance in the last **24 hours** (mutual cooldown)
+- ہدف موجود ہونا چاہیے اور تباہ شدہ نہ ہو (کھنڈر حالت میں نہ ہو)
+- ہدف اپنی **24 گھنٹے کے نئے کھلاڑی کے تحفظ** کی مدت میں نہ ہو
+- ہدف آپ کی **ریڈار اسکین رینج** کے اندر ہو (فاصلہ ≤ آپ کی ریڈار رینج)
+- آپ خود پر حملہ نہیں کر سکتے
+- آپ اپنے اتحاد کے اراکین پر حملہ نہیں کر سکتے (پہلے چھوڑنا ہوگا)
+- آپ اس شخص پر حملہ نہیں کر سکتے جس نے پچھلے **24 گھنٹوں** میں آپ کا اتحاد چھوڑا ہو (باہمی کولڈاؤن)
 
-### Soft Gate
+### سافٹ گیٹ
 
-If an attack condition isn't met, the attempt **does not consume any resources** — it simply tells you why the attack failed. This lets you experiment freely without worrying about wasted energy.
+اگر حملہ کی شرط پوری نہیں ہوتی، تو کوشش **کوئی وسائل استعمال نہیں کرتی** — یہ صرف آپ کو بتاتی ہے کہ حملہ کیوں ناکام ہوا۔ یہ آپ کو بغیر کسی ضائع شدہ توانائی کی فکر کے آزادانہ تجربہ کرنے دیتا ہے۔
 
 ---
 
-## Attack Cost
+## حملہ کی لاگت
 
-Each successful attack is limited to **1 attack per second**, and consumes:
+ہر کامیاب حملہ **فی سیکنڈ 1 حملہ** تک محدود ہے، اور یہ استعمال کرتا ہے:
 
-| Resource | Cost |
+| وسیلہ | لاگت |
 |----------|------|
-| **Energy** | `50,000 + 50,000 × weapon level` |
-| **Weapon Durability** | 1 point (when weapon durability > 0) |
-| **Attack Token** | 1 token |
+| **توانائی** | `50,000 + 50,000 × ہتھیار کی سطح` |
+| **ہتھیار کی پائیداری** | 1 پوائنٹ (جب ہتھیار کی پائیداری > 0) |
+| **حملہ ٹوکن** | 1 ٹوکن |
 
 ---
 
-## Attack Token System
+## حملہ ٹوکن سسٹم
 
-Attack tokens use a **token bucket algorithm** to limit attack frequency:
+حملہ ٹوکن **ٹوکن بکٹ الگورتھم** استعمال کرتے ہیں تاکہ حملہ کی فریکوئنسی کو محدود کیا جا سکے:
 
-| Parameter | Formula | Description |
+| پیرامیٹر | فارمولا | تفصیل |
 |-----------|---------|-------------|
-| **Max Tokens** | `3 + weapon level / 10`, cap **10** | Auto-recover over time |
-| **Recovery Interval** | `(300 - weapon level × 10) / 100` seconds, min **1s** | 1 token per interval |
-| **Cost** | 1 token per attack | |
+| **زیادہ سے زیادہ ٹوکن** | `3 + ہتھیار کی سطح / 10`، حد **10** | وقت کے ساتھ خود بخود بحال |
+| **بحالی کا وقفہ** | `(300 - ہتھیار کی سطح × 10) / 100` سیکنڈ، کم از کم **1s** | 1 ٹوکن فی وقفہ |
+| **لاگت** | 1 ٹوکن فی حملہ | |
 
-> 💡 The higher your weapon level, the faster your attack tokens recover and the higher your cap.
-
----
-
-## Damage Calculation
-
-### Attacker
-
-```
-Base Attack = 900 + 10 × attacker weapon level²
-If weapon durability = 0, attack is halved
-Final Attack = Base Attack × (1 + combat boost / 10000)
-```
-
-### Defender
-
-```
-Base Defense = 540 + 6 × defender shield level²
-Alliance Defense Bonus = (allies - 1) × 8 × (1 + totem level × 0.5%)
-Final Defense = Base Defense × (1 + combat boost / 10000) + Alliance Bonus
-```
-
-### Final Damage
-
-```
-Shield Damage = Attack + 200 - Defense (if > 0)
-Health Damage = (Attack - Defense) × 2 (if > 0)
-
-If Shield Damage > remaining Shield HP:
-  overflow × 3 converts to Health Damage
-```
+> 💡 آپ کے ہتھیار کی سطح جتنی زیادہ ہوگی، آپ کے حملہ ٹوکن اتنی ہی تیزی سے بحال ہوں گے اور حد اتنی ہی زیادہ ہوگی۔
 
 ---
 
-## Plunder
+## نقصان کا حساب
 
-After winning a battle, you plunder energy from the target:
-
-```
-Plunder Ratio = 5% + weapon level × 0.5%
-Plundered Energy = target's current energy × plunder ratio
-```
-
-Plundered energy goes into a **pending combat energy** pool, which you must manually claim.
-
----
-
-## Defeat & Destruction
-
-### Defeat
-
-When a target's health reaches zero:
-
-1. **All remaining energy is plundered** into your pending pool
-2. The target has one random system **downgraded** (on BSC: downgrades the highest-level system; on chains with beacon chain randomness: randomly picks from Collector/Weapon/Shield/Engine)
-3. If the downgraded system's level is still ≥ 1, the civilization survives and its durability is restored to 50%
-4. If all systems are level 1 (cannot be downgraded further), the civilization becomes **ruins**
-5. The kill plunder stacks **on top of** the regular attack plunder
-
-### Ruins
-
-A civilization in ruins:
-- Is removed from the active civilization list
-- Cannot be attacked
-- Can be revived via the **Rebuild** function
-
-### Combat Boost (Rebirth Boost)
-
-Each Rebuild grants **+1200 bps** (12%) combat boost, stacking up to **30000 bps** (3× multiplier).
-Both attack and defense benefit from this boost.
-
----
-
-## Shield Regeneration
-
-### Auto Regeneration
+### حملہ آور
 
 ```
-Regen Amount = 50 + shield level²
-Energy Cost = regen amount (1:1 ratio)
+بنیادی حملہ = 900 + 10 × حملہ آور کے ہتھیار کی سطح²
+اگر ہتھیار کی پائیداری = 0، حملہ آدھا ہو جاتا ہے
+حتمی حملہ = بنیادی حملہ × (1 + جنگی بڑھوتری / 10000)
 ```
 
-### Manual Repair
+### محافظ
 
 ```
-Energy Cost = repair amount × 4
+بنیادی دفاع = 540 + 6 × محافظ کی ڈھال کی سطح²
+اتحاد دفاعی بونس = (اتحادی - 1) × 8 × (1 + ٹوٹم کی سطح × 0.5%)
+حتمی دفاع = بنیادی دفاع × (1 + جنگی بڑھوتری / 10000) + اتحاد بونس
 ```
 
-### Alliance Assistance
+### حتمی نقصان
 
 ```
-Energy Cost = repair amount × 1 (paid by ally)
-Allies can repair shields for each other
+ڈھال کا نقصان = حملہ + 200 - دفاع (اگر > 0)
+صحت کا نقصان = (حملہ - دفاع) × 2 (اگر > 0)
+
+اگر ڈھال کا نقصان > باقی ڈھال HP:
+  اضافی × 3 صحت کے نقصان میں تبدیل ہو جاتا ہے
 ```
 
 ---
 
-## Defense Strategy
+## لوٹ
 
-1. **Keep energy reserves > 7× daily upkeep** — prevents energy depletion that would stop shield regeneration
-2. **Repair durability regularly** — systems at zero durability are extremely vulnerable
-3. **Upgrade shield level** — shield HP and defense both scale with level squared
-4. **Join an alliance and upgrade the totem** — alliance defense bonuses are significant
+جنگ جیتنے کے بعد، آپ ہدف سے توانائی لوٹتے ہیں:
 
-**Recommended next step: [Space Jump & Cruise →](/docs/guide/movement)**
+```
+لوٹ کا تناسب = 5% + ہتھیار کی سطح × 0.5%
+لوٹی گئی توانائی = ہدف کی موجودہ توانائی × لوٹ کا تناسب
+```
+
+لوٹی گئی توانائی **زیر التواء جنگی توانائی** کے پول میں جاتی ہے، جسے آپ کو دستی طور پر کلیم کرنا ہوگا۔
+
+---
+
+## شکست اور تباہی
+
+### شکست
+
+جب ہدف کی صحت صفر ہو جاتی ہے:
+
+1. **تمام باقی توانائی لوٹ لی جاتی ہے** آپ کے زیر التواء پول میں
+2. ہدف کا ایک **بے ترتیب نظام نیچے** کر دیا جاتا ہے (BSC پر: سب سے اعلیٰ سطح کے نظام کو نیچے کرتا ہے؛ بیکن چین رینڈمness والی زنجیروں پر: بے ترتیب طور پر کلکٹر/ہتھیار/ڈھال/انجن میں سے چنتا ہے)
+3. اگر نیچے کیے گئے نظام کی سطح اب بھی ≥ 1 ہے، تو تہذیب بچ جاتی ہے اور اس کی پائیداری 50% بحال ہو جاتی ہے
+4. اگر تمام نظام سطح 1 پر ہیں (مزید نیچے نہیں کیا جا سکتا)، تو تہذیب **کھنڈر** بن جاتی ہے
+5. قتل کی لوٹ **باقاعدہ حملہ لوٹ کے اوپر** جمع ہوتی ہے
+
+### کھنڈر
+
+کھنڈر میں تہذیب:
+- فعال تہذیبوں کی فہرست سے ہٹا دی جاتی ہے
+- حملہ نہیں کیا جا سکتا
+- **تعمیر نو** کے فنکشن کے ذریعے زندہ کی جا سکتی ہے
+
+### جنگی بڑھوتری (پنر جنم بڑھوتری)
+
+ہر تعمیر نو **+1200 bps (12%)** جنگی بڑھوتری دیتی ہے، جو **30000 bps (3× ضرب)** تک جمع ہوتی ہے۔
+حملہ اور دفاع دونوں اس بڑھوتری سے فائدہ اٹھاتے ہیں۔
+
+---
+
+## ڈھال کی بحالی
+
+### خودکار بحالی
+
+```
+بحالی کی مقدار = 50 + ڈھال کی سطح²
+توانائی کی لاگت = بحالی کی مقدار (1:1 تناسب)
+```
+
+### دستی مرمت
+
+```
+توانائی کی لاگت = مرمت کی مقدار × 4
+```
+
+### اتحاد کی مدد
+
+```
+توانائی کی لاگت = مرمت کی مقدار × 1 (اتحادی ادا کرتا ہے)
+اتحادی ایک دوسرے کی ڈھالیں مرمت کر سکتے ہیں
+```
+
+---
+
+## دفاعی حکمت عملی
+
+1. **توانائی کے ذخائر > یومیہ دیکھ بھال کا 7 گنا رکھیں** — توانائی کی کمی کو روکتا ہے جو ڈھال کی بحالی روک دے
+2. **پائیداری کو باقاعدگی سے مرمت کریں** — صفر پائیداری والے نظام انتہائی کمزور ہوتے ہیں
+3. **ڈھال کی سطح بڑھائیں** — ڈھال HP اور دفاع دونوں سطح کے مربع کے ساتھ بڑھتے ہیں
+4. **اتحاد میں شامل ہوں اور ٹوٹم کو اپ گریڈ کریں** — اتحاد دفاعی بونس اہم ہیں
+
+**تجویز کردہ اگلا مرحلہ: [خلائی چھلانگ اور سفر →](/docs/guide/movement)**

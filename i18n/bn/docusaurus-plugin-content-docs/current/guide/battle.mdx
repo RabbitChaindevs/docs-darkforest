@@ -1,152 +1,151 @@
 ---
 sidebar_position: 2
-title: Attack & Defense
-description: Complete breakdown of the Dark Forest combat system
+title: আক্রমণ ও প্রতিরক্ষা
+description: ডার্ক ফরেস্ট যুদ্ধ ব্যবস্থার সম্পূর্ণ বিবরণ
 ---
 
-# Attack & Defense
+# আক্রমণ ও প্রতিরক্ষা
 
-## Attack Conditions
+## আক্রমণের শর্ত
 
-### Who Can You Attack?
+### আপনি কাকে আক্রমণ করতে পারেন?
 
-- The target must exist and not be destroyed (not in ruin state)
-- The target must not be in its **24-hour new player protection** window
-- The target must be within your **radar scan range** (distance ≤ your radar range)
-- You cannot attack yourself
-- You cannot attack members of your own alliance (you must leave first)
-- You cannot attack someone who left your alliance in the last **24 hours** (mutual cooldown)
+- লক্ষ্য বিদ্যমান থাকতে হবে এবং ধ্বংস না হওয়া উচিত (ধ্বংসাবশেষ অবস্থায় নয়)
+- লক্ষ্য **24-ঘন্টা নতুন খেলোয়াড় সুরক্ষা** উইন্ডোতে থাকা উচিত নয়
+- লক্ষ্য আপনার **রাডার স্ক্যান রেঞ্জের** মধ্যে থাকতে হবে (দূরত্ব ≤ আপনার রাডার রেঞ্জ)
+- আপনি নিজেকে আক্রমণ করতে পারবেন না
+- আপনি আপনার নিজের জোটের সদস্যদের আক্রমণ করতে পারবেন না (প্রথমে ছাড়তে হবে)
+- আপনি গত **24 ঘন্টায়** আপনার জোট ছেড়েছেন এমন কাউকে আক্রমণ করতে পারবেন না (পারস্পরিক কুলডাউন)
 
-### Soft Gate
+### সফট গেট
 
-If an attack condition isn't met, the attempt **does not consume any resources** — it simply tells you why the attack failed. This lets you experiment freely without worrying about wasted energy.
+যদি আক্রমণের কোনো শর্ত পূরণ না হয়, তবে প্রচেষ্টা **কোনো সম্পদ খরচ করে না** — এটি আপনাকে শুধু বলে যে আক্রমণ কেন ব্যর্থ হয়েছে। এটি আপনাকে নষ্ট শক্তির চিন্তা না করে স্বাধীনভাবে পরীক্ষা করতে দেয়।
 
 ---
 
-## Attack Cost
+## আক্রমণের খরচ
 
-Each successful attack is limited to **1 attack per second**, and consumes:
+প্রতিটি সফল আক্রমণ **প্রতি সেকেন্ডে ১টি আক্রমণে** সীমাবদ্ধ, এবং খরচ করে:
 
-| Resource | Cost |
+| সম্পদ | খরচ |
 |----------|------|
-| **Energy** | `50,000 + 50,000 × weapon level` |
-| **Weapon Durability** | 1 point (when weapon durability > 0) |
-| **Attack Token** | 1 token |
+| **শক্তি** | `50,000 + 50,000 × অস্ত্র স্তর` |
+| **অস্ত্র স্থায়িত্ব** | 1 পয়েন্ট (যখন অস্ত্র স্থায়িত্ব > ০) |
+| **আক্রমণ টোকেন** | 1 টোকেন |
 
 ---
 
-## Attack Token System
+## আক্রমণ টোকেন ব্যবস্থা
 
-Attack tokens use a **token bucket algorithm** to limit attack frequency:
+আক্রমণ টোকেন আক্রমণের ফ্রিকোয়েন্সি সীমিত করতে **টোকেন বালতি অ্যালগরিদম** ব্যবহার করে:
 
-| Parameter | Formula | Description |
+| প্যারামিটার | সূত্র | বিবরণ |
 |-----------|---------|-------------|
-| **Max Tokens** | `3 + weapon level / 10`, cap **10** | Auto-recover over time |
-| **Recovery Interval** | `(300 - weapon level × 10) / 100` seconds, min **1s** | 1 token per interval |
-| **Cost** | 1 token per attack | |
+| **সর্বোচ্চ টোকেন** | `3 + অস্ত্র স্তর / 10`, সীমা **10** | সময়ের সাথে স্বয়ংক্রিয় পুনরুদ্ধার |
+| **পুনরুদ্ধার ব্যবধান** | `(300 - অস্ত্র স্তর × 10) / 100` সেকেন্ড, ন্যূনতম **1 সে** | প্রতি ব্যবধানে 1 টোকেন |
+| **খরচ** | প্রতি আক্রমণে 1 টোকেন | |
 
-> 💡 The higher your weapon level, the faster your attack tokens recover and the higher your cap.
-
----
-
-## Damage Calculation
-
-### Attacker
-
-```
-Base Attack = 900 + 10 × attacker weapon level²
-If weapon durability = 0, attack is halved
-Final Attack = Base Attack × (1 + combat boost / 10000)
-```
-
-### Defender
-
-```
-Base Defense = 540 + 6 × defender shield level²
-Alliance Defense Bonus = (allies - 1) × 8 × (1 + totem level × 0.5%)
-Final Defense = Base Defense × (1 + combat boost / 10000) + Alliance Bonus
-```
-
-### Final Damage
-
-```
-Shield Damage = Attack + 200 - Defense (if > 0)
-Health Damage = (Attack - Defense) × 2 (if > 0)
-
-If Shield Damage > remaining Shield HP:
-  overflow × 3 converts to Health Damage
-```
+> 💡 আপনার অস্ত্র স্তর যত বেশি, আপনার আক্রমণ টোকেন তত দ্রুত পুনরুদ্ধার হয় এবং আপনার সীমা তত বেশি।
 
 ---
 
-## Plunder
+## ক্ষতি গণনা
 
-After winning a battle, you plunder energy from the target:
-
-```
-Plunder Ratio = 5% + weapon level × 0.5%
-Plundered Energy = target's current energy × plunder ratio
-```
-
-Plundered energy goes into a **pending combat energy** pool, which you must manually claim.
-
----
-
-## Defeat & Destruction
-
-### Defeat
-
-When a target's health reaches zero:
-
-1. **All remaining energy is plundered** into your pending pool
-2. The target has one random system **downgraded** (on BSC: downgrades the highest-level system; on chains with beacon chain randomness: randomly picks from Collector/Weapon/Shield/Engine)
-3. If the downgraded system's level is still ≥ 1, the civilization survives and its durability is restored to 50%
-4. If all systems are level 1 (cannot be downgraded further), the civilization becomes **ruins**
-5. The kill plunder stacks **on top of** the regular attack plunder
-
-### Ruins
-
-A civilization in ruins:
-- Is removed from the active civilization list
-- Cannot be attacked
-- Can be revived via the **Rebuild** function
-
-### Combat Boost (Rebirth Boost)
-
-Each Rebuild grants **+1200 bps** (12%) combat boost, stacking up to **30000 bps** (3× multiplier).
-Both attack and defense benefit from this boost.
-
----
-
-## Shield Regeneration
-
-### Auto Regeneration
+### আক্রমণকারী
 
 ```
-Regen Amount = 50 + shield level²
-Energy Cost = regen amount (1:1 ratio)
+ভিত্তি আক্রমণ = 900 + 10 × আক্রমণকারী অস্ত্র স্তর²
+যদি অস্ত্র স্থায়িত্ব = ০, আক্রমণ অর্ধেক হয়
+চূড়ান্ত আক্রমণ = ভিত্তি আক্রমণ × (1 + যুদ্ধ বুস্ট / 10000)
 ```
 
-### Manual Repair
+### রক্ষক
 
 ```
-Energy Cost = repair amount × 4
+ভিত্তি প্রতিরক্ষা = 540 + 6 × রক্ষক ঢাল স্তর²
+জোট প্রতিরক্ষা বোনাস = (সহযোগী - 1) × 8 × (1 + টোটেম স্তর × 0.5%)
+চূড়ান্ত প্রতিরক্ষা = ভিত্তি প্রতিরক্ষা × (1 + যুদ্ধ বুস্ট / 10000) + জোট বোনাস
 ```
 
-### Alliance Assistance
+### চূড়ান্ত ক্ষতি
 
 ```
-Energy Cost = repair amount × 1 (paid by ally)
-Allies can repair shields for each other
+ঢাল ক্ষতি = আক্রমণ + 200 - প্রতিরক্ষা (যদি > ০)
+স্বাস্থ্য ক্ষতি = (আক্রমণ - প্রতিরক্ষা) × 2 (যদি > ০)
+
+যদি ঢাল ক্ষতি > অবশিষ্ট ঢাল HP:
+  উদ্বৃত্ত × ৩ স্বাস্থ্য ক্ষতিতে রূপান্তরিত হয়
 ```
 
 ---
 
-## Defense Strategy
+## লুট
 
-1. **Keep energy reserves > 7× daily upkeep** — prevents energy depletion that would stop shield regeneration
-2. **Repair durability regularly** — systems at zero durability are extremely vulnerable
-3. **Upgrade shield level** — shield HP and defense both scale with level squared
-4. **Join an alliance and upgrade the totem** — alliance defense bonuses are significant
+যুদ্ধ জয়ের পর, আপনি লক্ষ্য থেকে শক্তি লুট করেন:
 
-**Recommended next step: [Space Jump & Cruise →](/docs/guide/movement)**
+```
+লুটের অনুপাত = 5% + অস্ত্র স্তর × 0.5%
+লুটকৃত শক্তি = লক্ষ্যের বর্তমান শক্তি × লুটের অনুপাত
+```
+
+লুটকৃত শক্তি একটি **বিচারাধীন যুদ্ধ শক্তি** পুলে যায়, যা আপনাকে ম্যানুয়ালি দাবি করতে হবে।
+
+---
+
+## পরাজয় ও ধ্বংস
+
+### পরাজয়
+
+যখন লক্ষ্যের স্বাস্থ্য শূন্যে পৌঁছে:
+
+1. **সমস্ত অবশিষ্ট শক্তি লুট করা হয়** আপনার বিচারাধীন পুলে
+2. লক্ষ্যের একটি এলোমেলো সিস্টেম **ডাউনগ্রেড** হয়
+3. যদি ডাউনগ্রেড করা সিস্টেমের স্তর এখনও ≥ 1 থাকে, সভ্যতা টিকে যায় এবং এর স্থায়িত্ব 50% পুনরুদ্ধার হয়
+4. যদি সমস্ত সিস্টেম স্তর 1 হয় (আর ডাউনগ্রেড করা যাবে না), সভ্যতা **ধ্বংসাবশেষ** হয়ে যায়
+5. হত্যা লুট নিয়মিত আক্রমণ লুটের **উপরে** যুক্ত হয়
+
+### ধ্বংসাবশেষ
+
+ধ্বংসাবশেষে একটি সভ্যতা:
+- সক্রিয় সভ্যতা তালিকা থেকে সরানো হয়
+- আক্রমণ করা যায় না
+- **পুনর্নির্মাণ** ফাংশনের মাধ্যমে পুনরুজ্জীবিত করা যেতে পারে
+
+### যুদ্ধ বুস্ট (পুনর্জন্ম বুস্ট)
+
+প্রতিটি পুনর্নির্মাণ **+1200 bps** (12%) যুদ্ধ বুস্ট প্রদান করে, যা **30000 bps** (3× গুণক) পর্যন্ত জমা হয়। আক্রমণ এবং প্রতিরক্ষা উভয়ই এই বুস্ট থেকে উপকৃত হয়।
+
+---
+
+## ঢাল পুনর্জন্ম
+
+### স্বয়ংক্রিয় পুনর্জন্ম
+
+```
+পুনর্জন্ম পরিমাণ = 50 + ঢাল স্তর²
+শক্তি খরচ = পুনর্জন্ম পরিমাণ (1:1 অনুপাত)
+```
+
+### ম্যানুয়াল মেরামত
+
+```
+শক্তি খরচ = মেরামত পরিমাণ × 4
+```
+
+### জোট সহায়তা
+
+```
+শক্তি খরচ = মেরামত পরিমাণ × 1 (সহযোগী দ্বারা প্রদত্ত)
+সহযোগীরা একে অপরের ঢাল মেরামত করতে পারে
+```
+
+---
+
+## প্রতিরক্ষা কৌশল
+
+1. **শক্তি মজুদ > 7× দৈনিক রক্ষণাবেক্ষণ রাখুন** — শক্তি হ্রাস রোধ করে যা ঢাল পুনর্জন্ম বন্ধ করবে
+2. **নিয়মিত স্থায়িত্ব মেরামত করুন** — শূন্য স্থায়িত্বের সিস্টেম অত্যন্ত দুর্বল
+3. **ঢাল স্তর আপগ্রেড করুন** — ঢাল HP এবং প্রতিরক্ষা উভয়ই স্তরের বর্গের সাথে বৃদ্ধি পায়
+4. **একটি জোটে যোগ দিন এবং টোটেম আপগ্রেড করুন** — জোট প্রতিরক্ষা বোনাস উল্লেখযোগ্য
+
+**প্রস্তাবিত পরবর্তী ধাপ: [স্পেস জাম্প ও ক্রুজ →](/docs/guide/movement)**

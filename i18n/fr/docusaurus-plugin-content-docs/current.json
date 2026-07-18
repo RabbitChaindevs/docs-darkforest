@@ -1,26 +1,26 @@
 {
   "version.label": {
-    "message": "Next",
+    "message": "Suivant",
     "description": "The label for version current"
   },
   "sidebar.sidebar.category.🚀 快速上手": {
-    "message": "🚀 快速上手",
-    "description": "The label for category '🚀 快速上手' in sidebar 'sidebar'"
+    "message": "🚀 Démarrage rapide",
+    "description": "The label for category '🚀 Démarrage rapide' in sidebar 'sidebar'"
   },
   "sidebar.sidebar.category.🎮 玩法指南": {
-    "message": "🎮 玩法指南",
-    "description": "The label for category '🎮 玩法指南' in sidebar 'sidebar'"
+    "message": "🎮 Guide de jeu",
+    "description": "The label for category '🎮 Guide de jeu' in sidebar 'sidebar'"
   },
   "sidebar.sidebar.category.💰 经济系统": {
-    "message": "💰 经济系统",
-    "description": "The label for category '💰 经济系统' in sidebar 'sidebar'"
+    "message": "💰 Système économique",
+    "description": "The label for category '💰 Système économique' in sidebar 'sidebar'"
   },
   "sidebar.sidebar.category.🤖 AI 自动战斗": {
-    "message": "🤖 AI 自动战斗",
-    "description": "The label for category '🤖 AI 自动战斗' in sidebar 'sidebar'"
+    "message": "🤖 Agent IA",
+    "description": "The label for category '🤖 Agent IA' in sidebar 'sidebar'"
   },
   "sidebar.sidebar.category.📎 附录": {
-    "message": "📎 附录",
-    "description": "The label for category '📎 附录' in sidebar 'sidebar'"
+    "message": "📎 Annexe",
+    "description": "The label for category '📎 Annexe' in sidebar 'sidebar'"
   }
 }

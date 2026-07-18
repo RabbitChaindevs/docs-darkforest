@@ -1,93 +1,93 @@
 ---
 sidebar_position: 3
-title: Daily Mint
-description: Dark Forest DailyMinter — daily DFT distribution mechanism
+title: السك اليومي
+description: آلية توزيع DFT اليومية في Dark Forest
 ---
 
-# Daily Mint
+# السك اليومي
 
-The **DailyMinter** contract mints a fixed amount of DFT each day and distributes it evenly among active civilizations. **Claim it the same day or lose it** — unclaimed amounts do not accumulate.
+يقوم عقد **DailyMinter** بسك كمية ثابتة من DFT كل يوم وتوزيعها بالتساوي بين الحضارات النشطة. **اطالب به في نفس اليوم أو ستفقده** — المبالغ غير المطالب بها لا تتراكم.
 
 ---
 
-## How to Claim
+## كيفية المطالبة
 
-### Requirements
+### المتطلبات
 
-- You must have created a civilization **before midnight UTC** on the claim day
-- `distribute()` must have been called for that day (anyone can trigger it)
-- Each address can only claim once per day
+- يجب أن تكون قد أنشأت حضارة **قبل منتصف الليل بالتوقيت العالمي (UTC)** في يوم المطالبة
+- يجب أن يكون `distribute()` قد تم استدعاؤه لذلك اليوم (يمكن لأي شخص تشغيله)
+- يمكن لكل عنوان المطالبة مرة واحدة فقط في اليوم
 
-### Operation
+### العملية
 
 ```
 claim()
 ```
 
-Confirm the transaction (gas fee only).
+قم بتأكيد المعاملة (رسوم الغاز فقط).
 
 ---
 
-## Minting Flow
+## تدفق السك
 
-### Step 1: Distribute
+### الخطوة 1: التوزيع
 
-Anyone can call `distribute()`:
+يمكن لأي شخص استدعاء `distribute()`:
 
-1. The contract checks the last undistributed epoch
-2. Snapshots the current number of active civilizations
-3. Calculates `share per player = daily emission / active civilizations`
-4. Mints the total DFT to the contract
-5. `Daily emission = 1,152,575,342 DFT` (constant)
+1. يتحقق العقد من آخر حقبة غير موزعة
+2. يلتقط صورة للعدد الحالي للحضارات النشطة
+3. يحسب `نصيب كل لاعب = الإصدار اليومي / الحضارات النشطة`
+4. يسك إجمالي DFT إلى العقد
+5. `الإصدار اليومي = 1,152,575,342 DFT` (ثابت)
 
-### Step 2: Claim
+### الخطوة 2: المطالبة
 
-Players call `claim()`:
+يقوم اللاعبون باستدعاء `claim()`:
 
-1. Verifies you created a civilization before this epoch
-2. Verifies you haven't already claimed
-3. Transfers your share to your wallet
+1. يتحقق من أنك أنشأت حضارة قبل هذه الحقبة
+2. يتحقق من أنك لم تطالب بالفعل
+3. يحول نصيبك إلى محفظتك
 
-### Step 3: Burn Remainder
+### الخطوة 3: حرق الباقي
 
-On the next `distribute()`, any DFT from the previous epoch that was not claimed is **burned** (reducing circulating supply).
+في `distribute()` التالية، يتم **حرق** أي DFT من الحقبة السابقة لم تتم المطالب به (مما يقلل العرض المتداول).
 
 ---
 
-## Timeline
+## الجدول الزمني
 
 ```
-Epoch 0      Epoch 1      Epoch 2
+الحقبة 0      الحقبة 1      الحقبة 2
    |            |            |
 UTC 00:00    UTC 00:00    UTC 00:00
-   ↑create civ  ↑distribute   ↑distribute
-                ↑claim        ↑claim
-                              ↑unclaimed burned
+   ↑إنشاء حضارة  ↑توزيع       ↑توزيع
+                 ↑مطالبة      ↑مطالبة
+                               ↑حرق غير المطالب به
 ```
 
-- Epochs are divided by UTC midnight
-- You can only claim the **most recently distributed** epoch
-- Miss an epoch and you can never claim it
+- تنقسم الحقب عند منتصف الليل بالتوقيت العالمي
+- يمكنك فقط المطالبة بأحدث **حقبة تم توزيعها**
+- إذا فاتتك حقبة، لا يمكنك المطالبة بها أبداً
 
 ---
 
-## Key Parameters
+## المعاملات الرئيسية
 
-| Parameter | Value |
+| المعامل | القيمة |
 |-----------|-------|
-| Daily Emission | **1,152,575,342 DFT** (constant) |
-| Total Distribution Period | **3,650 days** (~10 years) |
-| Total Supply Cap | **4,206,900,000,000 DFT** (~4.2 trillion) |
-| Claim Window | Within each epoch (typically 1 day) |
+| الإصدار اليومي | **1,152,575,342 DFT** (ثابت) |
+| إجمالي فترة التوزيع | **3,650 يوماً** (~10 سنوات) |
+| إجمالي عرض الحد الأقصى | **4,206,900,000,000 DFT** (~4.2 تريليون) |
+| نافذة المطالبة | ضمن كل حقبة (عادة يوم واحد) |
 
 ---
 
-## Why Claim Daily
+## لماذا المطالبة يومياً
 
-1. 🆓 **Free DFT** — only costs gas, available every day
-2. 📉 **Unclaimed gets burned** — miss it and it's gone
-3. 📈 **Fewer players = more per person** — if active players decrease, each share increases
+1. 🆓 **DFT مجاني** — فقط تكلفة غاز، متاح كل يوم
+2. 📉 **غير المطالب به يُحرق** — تفوته ويختفي
+3. 📈 **عدد أقل من اللاعبين = نصيب أكبر للفرد** — إذا انخفض عدد اللاعبين النشطين، يزداد كل نصيب
 
-> 💡 Set a daily reminder around UTC time to claim. If `distribute()` hasn't been called yet for the day, you can trigger it yourself — it only costs gas.
+> 💡 اضبط تذكيراً يومياً حول وقت UTC للمطالبة. إذا لم يتم استدعاء `distribute()` بعد لهذا اليوم، يمكنك تشغيله بنفسك — يكلف فقط غازاً.
 
-**Recommended next step: [What Is an AI Agent →](/docs/agent/what-is-agent)**
+**الخطوة التالية الموصى بها: [ما هو الوكيل الذكي →](/docs/agent/what-is-agent)**

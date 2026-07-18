@@ -1,20 +1,20 @@
 ---
 sidebar_position: 2
-title: 5-Minute AI Agent Quickstart
-description: Configure your first AI Agent in Dark Forest
+title: Быстрый старт ИИ-агента за 5 минут
+description: Настройте своего первого ИИ-агента в Dark Forest
 ---
 
-# 5-Minute Quickstart
+# Быстрый старт за 5 минут
 
-## Prerequisites
+## Предварительные требования
 
 - Python 3.10+
-- An active Dark Forest civilization
-- Your wallet's private key (for the agent to sign transactions)
+- Активная цивилизация Dark Forest
+- Приватный ключ вашего кошелька (для подписи транзакций агентом)
 
 ---
 
-## Step 1: Install the Agent
+## Шаг 1: Установка агента
 
 ```bash
 git clone https://github.com/dark-forest/agent.git
@@ -22,73 +22,73 @@ cd agent
 pip install -r requirements.txt
 ```
 
-## Step 2: Import Your Private Key
+## Шаг 2: Импорт приватного ключа
 
 ```bash
 python -m dark_forest.cli key import
 ```
 
-The private key is stored encrypted, never in plain text.
+Приватный ключ хранится в зашифрованном виде, никогда не в открытом тексте.
 
-> ⚠️ It is highly recommended to use a **dedicated game wallet** — do not use your main wallet that holds significant assets.
+> ⚠️ Настоятельно рекомендуется использовать **выделенный игровой кошелёк** — не используйте ваш основной кошелёк со значительными активами.
 
-## Step 3: Authorize the Agent
+## Шаг 3: Авторизация агента
 
-In the game interface, set permissions for your agent's wallet address:
+В интерфейсе игры установите разрешения для адреса кошелька вашего агента:
 
-- Check the operation permissions the agent needs
-- Set policy constraints (attack frequency, resource reserves, etc.)
+- Отметьте необходимые разрешения операций
+- Установите политические ограничения (частота атак, резервы ресурсов и т.д.)
 
-## Step 4: Choose a Strategy
+## Шаг 4: Выбор стратегии
 
 ```bash
-# List available strategies
+# Список доступных стратегий
 python -m dark_forest.cli strategy list
 
-# Use the balanced strategy (recommended)
+# Использование сбалансированной стратегии (рекомендуется)
 python -m dark_forest.cli strategy select balanced
 ```
 
-Four preset strategies:
+Четыре предустановленные стратегии:
 
-| Strategy | Style | Best For |
-|----------|-------|----------|
-| `aggressive` | Aggressive attacker | Highly active players |
-| `balanced` | Balanced offense/defense | **Recommended**, suits most players |
-| `defensive` | Conservative defense | Players who are often offline |
-| `farmer` | Focus on gathering | Peaceful development |
+| Стратегия | Стиль | Лучше всего для |
+|-----------|-------|-----------------|
+| `aggressive` | Агрессивный атакующий | Очень активные игроки |
+| `balanced` | Сбалансированная атака/защита | **Рекомендуется**, подходит большинству игроков |
+| `defensive` | Консервативная защита | Игроки, часто находящиеся офлайн |
+| `farmer` | Фокус на сборе | Мирное развитие |
 
-## Step 5: Launch
+## Шаг 5: Запуск
 
 ```bash
-# Start (default balanced strategy)
+# Запуск (по умолчанию сбалансированная стратегия)
 python -m dark_forest.cli run
 
-# Specify a strategy
+# Указать стратегию
 python -m dark_forest.cli run --strategy aggressive
 ```
 
-## Step 6: Configure Notifications (Optional)
+## Шаг 6: Настройка уведомлений (опционально)
 
 ### Telegram
 
 ```bash
-python -m dark_forest.cli config set notify.telegram.token YOUR_BOT_TOKEN
-python -m dark_forest.cli config set notify.telegram.chat_id YOUR_CHAT_ID
+python -m dark_forest.cli config set notify.telegram.token ВАШ_ТОКЕН_БОТА
+python -m dark_forest.cli config set notify.telegram.chat_id ВАШ_ID_ЧАТА
 ```
 
 ### Discord
 
 ```bash
-python -m dark_forest.cli config set notify.discord.webhook YOUR_WEBHOOK_URL
+python -m dark_forest.cli config set notify.discord.webhook ВАШ_URL_ВЕБХУКА
 ```
 
 ---
 
-## Security Reminders
+## Напоминания по безопасности
 
-1. 🔐 **Use a dedicated game wallet** with reasonable DFT/energy reserve limits
-2. 📉 **Open permissions gradually** — start with only COLLECT + REPAIR, then add ATTACK once you're confident it's stable
-3. 🔄 **Check in regularly** — review the agent's logs and reports
+1. 🔐 **Используйте выделенный игровой кошелёк** с разумными лимитами резерва DFT/энергии
+2. 📉 **Открывайте разрешения постепенно** — начинайте только с COLLECT + REPAIR, затем добавьте ATTACK, когда убедитесь в стабильности
+3. 🔄 **Регулярно проверяйте** — просматривайте журналы и отчёты агента
 
-**Recommended next step: [Strategy Templates →](/docs/agent/strategies)**
+**Рекомендуемый следующий шаг: [Шаблоны стратегий →](/docs/agent/strategies)**

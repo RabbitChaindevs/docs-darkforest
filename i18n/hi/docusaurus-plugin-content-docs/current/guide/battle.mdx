@@ -1,152 +1,151 @@
 ---
 sidebar_position: 2
-title: Attack & Defense
-description: Complete breakdown of the Dark Forest combat system
+title: हमला और रक्षा
+description: डार्क फ़ॉरेस्ट युद्ध प्रणाली का संपूर्ण विवरण
 ---
 
-# Attack & Defense
+# हमला और रक्षा
 
-## Attack Conditions
+## हमला करने की शर्तें
 
-### Who Can You Attack?
+### आप किस पर हमला कर सकते हैं?
 
-- The target must exist and not be destroyed (not in ruin state)
-- The target must not be in its **24-hour new player protection** window
-- The target must be within your **radar scan range** (distance ≤ your radar range)
-- You cannot attack yourself
-- You cannot attack members of your own alliance (you must leave first)
-- You cannot attack someone who left your alliance in the last **24 hours** (mutual cooldown)
+- लक्ष्य मौजूद होना चाहिए और नष्ट नहीं होना चाहिए (खंडहर की स्थिति में नहीं)
+- लक्ष्य **24 घंटे की नए खिलाड़ी सुरक्षा** अवधि में नहीं होना चाहिए
+- लक्ष्य आपकी **रडार स्कैन रेंज** के भीतर होना चाहिए (दूरी ≤ आपकी रडार रेंज)
+- आप स्वयं पर हमला नहीं कर सकते
+- आप अपने गठबंधन के सदस्यों पर हमला नहीं कर सकते (पहले छोड़ना होगा)
+- आप पिछले **24 घंटों** में आपका गठबंधन छोड़ने वाले किसी व्यक्ति पर हमला नहीं कर सकते (पारस्परिक कूलडाउन)
 
-### Soft Gate
+### सॉफ्ट गेट
 
-If an attack condition isn't met, the attempt **does not consume any resources** — it simply tells you why the attack failed. This lets you experiment freely without worrying about wasted energy.
+यदि हमला करने की कोई शर्त पूरी नहीं होती है, तो प्रयास **कोई संसाधन नहीं खपत करता** — यह आपको बस बताता है कि हमला क्यों विफल हुआ। यह आपको बर्बाद ऊर्जा की चिंता किए बिना स्वतंत्र रूप से प्रयोग करने देता है।
 
 ---
 
-## Attack Cost
+## हमला लागत
 
-Each successful attack is limited to **1 attack per second**, and consumes:
+प्रत्येक सफल हमला **प्रति सेकंड 1 हमले** तक सीमित है, और खपत करता है:
 
-| Resource | Cost |
+| संसाधन | लागत |
 |----------|------|
-| **Energy** | `50,000 + 50,000 × weapon level` |
-| **Weapon Durability** | 1 point (when weapon durability > 0) |
-| **Attack Token** | 1 token |
+| **ऊर्जा** | `50,000 + 50,000 × हथियार स्तर` |
+| **हथियार स्थायित्व** | 1 पॉइंट (जब हथियार स्थायित्व > 0) |
+| **हमला टोकन** | 1 टोकन |
 
 ---
 
-## Attack Token System
+## हमला टोकन प्रणाली
 
-Attack tokens use a **token bucket algorithm** to limit attack frequency:
+हमला टोकन हमले की आवृत्ति को सीमित करने के लिए **टोकन बकेट एल्गोरिदम** का उपयोग करते हैं:
 
-| Parameter | Formula | Description |
+| पैरामीटर | फ़ॉर्मूला | विवरण |
 |-----------|---------|-------------|
-| **Max Tokens** | `3 + weapon level / 10`, cap **10** | Auto-recover over time |
-| **Recovery Interval** | `(300 - weapon level × 10) / 100` seconds, min **1s** | 1 token per interval |
-| **Cost** | 1 token per attack | |
+| **अधिकतम टोकन** | `3 + हथियार स्तर / 10`, सीमा **10** | समय के साथ स्वचालित पुनर्प्राप्ति |
+| **पुनर्प्राप्ति अंतराल** | `(300 - हथियार स्तर × 10) / 100` सेकंड, न्यूनतम **1 से** | प्रति अंतराल 1 टोकन |
+| **लागत** | प्रति हमला 1 टोकन | |
 
-> 💡 The higher your weapon level, the faster your attack tokens recover and the higher your cap.
-
----
-
-## Damage Calculation
-
-### Attacker
-
-```
-Base Attack = 900 + 10 × attacker weapon level²
-If weapon durability = 0, attack is halved
-Final Attack = Base Attack × (1 + combat boost / 10000)
-```
-
-### Defender
-
-```
-Base Defense = 540 + 6 × defender shield level²
-Alliance Defense Bonus = (allies - 1) × 8 × (1 + totem level × 0.5%)
-Final Defense = Base Defense × (1 + combat boost / 10000) + Alliance Bonus
-```
-
-### Final Damage
-
-```
-Shield Damage = Attack + 200 - Defense (if > 0)
-Health Damage = (Attack - Defense) × 2 (if > 0)
-
-If Shield Damage > remaining Shield HP:
-  overflow × 3 converts to Health Damage
-```
+> 💡 आपका हथियार स्तर जितना अधिक होगा, आपके हमला टोकन उतनी ही तेज़ी से पुनर्प्राप्त होंगे और आपकी सीमा उतनी ही अधिक होगी।
 
 ---
 
-## Plunder
+## क्षति गणना
 
-After winning a battle, you plunder energy from the target:
-
-```
-Plunder Ratio = 5% + weapon level × 0.5%
-Plundered Energy = target's current energy × plunder ratio
-```
-
-Plundered energy goes into a **pending combat energy** pool, which you must manually claim.
-
----
-
-## Defeat & Destruction
-
-### Defeat
-
-When a target's health reaches zero:
-
-1. **All remaining energy is plundered** into your pending pool
-2. The target has one random system **downgraded** (on BSC: downgrades the highest-level system; on chains with beacon chain randomness: randomly picks from Collector/Weapon/Shield/Engine)
-3. If the downgraded system's level is still ≥ 1, the civilization survives and its durability is restored to 50%
-4. If all systems are level 1 (cannot be downgraded further), the civilization becomes **ruins**
-5. The kill plunder stacks **on top of** the regular attack plunder
-
-### Ruins
-
-A civilization in ruins:
-- Is removed from the active civilization list
-- Cannot be attacked
-- Can be revived via the **Rebuild** function
-
-### Combat Boost (Rebirth Boost)
-
-Each Rebuild grants **+1200 bps** (12%) combat boost, stacking up to **30000 bps** (3× multiplier).
-Both attack and defense benefit from this boost.
-
----
-
-## Shield Regeneration
-
-### Auto Regeneration
+### हमलावर
 
 ```
-Regen Amount = 50 + shield level²
-Energy Cost = regen amount (1:1 ratio)
+आधार हमला = 900 + 10 × हमलावर हथियार स्तर²
+यदि हथियार स्थायित्व = 0, हमला आधा हो जाता है
+अंतिम हमला = आधार हमला × (1 + युद्ध बूस्ट / 10000)
 ```
 
-### Manual Repair
+### रक्षक
 
 ```
-Energy Cost = repair amount × 4
+आधार रक्षा = 540 + 6 × रक्षक ढाल स्तर²
+गठबंधन रक्षा बोनस = (सहयोगी - 1) × 8 × (1 + टोटम स्तर × 0.5%)
+अंतिम रक्षा = आधार रक्षा × (1 + युद्ध बूस्ट / 10000) + गठबंधन बोनस
 ```
 
-### Alliance Assistance
+### अंतिम क्षति
 
 ```
-Energy Cost = repair amount × 1 (paid by ally)
-Allies can repair shields for each other
+ढाल क्षति = हमला + 200 - रक्षा (यदि > 0)
+स्वास्थ्य क्षति = (हमला - रक्षा) × 2 (यदि > 0)
+
+यदि ढाल क्षति > शेष ढाल HP:
+  अधिशेष × 3 स्वास्थ्य क्षति में बदल जाता है
 ```
 
 ---
 
-## Defense Strategy
+## लूट
 
-1. **Keep energy reserves > 7× daily upkeep** — prevents energy depletion that would stop shield regeneration
-2. **Repair durability regularly** — systems at zero durability are extremely vulnerable
-3. **Upgrade shield level** — shield HP and defense both scale with level squared
-4. **Join an alliance and upgrade the totem** — alliance defense bonuses are significant
+युद्ध जीतने के बाद, आप लक्ष्य से ऊर्जा लूटते हैं:
 
-**Recommended next step: [Space Jump & Cruise →](/docs/guide/movement)**
+```
+लूट अनुपात = 5% + हथियार स्तर × 0.5%
+लूटी गई ऊर्जा = लक्ष्य की वर्तमान ऊर्जा × लूट अनुपात
+```
+
+लूटी गई ऊर्जा एक **लंबित युद्ध ऊर्जा** पूल में जाती है, जिसे आपको मैन्युअल रूप से दावा करना होगा।
+
+---
+
+## पराजय और विनाश
+
+### पराजय
+
+जब किसी लक्ष्य का स्वास्थ्य शून्य हो जाता है:
+
+1. **सभी शेष ऊर्जा लूट ली जाती है** आपके लंबित पूल में
+2. लक्ष्य का एक यादृच्छिक सिस्टम **डाउनग्रेड** हो जाता है
+3. यदि डाउनग्रेड किए गए सिस्टम का स्तर अभी भी ≥ 1 है, तो सभ्यता बच जाती है और इसका स्थायित्व 50% पर बहाल हो जाता है
+4. यदि सभी सिस्टम स्तर 1 हैं (आगे डाउनग्रेड नहीं किया जा सकता), तो सभ्यता **खंडहर** बन जाती है
+5. हत्या लूट नियमित हमला लूट के **ऊपर** जुड़ती है
+
+### खंडहर
+
+खंडहर में सभ्यता:
+- सक्रिय सभ्यता सूची से हटा दी जाती है
+- हमला नहीं किया जा सकता
+- **पुनर्निर्माण** फ़ंक्शन के माध्यम से पुनर्जीवित किया जा सकता है
+
+### युद्ध बूस्ट (पुनर्जन्म बूस्ट)
+
+प्रत्येक पुनर्निर्माण **+1200 bps** (12%) युद्ध बूस्ट प्रदान करता है, जो **30000 bps** (3× गुणक) तक जमा होता है। हमला और रक्षा दोनों इस बूस्ट से लाभान्वित होते हैं।
+
+---
+
+## ढाल पुनर्जनन
+
+### स्वचालित पुनर्जनन
+
+```
+पुनर्जनन मात्रा = 50 + ढाल स्तर²
+ऊर्जा लागत = पुनर्जनन मात्रा (1:1 अनुपात)
+```
+
+### मैन्युअल मरम्मत
+
+```
+ऊर्जा लागत = मरम्मत मात्रा × 4
+```
+
+### गठबंधन सहायता
+
+```
+ऊर्जा लागत = मरम्मत मात्रा × 1 (सहयोगी द्वारा भुगतान)
+सहयोगी एक-दूसरे की ढाल की मरम्मत कर सकते हैं
+```
+
+---
+
+## रक्षा रणनीति
+
+1. **ऊर्जा भंडार > 7× दैनिक रखरखाव रखें** — ऊर्जा की कमी को रोकता है जो ढाल पुनर्जनन को रोक देगी
+2. **नियमित रूप से स्थायित्व की मरम्मत करें** — शून्य स्थायित्व वाले सिस्टम अत्यंत कमज़ोर होते हैं
+3. **ढाल स्तर अपग्रेड करें** — ढाल HP और रक्षा दोनों स्तर के वर्ग के साथ बढ़ते हैं
+4. **गठबंधन में शामिल हों और टोटम अपग्रेड करें** — गठबंधन रक्षा बोनस महत्वपूर्ण हैं
+
+**अनुशंसित अगला कदम: [स्पेस जंप और क्रूज़ →](/docs/guide/movement)**

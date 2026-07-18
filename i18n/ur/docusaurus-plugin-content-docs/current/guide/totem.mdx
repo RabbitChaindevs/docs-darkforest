@@ -1,93 +1,93 @@
 ---
 sidebar_position: 6
-title: Totem System
-description: Dark Forest alliance totems — donating, upgrading, and defense bonuses
+title: ٹوٹم سسٹم
+description: ڈارک فاریسٹ اتحاد ٹوٹم — عطیات، اپ گریڈ، اور دفاعی بونس
 ---
 
-# Totem System
+# ٹوٹم سسٹم
 
-The totem is an alliance-wide buff system. Members donate energy to upgrade it, granting defense bonuses to all members.
-
----
-
-## How It Works
-
-1. **Donate energy**: Alliance members donate energy to the totem pool
-2. **Accumulate to the threshold**: Once the totem's energy reaches the upgrade cost, the leader triggers the upgrade
-3. **Receive the bonus**: All members gain a defense bonus
+ٹوٹم اتحاد گیر بڑھوتری کا نظام ہے۔ اراکین توانائی عطیہ کرتے ہیں تاکہ اسے اپ گریڈ کیا جا سکے، جو تمام اراکین کو دفاعی بونس دیتا ہے۔
 
 ---
 
-## Donating Energy
+## یہ کیسے کام کرتا ہے
 
-### Operation
+1. **توانائی عطیہ کریں**: اتحاد کے اراکین ٹوٹم پول میں توانائی عطیہ کرتے ہیں
+2. **حد تک جمع کریں**: ایک بار جب ٹوٹم کی توانائی اپ گریڈ کی لاگت تک پہنچ جائے، تو لیڈر اپ گریڈ کو متحرک کرتا ہے
+3. **بونس حاصل کریں**: تمام اراکین دفاعی بونس حاصل کرتے ہیں
+
+---
+
+## توانائی عطیہ کرنا
+
+### عمل
 
 ```
 donateToTotem(allianceId, amount)
 ```
 
-- Each donation resets your donation timer (48-hour expiry)
-- Only members with valid donations benefit from the totem's bonus
+- ہر عطیہ آپ کے عطیہ کے ٹائمر کو ری سیٹ کرتا ہے (48 گھنٹے میں ختم ہوتا ہے)
+- صرف درست عطیات والے اراکین ٹوٹم کے بونس سے فائدہ اٹھاتے ہیں
 
-### Donation Requirements
+### عطیہ کے تقاضے
 
-- Each donation must be spaced by a minimum interval (anti-spam)
-- The donation expires after 48 hours (must re-donate to stay active)
+- ہر عطیہ کم از کم وقفے سے الگ ہونا چاہیے (اینٹی سپیم)
+- عطیہ 48 گھنٹے بعد ختم ہو جاتا ہے (فعال رہنے کے لیے دوبارہ عطیہ کرنا ہوگا)
 
 ---
 
-## Upgrading the Totem
+## ٹوٹم کو اپ گریڈ کرنا
 
-### Cost Formula
+### لاگت کا فارمولا
 
 ```
-Next Upgrade Cost = 20,000,000 × N × (N + 5) / 10
-Where N = current totem level + 1
+اگلی اپ گریڈ لاگت = 20,000,000 × N × (N + 5) / 10
+جہاں N = موجودہ ٹوٹم سطح + 1
 ```
 
-| Level | Energy Required |
+| سطح | درکار توانائی |
 |-------|----------------|
 | Lv 0 → 1 | 12,000,000 |
 | Lv 1 → 2 | 42,000,000 |
 | Lv 2 → 3 | 96,000,000 |
 | Lv 10 → 11 | 330,000,000 |
 
-### Operation
+### عمل
 
-Only the **alliance leader** can trigger upgrades:
+صرف **اتحاد کا لیڈر** اپ گریڈ کو متحرک کر سکتا ہے:
 
 ```
 upgradeTotem(allianceId)
 ```
 
-The upgrade consumes energy from the totem pool and increases the totem level by 1.
+اپ گریڈ ٹوٹم پول سے توانائی استعمال کرتا ہے اور ٹوٹم کی سطح 1 بڑھاتا ہے۔
 
 ---
 
-## Totem Effect
+## ٹوٹم کا اثر
 
 ```
-Alliance Defense Bonus = (total members - 1) × 8 × (1 + totem level × 0.5%)
+اتحاد دفاعی بونس = (کل اراکین - 1) × 8 × (1 + ٹوٹم کی سطح × 0.5%)
 ```
 
-| Totem Level | Bonus Coefficient |
+| ٹوٹم کی سطح | بونس گتانک |
 |-------------|-------------------|
-| Lv 0 | 0% (no bonus) |
+| Lv 0 | 0% (کوئی بونس نہیں) |
 | Lv 10 | +5% |
 | Lv 20 | +10% |
 | Lv 100 | +50% |
 
-Example: a 50-member alliance with a level 20 totem:
+مثال: 50 اراکین کا اتحاد جس میں ٹوٹم کی سطح 20 ہے:
 ```
-Bonus = (50-1) × 8 × (1 + 20 × 0.5%) = 392 × 1.1 = 431.2 defense
+بونس = (50-1) × 8 × (1 + 20 × 0.5%) = 392 × 1.1 = 431.2 دفاع
 ```
 
 ---
 
-## Strategy Tips
+## حکمت عملی کے نکات
 
-1. **Members should donate regularly** — small frequent donations are more effective than one large lump sum
-2. **Leaders should upgrade promptly** — upgrade as soon as the totem pool reaches the threshold
-3. **High totem level + many allies = significant defensive advantage**
+1. **اراکین کو باقاعدگی سے عطیہ کرنا چاہیے** — چھوٹے بار بار عطیات ایک بڑی رقم سے زیادہ مؤثر ہیں
+2. **لیڈر کو فوری طور پر اپ گریڈ کرنا چاہیے** — جیسے ہی ٹوٹم پول حد تک پہنچے اپ گریڈ کریں
+3. **اعلیٰ ٹوٹم سطح + بہت سے اتحادی = اہم دفاعی برتری**
 
-**Recommended next step: [DFT Token Overview →](/docs/economy/dft-overview)**
+**تجویز کردہ اگلا مرحلہ: [DFT ٹوکن کا جائزہ →](/docs/economy/dft-overview)**

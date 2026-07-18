@@ -1,52 +1,52 @@
 ---
 sidebar_position: 3
-title: Strategy Templates
-description: Detailed breakdown of Dark Forest AI Agent's four preset strategies and custom configuration guide
+title: حکمت عملی ٹیمپلیٹس
+description: ڈارک فاریسٹ AI ایجنٹ کی چار پری سیٹ حکمت عملیوں اور کسٹم کنفیگریشن گائیڈ کا تفصیلی تجزیہ
 ---
 
-# Strategy Templates
+# حکمت عملی ٹیمپلیٹس
 
-Agent strategies are defined using YAML configuration files.
+ایجنٹ کی حکمت عملیاں YAML کنفیگریشن فائلوں کا استعمال کرتے ہوئے بیان کی جاتی ہیں۔
 
 ---
 
-## Strategy File Structure
+## حکمت عملی فائل کا ڈھانچہ
 
 ```yaml
 agent:
   name: "my-agent"
   mode: "auto"          # auto | manual | dry-run
 
-limits:                 # Circuit breaker (on-chain policy)
+limits:                 # سرکٹ بریکر (آن چین پالیسی)
   min_energy_reserve: 100000
   min_dft_reserve: 10
   max_attacks_per_hour: 5
   max_upgrades_per_day: 3
   max_single_upgrade_cost: 100
 
-combat:                 # Combat strategy
+combat:                 # جنگی حکمت عملی
   min_target_level: 1
   max_target_level: 999
   weapon_level: 1
   only_attack_when_energy_above: 100000
-  blacklist: []         # Blacklisted addresses
-  whitelist: []         # Whitelisted addresses (only attack these)
+  blacklist: []         # بلیک لسٹ شدہ ایڈریسز
+  whitelist: []         # وائٹ لسٹ شدہ ایڈریسز (صرف ان پر حملہ کریں)
 
-defense:                # Defense strategy
+defense:                # دفاعی حکمت عملی
   auto_repair: true
   min_durability_before_repair: 20
-  shield_regen_threshold: 50   # Start shield regen below this %
+  shield_regen_threshold: 50   # اس % سے نیچے ڈھال کی بحالی شروع کریں
 
-collection:             # Collection strategy
+collection:             # جمع کرنے کی حکمت عملی
   enabled: true
   interval_minutes: 60
 ```
 
 ---
 
-## Four Preset Strategies
+## چار پری سیٹ حکمت عملیاں
 
-### 1. Aggressive
+### 1. جارحانہ (Aggressive)
 
 ```yaml
 combat:
@@ -55,13 +55,13 @@ combat:
   weapon_level: max
 
 collection:
-  enabled: false  # No gathering, pure combat
+  enabled: false  # کوئی جمع نہیں، خالص جنگ
 ```
 
-- ✅ Good for: highly active players who want combat rewards
-- ❌ Risk: high energy consumption, risk of being counterattacked
+- ✅ موزوں برائے: انتہائی فعال کھلاڑی جو جنگی انعامات چاہتے ہیں
+- ❌ خطرہ: زیادہ توانائی کی کھپت، جوابی حملے کا خطرہ
 
-### 2. Balanced
+### 2. متوازن (Balanced)
 
 ```yaml
 combat:
@@ -78,14 +78,14 @@ defense:
   shield_regen_threshold: 60
 ```
 
-- ✅ **Recommended**: balanced offense and defense, suitable for most players
+- ✅ **تجویز کردہ**: متوازن حملہ اور دفاع، زیادہ تر کھلاڑیوں کے لیے موزوں
 
-### 3. Defensive
+### 3. دفاعی (Defensive)
 
 ```yaml
 combat:
   max_attacks_per_hour: 1
-  only_counterattack: true  # Only counterattack
+  only_counterattack: true  # صرف جوابی حملہ
 
 defense:
   auto_repair: true
@@ -97,13 +97,13 @@ collection:
   interval_minutes: 15
 ```
 
-- ✅ Good for: players who are offline for long periods and want to avoid risk
+- ✅ موزوں برائے: وہ کھلاڑی جو طویل عرصے تک آف لائن رہتے ہیں اور خطرے سے بچنا چاہتے ہیں
 
-### 4. Farmer
+### 4. کسان (Farmer)
 
 ```yaml
 combat:
-  enabled: false  # No combat
+  enabled: false  # کوئی جنگ نہیں
 
 defense:
   auto_repair: true
@@ -114,34 +114,34 @@ collection:
   interval_minutes: 5
 ```
 
-- ✅ Good for: early-game development and resource accumulation
+- ✅ موزوں برائے: ابتدائی مرحلے کی ترقی اور وسائل جمع کرنا
 
 ---
 
-## Custom Strategy
+## کسٹم حکمت عملی
 
 ```bash
-# Copy the template
+# ٹیمپلیٹ کاپی کریں
 cp templates/balanced.yaml my-strategy.yaml
 
-# Edit parameters
+# پیرامیٹرز میں ترمیم کریں
 vim my-strategy.yaml
 
-# Use custom strategy
+# کسٹم حکمت عملی استعمال کریں
 python -m dark_forest.cli run --strategy ./my-strategy.yaml
 ```
 
 ---
 
-## Circuit Breaker Parameters
+## سرکٹ بریکر پیرامیٹرز
 
-| Parameter | Description | Default |
+| پیرامیٹر | تفصیل | ڈیفالٹ |
 |-----------|-------------|---------|
-| `max_attacks_per_hour` | Max attacks per hour | 10 |
-| `min_energy_reserve` | Minimum energy reserve | 100,000 |
-| `min_dft_reserve` | Minimum DFT reserve | 10 |
-| `max_upgrades_per_day` | Max upgrades per day | 5 |
+| `max_attacks_per_hour` | فی گھنٹہ زیادہ سے زیادہ حملے | 10 |
+| `min_energy_reserve` | کم از کم توانائی کا ذخیرہ | 100,000 |
+| `min_dft_reserve` | کم از کم DFT کا ذخیرہ | 10 |
+| `max_upgrades_per_day` | فی دن زیادہ سے زیادہ اپ گریڈ | 5 |
 
-> ⚠️ Circuit breaker parameters are enforced on-chain. The agent cannot bypass them.
+> ⚠️ سرکٹ بریکر پیرامیٹرز آن چین نافذ کیے جاتے ہیں۔ ایجنٹ انہیں نظرانداز نہیں کر سکتا۔
 
-**Recommended next step: [Contract Addresses →](/docs/reference/addresses)**
+**تجویز کردہ اگلا مرحلہ: [کنٹریکٹ ایڈریسز →](/docs/reference/addresses)**

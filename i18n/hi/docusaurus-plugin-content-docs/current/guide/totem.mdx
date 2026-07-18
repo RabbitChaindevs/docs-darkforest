@@ -1,93 +1,93 @@
 ---
 sidebar_position: 6
-title: Totem System
-description: Dark Forest alliance totems — donating, upgrading, and defense bonuses
+title: टोटम प्रणाली
+description: डार्क फ़ॉरेस्ट गठबंधन टोटम — दान, अपग्रेड और रक्षा बोनस
 ---
 
-# Totem System
+# टोटम प्रणाली
 
-The totem is an alliance-wide buff system. Members donate energy to upgrade it, granting defense bonuses to all members.
-
----
-
-## How It Works
-
-1. **Donate energy**: Alliance members donate energy to the totem pool
-2. **Accumulate to the threshold**: Once the totem's energy reaches the upgrade cost, the leader triggers the upgrade
-3. **Receive the bonus**: All members gain a defense bonus
+टोटम एक गठबंधन-व्यापी बफ प्रणाली है। सदस्य इसे अपग्रेड करने के लिए ऊर्जा दान करते हैं, जिससे सभी सदस्यों को रक्षा बोनस मिलता है।
 
 ---
 
-## Donating Energy
+## यह कैसे काम करता है
 
-### Operation
+1. **ऊर्जा दान करें**: गठबंधन सदस्य टोटम पूल में ऊर्जा दान करते हैं
+2. **सीमा तक जमा करें**: एक बार टोटम की ऊर्जा अपग्रेड लागत तक पहुँच जाती है, नेता अपग्रेड शुरू करता है
+3. **बोनस प्राप्त करें**: सभी सदस्यों को रक्षा बोनस मिलता है
+
+---
+
+## ऊर्जा दान करना
+
+### संचालन
 
 ```
 donateToTotem(allianceId, amount)
 ```
 
-- Each donation resets your donation timer (48-hour expiry)
-- Only members with valid donations benefit from the totem's bonus
+- प्रत्येक दान आपके दान टाइमर को रीसेट करता है (48 घंटे की समाप्ति)
+- केवल वैध दान वाले सदस्य टोटम के बोनस से लाभान्वित होते हैं
 
-### Donation Requirements
+### दान आवश्यकताएँ
 
-- Each donation must be spaced by a minimum interval (anti-spam)
-- The donation expires after 48 hours (must re-donate to stay active)
+- प्रत्येक दान न्यूनतम अंतराल पर होना चाहिए (एंटी-स्पैम)
+- दान 48 घंटे के बाद समाप्त हो जाता है (सक्रिय रहने के लिए पुनः दान करना होगा)
 
 ---
 
-## Upgrading the Totem
+## टोटम अपग्रेड करना
 
-### Cost Formula
+### लागत फ़ॉर्मूला
 
 ```
-Next Upgrade Cost = 20,000,000 × N × (N + 5) / 10
-Where N = current totem level + 1
+अगली अपग्रेड लागत = 20,000,000 × N × (N + 5) / 10
+जहाँ N = वर्तमान टोटम स्तर + 1
 ```
 
-| Level | Energy Required |
+| स्तर | आवश्यक ऊर्जा |
 |-------|----------------|
 | Lv 0 → 1 | 12,000,000 |
 | Lv 1 → 2 | 42,000,000 |
 | Lv 2 → 3 | 96,000,000 |
 | Lv 10 → 11 | 330,000,000 |
 
-### Operation
+### संचालन
 
-Only the **alliance leader** can trigger upgrades:
+केवल **गठबंधन नेता** अपग्रेड शुरू कर सकता है:
 
 ```
 upgradeTotem(allianceId)
 ```
 
-The upgrade consumes energy from the totem pool and increases the totem level by 1.
+अपग्रेड टोटम पूल से ऊर्जा खपत करता है और टोटम स्तर को 1 बढ़ाता है।
 
 ---
 
-## Totem Effect
+## टोटम प्रभाव
 
 ```
-Alliance Defense Bonus = (total members - 1) × 8 × (1 + totem level × 0.5%)
+गठबंधन रक्षा बोनस = (कुल सदस्य - 1) × 8 × (1 + टोटम स्तर × 0.5%)
 ```
 
-| Totem Level | Bonus Coefficient |
+| टोटम स्तर | बोनस गुणांक |
 |-------------|-------------------|
-| Lv 0 | 0% (no bonus) |
+| Lv 0 | 0% (कोई बोनस नहीं) |
 | Lv 10 | +5% |
 | Lv 20 | +10% |
 | Lv 100 | +50% |
 
-Example: a 50-member alliance with a level 20 totem:
+उदाहरण: स्तर 20 टोटम वाला 50-सदस्यीय गठबंधन:
 ```
-Bonus = (50-1) × 8 × (1 + 20 × 0.5%) = 392 × 1.1 = 431.2 defense
+बोनस = (50-1) × 8 × (1 + 20 × 0.5%) = 392 × 1.1 = 431.2 रक्षा
 ```
 
 ---
 
-## Strategy Tips
+## रणनीति टिप्स
 
-1. **Members should donate regularly** — small frequent donations are more effective than one large lump sum
-2. **Leaders should upgrade promptly** — upgrade as soon as the totem pool reaches the threshold
-3. **High totem level + many allies = significant defensive advantage**
+1. **सदस्यों को नियमित रूप से दान करना चाहिए** — छोटे बार-बार दान एक बड़े एकमुश्त योगदान से अधिक प्रभावी होते हैं
+2. **नेताओं को तुरंत अपग्रेड करना चाहिए** — जैसे ही टोटम पूल सीमा तक पहुँचे, अपग्रेड करें
+3. **उच्च टोटम स्तर + कई सहयोगी = महत्वपूर्ण रक्षात्मक लाभ**
 
-**Recommended next step: [DFT Token Overview →](/docs/economy/dft-overview)**
+**अनुशंसित अगला कदम: [DFT टोकन अवलोकन →](/docs/economy/dft-overview)**

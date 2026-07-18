@@ -1,59 +1,59 @@
 ---
 sidebar_position: 4
-title: Create Your First Civilization
-description: Complete guide to creating a civilization in Dark Forest
+title: আপনার প্রথম সভ্যতা তৈরি করুন
+description: ডার্ক ফরেস্টে সভ্যতা তৈরির সম্পূর্ণ নির্দেশিকা
 ---
 
-# Create Your First Civilization
+# আপনার প্রথম সভ্যতা তৈরি করুন
 
-## Prerequisites
+## পূর্বশর্ত
 
-- MetaMask installed and connected to BSC mainnet
-- **0.01 ~ 0.05 BNB** in your wallet (entry fee, which grows linearly over time from the minimum to the maximum)
-- At least **1 DFT** (for subsequent upgrades)
+- MetaMask ইনস্টল এবং BSC মেইননেটে সংযুক্ত
+- আপনার ওয়ালেটে **0.01 ~ 0.05 BNB** (প্রবেশ ফি, যা ন্যূনতম থেকে সর্বোচ্চ পর্যন্ত সময়ের সাথে সাথে রৈখিকভাবে বৃদ্ধি পায়)
+- কমপক্ষে **1 DFT** (পরবর্তী আপগ্রেডের জন্য)
 
-## Creation Steps
+## তৈরির ধাপ
 
-### Step 1: Access the Game
+### ধাপ ১: গেম অ্যাক্সেস করুন
 
-Open **[darkforest.uk](https://darkforest.uk)** and click **"Connect Wallet"** in the top-right corner.
+**[darkforest.uk](https://darkforest.uk)** খুলুন এবং উপরের-ডান কোণায় **"ওয়ালেট সংযোগ করুন"** ক্লিক করুন।
 
-### Step 2: Name Your Civilization
+### ধাপ ২: আপনার সভ্যতার নাম দিন
 
-The civilization name can be **1–32 bytes**, supporting letters, numbers, and symbols.
+সভ্যতার নাম **1–32 বাইট** হতে পারে, যা অক্ষর, সংখ্যা এবং প্রতীক সমর্থন করে।
 
-### Step 3: Enter an Invite Code (Optional)
+### ধাপ ৩: আমন্ত্রণ কোড লিখুন (ঐচ্ছিক)
 
-If you have an inviter's wallet address, you can enter it here. Both you and the inviter will receive **150 Energy** as a reward.
+যদি আপনার কাছে আমন্ত্রণকারীর ওয়ালেট ঠিকানা থাকে, আপনি এটি এখানে লিখতে পারেন। আপনি এবং আমন্ত্রণকারী উভয়েই পুরস্কার হিসেবে **150 শক্তি** পাবেন।
 
-### Step 4: Confirm Creation
+### ধাপ ৪: তৈরি নিশ্চিত করুন
 
-Click **"Create Civilization"** — MetaMask will pop up a transaction confirmation. The transaction includes:
+**"সভ্যতা তৈরি করুন"** ক্লিক করুন — MetaMask একটি লেনদেন নিশ্চিতকরণ পপ আপ করবে। লেনদেনে অন্তর্ভুক্ত:
 
-- **Entry fee**: 0.01 BNB (minimum, increases linearly to 0.05 BNB over 365 days)
-- **Gas fee**: A small amount of BNB
+- **প্রবেশ ফি**: 0.01 BNB (ন্যূনতম, 365 দিনে রৈখিকভাবে 0.05 BNB-তে বৃদ্ধি পায়)
+- **গ্যাস ফি**: অল্প পরিমাণ BNB
 
-Confirm and wait for the transaction to finalize on-chain (about 3–5 seconds).
+নিশ্চিত করুন এবং লেনদেন অন-চেইন চূড়ান্ত হওয়ার অপেক্ষা করুন (প্রায় 3–5 সেকেন্ড)।
 
-## Initial State
+## প্রাথমিক অবস্থা
 
-After successful creation, your civilization starts with:
+সফলভাবে তৈরি করার পর, আপনার সভ্যতা শুরু হয়:
 
-| Attribute | Initial Value |
+| বৈশিষ্ট্য | প্রাথমিক মান |
 |-----------|---------------|
-| Energy | **2,000** |
-| Health | **3,000** |
-| Scan Range | **1,000** |
-| All System Levels | **Lv 1** (Collector, Weapon, Shield, Radar, Engine) |
-| Shield HP | **3,615** (3600 + 15 × 1²) |
-| Position | Deterministic coordinates (derived from your address and a nonce) |
+| শক্তি | **2,000** |
+| স্বাস্থ্য | **3,000** |
+| স্ক্যান রেঞ্জ | **1,000** |
+| সব সিস্টেম স্তর | **Lv 1** (সংগ্রাহক, অস্ত্র, ঢাল, রাডার, ইঞ্জিন) |
+| ঢাল HP | **3,615** (3600 + 15 × 1²) |
+| অবস্থান | নির্ধারক স্থানাঙ্ক (আপনার ঠিকানা এবং একটি নন্স থেকে প্রাপ্ত) |
 
-## Coordinate Assignment
+## স্থানাঙ্ক নির্ধারণ
 
-Your civilization is assigned a **deterministic coordinate** `(x, y, z)`, computed via a hash of your wallet address, creation time, and the total number of civilizations. Each civilization's coordinates are unique.
+আপনার সভ্যতাকে একটি **নির্ধারক স্থানাঙ্ক** `(x, y, z)` বরাদ্দ করা হয়, যা আপনার ওয়ালেট ঠিকানা, তৈরি করার সময় এবং মোট সভ্যতার সংখ্যার হ্যাশের মাধ্যমে গণনা করা হয়। প্রতিটি সভ্যতার স্থানাঙ্ক অনন্য।
 
-## New Player Protection
+## নতুন খেলোয়াড় সুরক্ষা
 
-> 🛡️ Newly created civilizations have a **24-hour** protection period. During this time, other players cannot attack you.
+> 🛡️ নতুন তৈরি সভ্যতার **24-ঘন্টা** সুরক্ষা সময় থাকে। এই সময়ে, অন্যান্য খেলোয়াড়রা আপনাকে আক্রমণ করতে পারে না।
 
-**Recommended next step: [Civilization Development & Upgrades →](/docs/guide/civilization)**
+**প্রস্তাবিত পরবর্তী ধাপ: [সভ্যতা উন্নয়ন ও আপগ্রেড →](/docs/guide/civilization)**

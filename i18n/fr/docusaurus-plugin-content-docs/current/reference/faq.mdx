@@ -1,148 +1,148 @@
 ---
 sidebar_position: 3
 title: FAQ
-description: Frequently asked questions about Dark Forest
+description: Foire aux questions sur Dark Forest
 ---
 
 # FAQ
 
-## Getting Started
+## Démarrage
 
-### How much does it cost to create a civilization?
+### Combien coûte la création d'une civilisation ?
 
-The entry fee starts at **0.01 BNB** and grows linearly to **0.05 BNB** (reaching the maximum after 365 days). You also need a small amount of BNB for gas fees.
+Les frais d'entrée commencent à **0,01 BNB** et augmentent linéairement jusqu'à **0,05 BNB** (atteignant le maximum après 365 jours). Vous avez également besoin d'une petite quantité de BNB pour les frais de gaz.
 
-### What is DFT used for?
+### À quoi sert le DFT ?
 
-DFT is used for space jumps, system upgrades, rebuilding a civilization, alliance exit fines, and buying energy on the energy market.
+Le DFT est utilisé pour les sauts spatiaux, les améliorations de systèmes, la reconstruction d'une civilisation, les amendes de sortie d'alliance et l'achat d'énergie sur le marché de l'énergie.
 
-### How long does new player protection last?
+### Combien de temps dure la protection des nouveaux joueurs ?
 
-**24 hours**. During this period, other players cannot attack you.
+**24 heures**. Pendant cette période, les autres joueurs ne peuvent pas vous attaquer.
 
 ---
 
 ## Gameplay
 
-### Why can't I attack a certain civilization?
+### Pourquoi ne puis-je pas attaquer une certaine civilisation ?
 
-These are the possible soft gate reasons (no resources are consumed):
+Voici les raisons possibles de porte douce (aucune ressource n'est consommée) :
 
-- The target is in new player protection (< 24 hours old)
-- You and the target are in the same alliance
-- There's an active exit cooldown between you (24 hours)
-- The target is outside your radar range
-- You are the target
+- La cible est en protection des nouveaux joueurs (< 24 heures)
+- Vous et la cible êtes dans la même alliance
+- Il y a un délai de refroidissement de sortie actif entre vous (24 heures)
+- La cible est en dehors de votre portée radar
+- Vous êtes la cible
 
-### I'm running low on energy. What can I do?
+### Je manque d'énergie. Que puis-je faire ?
 
-- Upgrade your **Energy Collector** for higher passive output
-- **Plunder** energy by attacking other civilizations
-- Buy energy on the **Energy Market** using DFT
-- **Invite new players** for reward energy
-- Cut back on unnecessary actions (e.g., non-essential shield repairs)
+- Améliorez votre **collecteur d'énergie** pour une production passive plus élevée
+- **Pillez** de l'énergie en attaquant d'autres civilisations
+- Achetez de l'énergie sur le **marché de l'énergie** avec du DFT
+- **Invitez de nouveaux joueurs** pour de l'énergie de récompense
+- Réduisez les actions non essentielles (ex. réparations de bouclier non nécessaires)
 
-### Why did my shield drop to zero after a space jump?
+### Pourquoi mon bouclier est-il tombé à zéro après un saut spatial ?
 
-Space jumps inflict heavy damage on your vessel: **Shield HP resets to 10% of maximum**. Be careful after jumping:
+Les sauts spatiaux infligent de lourds dégâts à votre vaisseau : **les PV du bouclier sont réinitialisés à 10 % du maximum**. Soyez prudent après un saut :
 
-1. Repair your shield immediately after jumping
-2. Avoid jumping near combat zones
-3. Alliance members can assist with repairs after a jump
+1. Réparez votre bouclier immédiatement après le saut
+2. Évitez de sauter près des zones de combat
+3. Les membres de l'alliance peuvent aider aux réparations après un saut
 
-### What happens when durability hits zero?
+### Que se passe-t-il quand la durabilité atteint zéro ?
 
-| System | Durability = 0 Consequence |
-|--------|---------------------------|
-| Collector | Stops producing energy |
-| Weapon | Attack power is halved |
-| Shield | Shield becomes ineffective (no defense) |
-| Engine | Cannot cruise or jump |
+| Système | Conséquence à durabilité = 0 |
+|---------|------------------------------|
+| Collecteur | Arrête de produire de l'énergie |
+| Arme | La puissance d'attaque est réduite de moitié |
+| Bouclier | Le bouclier devient inefficace (aucune défense) |
+| Moteur | Impossible de naviguer ou sauter |
 
 ---
 
-## Economy
+## Économie
 
-### What is the total supply of DFT?
+### Quelle est l'offre totale de DFT ?
 
-**~4.2 trillion (4,206,900,000,000) DFT** — this is the hard cap. Approximately 1.15 trillion DFT is minted daily and distributed among active players.
+**~4,2 billions (4 206 900 000 000) DFT** — c'est le plafond strict. Environ 1,15 billion de DFT est créé quotidiennement et distribué entre les joueurs actifs.
 
-### Are there fees for trading DFT?
+### Y a-t-il des frais pour échanger du DFT ?
 
-A **2.5% total fee** (1% development + 1.5% marketing) applies only when trading on a DEX like PancakeSwap. Regular transfers are fee-free.
+Des **frais totaux de 2,5 %** (1 % développement + 1,5 % marketing) s'appliquent uniquement lors des transactions sur un DEX comme PancakeSwap. Les transferts réguliers sont sans frais.
 
-### Can unclaimed DFT from the daily mint accumulate?
+### Le DFT non réclamé du minage quotidien peut-il s'accumuler ?
 
-**No.** DFT from each epoch must be claimed within that epoch. If not claimed, the next `distribute()` call burns the remainder.
+**Non.** Le DFT de chaque époque doit être réclamé dans cette époque. S'il n'est pas réclamé, le prochain appel `distribute()` brûle le reste.
 
 ---
 
 ## Alliance
 
-### Is there a penalty for leaving an alliance?
+### Y a-t-il une pénalité pour quitter une alliance ?
 
-Yes, you must pay **100 DFT + 10 DFT × current member count**. This DFT is distributed to the remaining alliance members.
+Oui, vous devez payer **100 DFT + 10 DFT × nombre actuel de membres**. Ce DFT est distribué aux membres restants de l'alliance.
 
-### How long after leaving an alliance can I attack again?
+### Combien de temps après avoir quitté une alliance puis-je attaquer à nouveau ?
 
-**24-hour cooldown**. During this period, you and the former alliance cannot attack each other.
+**Délai de refroidissement de 24 heures**. Pendant cette période, vous et l'ancienne alliance ne pouvez pas vous attaquer mutuellement.
 
-### What is the maximum alliance size?
+### Quelle est la taille maximale d'une alliance ?
 
-**100 members.**
-
----
-
-## Rebuild (Rebirth)
-
-### What conditions are needed to rebuild?
-
-Your civilization must be in **ruins state** (defeated, with all systems reduced to Lv 1).
-
-### Does rebuilding reset newbie protection?
-
-Yes. Rebuilding resets `creationTime` to the current timestamp, so the **24-hour newbie protection restarts**.
-
-### What is the maximum health cap?
-
-**20,000**. Initial health is 3,000. Health does not regenerate automatically in combat and can only be reset to 10,000 via rebuilding.
-
-### How much does a rebuild cost?
-
-- **Energy**: `500,000 × (10000 + rebirth count × 1200) / 10000`, cap 10,000,000 (20×)
-- **DFT**: `100 + 10 × rebirth count`, cap 2,000 DFT
-
-### What are the benefits of rebuilding?
-
-Each rebuild grants **+12% (1200 bps)** combat boost, benefiting both attack and defense. Stacks up to **300% (30000 bps)**.
+**100 membres.**
 
 ---
 
-## AI Agent
+## Reconstruction (Renaissance)
 
-### Is the Agent safe?
+### Quelles conditions sont nécessaires pour reconstruire ?
 
-The agent system has multiple layers of security:
+Votre civilisation doit être en **état de ruines** (vaincue, avec tous les systèmes réduits au niveau 1).
 
-1. **Permission bitmask**: fine-grained control over each operation
-2. **On-chain policies**: circuit breaker parameters that cannot be bypassed
-3. **Instantly revocable**: `revokeAgent()` takes effect immediately
-4. **Encrypted storage**: private keys are encrypted locally
+### La reconstruction réinitialise-t-elle la protection des nouveaux joueurs ?
 
-We recommend using a **dedicated game wallet** to run an agent.
+Oui. La reconstruction réinitialise `creationTime` à l'horodatage actuel, donc la **protection des nouveaux joueurs de 24 heures redémarre**.
 
-### Can the agent auto-attack?
+### Quel est le plafond de santé maximal ?
 
-Yes, as long as you grant the `ATTACK` permission and set `autoAttack: true`. You can also configure blacklists and whitelists to control attack targets.
+**20 000**. La santé initiale est de 3 000. La santé ne se régénère pas automatiquement en combat et ne peut être réinitialisée à 10 000 que via la reconstruction.
+
+### Combien coûte une reconstruction ?
+
+- **Énergie** : `500 000 × (10000 + nombre de renaissances × 1200) / 10000`, max 10 000 000 (20×)
+- **DFT** : `100 + 10 × nombre de renaissances`, max 2 000 DFT
+
+### Quels sont les avantages de la reconstruction ?
+
+Chaque reconstruction accorde **+12 % (1200 bps)** de bonus de combat, bénéficiant à l'attaque et à la défense. Cumulable jusqu'à **300 % (30000 bps)**.
 
 ---
 
-## Technical
+## Agent IA
 
-### Is the contract source code open?
+### L'agent est-il sûr ?
 
-Yes. All contract source code is open-source on GitHub and verified on BscScan.
+Le système d'agent comporte plusieurs couches de sécurité :
 
-### How can I view transaction details?
+1. **Masque de permission** : contrôle fin sur chaque opération
+2. **Politiques on-chain** : paramètres de disjoncteur qui ne peuvent pas être contournés
+3. **Révocable instantanément** : `revokeAgent()` prend effet immédiatement
+4. **Stockage chiffré** : les clés privées sont chiffrées localement
 
-Paste your transaction hash (TXID) into [BscScan](https://bscscan.com).
+Nous recommandons d'utiliser un **portefeuille de jeu dédié** pour exécuter un agent.
+
+### L'agent peut-il attaquer automatiquement ?
+
+Oui, tant que vous accordez la permission `ATTACK` et définissez `autoAttack: true`. Vous pouvez également configurer des listes noires et blanches pour contrôler les cibles d'attaque.
+
+---
+
+## Technique
+
+### Le code source des contrats est-il ouvert ?
+
+Oui. Tout le code source des contrats est open-source sur GitHub et vérifié sur BscScan.
+
+### Comment puis-je voir les détails d'une transaction ?
+
+Collez votre hash de transaction (TXID) dans [BscScan](https://bscscan.com).

@@ -1,41 +1,41 @@
 ---
 sidebar_position: 2
-title: Glossary
-description: Dark Forest game terminology explained
+title: শব্দকোষ
+description: ডার্ক ফরেস্ট গেম পরিভাষার ব্যাখ্যা
 ---
 
-# Glossary
+# শব্দকোষ
 
-| Term | Description |
+| শব্দ | বিবরণ |
 |------|-------------|
-| **Civilization** | The player's in-game identity with its own levels, attributes, and coordinates |
-| **Energy** | The basic in-game resource used for upgrades, attacks, movement, and repairs |
-| **DFT** | Dark Forest Token, an ERC-20 token used for jumps, upgrades, alliance exit fines, and more |
-| **Coordinates** | A civilization's position in 3D space `(x, y, z)`, assigned via a deterministic algorithm |
-| **Total Level** | The sum of all system levels; affects daily upkeep costs |
-| **Scan Range** | Your detection radius: `1000 + 150×lv + 5×lv²`; determines who you can attack or track |
-| **Attack Power** | `900 + 10 × level²`; the core attribute of the Weapon system |
-| **Defense** | `540 + 6 × level²`; the core attribute of the Shield system |
-| **Shield HP** | `3600 + 15 × level²`; absorbs incoming damage |
-| **Engine Speed** | `10 + 5 × level`; cruise speed |
-| **Collection Rate** | `3 + 10 × √(level - 1)` energy/second |
-| **Durability** | Each system's working state, consumed over time or through use |
-| **Daily Upkeep** | `2,000 × total level / day`; proportionally deducted over time |
-| **Entry Fee** | BNB paid when creating a civilization, ranging from 0.01 to 0.05 BNB linear growth |
-| **Anchor Formula** | The formula for calculating upgrade costs based on daily output and anchor days |
-| **Anchor Days** | Level 1–100: 1–30 days; 100–1000: 30–60 days; 1000+: 60 days (capped) |
-| **Cruise** | Standard movement method — moves toward target coordinates at constant speed |
-| **Space Jump** | Instant teleport to new coordinates, costs energy + DFT, shield drops to 10% |
-| **Tracking Jump** | Instant jump to a target's location; requires Radar Lv20+ and target in range |
-| **Attack Token** | Token bucket algorithm limiting attack frequency; max 3–10 tokens |
-| **Plunder Ratio** | `5% + weapon level × 0.5%`; portion of target energy plundered on victory |
-| **New Player Protection** | Cannot be attacked for the first 24 hours after creation |
-| **Ruins** | A civilization that cannot be downgraded further after defeat; can be revived via Rebuild |
-| **Rebuild / Rebirth** | Revives a ruined civilization, costs energy + DFT, grants combat boost |
-| **Combat Boost** | +12% per rebuild, max 300% (30000 bps) |
-| **Alliance** | A player organization for collaboration, max 100 members |
-| **Leave Cooldown** | 24-hour mutual non-aggression period after leaving an alliance |
-| **Totem** | An alliance-wide buff system; donate energy to upgrade for defense bonuses |
-| **Epoch** | DailyMinter's time unit, from UTC midnight to the next UTC midnight |
-| **DELEGATECALL** | Contract architecture pattern where the main contract delegates logic to satellite contracts |
-| **Soft Gate** | When attack conditions aren't met, the game shows the reason without consuming resources |
+| **সভ্যতা** | খেলোয়াড়ের ইন-গেম পরিচয় যার নিজস্ব স্তর, বৈশিষ্ট্য এবং স্থানাঙ্ক রয়েছে |
+| **শক্তি** | মৌলিক ইন-গেম সম্পদ, আপগ্রেড, আক্রমণ, চলাচল এবং মেরামতের জন্য ব্যবহৃত |
+| **DFT** | ডার্ক ফরেস্ট টোকেন, একটি ERC-20 টোকেন যা জাম্প, আপগ্রেড, জোট ত্যাগ জরিমানা এবং আরও অনেক কাজে ব্যবহৃত হয় |
+| **স্থানাঙ্ক** | 3D স্পেসে একটি সভ্যতার অবস্থান `(x, y, z)`, একটি নির্ধারক অ্যালগরিদমের মাধ্যমে নির্ধারিত |
+| **মোট স্তর** | সমস্ত সিস্টেম স্তরের যোগফল; দৈনিক রক্ষণাবেক্ষণ খরচ প্রভাবিত করে |
+| **স্ক্যান রেঞ্জ** | আপনার শনাক্তকরণ ব্যাসার্ধ: `1000 + 150×lv + 5×lv²`; আপনি কাকে আক্রমণ বা ট্র্যাক করতে পারেন তা নির্ধারণ করে |
+| **আক্রমণ শক্তি** | `900 + 10 × level²`; অস্ত্র সিস্টেমের মূল বৈশিষ্ট্য |
+| **প্রতিরক্ষা** | `540 + 6 × level²`; ঢাল সিস্টেমের মূল বৈশিষ্ট্য |
+| **ঢাল HP** | `3600 + 15 × level²`; আগত ক্ষতি শোষণ করে |
+| **ইঞ্জিন গতি** | `10 + 5 × level`; ক্রুজ গতি |
+| **সংগ্রহ হার** | `3 + 10 × √(level - 1)` শক্তি/সেকেন্ড |
+| **স্থায়িত্ব** | প্রতিটি সিস্টেমের কার্যকরী অবস্থা, সময় বা ব্যবহারের সাথে খরচ হয় |
+| **দৈনিক রক্ষণাবেক্ষণ** | `2,000 × total level / day`; সময়ানুপাতিকভাবে কাটা হয় |
+| **প্রবেশ ফি** | সভ্যতা তৈরি করার সময় প্রদত্ত BNB, 0.01 থেকে 0.05 BNB রৈখিক বৃদ্ধি |
+| **অ্যাঙ্কর সূত্র** | দৈনিক উৎপাদন এবং অ্যাঙ্কর দিনের উপর ভিত্তি করে আপগ্রেড খরচ গণনার সূত্র |
+| **অ্যাঙ্কর দিন** | স্তর 1–100: 1–30 দিন; 100–1000: 30–60 দিন; 1000+: 60 দিন (সীমিত) |
+| **ক্রুজ** | মানক চলাচল পদ্ধতি — ধ্রুব গতিতে লক্ষ্য স্থানাঙ্কের দিকে অগ্রসর হয় |
+| **স্পেস জাম্প** | নতুন স্থানাঙ্কে তাৎক্ষণিক টেলিপোর্ট, শক্তি + DFT খরচ করে, ঢাল 10% এ নেমে যায় |
+| **ট্র্যাকিং জাম্প** | লক্ষ্যের অবস্থানে তাৎক্ষণিক জাম্প; রাডার Lv20+ এবং লক্ষ্য রেঞ্জের মধ্যে প্রয়োজন |
+| **আক্রমণ টোকেন** | আক্রমণ ফ্রিকোয়েন্সি সীমিতকারী টোকেন বালতি অ্যালগরিদম; সর্বোচ্চ 3–10 টোকেন |
+| **লুটের অনুপাত** | `5% + weapon level × 0.5%`; জয়ে লক্ষ্য শক্তির অংশ লুট হয় |
+| **নতুন খেলোয়াড় সুরক্ষা** | তৈরির পর প্রথম 24 ঘন্টা আক্রমণ করা যায় না |
+| **ধ্বংসাবশেষ** | একটি সভ্যতা যা পরাজয়ের পর আর ডাউনগ্রেড করা যায় না; পুনর্নির্মাণের মাধ্যমে পুনরুজ্জীবিত করা যায় |
+| **পুনর্নির্মাণ / পুনর্জন্ম** | ধ্বংসাবশেষ সভ্যতা পুনরুজ্জীবিত করে, শক্তি + DFT খরচ করে, যুদ্ধ বুস্ট দেয় |
+| **যুদ্ধ বুস্ট** | প্রতি পুনর্নির্মাণে +12%, সর্বোচ্চ 300% (30000 bps) |
+| **জোট** | সহযোগিতার জন্য খেলোয়াড় সংগঠন, সর্বোচ্চ 100 সদস্য |
+| **লিভ কুলডাউন** | জোট ত্যাগের পর 24 ঘন্টার পারস্পরিক অ-আগ্রাসন সময়কাল |
+| **টোটেম** | একটি জোট-ব্যাপী বাফ ব্যবস্থা; প্রতিরক্ষা বোনাসের জন্য শক্তি দান ও আপগ্রেড |
+| **যুগ** | DailyMinter-এর সময় একক, UTC মধ্যরাত থেকে পরবর্তী UTC মধ্যরাত পর্যন্ত |
+| **DELEGATECALL** | কন্ট্র্যাক্ট আর্কিটেকচার প্যাটার্ন যেখানে প্রধান কন্ট্র্যাক্ট স্যাটেলাইট কন্ট্র্যাক্টে লজিক অর্পণ করে |
+| **সফট গেট** | যখন আক্রমণের শর্ত পূরণ হয় না, গেম সম্পদ খরচ না করে কারণ দেখায় |

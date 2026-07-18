@@ -1,74 +1,74 @@
 ---
 sidebar_position: 2
-title: Connect to BSC
-description: How to configure MetaMask and other wallets for the BNB Smart Chain network
+title: Подключение к BSC
+description: Как настроить MetaMask и другие кошельки для сети BNB Smart Chain
 ---
 
-# Connect to BSC
+# Подключение к BSC
 
-Dark Forest is deployed on **BNB Smart Chain (BSC)**. You need to switch your wallet to the BSC network to interact with the game.
+Dark Forest развёрнут на **BNB Smart Chain (BSC)**. Вам нужно переключить ваш кошелёк на сеть BSC для взаимодействия с игрой.
 
-## What Is BSC?
+## Что такое BSC?
 
-BNB Smart Chain is a blockchain network launched by Binance, offering:
+BNB Smart Chain — это блокчейн-сеть, запущенная Binance, предлагающая:
 
-- **Low transaction fees** — each operation costs just fractions of a cent
-- **High throughput** — built for high-frequency game interactions
-- **EVM compatible** — works with MetaMask and other主流 wallets
+- **Низкие комиссии за транзакции** — каждая операция стоит доли цента
+- **Высокую пропускную способность** — создана для высокочастотных игровых взаимодействий
+- **Совместимость с EVM** — работает с MetaMask и другими популярными кошельками
 
-## Auto-Add BSC Network
+## Автоматическое добавление сети BSC
 
-The easiest way is to use Chainlist:
+Самый простой способ — использовать Chainlist:
 
-1. Visit [Chainlist](https://chainlist.org)
-2. Search for "BNB Smart Chain"
-3. Click "Connect Wallet" and authorize
-4. Click "Add to MetaMask"
-5. Confirm the addition
+1. Посетите [Chainlist](https://chainlist.org)
+2. Найдите "BNB Smart Chain"
+3. Нажмите "Connect Wallet" и подтвердите
+4. Нажмите "Add to MetaMask"
+5. Подтвердите добавление
 
-## Manual Configuration
+## Ручная настройка
 
-You can also add the BSC network manually:
+Вы также можете добавить сеть BSC вручную:
 
-### Adding BSC to MetaMask
+### Добавление BSC в MetaMask
 
-1. Click the network dropdown in the top-right corner of MetaMask
-2. Click "Add Network"
-3. Fill in the following details:
+1. Нажмите на выпадающее меню сети в правом верхнем углу MetaMask
+2. Нажмите "Добавить сеть"
+3. Заполните следующие данные:
 
-| Setting | Value |
-|---------|-------|
-| **Network Name** | BNB Smart Chain |
+| Параметр | Значение |
+|----------|----------|
+| **Название сети** | BNB Smart Chain |
 | **RPC URL** | `https://bsc-dataseed.binance.org` |
-| **Chain ID** | `56` |
-| **Currency Symbol** | `BNB` |
-| **Block Explorer** | `https://bscscan.com` |
+| **ID цепи** | `56` |
+| **Символ валюты** | `BNB` |
+| **Обозреватель блоков** | `https://bscscan.com` |
 
-4. Click "Save"
+4. Нажмите "Сохранить"
 
-### Backup RPC Nodes
+### Запасные RPC-узлы
 
-If the main RPC is congested, you can use backup nodes:
+Если основной RPC перегружен, вы можете использовать запасные узлы:
 
-| Provider | RPC URL |
-|----------|---------|
+| Провайдер | RPC URL |
+|-----------|---------|
 | Binance Official | `https://bsc-dataseed1.binance.org` |
 | Ankr | `https://rpc.ankr.com/bsc` |
 | PublicNode | `https://bsc.publicnode.com` |
 
-## Getting BNB
+## Получение BNB
 
-Every operation on BSC requires BNB for gas fees. Here's how to get some:
+Каждая операция в BSC требует BNB для газовых сборов. Вот как получить BNB:
 
-1. **Centralized exchange** — buy BNB from Binance, OKX, etc. and withdraw to the BSC network
-2. **Cross-chain bridge** — transfer BNB from other networks to BSC via a bridge
+1. **Централизованная биржа** — купите BNB на Binance, OKX и т.д. и выведите в сеть BSC
+2. **Кросс-чейн мост** — переведите BNB из других сетей в BSC через мост
 
 :::caution
-When withdrawing, **make sure to select the BSC network (BEP-20)** or you may lose your funds!
+При выводе **обязательно выберите сеть BSC (BEP-20)**, иначе вы можете потерять средства!
 :::
 
-## Verify Your Connection
+## Проверка подключения
 
-After configuration, switch to the BNB Smart Chain network in your wallet. If the Chain ID shows `56` and your balance displays the correct BNB amount, you're all set.
+После настройки переключитесь на сеть BNB Smart Chain в вашем кошельке. Если ID цепи показывает `56` и ваш баланс отображает правильное количество BNB, всё готово.
 
-Once your wallet and network are ready, the next step is to [Get DFT Tokens](/docs/quickstart/get-dft).
+После того как ваш кошелёк и сеть готовы, следующим шагом будет [Получение токенов DFT](/docs/quickstart/get-dft).

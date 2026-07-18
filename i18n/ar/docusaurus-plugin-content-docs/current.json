@@ -1,26 +1,26 @@
 {
   "version.label": {
-    "message": "Next",
-    "description": "The label for version current"
+    "message": "التالي",
+    "description": "تسمية الإصدار الحالي"
   },
   "sidebar.sidebar.category.🚀 快速上手": {
-    "message": "🚀 快速上手",
-    "description": "The label for category '🚀 快速上手' in sidebar 'sidebar'"
+    "message": "🚀 بداية سريعة",
+    "description": "تسمية تصنيف '🚀 快速上手' في الشريط الجانبي"
   },
   "sidebar.sidebar.category.🎮 玩法指南": {
-    "message": "🎮 玩法指南",
-    "description": "The label for category '🎮 玩法指南' in sidebar 'sidebar'"
+    "message": "🎮 دليل اللعبة",
+    "description": "تسمية تصنيف '🎮 玩法指南' في الشريط الجانبي"
   },
   "sidebar.sidebar.category.💰 经济系统": {
-    "message": "💰 经济系统",
-    "description": "The label for category '💰 经济系统' in sidebar 'sidebar'"
+    "message": "💰 النظام الاقتصادي",
+    "description": "تسمية تصنيف '💰 经济系统' في الشريط الجانبي"
   },
   "sidebar.sidebar.category.🤖 AI 自动战斗": {
-    "message": "🤖 AI 自动战斗",
-    "description": "The label for category '🤖 AI 自动战斗' in sidebar 'sidebar'"
+    "message": "🤖 الوكيل الذكي",
+    "description": "تسمية تصنيف '🤖 AI 自动战斗' في الشريط الجانبي"
   },
   "sidebar.sidebar.category.📎 附录": {
-    "message": "📎 附录",
-    "description": "The label for category '📎 附录' in sidebar 'sidebar'"
+    "message": "📎 الملاحق",
+    "description": "تسمية تصنيف '📎 附录' في الشريط الجانبي"
   }
 }

@@ -1,52 +1,52 @@
 ---
 sidebar_position: 3
-title: Strategy Templates
-description: Detailed breakdown of Dark Forest AI Agent's four preset strategies and custom configuration guide
+title: रणनीति टेम्पलेट
+description: डार्क फ़ॉरेस्ट AI एजेंट की चार प्रीसेट रणनीतियों और कस्टम कॉन्फ़िगरेशन गाइड का विस्तृत विवरण
 ---
 
-# Strategy Templates
+# रणनीति टेम्पलेट
 
-Agent strategies are defined using YAML configuration files.
+एजेंट रणनीतियाँ YAML कॉन्फ़िगरेशन फ़ाइलों का उपयोग करके परिभाषित की जाती हैं।
 
 ---
 
-## Strategy File Structure
+## रणनीति फ़ाइल संरचना
 
 ```yaml
 agent:
   name: "my-agent"
   mode: "auto"          # auto | manual | dry-run
 
-limits:                 # Circuit breaker (on-chain policy)
+limits:                 # सर्किट ब्रेकर (ऑन-चेन नीति)
   min_energy_reserve: 100000
   min_dft_reserve: 10
   max_attacks_per_hour: 5
   max_upgrades_per_day: 3
   max_single_upgrade_cost: 100
 
-combat:                 # Combat strategy
+combat:                 # युद्ध रणनीति
   min_target_level: 1
   max_target_level: 999
   weapon_level: 1
   only_attack_when_energy_above: 100000
-  blacklist: []         # Blacklisted addresses
-  whitelist: []         # Whitelisted addresses (only attack these)
+  blacklist: []         # ब्लैकलिस्टेड पते
+  whitelist: []         # व्हाइटलिस्टेड पते (केवल इन पर हमला करें)
 
-defense:                # Defense strategy
+defense:                # रक्षा रणनीति
   auto_repair: true
   min_durability_before_repair: 20
-  shield_regen_threshold: 50   # Start shield regen below this %
+  shield_regen_threshold: 50   # इस % से नीचे ढाल पुनर्जनन शुरू करें
 
-collection:             # Collection strategy
+collection:             # संग्रह रणनीति
   enabled: true
   interval_minutes: 60
 ```
 
 ---
 
-## Four Preset Strategies
+## चार प्रीसेट रणनीतियाँ
 
-### 1. Aggressive
+### 1. आक्रामक (Aggressive)
 
 ```yaml
 combat:
@@ -55,13 +55,13 @@ combat:
   weapon_level: max
 
 collection:
-  enabled: false  # No gathering, pure combat
+  enabled: false  # कोई संग्रह नहीं, पूरी तरह युद्ध
 ```
 
-- ✅ Good for: highly active players who want combat rewards
-- ❌ Risk: high energy consumption, risk of being counterattacked
+- ✅ अच्छा है: अत्यधिक सक्रिय खिलाड़ियों के लिए जो युद्ध पुरस्कार चाहते हैं
+- ❌ जोखिम: उच्च ऊर्जा खपत, जवाबी हमले का जोखिम
 
-### 2. Balanced
+### 2. संतुलित (Balanced)
 
 ```yaml
 combat:
@@ -78,14 +78,14 @@ defense:
   shield_regen_threshold: 60
 ```
 
-- ✅ **Recommended**: balanced offense and defense, suitable for most players
+- ✅ **अनुशंसित**: संतुलित हमला और रक्षा, अधिकांश खिलाड़ियों के लिए उपयुक्त
 
-### 3. Defensive
+### 3. रक्षात्मक (Defensive)
 
 ```yaml
 combat:
   max_attacks_per_hour: 1
-  only_counterattack: true  # Only counterattack
+  only_counterattack: true  # केवल जवाबी हमला
 
 defense:
   auto_repair: true
@@ -97,13 +97,13 @@ collection:
   interval_minutes: 15
 ```
 
-- ✅ Good for: players who are offline for long periods and want to avoid risk
+- ✅ अच्छा है: उन खिलाड़ियों के लिए जो लंबे समय तक ऑफलाइन रहते हैं और जोखिम से बचना चाहते हैं
 
-### 4. Farmer
+### 4. किसान (Farmer)
 
 ```yaml
 combat:
-  enabled: false  # No combat
+  enabled: false  # कोई युद्ध नहीं
 
 defense:
   auto_repair: true
@@ -114,34 +114,34 @@ collection:
   interval_minutes: 5
 ```
 
-- ✅ Good for: early-game development and resource accumulation
+- ✅ अच्छा है: शुरुआती-गेम विकास और संसाधन संचय के लिए
 
 ---
 
-## Custom Strategy
+## कस्टम रणनीति
 
 ```bash
-# Copy the template
+# टेम्पलेट कॉपी करें
 cp templates/balanced.yaml my-strategy.yaml
 
-# Edit parameters
+# पैरामीटर संपादित करें
 vim my-strategy.yaml
 
-# Use custom strategy
+# कस्टम रणनीति का उपयोग करें
 python -m dark_forest.cli run --strategy ./my-strategy.yaml
 ```
 
 ---
 
-## Circuit Breaker Parameters
+## सर्किट ब्रेकर पैरामीटर
 
-| Parameter | Description | Default |
+| पैरामीटर | विवरण | डिफ़ॉल्ट |
 |-----------|-------------|---------|
-| `max_attacks_per_hour` | Max attacks per hour | 10 |
-| `min_energy_reserve` | Minimum energy reserve | 100,000 |
-| `min_dft_reserve` | Minimum DFT reserve | 10 |
-| `max_upgrades_per_day` | Max upgrades per day | 5 |
+| `max_attacks_per_hour` | प्रति घंटे अधिकतम हमले | 10 |
+| `min_energy_reserve` | न्यूनतम ऊर्जा आरक्षित | 100,000 |
+| `min_dft_reserve` | न्यूनतम DFT आरक्षित | 10 |
+| `max_upgrades_per_day` | प्रति दिन अधिकतम अपग्रेड | 5 |
 
-> ⚠️ Circuit breaker parameters are enforced on-chain. The agent cannot bypass them.
+> ⚠️ सर्किट ब्रेकर पैरामीटर ऑन-चेन लागू किए जाते हैं। एजेंट उन्हें बायपास नहीं कर सकता।
 
-**Recommended next step: [Contract Addresses →](/docs/reference/addresses)**
+**अनुशंसित अगला कदम: [कॉन्ट्रैक्ट पते →](/docs/reference/addresses)**

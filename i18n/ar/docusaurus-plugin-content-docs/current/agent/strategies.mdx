@@ -1,52 +1,52 @@
 ---
 sidebar_position: 3
-title: Strategy Templates
-description: Detailed breakdown of Dark Forest AI Agent's four preset strategies and custom configuration guide
+title: قوالب الاستراتيجيات
+description: تحليل تفصيلي للاستراتيجيات الأربع المسبقة للوكيل الذكي في Dark Forest ودليل التكوين المخصص
 ---
 
-# Strategy Templates
+# قوالب الاستراتيجيات
 
-Agent strategies are defined using YAML configuration files.
+يتم تعريف استراتيجيات الوكيل باستخدام ملفات تكوين YAML.
 
 ---
 
-## Strategy File Structure
+## هيكل ملف الاستراتيجية
 
 ```yaml
 agent:
   name: "my-agent"
   mode: "auto"          # auto | manual | dry-run
 
-limits:                 # Circuit breaker (on-chain policy)
+limits:                 # قاطع الدائرة (سياسة على السلسلة)
   min_energy_reserve: 100000
   min_dft_reserve: 10
   max_attacks_per_hour: 5
   max_upgrades_per_day: 3
   max_single_upgrade_cost: 100
 
-combat:                 # Combat strategy
+combat:                 # استراتيجية القتال
   min_target_level: 1
   max_target_level: 999
   weapon_level: 1
   only_attack_when_energy_above: 100000
-  blacklist: []         # Blacklisted addresses
-  whitelist: []         # Whitelisted addresses (only attack these)
+  blacklist: []         # عناوين القائمة السوداء
+  whitelist: []         # عناوين القائمة البيضاء (مهاجمة هذه فقط)
 
-defense:                # Defense strategy
+defense:                # استراتيجية الدفاع
   auto_repair: true
   min_durability_before_repair: 20
-  shield_regen_threshold: 50   # Start shield regen below this %
+  shield_regen_threshold: 50   # بدء تجديد الدرع عند أقل من هذه %
 
-collection:             # Collection strategy
+collection:             # استراتيجية الجمع
   enabled: true
   interval_minutes: 60
 ```
 
 ---
 
-## Four Preset Strategies
+## الاستراتيجيات الأربع المسبقة
 
-### 1. Aggressive
+### 1. الهجومية (Aggressive)
 
 ```yaml
 combat:
@@ -55,13 +55,13 @@ combat:
   weapon_level: max
 
 collection:
-  enabled: false  # No gathering, pure combat
+  enabled: false  # لا جمع، قتال خالص
 ```
 
-- ✅ Good for: highly active players who want combat rewards
-- ❌ Risk: high energy consumption, risk of being counterattacked
+- ✅ مناسبة لـ: اللاعبون النشطون جداً الذين يريدون مكافآت قتالية
+- ❌ المخاطرة: استهلاك طاقة عالي، خطر الهجوم المضاد
 
-### 2. Balanced
+### 2. المتوازنة (Balanced)
 
 ```yaml
 combat:
@@ -78,14 +78,14 @@ defense:
   shield_regen_threshold: 60
 ```
 
-- ✅ **Recommended**: balanced offense and defense, suitable for most players
+- ✅ **موصى بها**: هجوم ودفاع متوازنان، مناسبة لمعظم اللاعبين
 
-### 3. Defensive
+### 3. الدفاعية (Defensive)
 
 ```yaml
 combat:
   max_attacks_per_hour: 1
-  only_counterattack: true  # Only counterattack
+  only_counterattack: true  # هجوم مضاد فقط
 
 defense:
   auto_repair: true
@@ -97,13 +97,13 @@ collection:
   interval_minutes: 15
 ```
 
-- ✅ Good for: players who are offline for long periods and want to avoid risk
+- ✅ مناسبة لـ: اللاعبون غير المتصلين لفترات طويلة ويريدون تجنب المخاطر
 
-### 4. Farmer
+### 4. الجامعة (Farmer)
 
 ```yaml
 combat:
-  enabled: false  # No combat
+  enabled: false  # لا قتال
 
 defense:
   auto_repair: true
@@ -114,34 +114,34 @@ collection:
   interval_minutes: 5
 ```
 
-- ✅ Good for: early-game development and resource accumulation
+- ✅ مناسبة لـ: التطوير في المرحلة المبكرة وتجميع الموارد
 
 ---
 
-## Custom Strategy
+## استراتيجية مخصصة
 
 ```bash
-# Copy the template
+# نسخ القالب
 cp templates/balanced.yaml my-strategy.yaml
 
-# Edit parameters
+# تعديل المعاملات
 vim my-strategy.yaml
 
-# Use custom strategy
+# استخدام الاستراتيجية المخصصة
 python -m dark_forest.cli run --strategy ./my-strategy.yaml
 ```
 
 ---
 
-## Circuit Breaker Parameters
+## معاملات قاطع الدائرة
 
-| Parameter | Description | Default |
+| المعامل | الوصف | القيمة الافتراضية |
 |-----------|-------------|---------|
-| `max_attacks_per_hour` | Max attacks per hour | 10 |
-| `min_energy_reserve` | Minimum energy reserve | 100,000 |
-| `min_dft_reserve` | Minimum DFT reserve | 10 |
-| `max_upgrades_per_day` | Max upgrades per day | 5 |
+| `max_attacks_per_hour` | الحد الأقصى للهجمات في الساعة | 10 |
+| `min_energy_reserve` | الحد الأدنى لاحتياطي الطاقة | 100,000 |
+| `min_dft_reserve` | الحد الأدنى لاحتياطي DFT | 10 |
+| `max_upgrades_per_day` | الحد الأقصى للترقيات في اليوم | 5 |
 
-> ⚠️ Circuit breaker parameters are enforced on-chain. The agent cannot bypass them.
+> ⚠️ يتم تطبيق معاملات قاطع الدائرة على السلسلة. لا يمكن للوكيل تجاوزها.
 
-**Recommended next step: [Contract Addresses →](/docs/reference/addresses)**
+**الخطوة التالية الموصى بها: [عناوين العقود →](/docs/reference/addresses)**

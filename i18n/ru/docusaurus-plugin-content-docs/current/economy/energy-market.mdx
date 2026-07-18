@@ -1,102 +1,102 @@
 ---
 sidebar_position: 2
-title: Energy Market
-description: Dark Forest's order book energy market — buy and sell energy with DFT
+title: Рынок энергии
+description: Рынок энергии с книгой ордеров в Dark Forest — покупайте и продавайте энергию за DFT
 ---
 
-# Energy Market
+# Рынок энергии
 
-The energy market is a **decentralized order book** where players can trade energy for DFT. It is powered by the `EnergyMarket.sol` contract.
-
----
-
-## Selling Energy (Creating an Order)
-
-### Operation
-
-```
-createOrder(energyAmount, dftPrice)
-```
-
-1. Enter the **amount of energy** you want to sell
-2. Enter the **total price in DFT** you're asking for
-3. Confirm the transaction
-
-### Energy Locking
-
-When you create an order, the contract **immediately locks** your energy (marked as `energyReserved`), preventing you from spending it while the order is active.
-
-### Canceling an Order
-
-```
-cancelOrder(orderId)
-```
-
-- The order must be at least **3 seconds** old before cancellation (prevents same-block frontrunning)
-- After cancellation, the energy is unlocked
+Рынок энергии — это **децентрализованная книга ордеров**, где игроки могут торговать энергией за DFT. Он работает на контракте `EnergyMarket.sol`.
 
 ---
 
-## Buying Energy (Filling an Order)
+## Продажа энергии (Создание ордера)
 
-### Operation
-
-```
-fillOrder(orderId, maxPrice)
-```
-
-1. Browse the list of active sell orders
-2. Select an order
-3. Enter the maximum price you're willing to accept
-4. Confirm the transaction
-
-### Fees
-
-A **1% DFT protocol fee** is deducted from the seller's proceeds:
+### Операция
 
 ```
-Buyer pays = order price (exact listing price)
-Seller receives = order price × 99%
-Protocol fee = order price × 1% (accumulated in contract)
+createOrder(количествоЭнергии, ценаDFT)
 ```
 
-The 1% protocol fee accumulates in the contract and can be withdrawn by the admin.
+1. Введите **количество энергии**, которое хотите продать
+2. Введите **общую цену в DFT**, которую запрашиваете
+3. Подтвердите транзакцию
+
+### Блокировка энергии
+
+Когда вы создаёте ордер, контракт **немедленно блокирует** вашу энергию (помечается как `energyReserved`), предотвращая её трату, пока ордер активен.
+
+### Отмена ордера
+
+```
+cancelOrder(idОрдера)
+```
+
+- Ордеру должно быть не менее **3 секунд** перед отменой (предотвращает фронтраннинг в том же блоке)
+- После отмены энергия разблокируется
 
 ---
 
-## Market Parameters
+## Покупка энергии (Исполнение ордера)
 
-| Parameter | Value |
-|-----------|-------|
-| Protocol Fee | 1% (deducted from seller) |
-| Minimum Order Age | 3 seconds (before cancel/fill) |
-| Order Status | active / inactive (becomes inactive after cancel or fill) |
+### Операция
+
+```
+fillOrder(idОрдера, максЦена)
+```
+
+1. Просмотрите список активных ордеров на продажу
+2. Выберите ордер
+3. Введите максимальную цену, которую готовы принять
+4. Подтвердите транзакцию
+
+### Комиссии
+
+**Комиссия протокола в размере 1% DFT** вычитается из выручки продавца:
+
+```
+Покупатель платит = цена ордера (точная цена листинга)
+Продавец получает = цена ордера × 99%
+Комиссия протокола = цена ордера × 1% (накапливается в контракте)
+```
+
+Комиссия протокола в 1% накапливается в контракте и может быть выведена администратором.
 
 ---
 
-## Trade Example
+## Параметры рынка
 
-### Alice Sells Energy
-
-1. Alice creates a sell order: `createOrder(10000, 100 DFT)` — selling 10,000 energy for a total of 100 DFT
-2. The contract locks Alice's 10,000 energy
-
-### Bob Buys Energy
-
-1. Bob sees Alice's order
-2. Calls `fillOrder(orderId, 100)` — pays exactly 100 DFT
-3. Alice receives 99 DFT (100 - 1% fee)
-4. 1 DFT is accumulated as protocol fee
+| Параметр | Значение |
+|----------|----------|
+| Комиссия протокола | 1% (вычитается у продавца) |
+| Минимальный возраст ордера | 3 секунды (до отмены/исполнения) |
+| Статус ордера | активен / неактивен (становится неактивным после отмены или исполнения) |
 
 ---
 
-## Strategy Tips
+## Пример сделки
 
-| Scenario | Suggestion |
+### Алиса продаёт энергию
+
+1. Алиса создаёт ордер на продажу: `createOrder(10000, 100 DFT)` — продаёт 10 000 энергии за 100 DFT
+2. Контракт блокирует 10 000 энергии Алисы
+
+### Боб покупает энергию
+
+1. Боб видит ордер Алисы
+2. Вызывает `fillOrder(orderId, 100)` — платит ровно 100 DFT
+3. Алиса получает 99 DFT (100 - 1% комиссии)
+4. 1 DFT накапливается как комиссия протокола
+
+---
+
+## Советы по стратегии
+
+| Сценарий | Предложение |
 |----------|------------|
-| Need energy urgently for battle | Accept the lowest-priced sell orders |
-| Not in a hurry | Place a limit order and wait for the right price |
-| DFT price is rising | Sell energy for DFT to profit |
-| Surplus energy | List sell orders to earn DFT |
+| Срочно нужна энергия для боя | Принимайте самые дешёвые ордера на продажу |
+| Не спешите | Разместите лимитный ордер и ждите подходящей цены |
+| Цена DFT растёт | Продавайте энергию за DFT для получения прибыли |
+| Избыток энергии | Размещайте ордера на продажу для заработка DFT |
 
-**Recommended next step: [Daily Mint →](/docs/economy/daily-minter)**
+**Рекомендуемый следующий шаг: [Ежедневный майнинг →](/docs/economy/daily-minter)**

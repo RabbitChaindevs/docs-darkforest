@@ -1,107 +1,107 @@
 ---
 sidebar_position: 1
-title: Civilization Development & Upgrades
-description: Detailed breakdown of Dark Forest's six systems and upgrade strategies
+title: Развитие и улучшение цивилизации
+description: Детальный разбор шести систем Dark Forest и стратегий улучшения
 ---
 
-# Civilization Development & Upgrades
+# Развитие и улучшение цивилизации
 
-Your civilization is made up of **six systems**, each of which can be independently upgraded. System levels determine your collection efficiency, combat power, and survivability.
-
----
-
-## The Six Systems
-
-| System ID | Name | Function | Core Formula |
-|-----------|------|----------|--------------|
-| 0 | **Energy Collector** | Passive energy per second | `3 + 10 × √(level - 1)` energy/s |
-| 1 | **Weapon System** | Attack power | `900 + 10 × level²` |
-| 2 | **Shield System** | Defense & shield HP | HP: `3600 + 15 × level²`, Defense: `540 + 6 × level²` |
-| 3 | **Radar System** | Scan range | `1000 + 150 × level + 5 × level²` |
-| 4 | **Engine System** | Movement speed | `10 + 5 × (level-1)` → Lv1=10, Lv10=55 |
+Ваша цивилизация состоит из **шести систем**, каждую из которых можно улучшать независимо. Уровни систем определяют эффективность сбора, боевую мощь и выживаемость.
 
 ---
 
-## Upgrade Costs
+## Шесть систем
 
-Upgrade costs are calculated using the **Anchor Formula**, based on the system type and current level:
+| ID | Название | Функция | Основная формула |
+|----|----------|---------|------------------|
+| 0 | **Сборщик энергии** | Пассивная энергия в секунду | `3 + 10 × √(уровень - 1)` эн./с |
+| 1 | **Система оружия** | Сила атаки | `900 + 10 × уровень²` |
+| 2 | **Система щита** | Защита и HP щита | HP: `3600 + 15 × уровень²`, Защита: `540 + 6 × уровень²` |
+| 3 | **Система радара** | Радиус сканирования | `1000 + 150 × уровень + 5 × уровень²` |
+| 4 | **Система двигателя** | Скорость передвижения | `10 + 5 × (уровень-1)` → Ур1=10, Ур10=55 |
 
-### Level Brackets
+---
 
-| Level Range | Anchor Days (cost equivalent) |
-|-------------|-------------------------------|
-| 1 – 100 | 1 → 30 days of energy/DFT output |
-| 100 – 1000 | 30 → 60 days of output |
-| 1000+ | 60 days of output (capped) |
+## Стоимость улучшений
 
-### System Upgrade Multipliers
+Стоимость улучшений рассчитывается по **Формуле якоря (Anchor Formula)**, основанной на типе системы и текущем уровне:
 
-| System | Energy/DFT Multiplier |
-|--------|----------------------|
-| Collector (0) | 1× |
-| Weapon (1) | 4× |
-| Shield (2) | 4× |
-| Radar (3) | 8× |
-| Engine (4) | 16× |
+### Уровневые диапазоны
 
-### Upgrade Cost Formula
+| Диапазон уровней | Якорные дни (эквивалент стоимости) |
+|------------------|-----------------------------------|
+| 1 – 100 | 1 → 30 дней выработки энергии/DFT |
+| 100 – 1000 | 30 → 60 дней выработки |
+| 1000+ | 60 дней выработки (потолок) |
+
+### Множители улучшения систем
+
+| Система | Множитель энергии/DFT |
+|---------|----------------------|
+| Сборщик (0) | 1× |
+| Оружие (1) | 4× |
+| Щит (2) | 4× |
+| Радар (3) | 8× |
+| Двигатель (4) | 16× |
+
+### Формула стоимости улучшения
 
 ```
-Upgrade Cost = Anchor Days × Daily Output × System Multiplier
+Стоимость улучшения = Якорные дни × Дневная выработка × Множитель системы
 ```
 
-"Daily Output" scales with your civilization's level — the higher your level, the more you produce per day, creating a **positive feedback loop**.
+"Дневная выработка" масштабируется с уровнем вашей цивилизации — чем выше уровень, тем больше вы производите в день, создавая **положительную обратную связь**.
 
 ---
 
-## Daily Upkeep
+## Ежедневное обслуживание
 
-Your civilization consumes energy every day as maintenance:
+Ваша цивилизация потребляет энергию каждый день на обслуживание:
 
 ```
-Daily Upkeep = 2,000 × Total Level
+Ежедневное обслуживание = 2 000 × Общий уровень
 ```
 
-Upkeep is deducted from your energy proportionally over time and is settled automatically whenever you perform any action (via `_deductUpkeep`).
+Обслуживание списывается с вашей энергии пропорционально с течением времени и автоматически рассчитывается при любом действии (через `_deductUpkeep`).
 
-> ⚠️ If you don't have enough energy to cover upkeep, your systems will still function, but your energy balance will go negative. You'll need to replenish it promptly.
+> ⚠️ Если у вас недостаточно энергии для покрытия обслуживания, ваши системы продолжат работать, но баланс энергии станет отрицательным. Вам нужно будет своевременно его пополнить.
 
 ---
 
-## Durability System
+## Система прочности
 
-Each system has durability that decreases over time or with use:
+Каждая система имеет прочность, которая уменьшается со временем или при использовании:
 
-| System | Base Durability | Per-Level Increase |
-|--------|----------------|--------------------|
-| Collector | 86,400 seconds (1 day) | +7,200 seconds (2 hours) |
-| Weapon | 60 | +15 |
-| Shield | 40 | +10 |
-| Engine | 30 | +6 |
+| Система | Базовая прочность | Увеличение за уровень |
+|---------|------------------|----------------------|
+| Сборщик | 86 400 секунд (1 день) | +7 200 секунд (2 часа) |
+| Оружие | 60 | +15 |
+| Щит | 40 | +10 |
+| Двигатель | 30 | +6 |
 
-### Durability Consumption
+### Расход прочности
 
-- **Collector**: decays over time, losing 1 durability per second
-- **Weapon**: loses 1 durability per attack (at 0 durability, attack power is halved)
-- **Shield**: loses 1 durability each time it's hit
-- **Engine**: loses 1 durability per jump
+- **Сборщик**: изнашивается со временем, теряя 1 прочность в секунду
+- **Оружие**: теряет 1 прочность за атаку (при 0 прочности сила атаки уменьшается вдвое)
+- **Щит**: теряет 1 прочность при каждом попадании
+- **Двигатель**: теряет 1 прочность за прыжок
 
-### Repair Costs
+### Стоимость ремонта
 
-| System | Repair Cost |
-|--------|-------------|
-| Collector | 1 energy/second |
-| Weapon | 3 energy/point |
-| Shield | 4 energy/point |
-| Engine | 5 energy/point |
+| Система | Стоимость ремонта |
+|---------|------------------|
+| Сборщик | 1 энергия/секунда |
+| Оружие | 3 энергии/единица |
+| Щит | 4 энергии/единица |
+| Двигатель | 5 энергии/единица |
 
 ---
 
-## Upgrade Strategy Tips
+### Советы по стратегии улучшения
 
-1. **Prioritize the Collector** — energy is the foundation of everything. A high-level collector lets you accumulate resources faster
-2. **Balance Weapon and Shield** — Weapon level affects attack power and plunder ratio; Shield level affects HP and defense
-3. **Radar determines your attack range** — you can only attack targets within your radar's reach
-4. **Engine affects movement speed** — exploration and pursuit both depend on engine upgrades
+1. **В первую очередь улучшайте Сборщик** — энергия — основа всего. Сборщик высокого уровня позволяет быстрее накапливать ресурсы
+2. **Балансируйте Оружие и Щит** — уровень оружия влияет на силу атаки и коэффициент грабежа; уровень щита влияет на HP и защиту
+3. **Радар определяет радиус атаки** — вы можете атаковать только цели в пределах досягаемости вашего радара
+4. **Двигатель влияет на скорость передвижения** — и исследование, и преследование зависят от улучшений двигателя
 
-**Recommended next step: [Attack & Defense →](/docs/guide/battle)**
+**Рекомендуемый следующий шаг: [Атака и защита →](/docs/guide/battle)**

@@ -1,107 +1,107 @@
 ---
 sidebar_position: 1
-title: Civilization Development & Upgrades
-description: Detailed breakdown of Dark Forest's six systems and upgrade strategies
+title: تہذیب کی ترقی اور اپ گریڈ
+description: ڈارک فاریسٹ کے چھ نظاموں اور اپ گریڈ کی حکمت عملیوں کا تفصیلی تجزیہ
 ---
 
-# Civilization Development & Upgrades
+# تہذیب کی ترقی اور اپ گریڈ
 
-Your civilization is made up of **six systems**, each of which can be independently upgraded. System levels determine your collection efficiency, combat power, and survivability.
-
----
-
-## The Six Systems
-
-| System ID | Name | Function | Core Formula |
-|-----------|------|----------|--------------|
-| 0 | **Energy Collector** | Passive energy per second | `3 + 10 × √(level - 1)` energy/s |
-| 1 | **Weapon System** | Attack power | `900 + 10 × level²` |
-| 2 | **Shield System** | Defense & shield HP | HP: `3600 + 15 × level²`, Defense: `540 + 6 × level²` |
-| 3 | **Radar System** | Scan range | `1000 + 150 × level + 5 × level²` |
-| 4 | **Engine System** | Movement speed | `10 + 5 × (level-1)` → Lv1=10, Lv10=55 |
+آپ کی تہذیب **چھ نظاموں** پر مشتمل ہے، جن میں سے ہر ایک کو آزادانہ طور پر اپ گریڈ کیا جا سکتا ہے۔ نظام کی سطحیں آپ کی جمع آوری کی کارکردگی، جنگی طاقت، اور بقا کی صلاحیت کا تعین کرتی ہیں۔
 
 ---
 
-## Upgrade Costs
+## چھ نظام
 
-Upgrade costs are calculated using the **Anchor Formula**, based on the system type and current level:
+| سسٹم ID | نام | کام | بنیادی فارمولا |
+|----------|------|----------|--------------|
+| 0 | **انرجی کلکٹر** | فی سیکنڈ غیر فعال توانائی | `3 + 10 × √(سطح - 1)` توانائی/سیکنڈ |
+| 1 | **ہتھیار کا نظام** | حملہ کی طاقت | `900 + 10 × سطح²` |
+| 2 | **ڈھال کا نظام** | دفاع اور ڈھال HP | HP: `3600 + 15 × سطح²`، دفاع: `540 + 6 × سطح²` |
+| 3 | **ریڈار سسٹم** | اسکین رینج | `1000 + 150 × سطح + 5 × سطح²` |
+| 4 | **انجن سسٹم** | حرکت کی رفتار | `10 + 5 × (سطح-1)` → Lv1=10, Lv10=55 |
 
-### Level Brackets
+---
 
-| Level Range | Anchor Days (cost equivalent) |
+## اپ گریڈ کے اخراجات
+
+اپ گریڈ کے اخراجات **اینکر فارمولا** کے ذریعے شمار کیے جاتے ہیں، جو سسٹم کی قسم اور موجودہ سطح پر مبنی ہے:
+
+### سطح کے بریکٹ
+
+| سطح کی رینج | اینکر دن (لاگت کے برابر) |
 |-------------|-------------------------------|
-| 1 – 100 | 1 → 30 days of energy/DFT output |
-| 100 – 1000 | 30 → 60 days of output |
-| 1000+ | 60 days of output (capped) |
+| 1 – 100 | 1 → 30 دن کی توانائی/DFT پیداوار |
+| 100 – 1000 | 30 → 60 دن کی پیداوار |
+| 1000+ | 60 دن کی پیداوار (حد کے ساتھ) |
 
-### System Upgrade Multipliers
+### سسٹم اپ گریڈ ملٹی پلائرز
 
-| System | Energy/DFT Multiplier |
+| سسٹم | توانائی/DFT ملٹی پلائر |
 |--------|----------------------|
-| Collector (0) | 1× |
-| Weapon (1) | 4× |
-| Shield (2) | 4× |
-| Radar (3) | 8× |
-| Engine (4) | 16× |
+| کلکٹر (0) | 1× |
+| ہتھیار (1) | 4× |
+| ڈھال (2) | 4× |
+| ریڈار (3) | 8× |
+| انجن (4) | 16× |
 
-### Upgrade Cost Formula
+### اپ گریڈ لاگت کا فارمولا
 
 ```
-Upgrade Cost = Anchor Days × Daily Output × System Multiplier
+اپ گریڈ لاگت = اینکر دن × یومیہ پیداوار × سسٹم ملٹی پلائر
 ```
 
-"Daily Output" scales with your civilization's level — the higher your level, the more you produce per day, creating a **positive feedback loop**.
+"یومیہ پیداوار" آپ کی تہذیب کی سطح کے ساتھ بڑھتی ہے — آپ کی سطح جتنی زیادہ ہوگی، اتنا ہی زیادہ آپ فی دن پیدا کریں گے، جس سے **مثبت فیڈ بیک لوپ** بنتا ہے۔
 
 ---
 
-## Daily Upkeep
+## یومیہ دیکھ بھال
 
-Your civilization consumes energy every day as maintenance:
+آپ کی تہذیب ہر روز دیکھ بھال کے طور پر توانائی استعمال کرتی ہے:
 
 ```
-Daily Upkeep = 2,000 × Total Level
+یومیہ دیکھ بھال = 2,000 × کل سطح
 ```
 
-Upkeep is deducted from your energy proportionally over time and is settled automatically whenever you perform any action (via `_deductUpkeep`).
+دیکھ بھال وقت کے ساتھ متناسب طور پر آپ کی توانائی سے کاٹی جاتی ہے اور جب بھی آپ کوئی عمل کرتے ہیں خود بخود طے ہو جاتی ہے (`_deductUpkeep` کے ذریعے)۔
 
-> ⚠️ If you don't have enough energy to cover upkeep, your systems will still function, but your energy balance will go negative. You'll need to replenish it promptly.
+> ⚠️ اگر آپ کے پاس دیکھ بھال کے لیے کافی توانائی نہیں ہے، تو آپ کے نظام کام کرتے رہیں گے، لیکن آپ کا توانائی بیلنس منفی ہو جائے گا۔ آپ کو فوری طور پر اسے بھرنا ہوگا۔
 
 ---
 
-## Durability System
+## پائیداری کا نظام
 
-Each system has durability that decreases over time or with use:
+ہر نظام کی پائیداری وقت کے ساتھ یا استعمال سے کم ہوتی ہے:
 
-| System | Base Durability | Per-Level Increase |
+| سسٹم | بنیادی پائیداری | فی سطح اضافہ |
 |--------|----------------|--------------------|
-| Collector | 86,400 seconds (1 day) | +7,200 seconds (2 hours) |
-| Weapon | 60 | +15 |
-| Shield | 40 | +10 |
-| Engine | 30 | +6 |
+| کلکٹر | 86,400 سیکنڈ (1 دن) | +7,200 سیکنڈ (2 گھنٹے) |
+| ہتھیار | 60 | +15 |
+| ڈھال | 40 | +10 |
+| انجن | 30 | +6 |
 
-### Durability Consumption
+### پائیداری کا استعمال
 
-- **Collector**: decays over time, losing 1 durability per second
-- **Weapon**: loses 1 durability per attack (at 0 durability, attack power is halved)
-- **Shield**: loses 1 durability each time it's hit
-- **Engine**: loses 1 durability per jump
+- **کلکٹر**: وقت کے ساتھ کم ہوتا ہے، فی سیکنڈ 1 پائیداری کھوتا ہے
+- **ہتھیار**: فی حملہ 1 پائیداری کھوتا ہے (0 پائیداری پر، حملہ کی طاقت آدھی ہو جاتی ہے)
+- **ڈھال**: ہر بار جب نشانہ بنتا ہے 1 پائیداری کھوتا ہے
+- **انجن**: فی چھلانگ 1 پائیداری کھوتا ہے
 
-### Repair Costs
+### مرمت کے اخراجات
 
-| System | Repair Cost |
+| سسٹم | مرمت کی لاگت |
 |--------|-------------|
-| Collector | 1 energy/second |
-| Weapon | 3 energy/point |
-| Shield | 4 energy/point |
-| Engine | 5 energy/point |
+| کلکٹر | 1 توانائی/سیکنڈ |
+| ہتھیار | 3 توانائی/پوائنٹ |
+| ڈھال | 4 توانائی/پوائنٹ |
+| انجن | 5 توانائی/پوائنٹ |
 
 ---
 
-## Upgrade Strategy Tips
+## اپ گریڈ حکمت عملی کے نکات
 
-1. **Prioritize the Collector** — energy is the foundation of everything. A high-level collector lets you accumulate resources faster
-2. **Balance Weapon and Shield** — Weapon level affects attack power and plunder ratio; Shield level affects HP and defense
-3. **Radar determines your attack range** — you can only attack targets within your radar's reach
-4. **Engine affects movement speed** — exploration and pursuit both depend on engine upgrades
+1. **کلکٹر کو ترجیح دیں** — توانائی ہر چیز کی بنیاد ہے۔ اعلیٰ سطح کا کلکٹر آپ کو وسائل تیزی سے جمع کرنے دیتا ہے
+2. **ہتھیار اور ڈھال میں توازن رکھیں** — ہتھیار کی سطح حملہ کی طاقت اور لوٹ کے تناسب کو متاثر کرتی ہے؛ ڈھال کی سطح HP اور دفاع کو متاثر کرتی ہے
+3. **ریڈار آپ کے حملہ کی حد کا تعین کرتا ہے** — آپ صرف اپنے ریڈار کی حدود میں موجود اہداف پر حملہ کر سکتے ہیں
+4. **انجن حرکت کی رفتار کو متاثر کرتا ہے** — تلاش اور تعاقب دونوں انجن اپ گریڈ پر منحصر ہیں
 
-**Recommended next step: [Attack & Defense →](/docs/guide/battle)**
+**تجویز کردہ اگلا مرحلہ: [حملہ اور دفاع →](/docs/guide/battle)**

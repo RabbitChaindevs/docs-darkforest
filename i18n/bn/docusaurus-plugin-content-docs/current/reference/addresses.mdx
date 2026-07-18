@@ -1,56 +1,56 @@
 ---
 sidebar_position: 1
-title: Contract Addresses
-description: All deployed contract addresses for Dark Forest
+title: কন্ট্র্যাক্ট ঠিকানা
+description: ডার্ক ফরেস্টের সমস্ত ডিপ্লয়ড কন্ট্র্যাক্ট ঠিকানা
 ---
 
-# Contract Addresses
+# কন্ট্র্যাক্ট ঠিকানা
 
-All contracts are deployed on **BNB Smart Chain Mainnet** (Chain ID: 56).
+সমস্ত কন্ট্র্যাক্ট **BNB স্মার্ট চেইন মেইননেটে** (চেইন ID: 56) ডিপ্লয় করা হয়েছে।
 
 ---
 
-## Core Contracts
+## মূল কন্ট্র্যাক্ট
 
-| Contract | Address | Description |
+| কন্ট্র্যাক্ট | ঠিকানা | বিবরণ |
 |----------|---------|-------------|
-| **DarkForest** | `0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe` | Main entry contract, DELEGATECALL dispatch hub |
-| **DFT Token** | `0x1266e922fe34459efda34e7ee5caf327fbf138d7` | Dark Forest token (ERC-20) |
-| **Alliance** | `0x5f810a22359b678c01e72726149d387e79cd03f2` | Alliance system |
-| **Energy Market** | `0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955` | Energy order book market |
-| **Daily Minter** | `0x9b1c4e550fbf1c802495e6521ee5812e4264c95f` | Daily DFT distribution |
-| **Agent Registry** | `0x98233227e91829f7c424099f5d3bc86cf4d57f55` | AI Agent policy registry |
+| **DarkForest** | `0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe` | প্রধান প্রবেশ কন্ট্র্যাক্ট, DELEGATECALL ডিসপ্যাচ হাব |
+| **DFT Token** | `0x1266e922fe34459efda34e7ee5caf327fbf138d7` | ডার্ক ফরেস্ট টোকেন (ERC-20) |
+| **Alliance** | `0x5f810a22359b678c01e72726149d387e79cd03f2` | জোট ব্যবস্থা |
+| **Energy Market** | `0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955` | শক্তি অর্ডার বুক বাজার |
+| **Daily Minter** | `0x9b1c4e550fbf1c802495e6521ee5812e4264c95f` | দৈনিক DFT বিতরণ |
+| **Agent Registry** | `0x98233227e91829f7c424099f5d3bc86cf4d57f55` | AI এজেন্ট নীতি নিবন্ধন |
 
 ---
 
-## Contract Architecture
+## কন্ট্র্যাক্ট আর্কিটেকচার
 
 ```
-DarkForest (DELEGATECALL entry)
-├── DELEGATECALL → DarkForestGameplay   (create civ, upgrade systems)
-├── DELEGATECALL → DarkForestBattle      (attack, repair shield, shield regen)
-├── DELEGATECALL → DarkForestMovement    (space jump, tracking jump, cruise)
-└── DELEGATECALL → DarkForestAdmin       (collect, repair, rebuild, totem, withdraw)
+DarkForest (DELEGATECALL প্রবেশ)
+├── DELEGATECALL → DarkForestGameplay   (সভ্যতা তৈরি, সিস্টেম আপগ্রেড)
+├── DELEGATECALL → DarkForestBattle      (আক্রমণ, ঢাল মেরামত, ঢাল পুনর্জন্ম)
+├── DELEGATECALL → DarkForestMovement    (স্পেস জাম্প, ট্র্যাকিং জাম্প, ক্রুজ)
+└── DELEGATECALL → DarkForestAdmin       (সংগ্রহ, মেরামত, পুনর্নির্মাণ, টোটেম, উত্তোলন)
 
-DarkForestStorage (shared storage layout)
-→ All satellite contracts inherit DarkForestStorage for consistent layout
+DarkForestStorage (ভাগ করা স্টোরেজ লেআউট)
+→ সব স্যাটেলাইট কন্ট্র্যাক্ট সামঞ্জস্যপূর্ণ লেআউটের জন্য DarkForestStorage থেকে উত্তরাধিকার লাভ করে
 ```
 
 ---
 
-## BscScan Links
+## BscScan লিংক
 
-| Contract | Link |
+| কন্ট্র্যাক্ট | লিংক |
 |----------|------|
-| DarkForest | [View](https://bscscan.com/address/0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe) |
-| DFT Token | [View](https://bscscan.com/token/0x1266e922fe34459efda34e7ee5caf327fbf138d7) |
-| Alliance | [View](https://bscscan.com/address/0x5f810a22359b678c01e72726149d387e79cd03f2) |
-| Energy Market | [View](https://bscscan.com/address/0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955) |
-| Daily Minter | [View](https://bscscan.com/address/0x9b1c4e550fbf1c802495e6521ee5812e4264c95f) |
-| Agent Registry | [View](https://bscscan.com/address/0x98233227e91829f7c424099f5d3bc86cf4d57f55) |
+| DarkForest | [দেখুন](https://bscscan.com/address/0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe) |
+| DFT Token | [দেখুন](https://bscscan.com/token/0x1266e922fe34459efda34e7ee5caf327fbf138d7) |
+| Alliance | [দেখুন](https://bscscan.com/address/0x5f810a22359b678c01e72726149d387e79cd03f2) |
+| Energy Market | [দেখুন](https://bscscan.com/address/0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955) |
+| Daily Minter | [দেখুন](https://bscscan.com/address/0x9b1c4e550fbf1c802495e6521ee5812e4264c95f) |
+| Agent Registry | [দেখুন](https://bscscan.com/address/0x98233227e91829f7c424099f5d3bc86cf4d57f55) |
 
 ---
 
-## Contract Verification
+## কন্ট্র্যাক্ট যাচাইকরণ
 
-All contract source code has been verified on BscScan (✅ green checkmark).
+সমস্ত কন্ট্র্যাক্ট সোর্স কোড BscScan-এ যাচাই করা হয়েছে (✅ সবুজ চেকমার্ক)।

@@ -1,20 +1,20 @@
 ---
 sidebar_position: 2
-title: 5-Minute AI Agent Quickstart
-description: Configure your first AI Agent in Dark Forest
+title: بداية سريعة للوكيل الذكي في 5 دقائق
+description: قم بتكوين أول وكيل ذكي لك في Dark Forest
 ---
 
-# 5-Minute Quickstart
+# بداية سريعة في 5 دقائق
 
-## Prerequisites
+## المتطلبات الأساسية
 
 - Python 3.10+
-- An active Dark Forest civilization
-- Your wallet's private key (for the agent to sign transactions)
+- حضارة Dark Forest نشطة
+- المفتاح الخاص لمحفظتك (لكي يوقع الوكيل المعاملات)
 
 ---
 
-## Step 1: Install the Agent
+## الخطوة 1: تثبيت الوكيل
 
 ```bash
 git clone https://github.com/dark-forest/agent.git
@@ -22,53 +22,53 @@ cd agent
 pip install -r requirements.txt
 ```
 
-## Step 2: Import Your Private Key
+## الخطوة 2: استيراد مفتاحك الخاص
 
 ```bash
 python -m dark_forest.cli key import
 ```
 
-The private key is stored encrypted, never in plain text.
+يتم تخزين المفتاح الخاص مشفراً، وليس كنص عادي أبداً.
 
-> ⚠️ It is highly recommended to use a **dedicated game wallet** — do not use your main wallet that holds significant assets.
+> ⚠️ يُوصى بشدة باستخدام **محفظة ألعاب مخصصة** — لا تستخدم محفظتك الرئيسية التي تحتوي على أصول كبيرة.
 
-## Step 3: Authorize the Agent
+## الخطوة 3: تفويض الوكيل
 
-In the game interface, set permissions for your agent's wallet address:
+في واجهة اللعبة، قم بتعيين الأذونات لعنوان محفظة الوكيل:
 
-- Check the operation permissions the agent needs
-- Set policy constraints (attack frequency, resource reserves, etc.)
+- حدد أذونات التشغيل التي يحتاجها الوكيل
+- عيّن قيود السياسات (تواتر الهجوم، احتياطيات الموارد، إلخ.)
 
-## Step 4: Choose a Strategy
+## الخطوة 4: اختيار استراتيجية
 
 ```bash
-# List available strategies
+# عرض الاستراتيجيات المتاحة
 python -m dark_forest.cli strategy list
 
-# Use the balanced strategy (recommended)
+# استخدام الاستراتيجية المتوازنة (موصى بها)
 python -m dark_forest.cli strategy select balanced
 ```
 
-Four preset strategies:
+أربع استراتيجيات مسبقة:
 
-| Strategy | Style | Best For |
+| الاستراتيجية | الأسلوب | الأنسب لـ |
 |----------|-------|----------|
-| `aggressive` | Aggressive attacker | Highly active players |
-| `balanced` | Balanced offense/defense | **Recommended**, suits most players |
-| `defensive` | Conservative defense | Players who are often offline |
-| `farmer` | Focus on gathering | Peaceful development |
+| `aggressive` | هجومي | اللاعبون النشطون جداً |
+| `balanced` | هجوم/دفاع متوازن | **موصى بها**، تناسب معظم اللاعبين |
+| `defensive` | دفاعي محافظ | اللاعبون غير المتصلين غالباً |
+| `farmer` | التركيز على الجمع | التطوير السلمي |
 
-## Step 5: Launch
+## الخطوة 5: التشغيل
 
 ```bash
-# Start (default balanced strategy)
+# بدء (الاستراتيجية المتوازنة افتراضياً)
 python -m dark_forest.cli run
 
-# Specify a strategy
+# تحديد استراتيجية
 python -m dark_forest.cli run --strategy aggressive
 ```
 
-## Step 6: Configure Notifications (Optional)
+## الخطوة 6: تكوين الإشعارات (اختياري)
 
 ### Telegram
 
@@ -85,10 +85,10 @@ python -m dark_forest.cli config set notify.discord.webhook YOUR_WEBHOOK_URL
 
 ---
 
-## Security Reminders
+## تذكيرات الأمان
 
-1. 🔐 **Use a dedicated game wallet** with reasonable DFT/energy reserve limits
-2. 📉 **Open permissions gradually** — start with only COLLECT + REPAIR, then add ATTACK once you're confident it's stable
-3. 🔄 **Check in regularly** — review the agent's logs and reports
+1. 🔐 **استخدم محفظة ألعاب مخصصة** مع حدود معقولة لاحتياطي DFT/الطاقة
+2. 📉 **افتح الأذونات تدريجياً** — ابدأ بـ COLLECT + REPAIR فقط، ثم أضف ATTACK بمجرد التأكد من استقرارها
+3. 🔄 **تحقق بانتظام** — راجع سجلات الوكيل وتقاريره
 
-**Recommended next step: [Strategy Templates →](/docs/agent/strategies)**
+**الخطوة التالية الموصى بها: [قوالب الاستراتيجيات →](/docs/agent/strategies)**

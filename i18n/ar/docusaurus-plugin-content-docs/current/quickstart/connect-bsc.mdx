@@ -1,74 +1,74 @@
 ---
 sidebar_position: 2
-title: Connect to BSC
-description: How to configure MetaMask and other wallets for the BNB Smart Chain network
+title: الاتصال بـ BSC
+description: كيفية تكوين MetaMask والمحافظ الأخرى لشبكة BNB Smart Chain
 ---
 
-# Connect to BSC
+# الاتصال بـ BSC
 
-Dark Forest is deployed on **BNB Smart Chain (BSC)**. You need to switch your wallet to the BSC network to interact with the game.
+Dark Forest منشورة على **BNB Smart Chain (BSC)**. تحتاج إلى تبديل محفظتك إلى شبكة BSC للتفاعل مع اللعبة.
 
-## What Is BSC?
+## ما هي BSC؟
 
-BNB Smart Chain is a blockchain network launched by Binance, offering:
+BNB Smart Chain هي شبكة بلوكتشين أطلقتها Binance، وتوفر:
 
-- **Low transaction fees** — each operation costs just fractions of a cent
-- **High throughput** — built for high-frequency game interactions
-- **EVM compatible** — works with MetaMask and other主流 wallets
+- **رسوم معاملات منخفضة** — تكلف كل عملية أجزاء من السنت
+- **إنتاجية عالية** — مصممة للتفاعلات عالية التردد داخل اللعبة
+- **متوافقة مع EVM** — تعمل مع MetaMask والمحافظ الأخرى
 
-## Auto-Add BSC Network
+## إضافة شبكة BSC تلقائياً
 
-The easiest way is to use Chainlist:
+أسهل طريقة هي استخدام Chainlist:
 
-1. Visit [Chainlist](https://chainlist.org)
-2. Search for "BNB Smart Chain"
-3. Click "Connect Wallet" and authorize
-4. Click "Add to MetaMask"
-5. Confirm the addition
+1. قم بزيارة [Chainlist](https://chainlist.org)
+2. ابحث عن "BNB Smart Chain"
+3. انقر "Connect Wallet" وقم بالترخيص
+4. انقر "Add to MetaMask"
+5. قم بتأكيد الإضافة
 
-## Manual Configuration
+## التكوين اليدوي
 
-You can also add the BSC network manually:
+يمكنك أيضاً إضافة شبكة BSC يدوياً:
 
-### Adding BSC to MetaMask
+### إضافة BSC إلى MetaMask
 
-1. Click the network dropdown in the top-right corner of MetaMask
-2. Click "Add Network"
-3. Fill in the following details:
+1. انقر على قائمة الشبكات في الزاوية العلوية اليمنى من MetaMask
+2. انقر "Add Network"
+3. املأ التفاصيل التالية:
 
-| Setting | Value |
-|---------|-------|
-| **Network Name** | BNB Smart Chain |
+| الإعداد | القيمة |
+|---------|--------|
+| **اسم الشبكة** | BNB Smart Chain |
 | **RPC URL** | `https://bsc-dataseed.binance.org` |
 | **Chain ID** | `56` |
-| **Currency Symbol** | `BNB` |
-| **Block Explorer** | `https://bscscan.com` |
+| **رمز العملة** | `BNB` |
+| **مستكشف الكتل** | `https://bscscan.com` |
 
-4. Click "Save"
+4. انقر "Save"
 
-### Backup RPC Nodes
+### عقد RPC احتياطية
 
-If the main RPC is congested, you can use backup nodes:
+إذا كان RPC الرئيسي مزدحماً، يمكنك استخدام عقد احتياطية:
 
-| Provider | RPC URL |
-|----------|---------|
-| Binance Official | `https://bsc-dataseed1.binance.org` |
+| المزود | RPC URL |
+|--------|---------|
+| Binance الرسمي | `https://bsc-dataseed1.binance.org` |
 | Ankr | `https://rpc.ankr.com/bsc` |
 | PublicNode | `https://bsc.publicnode.com` |
 
-## Getting BNB
+## الحصول على BNB
 
-Every operation on BSC requires BNB for gas fees. Here's how to get some:
+كل عملية على BSC تتطلب BNB لرسوم الغاز. إليك كيفية الحصول عليه:
 
-1. **Centralized exchange** — buy BNB from Binance, OKX, etc. and withdraw to the BSC network
-2. **Cross-chain bridge** — transfer BNB from other networks to BSC via a bridge
+1. **منصة تداول مركزية** — اشتر BNB من Binance، OKX، إلخ وقم بسحبه إلى شبكة BSC
+2. **جسر عبر السلاسل** — انقل BNB من شبكات أخرى إلى BSC عبر جسر
 
 :::caution
-When withdrawing, **make sure to select the BSC network (BEP-20)** or you may lose your funds!
+عند السحب، **تأكد من تحديد شبكة BSC (BEP-20)** وإلا قد تفقد أموالك!
 :::
 
-## Verify Your Connection
+## التحقق من الاتصال
 
-After configuration, switch to the BNB Smart Chain network in your wallet. If the Chain ID shows `56` and your balance displays the correct BNB amount, you're all set.
+بعد التكوين، قم بالتبديل إلى شبكة BNB Smart Chain في محفظتك. إذا أظهر Chain ID `56` ورصيدك يعرض المبلغ الصحيح من BNB، فأنت جاهز.
 
-Once your wallet and network are ready, the next step is to [Get DFT Tokens](/docs/quickstart/get-dft).
+بمجرد أن تصبح محفظتك وشبكتك جاهزتين، الخطوة التالية هي [الحصول على رموز DFT](/docs/quickstart/get-dft).

@@ -1,120 +1,120 @@
 ---
 sidebar_position: 1
-title: What Is an AI Agent
-description: Dark Forest AI Agent architecture and security mechanisms
+title: AI एजेंट क्या है
+description: डार्क फ़ॉरेस्ट AI एजेंट आर्किटेक्चर और सुरक्षा तंत्र
 ---
 
-# What Is an AI Agent
+# AI एजेंट क्या है
 
-An AI Agent is an **off-chain automated program** that performs game operations on behalf of your civilization. It is authorized through a **permission bitmask** and operates within **policy constraints**.
+AI एजेंट एक **ऑफ-चेन स्वचालित प्रोग्राम** है जो आपकी सभ्यता की ओर से गेम ऑपरेशन करता है। यह **अनुमति बिटमास्क** के माध्यम से अधिकृत होता है और **नीति बाधाओं** के भीतर संचालित होता है।
 
 ---
 
-## What an Agent Can Do
+## एजेंट क्या कर सकता है
 
-The agent's capabilities are controlled by **authorized permissions**:
+एजेंट की क्षमताएँ **अधिकृत अनुमतियों** द्वारा नियंत्रित होती हैं:
 
-| Permission | Value | Action |
+| अनुमति | मान | कार्रवाई |
 |-----------|-------|--------|
-| COLLECT | 1 | Collect energy |
-| REPAIR | 2 | Repair systems |
-| CLAIM_COMBAT | 8 | Claim combat energy |
-| ATTACK | 32 | Attack |
-| UPGRADE | 64 | Upgrade systems |
-| JUMP | 128 | Space jump |
-| REBUILD | 256 | Rebuild civilization |
-| DONATE | 512 | Donate to totem |
+| COLLECT | 1 | ऊर्जा एकत्र करें |
+| REPAIR | 2 | सिस्टम की मरम्मत करें |
+| CLAIM_COMBAT | 8 | युद्ध ऊर्जा का दावा करें |
+| ATTACK | 32 | हमला करें |
+| UPGRADE | 64 | सिस्टम अपग्रेड करें |
+| JUMP | 128 | स्पेस जंप |
+| REBUILD | 256 | सभ्यता पुनर्निर्माण |
+| DONATE | 512 | टोटम को दान करें |
 
-You can grant any combination of permissions to an agent (bitmask).
+आप एजेंट को अनुमतियों का कोई भी संयोजन (बिटमास्क) प्रदान कर सकते हैं।
 
 ---
 
-## Policy Constraints
+## नीति बाधाएँ
 
-In addition to permissions, you can set **policy constraints** for the agent:
+अनुमतियों के अतिरिक्त, आप एजेंट के लिए **नीति बाधाएँ** निर्धारित कर सकते हैं:
 
-| Constraint | Description |
+| बाधा | विवरण |
 |-----------|-------------|
-| `minEnergyReserve` | Minimum energy reserve (agent won't spend below this) |
-| `minDftReserve` | Minimum DFT reserve |
-| `maxAttackPerHour` | Maximum attacks per hour |
-| `maxUpgradePerDay` | Maximum upgrades per day |
-| `maxSingleUpgradeCost` | Maximum DFT cost per upgrade |
-| `autoCollect` | Auto-collect energy |
-| `autoRepair` | Auto-repair systems |
-| `autoShieldRepair` | Auto-repair shield |
-| `autoUpgrade` | Auto-upgrade |
-| `autoAttack` | Auto-attack |
+| `minEnergyReserve` | न्यूनतम ऊर्जा आरक्षित (एजेंट इससे नीचे खर्च नहीं करेगा) |
+| `minDftReserve` | न्यूनतम DFT आरक्षित |
+| `maxAttackPerHour` | प्रति घंटे अधिकतम हमले |
+| `maxUpgradePerDay` | प्रति दिन अधिकतम अपग्रेड |
+| `maxSingleUpgradeCost` | प्रति अपग्रेड अधिकतम DFT लागत |
+| `autoCollect` | स्वचालित ऊर्जा संग्रह |
+| `autoRepair` | स्वचालित सिस्टम मरम्मत |
+| `autoShieldRepair` | स्वचालित ढाल मरम्मत |
+| `autoUpgrade` | स्वचालित अपग्रेड |
+| `autoAttack` | स्वचालित हमला |
 
 ---
 
-## Security Mechanisms
+## सुरक्षा तंत्र
 
-### 1. On-Chain Registration
+### 1. ऑन-चेन पंजीकरण
 
-The agent's policy is stored on the `DarkForestAgentRegistry.sol` contract and cannot be tampered with once set.
+एजेंट की नीति `DarkForestAgentRegistry.sol` कॉन्ट्रैक्ट पर संग्रहीत होती है और एक बार सेट होने के बाद इसे छेड़छाड़ नहीं किया जा सकता।
 
-### 2. Permission Separation
+### 2. अनुमति पृथक्करण
 
-- **Authorize**: You authorize the agent to act on your behalf
-- **Permission bitmask**: Fine-grained control over each operation
-- **Revocable**: `revokeAgent()` takes effect immediately
+- **प्राधिकृत करें**: आप एजेंट को अपनी ओर से कार्य करने का अधिकार देते हैं
+- **अनुमति बिटमास्क**: प्रत्येक ऑपरेशन पर सूक्ष्म-नियंत्रण
+- **प्रत्याहार योग्य**: `revokeAgent()` तुरंत प्रभावी होता है
 
-### 3. Circuit Breakers
+### 3. सर्किट ब्रेकर
 
 ```
-Attack frequency limit: max N per hour
-Upgrade frequency limit: max N per day
-Energy floor: never below X
-DFT floor: never below Y
+हमला आवृत्ति सीमा: प्रति घंटे अधिकतम N
+अपग्रेड आवृत्ति सीमा: प्रति दिन अधिकतम N
+ऊर्जा तल: X से कभी नीचे नहीं
+DFT तल: Y से कभी नीचे नहीं
 ```
 
-### 4. Blacklist / Whitelist
+### 4. ब्लैकलिस्ट / व्हाइटलिस्ट
 
-- **Blacklist**: Forbid attacking specific players
-- **Whitelist**: Only allow attacking specific players (blacklist is ignored when whitelist is active)
+- **ब्लैकलिस्ट**: विशिष्ट खिलाड़ियों पर हमला प्रतिबंधित करें
+- **व्हाइटलिस्ट**: केवल विशिष्ट खिलाड़ियों पर हमले की अनुमति दें (व्हाइटलिस्ट सक्रिय होने पर ब्लैकलिस्ट को अनदेखा किया जाता है)
 
 ---
 
-## Two-Layer Architecture
+## दो-परत आर्किटेक्चर
 
 ```
 ┌─────────────────────────────────────┐
-│         Off-Chain Agent             │
+│         ऑफ-चेन एजेंट               │
 │  ┌──────────────────────────────┐   │
-│  │ Strategy Engine (YAML config) │   │
-│  │ 4 preset strategies          │   │
-│  │ Custom strategy templates    │   │
+│  │ रणनीति इंजन (YAML कॉन्फ़िग)   │   │
+│  │ 4 प्रीसेट रणनीतियाँ          │   │
+│  │ कस्टम रणनीति टेम्पलेट        │   │
 │  └──────────┬───────────────────┘   │
-│             │ via contract calls    │
+│             │ कॉन्ट्रैक्ट कॉल के माध्यम से │
 │             ▼                      │
 │  ┌──────────────────────────────┐   │
-│  │ Agent SDK                    │   │
-│  │ Calls contract methods       │   │
-│  │ (read/write)                 │   │
+│  │ एजेंट SDK                    │   │
+│  │ कॉन्ट्रैक्ट विधियाँ कॉल करता है  │   │
+│  │ (पढ़ना/लिखना)                │   │
 │  └──────────────────────────────┘   │
 └──────────────┬──────────────────────┘
                │
                ▼
 ┌─────────────────────────────────────┐
-│   On-Chain DarkForestAgentRegistry  │
+│   ऑन-चेन DarkForestAgentRegistry    │
 │  ┌──────────────────────────────┐   │
-│  │ Permission bitmask check     │   │
-│  │ Policy constraint check      │   │
-│  │ Rate limit check             │   │
+│  │ अनुमति बिटमास्क जाँच         │   │
+│  │ नीति बाधा जाँच               │   │
+│  │ दर सीमा जाँच                 │   │
 │  └──────────────────────────────┘   │
 └─────────────────────────────────────┘
 ```
 
 ---
 
-## Agent vs Manual Play
+## एजेंट बनाम मैन्युअल खेल
 
-| Comparison | Manual | AI Agent |
+| तुलना | मैन्युअल | AI एजेंट |
 |-----------|--------|----------|
-| Online requirement | Must be online often | 24/7 operation |
-| Response time | Latency | Instant |
-| Precision | Prone to errors | Strictly follows policy |
-| Security | Private key in wallet | Encrypted storage + on-chain constraints |
+| ऑनलाइन आवश्यकता | अक्सर ऑनलाइन होना चाहिए | 24/7 संचालन |
+| प्रतिक्रिया समय | विलंबता | तत्काल |
+| सटीकता | त्रुटियों की संभावना | सख्ती से नीति का पालन |
+| सुरक्षा | वॉलेट में निजी कुंजी | एन्क्रिप्टेड स्टोरेज + ऑन-चेन बाधाएँ |
 
-**Recommended next step: [5-Minute Quickstart →](/docs/agent/quickstart)**
+**अनुशंसित अगला कदम: [5-मिनट त्वरित आरंभ →](/docs/agent/quickstart)**

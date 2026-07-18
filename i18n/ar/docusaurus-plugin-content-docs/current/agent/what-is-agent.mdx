@@ -1,120 +1,119 @@
 ---
 sidebar_position: 1
-title: What Is an AI Agent
-description: Dark Forest AI Agent architecture and security mechanisms
+title: ما هو الوكيل الذكي
+description: بنية وآليات أمان الوكيل الذكي في Dark Forest
 ---
 
-# What Is an AI Agent
+# ما هو الوكيل الذكي
 
-An AI Agent is an **off-chain automated program** that performs game operations on behalf of your civilization. It is authorized through a **permission bitmask** and operates within **policy constraints**.
+الوكيل الذكي (AI Agent) هو **برنامج آلي خارج السلسلة** يقوم بعمليات اللعبة نيابة عن حضارتك. يتم تفويضه من خلال **قناع أذونات (permission bitmask)** ويعمل ضمن **قيود السياسات**.
 
 ---
 
-## What an Agent Can Do
+## ما يمكن للوكيل فعله
 
-The agent's capabilities are controlled by **authorized permissions**:
+يتم التحكم في قدرات الوكيل بواسطة **الأذونات المصرح بها**:
 
-| Permission | Value | Action |
+| الإذن | القيمة | الإجراء |
 |-----------|-------|--------|
-| COLLECT | 1 | Collect energy |
-| REPAIR | 2 | Repair systems |
-| CLAIM_COMBAT | 8 | Claim combat energy |
-| ATTACK | 32 | Attack |
-| UPGRADE | 64 | Upgrade systems |
-| JUMP | 128 | Space jump |
-| REBUILD | 256 | Rebuild civilization |
-| DONATE | 512 | Donate to totem |
+| COLLECT | 1 | جمع الطاقة |
+| REPAIR | 2 | إصلاح الأنظمة |
+| CLAIM_COMBAT | 8 | المطالبة بطاقة القتال |
+| ATTACK | 32 | الهجوم |
+| UPGRADE | 64 | ترقية الأنظمة |
+| JUMP | 128 | القفز الفضائي |
+| REBUILD | 256 | إعادة بناء الحضارة |
+| DONATE | 512 | التبرع للطوطم |
 
-You can grant any combination of permissions to an agent (bitmask).
+يمكنك منح أي مجموعة من الأذونات للوكيل (قناع بت).
 
 ---
 
-## Policy Constraints
+## قيود السياسات
 
-In addition to permissions, you can set **policy constraints** for the agent:
+بالإضافة إلى الأذونات، يمكنك تعيين **قيود سياسات** للوكيل:
 
-| Constraint | Description |
+| القيد | الوصف |
 |-----------|-------------|
-| `minEnergyReserve` | Minimum energy reserve (agent won't spend below this) |
-| `minDftReserve` | Minimum DFT reserve |
-| `maxAttackPerHour` | Maximum attacks per hour |
-| `maxUpgradePerDay` | Maximum upgrades per day |
-| `maxSingleUpgradeCost` | Maximum DFT cost per upgrade |
-| `autoCollect` | Auto-collect energy |
-| `autoRepair` | Auto-repair systems |
-| `autoShieldRepair` | Auto-repair shield |
-| `autoUpgrade` | Auto-upgrade |
-| `autoAttack` | Auto-attack |
+| `minEnergyReserve` | الحد الأدنى لاحتياطي الطاقة (لن ينفق الوكيل أقل من هذا) |
+| `minDftReserve` | الحد الأدنى لاحتياطي DFT |
+| `maxAttackPerHour` | الحد الأقصى للهجمات في الساعة |
+| `maxUpgradePerDay` | الحد الأقصى للترقيات في اليوم |
+| `maxSingleUpgradeCost` | الحد الأقصى لتكلفة DFT لكل ترقية |
+| `autoCollect` | الجمع التلقائي للطاقة |
+| `autoRepair` | الإصلاح التلقائي للأنظمة |
+| `autoShieldRepair` | الإصلاح التلقائي للدرع |
+| `autoUpgrade` | الترقية التلقائية |
+| `autoAttack` | الهجوم التلقائي |
 
 ---
 
-## Security Mechanisms
+## آليات الأمان
 
-### 1. On-Chain Registration
+### 1. التسجيل على السلسلة
 
-The agent's policy is stored on the `DarkForestAgentRegistry.sol` contract and cannot be tampered with once set.
+سياسة الوكيل مخزنة في عقد `DarkForestAgentRegistry.sol` ولا يمكن التلاعب بها بمجرد تعيينها.
 
-### 2. Permission Separation
+### 2. فصل الأذونات
 
-- **Authorize**: You authorize the agent to act on your behalf
-- **Permission bitmask**: Fine-grained control over each operation
-- **Revocable**: `revokeAgent()` takes effect immediately
+- **التفويض**: تفوض الوكيل للتصرف نيابة عنك
+- **قناع الأذونات**: تحكم دقيق في كل عملية
+- **قابل للإلغاء**: `revokeAgent()` يسري مفعوله فوراً
 
-### 3. Circuit Breakers
+### 3. قواطع الدائرة
 
 ```
-Attack frequency limit: max N per hour
-Upgrade frequency limit: max N per day
-Energy floor: never below X
-DFT floor: never below Y
+حد تواتر الهجوم: الحد الأقصى N في الساعة
+حد تواتر الترقية: الحد الأقصى N في اليوم
+الحد الأدنى للطاقة: لا تقل عن X
+الحد الأدنى لـ DFT: لا يقل عن Y
 ```
 
-### 4. Blacklist / Whitelist
+### 4. القائمة السوداء / القائمة البيضاء
 
-- **Blacklist**: Forbid attacking specific players
-- **Whitelist**: Only allow attacking specific players (blacklist is ignored when whitelist is active)
+- **القائمة السوداء**: منع مهاجمة لاعبين محددين
+- **القائمة البيضاء**: السماح فقط بمهاجمة لاعبين محددين (يتم تجاهل القائمة السوداء عند تنشيط القائمة البيضاء)
 
 ---
 
-## Two-Layer Architecture
+## بنية من طبقتين
 
 ```
 ┌─────────────────────────────────────┐
-│         Off-Chain Agent             │
+│         الوكيل خارج السلسلة         │
 │  ┌──────────────────────────────┐   │
-│  │ Strategy Engine (YAML config) │   │
-│  │ 4 preset strategies          │   │
-│  │ Custom strategy templates    │   │
+│  │ محرك الاستراتيجية (إعداد YAML)│   │
+│  │ 4 استراتيجيات مسبقة          │   │
+│  │ قوالب استراتيجيات مخصصة      │   │
 │  └──────────┬───────────────────┘   │
-│             │ via contract calls    │
+│             │ عبر استدعاءات العقد   │
 │             ▼                      │
 │  ┌──────────────────────────────┐   │
-│  │ Agent SDK                    │   │
-│  │ Calls contract methods       │   │
-│  │ (read/write)                 │   │
+│  │ SDK الوكيل                    │   │
+│  │ استدعاء طرق العقد (قراءة/كتابة)│   │
 │  └──────────────────────────────┘   │
 └──────────────┬──────────────────────┘
                │
                ▼
 ┌─────────────────────────────────────┐
-│   On-Chain DarkForestAgentRegistry  │
+│   على السلسلة: DarkForestAgentRegistry│
 │  ┌──────────────────────────────┐   │
-│  │ Permission bitmask check     │   │
-│  │ Policy constraint check      │   │
-│  │ Rate limit check             │   │
+│  │ التحقق من قناع الأذونات      │   │
+│  │ التحقق من قيود السياسات      │   │
+│  │ التحقق من حد المعدل          │   │
 │  └──────────────────────────────┘   │
 └─────────────────────────────────────┘
 ```
 
 ---
 
-## Agent vs Manual Play
+## الوكيل مقابل اللعب اليدوي
 
-| Comparison | Manual | AI Agent |
+| المقارنة | يدوي | وكيل ذكي |
 |-----------|--------|----------|
-| Online requirement | Must be online often | 24/7 operation |
-| Response time | Latency | Instant |
-| Precision | Prone to errors | Strictly follows policy |
-| Security | Private key in wallet | Encrypted storage + on-chain constraints |
+| متطلبات الاتصال | يجب أن يكون متصلاً غالباً | تشغيل 24/7 |
+| وقت الاستجابة | تأخير | فوري |
+| الدقة | عرضة للأخطاء | يتبع السياسة بدقة |
+| الأمان | مفتاح خاص في المحفظة | تخزين مشفر + قيود على السلسلة |
 
-**Recommended next step: [5-Minute Quickstart →](/docs/agent/quickstart)**
+**الخطوة التالية الموصى بها: [الإعداد في 5 دقائق →](/docs/agent/quickstart)**

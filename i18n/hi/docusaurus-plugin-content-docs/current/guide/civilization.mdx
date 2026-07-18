@@ -1,107 +1,107 @@
 ---
 sidebar_position: 1
-title: Civilization Development & Upgrades
-description: Detailed breakdown of Dark Forest's six systems and upgrade strategies
+title: सभ्यता विकास और अपग्रेड
+description: डार्क फ़ॉरेस्ट के छह सिस्टम और अपग्रेड रणनीतियों का विस्तृत विवरण
 ---
 
-# Civilization Development & Upgrades
+# सभ्यता विकास और अपग्रेड
 
-Your civilization is made up of **six systems**, each of which can be independently upgraded. System levels determine your collection efficiency, combat power, and survivability.
+आपकी सभ्यता **छह सिस्टम** से बनी है, जिनमें से प्रत्येक को स्वतंत्र रूप से अपग्रेड किया जा सकता है। सिस्टम स्तर आपकी संग्रह दक्षता, युद्ध शक्ति और उत्तरजीविता निर्धारित करते हैं।
 
 ---
 
-## The Six Systems
+## छह सिस्टम
 
-| System ID | Name | Function | Core Formula |
+| सिस्टम ID | नाम | कार्य | मुख्य फ़ॉर्मूला |
 |-----------|------|----------|--------------|
-| 0 | **Energy Collector** | Passive energy per second | `3 + 10 × √(level - 1)` energy/s |
-| 1 | **Weapon System** | Attack power | `900 + 10 × level²` |
-| 2 | **Shield System** | Defense & shield HP | HP: `3600 + 15 × level²`, Defense: `540 + 6 × level²` |
-| 3 | **Radar System** | Scan range | `1000 + 150 × level + 5 × level²` |
-| 4 | **Engine System** | Movement speed | `10 + 5 × (level-1)` → Lv1=10, Lv10=55 |
+| 0 | **ऊर्जा संग्राहक** | प्रति सेकंड निष्क्रिय ऊर्जा | `3 + 10 × √(level - 1)` ऊर्जा/से |
+| 1 | **हथियार सिस्टम** | हमला शक्ति | `900 + 10 × level²` |
+| 2 | **ढाल सिस्टम** | रक्षा और ढाल HP | HP: `3600 + 15 × level²`, रक्षा: `540 + 6 × level²` |
+| 3 | **रडार सिस्टम** | स्कैन रेंज | `1000 + 150 × level + 5 × level²` |
+| 4 | **इंजन सिस्टम** | गति | `10 + 5 × (level-1)` → Lv1=10, Lv10=55 |
 
 ---
 
-## Upgrade Costs
+## अपग्रेड लागत
 
-Upgrade costs are calculated using the **Anchor Formula**, based on the system type and current level:
+अपग्रेड लागत की गणना **एंकर फ़ॉर्मूला** का उपयोग करके की जाती है, जो सिस्टम प्रकार और वर्तमान स्तर पर आधारित है:
 
-### Level Brackets
+### स्तर ब्रैकेट
 
-| Level Range | Anchor Days (cost equivalent) |
+| स्तर सीमा | एंकर दिन (लागत समतुल्य) |
 |-------------|-------------------------------|
-| 1 – 100 | 1 → 30 days of energy/DFT output |
-| 100 – 1000 | 30 → 60 days of output |
-| 1000+ | 60 days of output (capped) |
+| 1 – 100 | ऊर्जा/DFT उत्पादन के 1 → 30 दिन |
+| 100 – 1000 | उत्पादन के 30 → 60 दिन |
+| 1000+ | उत्पादन के 60 दिन (सीमित) |
 
-### System Upgrade Multipliers
+### सिस्टम अपग्रेड गुणक
 
-| System | Energy/DFT Multiplier |
+| सिस्टम | ऊर्जा/DFT गुणक |
 |--------|----------------------|
-| Collector (0) | 1× |
-| Weapon (1) | 4× |
-| Shield (2) | 4× |
-| Radar (3) | 8× |
-| Engine (4) | 16× |
+| संग्राहक (0) | 1× |
+| हथियार (1) | 4× |
+| ढाल (2) | 4× |
+| रडार (3) | 8× |
+| इंजन (4) | 16× |
 
-### Upgrade Cost Formula
+### अपग्रेड लागत फ़ॉर्मूला
 
 ```
-Upgrade Cost = Anchor Days × Daily Output × System Multiplier
+अपग्रेड लागत = एंकर दिन × दैनिक उत्पादन × सिस्टम गुणक
 ```
 
-"Daily Output" scales with your civilization's level — the higher your level, the more you produce per day, creating a **positive feedback loop**.
+"दैनिक उत्पादन" आपकी सभ्यता के स्तर के साथ बढ़ता है — आपका स्तर जितना अधिक होगा, आप प्रति दिन उतना अधिक उत्पादन करेंगे, जिससे **सकारात्मक प्रतिक्रिया लूप** बनता है।
 
 ---
 
-## Daily Upkeep
+## दैनिक रखरखाव
 
-Your civilization consumes energy every day as maintenance:
+आपकी सभ्यता हर दिन रखरखाव के रूप में ऊर्जा की खपत करती है:
 
 ```
-Daily Upkeep = 2,000 × Total Level
+दैनिक रखरखाव = 2,000 × कुल स्तर
 ```
 
-Upkeep is deducted from your energy proportionally over time and is settled automatically whenever you perform any action (via `_deductUpkeep`).
+रखरखाव आपकी ऊर्जा से समयानुपातिक रूप से काटा जाता है और जब भी आप कोई कार्रवाई करते हैं तो स्वचालित रूप से निपटाया जाता है (`_deductUpkeep` के माध्यम से)।
 
-> ⚠️ If you don't have enough energy to cover upkeep, your systems will still function, but your energy balance will go negative. You'll need to replenish it promptly.
+> ⚠️ यदि आपके पास रखरखाव को कवर करने के लिए पर्याप्त ऊर्जा नहीं है, तो आपके सिस्टम अभी भी कार्य करेंगे, लेकिन आपका ऊर्जा संतुलन नकारात्मक हो जाएगा। आपको इसे तुरंत पुनः भरना होगा।
 
 ---
 
-## Durability System
+## स्थायित्व प्रणाली
 
-Each system has durability that decreases over time or with use:
+प्रत्येक सिस्टम का स्थायित्व समय के साथ या उपयोग के साथ घटता है:
 
-| System | Base Durability | Per-Level Increase |
+| सिस्टम | आधार स्थायित्व | प्रति-स्तर वृद्धि |
 |--------|----------------|--------------------|
-| Collector | 86,400 seconds (1 day) | +7,200 seconds (2 hours) |
-| Weapon | 60 | +15 |
-| Shield | 40 | +10 |
-| Engine | 30 | +6 |
+| संग्राहक | 86,400 सेकंड (1 दिन) | +7,200 सेकंड (2 घंटे) |
+| हथियार | 60 | +15 |
+| ढाल | 40 | +10 |
+| इंजन | 30 | +6 |
 
-### Durability Consumption
+### स्थायित्व खपत
 
-- **Collector**: decays over time, losing 1 durability per second
-- **Weapon**: loses 1 durability per attack (at 0 durability, attack power is halved)
-- **Shield**: loses 1 durability each time it's hit
-- **Engine**: loses 1 durability per jump
+- **संग्राहक**: समय के साथ घटता है, प्रति सेकंड 1 स्थायित्व खोता है
+- **हथियार**: प्रति हमले में 1 स्थायित्व खोता है (0 स्थायित्व पर, हमला शक्ति आधी हो जाती है)
+- **ढाल**: हिट होने पर 1 स्थायित्व खोता है
+- **इंजन**: प्रति जंप में 1 स्थायित्व खोता है
 
-### Repair Costs
+### मरम्मत लागत
 
-| System | Repair Cost |
+| सिस्टम | मरम्मत लागत |
 |--------|-------------|
-| Collector | 1 energy/second |
-| Weapon | 3 energy/point |
-| Shield | 4 energy/point |
-| Engine | 5 energy/point |
+| संग्राहक | 1 ऊर्जा/सेकंड |
+| हथियार | 3 ऊर्जा/पॉइंट |
+| ढाल | 4 ऊर्जा/पॉइंट |
+| इंजन | 5 ऊर्जा/पॉइंट |
 
 ---
 
-## Upgrade Strategy Tips
+## अपग्रेड रणनीति टिप्स
 
-1. **Prioritize the Collector** — energy is the foundation of everything. A high-level collector lets you accumulate resources faster
-2. **Balance Weapon and Shield** — Weapon level affects attack power and plunder ratio; Shield level affects HP and defense
-3. **Radar determines your attack range** — you can only attack targets within your radar's reach
-4. **Engine affects movement speed** — exploration and pursuit both depend on engine upgrades
+1. **संग्राहक को प्राथमिकता दें** — ऊर्जा हर चीज़ की नींव है। उच्च-स्तरीय संग्राहक आपको तेज़ी से संसाधन जमा करने देता है
+2. **हथियार और ढाल को संतुलित करें** — हथियार स्तर हमला शक्ति और लूट अनुपात को प्रभावित करता है; ढाल स्तर HP और रक्षा को प्रभावित करता है
+3. **रडार आपकी हमला सीमा निर्धारित करता है** — आप केवल अपने रडार की पहुँच के भीतर के लक्ष्यों पर हमला कर सकते हैं
+4. **इंजन गति को प्रभावित करता है** — अन्वेषण और पीछा दोनों इंजन अपग्रेड पर निर्भर करते हैं
 
-**Recommended next step: [Attack & Defense →](/docs/guide/battle)**
+**अनुशंसित अगला कदम: [हमला और रक्षा →](/docs/guide/battle)**

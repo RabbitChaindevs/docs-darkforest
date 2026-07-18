@@ -1,22 +1,22 @@
 {
   "title": {
     "message": "Dark Forest",
-    "description": "The title in the navbar"
+    "description": "العنوان في الشريط العلوي"
   },
   "logo.alt": {
-    "message": "Dark Forest Logo",
-    "description": "The alt text of navbar logo"
+    "message": "شعار Dark Forest",
+    "description": "النص البديل لشعار الشريط العلوي"
   },
   "item.label.📚 Docs": {
-    "message": "📚 Docs",
-    "description": "Navbar item with label 📚 Docs"
+    "message": "📚 التوثيق",
+    "description": "عنصر الشريط العلوي بعلامة 📚 Docs"
   },
   "item.label.🎮 Game": {
-    "message": "🎮 Game",
-    "description": "Navbar item with label 🎮 Game"
+    "message": "🎮 اللعبة",
+    "description": "عنصر الشريط العلوي بعلامة 🎮 Game"
   },
   "item.label.GitHub": {
     "message": "GitHub",
-    "description": "Navbar item with label GitHub"
+    "description": "عنصر الشريط العلوي بعلامة GitHub"
   }
 }

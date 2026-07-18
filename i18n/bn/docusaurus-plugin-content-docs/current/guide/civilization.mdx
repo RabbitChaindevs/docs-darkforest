@@ -1,107 +1,107 @@
 ---
 sidebar_position: 1
-title: Civilization Development & Upgrades
-description: Detailed breakdown of Dark Forest's six systems and upgrade strategies
+title: সভ্যতা উন্নয়ন ও আপগ্রেড
+description: ডার্ক ফরেস্টের ছয়টি সিস্টেম এবং আপগ্রেড কৌশলের বিস্তারিত বিবরণ
 ---
 
-# Civilization Development & Upgrades
+# সভ্যতা উন্নয়ন ও আপগ্রেড
 
-Your civilization is made up of **six systems**, each of which can be independently upgraded. System levels determine your collection efficiency, combat power, and survivability.
+আপনার সভ্যতা **ছয়টি সিস্টেম** নিয়ে গঠিত, যার প্রতিটি স্বাধীনভাবে আপগ্রেড করা যেতে পারে। সিস্টেম স্তর আপনার সংগ্রহ দক্ষতা, যুদ্ধ শক্তি এবং টিকে থাকার ক্ষমতা নির্ধারণ করে।
 
 ---
 
-## The Six Systems
+## ছয়টি সিস্টেম
 
-| System ID | Name | Function | Core Formula |
+| সিস্টেম ID | নাম | কার্য | মূল সূত্র |
 |-----------|------|----------|--------------|
-| 0 | **Energy Collector** | Passive energy per second | `3 + 10 × √(level - 1)` energy/s |
-| 1 | **Weapon System** | Attack power | `900 + 10 × level²` |
-| 2 | **Shield System** | Defense & shield HP | HP: `3600 + 15 × level²`, Defense: `540 + 6 × level²` |
-| 3 | **Radar System** | Scan range | `1000 + 150 × level + 5 × level²` |
-| 4 | **Engine System** | Movement speed | `10 + 5 × (level-1)` → Lv1=10, Lv10=55 |
+| 0 | **শক্তি সংগ্রহকারী** | প্রতি সেকেন্ডে নিষ্ক্রিয় শক্তি | `3 + 10 × √(level - 1)` শক্তি/সে |
+| 1 | **অস্ত্র সিস্টেম** | আক্রমণ শক্তি | `900 + 10 × level²` |
+| 2 | **ঢাল সিস্টেম** | প্রতিরক্ষা ও ঢাল HP | HP: `3600 + 15 × level²`, প্রতিরক্ষা: `540 + 6 × level²` |
+| 3 | **রাডার সিস্টেম** | স্ক্যান রেঞ্জ | `1000 + 150 × level + 5 × level²` |
+| 4 | **ইঞ্জিন সিস্টেম** | চলাচলের গতি | `10 + 5 × (level-1)` → Lv1=10, Lv10=55 |
 
 ---
 
-## Upgrade Costs
+## আপগ্রেড খরচ
 
-Upgrade costs are calculated using the **Anchor Formula**, based on the system type and current level:
+আপগ্রেড খরচ **অ্যাঙ্কর সূত্র** ব্যবহার করে গণনা করা হয়, যা সিস্টেমের ধরন এবং বর্তমান স্তরের উপর ভিত্তি করে:
 
-### Level Brackets
+### স্তর ব্র্যাকেট
 
-| Level Range | Anchor Days (cost equivalent) |
+| স্তর সীমা | অ্যাঙ্কর দিন (খরচের সমতুল্য) |
 |-------------|-------------------------------|
-| 1 – 100 | 1 → 30 days of energy/DFT output |
-| 100 – 1000 | 30 → 60 days of output |
-| 1000+ | 60 days of output (capped) |
+| 1 – 100 | শক্তি/DFT উৎপাদনের 1 → 30 দিন |
+| 100 – 1000 | উৎপাদনের 30 → 60 দিন |
+| 1000+ | উৎপাদনের 60 দিন (সীমিত) |
 
-### System Upgrade Multipliers
+### সিস্টেম আপগ্রেড গুণক
 
-| System | Energy/DFT Multiplier |
+| সিস্টেম | শক্তি/DFT গুণক |
 |--------|----------------------|
-| Collector (0) | 1× |
-| Weapon (1) | 4× |
-| Shield (2) | 4× |
-| Radar (3) | 8× |
-| Engine (4) | 16× |
+| সংগ্রহকারী (0) | 1× |
+| অস্ত্র (1) | 4× |
+| ঢাল (2) | 4× |
+| রাডার (3) | 8× |
+| ইঞ্জিন (4) | 16× |
 
-### Upgrade Cost Formula
+### আপগ্রেড খরচের সূত্র
 
 ```
-Upgrade Cost = Anchor Days × Daily Output × System Multiplier
+আপগ্রেড খরচ = অ্যাঙ্কর দিন × দৈনিক উৎপাদন × সিস্টেম গুণক
 ```
 
-"Daily Output" scales with your civilization's level — the higher your level, the more you produce per day, creating a **positive feedback loop**.
+"দৈনিক উৎপাদন" আপনার সভ্যতার স্তরের সাথে বৃদ্ধি পায় — আপনার স্তর যত বেশি, আপনি প্রতিদিন তত বেশি উৎপাদন করেন, যা একটি **ইতিবাচক প্রতিক্রিয়া লুপ** তৈরি করে।
 
 ---
 
-## Daily Upkeep
+## দৈনিক রক্ষণাবেক্ষণ
 
-Your civilization consumes energy every day as maintenance:
+আপনার সভ্যতা প্রতিদিন রক্ষণাবেক্ষণ হিসাবে শক্তি খরচ করে:
 
 ```
-Daily Upkeep = 2,000 × Total Level
+দৈনিক রক্ষণাবেক্ষণ = 2,000 × মোট স্তর
 ```
 
-Upkeep is deducted from your energy proportionally over time and is settled automatically whenever you perform any action (via `_deductUpkeep`).
+রক্ষণাবেক্ষণ আপনার শক্তি থেকে সময়ানুপাতিকভাবে কাটা হয় এবং যখনই আপনি কোনো কাজ করেন তখন স্বয়ংক্রিয়ভাবে নিষ্পত্তি করা হয় (`_deductUpkeep`-এর মাধ্যমে)।
 
-> ⚠️ If you don't have enough energy to cover upkeep, your systems will still function, but your energy balance will go negative. You'll need to replenish it promptly.
+> ⚠️ যদি রক্ষণাবেক্ষণ কভার করার জন্য আপনার যথেষ্ট শক্তি না থাকে, তবে আপনার সিস্টেমগুলি এখনও কাজ করবে, কিন্তু আপনার শক্তি ব্যালেন্স ঋণাত্মক হবে। আপনাকে দ্রুত এটি পূরণ করতে হবে।
 
 ---
 
-## Durability System
+## স্থায়িত্ব ব্যবস্থা
 
-Each system has durability that decreases over time or with use:
+প্রতিটি সিস্টেমের স্থায়িত্ব সময়ের সাথে বা ব্যবহারের সাথে হ্রাস পায়:
 
-| System | Base Durability | Per-Level Increase |
+| সিস্টেম | ভিত্তি স্থায়িত্ব | প্রতি-স্তর বৃদ্ধি |
 |--------|----------------|--------------------|
-| Collector | 86,400 seconds (1 day) | +7,200 seconds (2 hours) |
-| Weapon | 60 | +15 |
-| Shield | 40 | +10 |
-| Engine | 30 | +6 |
+| সংগ্রহকারী | 86,400 সেকেন্ড (1 দিন) | +7,200 সেকেন্ড (2 ঘন্টা) |
+| অস্ত্র | 60 | +15 |
+| ঢাল | 40 | +10 |
+| ইঞ্জিন | 30 | +6 |
 
-### Durability Consumption
+### স্থায়িত্ব খরচ
 
-- **Collector**: decays over time, losing 1 durability per second
-- **Weapon**: loses 1 durability per attack (at 0 durability, attack power is halved)
-- **Shield**: loses 1 durability each time it's hit
-- **Engine**: loses 1 durability per jump
+- **সংগ্রহকারী**: সময়ের সাথে হ্রাস পায়, প্রতি সেকেন্ডে 1 স্থায়িত্ব হারায়
+- **অস্ত্র**: প্রতি আক্রমণে 1 স্থায়িত্ব হারায় (0 স্থায়িত্বে, আক্রমণ শক্তি অর্ধেক হয়)
+- **ঢাল**: আঘাত পেলে 1 স্থায়িত্ব হারায়
+- **ইঞ্জিন**: প্রতি জাম্পে 1 স্থায়িত্ব হারায়
 
-### Repair Costs
+### মেরামত খরচ
 
-| System | Repair Cost |
+| সিস্টেম | মেরামত খরচ |
 |--------|-------------|
-| Collector | 1 energy/second |
-| Weapon | 3 energy/point |
-| Shield | 4 energy/point |
-| Engine | 5 energy/point |
+| সংগ্রহকারী | 1 শক্তি/সেকেন্ড |
+| অস্ত্র | 3 শক্তি/পয়েন্ট |
+| ঢাল | 4 শক্তি/পয়েন্ট |
+| ইঞ্জিন | 5 শক্তি/পয়েন্ট |
 
 ---
 
-## Upgrade Strategy Tips
+## আপগ্রেড কৌশল টিপস
 
-1. **Prioritize the Collector** — energy is the foundation of everything. A high-level collector lets you accumulate resources faster
-2. **Balance Weapon and Shield** — Weapon level affects attack power and plunder ratio; Shield level affects HP and defense
-3. **Radar determines your attack range** — you can only attack targets within your radar's reach
-4. **Engine affects movement speed** — exploration and pursuit both depend on engine upgrades
+1. **সংগ্রহকারীকে অগ্রাধিকার দিন** — শক্তি হল সবকিছুর ভিত্তি। উচ্চ-স্তরের সংগ্রহকারী আপনাকে দ্রুত সম্পদ সঞ্চয় করতে দেয়
+2. **অস্ত্র এবং ঢাল ভারসাম্য করুন** — অস্ত্র স্তর আক্রমণ শক্তি এবং লুটের অনুপাতকে প্রভাবিত করে; ঢাল স্তর HP এবং প্রতিরক্ষাকে প্রভাবিত করে
+3. **রাডার আপনার আক্রমণ সীমা নির্ধারণ করে** — আপনি শুধুমাত্র আপনার রাডারের নাগালের মধ্যে থাকা লক্ষ্যবস্তুতে আক্রমণ করতে পারেন
+4. **ইঞ্জিন চলাচলের গতি প্রভাবিত করে** — অনুসন্ধান এবং তাড়া উভয়ই ইঞ্জিন আপগ্রেডের উপর নির্ভর করে
 
-**Recommended next step: [Attack & Defense →](/docs/guide/battle)**
+**প্রস্তাবিত পরবর্তী ধাপ: [আক্রমণ ও প্রতিরক্ষা →](/docs/guide/battle)**

@@ -1,148 +1,148 @@
 ---
 sidebar_position: 3
 title: FAQ
-description: Frequently asked questions about Dark Forest
+description: Часто задаваемые вопросы о Dark Forest
 ---
 
 # FAQ
 
-## Getting Started
+## Начало работы
 
-### How much does it cost to create a civilization?
+### Сколько стоит создание цивилизации?
 
-The entry fee starts at **0.01 BNB** and grows linearly to **0.05 BNB** (reaching the maximum after 365 days). You also need a small amount of BNB for gas fees.
+Вступительный взнос начинается с **0,01 BNB** и линейно растёт до **0,05 BNB** (достигая максимума через 365 дней). Вам также понадобится небольшое количество BNB для газовых сборов.
 
-### What is DFT used for?
+### Для чего используется DFT?
 
-DFT is used for space jumps, system upgrades, rebuilding a civilization, alliance exit fines, and buying energy on the energy market.
+DFT используется для космических прыжков, улучшения систем, восстановления цивилизации, штрафов за выход из альянса и покупки энергии на рынке энергии.
 
-### How long does new player protection last?
+### Как долго длится защита нового игрока?
 
-**24 hours**. During this period, other players cannot attack you.
-
----
-
-## Gameplay
-
-### Why can't I attack a certain civilization?
-
-These are the possible soft gate reasons (no resources are consumed):
-
-- The target is in new player protection (< 24 hours old)
-- You and the target are in the same alliance
-- There's an active exit cooldown between you (24 hours)
-- The target is outside your radar range
-- You are the target
-
-### I'm running low on energy. What can I do?
-
-- Upgrade your **Energy Collector** for higher passive output
-- **Plunder** energy by attacking other civilizations
-- Buy energy on the **Energy Market** using DFT
-- **Invite new players** for reward energy
-- Cut back on unnecessary actions (e.g., non-essential shield repairs)
-
-### Why did my shield drop to zero after a space jump?
-
-Space jumps inflict heavy damage on your vessel: **Shield HP resets to 10% of maximum**. Be careful after jumping:
-
-1. Repair your shield immediately after jumping
-2. Avoid jumping near combat zones
-3. Alliance members can assist with repairs after a jump
-
-### What happens when durability hits zero?
-
-| System | Durability = 0 Consequence |
-|--------|---------------------------|
-| Collector | Stops producing energy |
-| Weapon | Attack power is halved |
-| Shield | Shield becomes ineffective (no defense) |
-| Engine | Cannot cruise or jump |
+**24 часа**. В течение этого периода другие игроки не могут атаковать вас.
 
 ---
 
-## Economy
+## Игровой процесс
 
-### What is the total supply of DFT?
+### Почему я не могу атаковать определённую цивилизацию?
 
-**~4.2 trillion (4,206,900,000,000) DFT** — this is the hard cap. Approximately 1.15 trillion DFT is minted daily and distributed among active players.
+Вот возможные причины мягкого шлюза (ресурсы не расходуются):
 
-### Are there fees for trading DFT?
+- Цель находится под защитой нового игрока (< 24 часов)
+- Вы и цель находитесь в одном альянсе
+- Между вами действует период охлаждения при выходе (24 часа)
+- Цель находится за пределами радиуса вашего радара
+- Вы сами являетесь целью
 
-A **2.5% total fee** (1% development + 1.5% marketing) applies only when trading on a DEX like PancakeSwap. Regular transfers are fee-free.
+### У меня заканчивается энергия. Что делать?
 
-### Can unclaimed DFT from the daily mint accumulate?
+- Улучшите ваш **сборщик энергии** для более высокой пассивной выработки
+- **Грабьте** энергию, атакуя другие цивилизации
+- Купите энергию на **рынке энергии** за DFT
+- **Приглашайте новых игроков** для получения наградной энергии
+- Сократите необязательные действия (например, несущественный ремонт щита)
 
-**No.** DFT from each epoch must be claimed within that epoch. If not claimed, the next `distribute()` call burns the remainder.
+### Почему мой щит упал до нуля после космического прыжка?
 
----
+Космические прыжки наносят тяжёлый урон вашему кораблю: **HP щита сбрасывается до 10% от максимума**. Будьте осторожны после прыжка:
 
-## Alliance
+1. Немедленно отремонтируйте щит после прыжка
+2. Избегайте прыжков вблизи боевых зон
+3. Члены альянса могут помочь с ремонтом после прыжка
 
-### Is there a penalty for leaving an alliance?
+### Что происходит, когда прочность достигает нуля?
 
-Yes, you must pay **100 DFT + 10 DFT × current member count**. This DFT is distributed to the remaining alliance members.
-
-### How long after leaving an alliance can I attack again?
-
-**24-hour cooldown**. During this period, you and the former alliance cannot attack each other.
-
-### What is the maximum alliance size?
-
-**100 members.**
-
----
-
-## Rebuild (Rebirth)
-
-### What conditions are needed to rebuild?
-
-Your civilization must be in **ruins state** (defeated, with all systems reduced to Lv 1).
-
-### Does rebuilding reset newbie protection?
-
-Yes. Rebuilding resets `creationTime` to the current timestamp, so the **24-hour newbie protection restarts**.
-
-### What is the maximum health cap?
-
-**20,000**. Initial health is 3,000. Health does not regenerate automatically in combat and can only be reset to 10,000 via rebuilding.
-
-### How much does a rebuild cost?
-
-- **Energy**: `500,000 × (10000 + rebirth count × 1200) / 10000`, cap 10,000,000 (20×)
-- **DFT**: `100 + 10 × rebirth count`, cap 2,000 DFT
-
-### What are the benefits of rebuilding?
-
-Each rebuild grants **+12% (1200 bps)** combat boost, benefiting both attack and defense. Stacks up to **300% (30000 bps)**.
+| Система | Последствие при прочности = 0 |
+|---------|------------------------------|
+| Сборщик | Прекращает производить энергию |
+| Оружие | Сила атаки уменьшается вдвое |
+| Щит | Щит становится неэффективным (нет защиты) |
+| Двигатель | Невозможно перемещаться или прыгать |
 
 ---
 
-## AI Agent
+## Экономика
 
-### Is the Agent safe?
+### Каков общий объём предложения DFT?
 
-The agent system has multiple layers of security:
+**~4,2 триллиона (4 206 900 000 000) DFT** — это жёсткий потолок. Ежедневно создаётся около 1,15 триллиона DFT, которые распределяются среди активных игроков.
 
-1. **Permission bitmask**: fine-grained control over each operation
-2. **On-chain policies**: circuit breaker parameters that cannot be bypassed
-3. **Instantly revocable**: `revokeAgent()` takes effect immediately
-4. **Encrypted storage**: private keys are encrypted locally
+### Есть ли комиссии за торговлю DFT?
 
-We recommend using a **dedicated game wallet** to run an agent.
+**Общая комиссия 2,5%** (1% разработка + 1,5% маркетинг) применяется только при торговле на DEX, таком как PancakeSwap. Обычные переводы бесплатны.
 
-### Can the agent auto-attack?
+### Может ли невостребованный DFT из ежедневного майнинга накапливаться?
 
-Yes, as long as you grant the `ATTACK` permission and set `autoAttack: true`. You can also configure blacklists and whitelists to control attack targets.
+**Нет.** DFT из каждой эпохи должен быть получен в течение этой эпохи. Если не получен, следующий вызов `distribute()` сжигает остаток.
 
 ---
 
-## Technical
+## Альянс
 
-### Is the contract source code open?
+### Есть ли штраф за выход из альянса?
 
-Yes. All contract source code is open-source on GitHub and verified on BscScan.
+Да, вы должны заплатить **100 DFT + 10 DFT × текущее количество участников**. Этот DFT распределяется среди оставшихся членов альянса.
 
-### How can I view transaction details?
+### Через сколько времени после выхода из альянса я могу снова атаковать?
 
-Paste your transaction hash (TXID) into [BscScan](https://bscscan.com).
+**24-часовой период охлаждения**. В течение этого периода вы и бывший альянс не можете атаковать друг друга.
+
+### Каков максимальный размер альянса?
+
+**100 участников.**
+
+---
+
+## Восстановление (Возрождение)
+
+### Какие условия необходимы для восстановления?
+
+Ваша цивилизация должна быть в **состоянии руин** (побеждена, все системы понижены до 1-го уровня).
+
+### Сбрасывает ли восстановление защиту новичка?
+
+Да. Восстановление сбрасывает `creationTime` на текущую метку времени, поэтому **24-часовая защита новичка запускается заново**.
+
+### Каков максимальный предел здоровья?
+
+**20 000**. Начальное здоровье — 3 000. Здоровье не восстанавливается автоматически в бою и может быть сброшено до 10 000 только через восстановление.
+
+### Сколько стоит восстановление?
+
+- **Энергия**: `500 000 × (10000 + количество возрождений × 1200) / 10000`, макс 10 000 000 (20×)
+- **DFT**: `100 + 10 × количество возрождений`, макс 2 000 DFT
+
+### Каковы преимущества восстановления?
+
+Каждое восстановление даёт **+12% (1200 б.п.)** боевого бонуса, который применяется и к атаке, и к защите. Суммируется до **300% (30000 б.п.)**.
+
+---
+
+## ИИ-агент
+
+### Безопасен ли агент?
+
+Система агента имеет несколько уровней безопасности:
+
+1. **Маска разрешений**: тонкий контроль над каждой операцией
+2. **Ончейн-политики**: параметры автоматического выключателя, которые нельзя обойти
+3. **Мгновенный отзыв**: `revokeAgent()` вступает в силу немедленно
+4. **Зашифрованное хранение**: приватные ключи зашифрованы локально
+
+Мы рекомендуем использовать **выделенный игровой кошелёк** для запуска агента.
+
+### Может ли агент атаковать автоматически?
+
+Да, если вы предоставите разрешение `ATTACK` и установите `autoAttack: true`. Вы также можете настроить чёрные и белые списки для контроля целей атаки.
+
+---
+
+## Технические вопросы
+
+### Открыт ли исходный код контрактов?
+
+Да. Весь исходный код контрактов имеет открытый исходный код на GitHub и верифицирован на BscScan.
+
+### Как просмотреть детали транзакции?
+
+Вставьте хеш вашей транзакции (TXID) в [BscScan](https://bscscan.com).

@@ -1,98 +1,98 @@
 ---
 sidebar_position: 3
-title: Space Jump & Cruise
-description: Detailed breakdown of the Dark Forest movement system
+title: স্পেস জাম্প ও ক্রুজ
+description: ডার্ক ফরেস্ট চলাচল ব্যবস্থার বিস্তারিত বিবরণ
 ---
 
-# Space Jump & Cruise
+# স্পেস জাম্প ও ক্রুজ
 
-## Cruise
+## ক্রুজ
 
-Cruise is the standard method of movement. The engine propels your civilization toward a target coordinate.
+ক্রুজ হল চলাচলের মানক পদ্ধতি। ইঞ্জিন আপনার সভ্যতাকে লক্ষ্য স্থানাঙ্কের দিকে চালিত করে।
 
-### Conditions
-- Engine durability > 0
-- Target coordinates are within your radar range
+### শর্ত
+- ইঞ্জিন স্থায়িত্ব > ০
+- লক্ষ্য স্থানাঙ্ক আপনার রাডার রেঞ্জের মধ্যে রয়েছে
 
-### Operation
+### অপারেশন
 
 ```
 startMove(x, y, z)
 ```
 
-Enter the target coordinates `(x, y, z)` to begin cruising. You can cancel at any time before arrival (`cancelMove`).
+লক্ষ্য স্থানাঙ্ক `(x, y, z)` লিখুন এবং ক্রুজিং শুরু করুন। আপনি আগমনের আগে যেকোনো সময় বাতিল করতে পারেন (`cancelMove`)।
 
-### Speed
+### গতি
 
 ```
-Move Speed = 10 + 5 × (engine level - 1)
+চলাচলের গতি = 10 + 5 × (ইঞ্জিন স্তর - 1)
 
-So Lv1 = 10, Lv2 = 15, Lv10 = 55, Lv50 = 255.
+অতএব Lv1 = 10, Lv2 = 15, Lv10 = 55, Lv50 = 255।
 ```
 
-The higher your engine level, the faster you move.
+আপনার ইঞ্জিন স্তর যত বেশি, আপনি তত দ্রুত চলবেন।
 
 ---
 
-## Space Jump
+## স্পেস জাম্প
 
-A space jump instantly teleports you to a new deterministic coordinate. It is much faster than cruising but comes with serious side effects.
+স্পেস জাম্প তত্ক্ষণাত আপনাকে একটি নতুন নির্ধারক স্থানাঙ্কে টেলিপোর্ট করে। এটি ক্রুজের চেয়ে অনেক দ্রুত কিন্তু গুরুতর পার্শ্বপ্রতিক্রিয়া নিয়ে আসে।
 
-### Cost
+### খরচ
 
-Each jump's cost increases with **historical jump count**:
+প্রতিটি জাম্পের খরচ **ঐতিহাসিক জাম্প গণনার** সাথে বৃদ্ধি পায়:
 
-| Resource | Formula | Cap |
+| সম্পদ | সূত্র | সীমা |
 |----------|---------|-----|
-| **Energy** | `200,000 + 200,000 × √(historical jumps)` | 16,500,000 |
-| **DFT** | `10 + 10 × √(historical jumps)` | 1,000 DFT |
-| **Engine Durability** | 1 point | |
+| **শক্তি** | `200,000 + 200,000 × √(ঐতিহাসিক জাম্প)` | 16,500,000 |
+| **DFT** | `10 + 10 × √(ঐতিহাসিক জাম্প)` | 1,000 DFT |
+| **ইঞ্জিন স্থায়িত্ব** | 1 পয়েন্ট | |
 
-### Cooldown
+### কুলডাউন
 
-After each jump, you must wait **1 hour** before jumping again.
+প্রতিটি জাম্পের পরে, পুনরায় জাম্প করতে **1 ঘন্টা** অপেক্ষা করতে হবে।
 
-### Side Effects
+### পার্শ্বপ্রতিক্রিয়া
 
-> ⚠️ Space jump inflicts heavy damage on your vessel:
+> ⚠️ স্পেস জাম্প আপনার জাহাজের ব্যাপক ক্ষতি করে:
 >
-> **Shield HP resets to 10% of maximum**
+> **ঢাল HP সর্বোচ্চের 10% এ রিসেট হয়**
 >
-> Your defense will be extremely fragile after jumping. Make sure you jump in a safe area or prepare defensively.
+> জাম্পের পরে আপনার প্রতিরক্ষা অত্যন্ত দুর্বল হবে। নিশ্চিত করুন যে আপনি একটি নিরাপদ এলাকায় জাম্প করছেন বা প্রতিরক্ষামূলকভাবে প্রস্তুত রয়েছেন।
 
-### Coordinate Assignment
+### স্থানাঙ্ক নির্ধারণ
 
-The new coordinates after a jump are assigned by a deterministic algorithm (similar to civilization creation). You cannot manually choose your destination.
+জাম্পের পরে নতুন স্থানাঙ্ক একটি নির্ধারক অ্যালগরিদম দ্বারা নির্ধারিত হয় (সভ্যতা তৈরির অনুরূপ)। আপনি ম্যানুয়ালি আপনার গন্তব্য নির্বাচন করতে পারবেন না।
 
 ---
 
-## Tracking Jump
+## ট্র্যাকিং জাম্প
 
-A tracking jump lets you jump directly to a target civilization's location.
+ট্র্যাকিং জাম্প আপনাকে সরাসরি একটি লক্ষ্য সভ্যতার অবস্থানে জাম্প করতে দেয়।
 
-### Conditions
+### শর্ত
 
-- Your **radar level ≥ 20**
-- The target is **within your radar scan range**
+- আপনার **রাডার স্তর ≥ 20**
+- লক্ষ্য **আপনার রাডার স্ক্যান রেঞ্জের মধ্যে** রয়েছে
 
-### Cost
+### খরচ
 
-Same as a regular space jump (energy + DFT + engine durability), and shares the same cooldown.
+নিয়মিত স্পেস জাম্পের মতো (শক্তি + DFT + ইঞ্জিন স্থায়িত্ব), এবং একই কুলডাউন ভাগ করে।
 
 ---
 
-## Comparison
+## তুলনা
 
-| Method | Cost | Speed | Use Case |
+| পদ্ধতি | খরচ | গতি | ব্যবহারের ক্ষেত্র |
 |--------|------|-------|----------|
-| Cruise | Time only | Slow | Short-distance movement, exploration |
-| Space Jump | Energy + DFT + Shield HP | Instant | Long-distance travel, evading tracking jumps |
-| Tracking Jump | Energy + DFT + Shield HP | Instant | Chasing targets, assisting allies |
+| ক্রুজ | শুধু সময় | ধীর | স্বল্প-দূরত্বের ভ্রমণ, অনুসন্ধান |
+| স্পেস জাম্প | শক্তি + DFT + ঢাল HP | তাৎক্ষণিক | দীর্ঘ-দূরত্বের ভ্রমণ, ট্র্যাকিং জাম্প এড়ানো |
+| ট্র্যাকিং জাম্প | শক্তি + DFT + ঢাল HP | তাৎক্ষণিক | লক্ষ্য তাড়া করা, সহযোগীদের সহায়তা করা |
 
 ---
 
-## Post-Alliance Non-Aggression Protocol
+## জোট ত্যাগের পর অ-আগ্রাসন প্রোটোকল
 
-After leaving an alliance, you and the former alliance **cannot attack each other for 24 hours** (Leave Cooldown), preventing tactical abuse of the alliance system.
+জোট ত্যাগ করার পর, আপনি এবং প্রাক্তন জোট **24 ঘন্টা পর্যন্ত একে অপরকে আক্রমণ করতে পারবেন না** (লিভ কুলডাউন), যা জোট ব্যবস্থার কৌশলগত অপব্যবহার রোধ করে।
 
-**Recommended next step: [Energy System →](/docs/guide/energy)**
+**প্রস্তাবিত পরবর্তী ধাপ: [শক্তি ব্যবস্থা →](/docs/guide/energy)**

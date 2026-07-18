@@ -1,152 +1,151 @@
 ---
 sidebar_position: 2
-title: Attack & Defense
-description: Complete breakdown of the Dark Forest combat system
+title: Атака и защита
+description: Полный разбор боевой системы Dark Forest
 ---
 
-# Attack & Defense
+# Атака и защита
 
-## Attack Conditions
+## Условия атаки
 
-### Who Can You Attack?
+### Кого можно атаковать?
 
-- The target must exist and not be destroyed (not in ruin state)
-- The target must not be in its **24-hour new player protection** window
-- The target must be within your **radar scan range** (distance ≤ your radar range)
-- You cannot attack yourself
-- You cannot attack members of your own alliance (you must leave first)
-- You cannot attack someone who left your alliance in the last **24 hours** (mutual cooldown)
+- Цель должна существовать и не быть уничтоженной (не в состоянии руин)
+- Цель не должна находиться в окне **24-часовой защиты нового игрока**
+- Цель должна быть в пределах **радиуса сканирования вашего радара** (расстояние ≤ ваш радиус радара)
+- Нельзя атаковать себя
+- Нельзя атаковать членов своего альянса (нужно сначала выйти)
+- Нельзя атаковать того, кто покинул ваш альянс в последние **24 часа** (взаимное охлаждение)
 
-### Soft Gate
+### Мягкий шлюз (Soft Gate)
 
-If an attack condition isn't met, the attempt **does not consume any resources** — it simply tells you why the attack failed. This lets you experiment freely without worrying about wasted energy.
-
----
-
-## Attack Cost
-
-Each successful attack is limited to **1 attack per second**, and consumes:
-
-| Resource | Cost |
-|----------|------|
-| **Energy** | `50,000 + 50,000 × weapon level` |
-| **Weapon Durability** | 1 point (when weapon durability > 0) |
-| **Attack Token** | 1 token |
+Если условие атаки не выполнено, попытка **не расходует никаких ресурсов** — просто показывается причина отказа. Это позволяет свободно экспериментировать, не беспокоясь о потраченной энергии.
 
 ---
 
-## Attack Token System
+## Стоимость атаки
 
-Attack tokens use a **token bucket algorithm** to limit attack frequency:
+Каждая успешная атака ограничена **1 атакой в секунду** и потребляет:
 
-| Parameter | Formula | Description |
-|-----------|---------|-------------|
-| **Max Tokens** | `3 + weapon level / 10`, cap **10** | Auto-recover over time |
-| **Recovery Interval** | `(300 - weapon level × 10) / 100` seconds, min **1s** | 1 token per interval |
-| **Cost** | 1 token per attack | |
-
-> 💡 The higher your weapon level, the faster your attack tokens recover and the higher your cap.
+| Ресурс | Стоимость |
+|--------|-----------|
+| **Энергия** | `50 000 + 50 000 × уровень оружия` |
+| **Прочность оружия** | 1 единица (когда прочность оружия > 0) |
+| **Токен атаки** | 1 токен |
 
 ---
 
-## Damage Calculation
+## Система токенов атаки
 
-### Attacker
+Токены атаки используют **алгоритм «ведро токенов»** для ограничения частоты атак:
 
-```
-Base Attack = 900 + 10 × attacker weapon level²
-If weapon durability = 0, attack is halved
-Final Attack = Base Attack × (1 + combat boost / 10000)
-```
+| Параметр | Формула | Описание |
+|----------|---------|----------|
+| **Макс. токенов** | `3 + уровень оружия / 10`, макс **10** | Автовосстановление со временем |
+| **Интервал восстановления** | `(300 - уровень оружия × 10) / 100` сек, мин **1с** | 1 токен за интервал |
+| **Стоимость** | 1 токен за атаку | |
 
-### Defender
-
-```
-Base Defense = 540 + 6 × defender shield level²
-Alliance Defense Bonus = (allies - 1) × 8 × (1 + totem level × 0.5%)
-Final Defense = Base Defense × (1 + combat boost / 10000) + Alliance Bonus
-```
-
-### Final Damage
-
-```
-Shield Damage = Attack + 200 - Defense (if > 0)
-Health Damage = (Attack - Defense) × 2 (if > 0)
-
-If Shield Damage > remaining Shield HP:
-  overflow × 3 converts to Health Damage
-```
+> 💡 Чем выше уровень вашего оружия, тем быстрее восстанавливаются токены атаки и выше их максимум.
 
 ---
 
-## Plunder
+## Расчёт урона
 
-After winning a battle, you plunder energy from the target:
-
-```
-Plunder Ratio = 5% + weapon level × 0.5%
-Plundered Energy = target's current energy × plunder ratio
-```
-
-Plundered energy goes into a **pending combat energy** pool, which you must manually claim.
-
----
-
-## Defeat & Destruction
-
-### Defeat
-
-When a target's health reaches zero:
-
-1. **All remaining energy is plundered** into your pending pool
-2. The target has one random system **downgraded** (on BSC: downgrades the highest-level system; on chains with beacon chain randomness: randomly picks from Collector/Weapon/Shield/Engine)
-3. If the downgraded system's level is still ≥ 1, the civilization survives and its durability is restored to 50%
-4. If all systems are level 1 (cannot be downgraded further), the civilization becomes **ruins**
-5. The kill plunder stacks **on top of** the regular attack plunder
-
-### Ruins
-
-A civilization in ruins:
-- Is removed from the active civilization list
-- Cannot be attacked
-- Can be revived via the **Rebuild** function
-
-### Combat Boost (Rebirth Boost)
-
-Each Rebuild grants **+1200 bps** (12%) combat boost, stacking up to **30000 bps** (3× multiplier).
-Both attack and defense benefit from this boost.
-
----
-
-## Shield Regeneration
-
-### Auto Regeneration
+### Атакующий
 
 ```
-Regen Amount = 50 + shield level²
-Energy Cost = regen amount (1:1 ratio)
+Базовая атака = 900 + 10 × уровень оружия атакующего²
+Если прочность оружия = 0, атака уменьшается вдвое
+Итоговая атака = Базовая атака × (1 + боевой бонус / 10000)
 ```
 
-### Manual Repair
+### Защищающийся
 
 ```
-Energy Cost = repair amount × 4
+Базовая защита = 540 + 6 × уровень щита защищающегося²
+Бонус защиты альянса = (союзники - 1) × 8 × (1 + уровень тотема × 0,5%)
+Итоговая защита = Базовая защита × (1 + боевой бонус / 10000) + Бонус альянса
 ```
 
-### Alliance Assistance
+### Итоговый урон
 
 ```
-Energy Cost = repair amount × 1 (paid by ally)
-Allies can repair shields for each other
+Урон по щиту = Атака + 200 - Защита (если > 0)
+Урон по здоровью = (Атака - Защита) × 2 (если > 0)
+
+Если урон по щиту > оставшегося HP щита:
+  избыток × 3 преобразуется в урон по здоровью
 ```
 
 ---
 
-## Defense Strategy
+## Грабеж
 
-1. **Keep energy reserves > 7× daily upkeep** — prevents energy depletion that would stop shield regeneration
-2. **Repair durability regularly** — systems at zero durability are extremely vulnerable
-3. **Upgrade shield level** — shield HP and defense both scale with level squared
-4. **Join an alliance and upgrade the totem** — alliance defense bonuses are significant
+После победы в бою вы грабите энергию цели:
 
-**Recommended next step: [Space Jump & Cruise →](/docs/guide/movement)**
+```
+Коэффициент грабежа = 5% + уровень оружия × 0,5%
+Ограбленная энергия = текущая энергия цели × коэффициент грабежа
+```
+
+Ограбленная энергия поступает в **ожидающий пул боевой энергии**, который вы должны забрать вручную.
+
+---
+
+## Поражение и уничтожение
+
+### Поражение
+
+Когда здоровье цели достигает нуля:
+
+1. **Вся оставшаяся энергия грабится** в ваш ожидающий пул
+2. У цели **понижается** одна случайная система (на BSC: понижается самая высокоуровневая система; на цепях со случайностью маяка: случайный выбор из Сборщик/Оружие/Щит/Двигатель)
+3. Если уровень пониженной системы всё ещё ≥ 1, цивилизация выживает, и её прочность восстанавливается до 50%
+4. Если все системы 1-го уровня (дальнейшее понижение невозможно), цивилизация становится **руинами**
+5. Грабеж за уничтожение добавляется **поверх** обычного грабежа за атаку
+
+### Руины
+
+Цивилизация в руинах:
+- Удаляется из списка активных цивилизаций
+- Не может быть атакована
+- Может быть возрождена через функцию **Восстановления**
+
+### Боевой бонус (Бонус возрождения)
+
+Каждое восстановление даёт **+1200 б.п.** (12%) боевого бонуса, суммируясь до **30000 б.п.** (множитель ×3). И атака, и защита получают этот бонус.
+
+---
+
+## Регенерация щита
+
+### Автоматическая регенерация
+
+```
+Количество регенерации = 50 + уровень щита²
+Стоимость энергии = количество регенерации (соотношение 1:1)
+```
+
+### Ручной ремонт
+
+```
+Стоимость энергии = количество ремонта × 4
+```
+
+### Помощь альянса
+
+```
+Стоимость энергии = количество ремонта × 1 (оплачивается союзником)
+Союзники могут ремонтировать щиты друг друга
+```
+
+---
+
+## Стратегия защиты
+
+1. **Держите резервы энергии > 7× ежедневное обслуживание** — предотвращает истощение энергии, которое остановит регенерацию щита
+2. **Регулярно ремонтируйте прочность** — системы с нулевой прочностью крайне уязвимы
+3. **Повышайте уровень щита** — HP и защита щита масштабируются с квадратом уровня
+4. **Вступайте в альянс и улучшайте тотем** — бонусы защиты альянса значительны
+
+**Рекомендуемый следующий шаг: [Космический прыжок и круиз →](/docs/guide/movement)**

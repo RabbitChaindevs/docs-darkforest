@@ -1,26 +1,26 @@
 {
   "version.label": {
-    "message": "Next",
+    "message": "Следующая",
     "description": "The label for version current"
   },
   "sidebar.sidebar.category.🚀 快速上手": {
-    "message": "🚀 快速上手",
-    "description": "The label for category '🚀 快速上手' in sidebar 'sidebar'"
+    "message": "🚀 Быстрый старт",
+    "description": "The label for category '🚀 Быстрый старт' in sidebar 'sidebar'"
   },
   "sidebar.sidebar.category.🎮 玩法指南": {
-    "message": "🎮 玩法指南",
-    "description": "The label for category '🎮 玩法指南' in sidebar 'sidebar'"
+    "message": "🎮 Руководство по игре",
+    "description": "The label for category '🎮 Руководство по игре' in sidebar 'sidebar'"
   },
   "sidebar.sidebar.category.💰 经济系统": {
-    "message": "💰 经济系统",
-    "description": "The label for category '💰 经济系统' in sidebar 'sidebar'"
+    "message": "💰 Экономическая система",
+    "description": "The label for category '💰 Экономическая система' in sidebar 'sidebar'"
   },
   "sidebar.sidebar.category.🤖 AI 自动战斗": {
-    "message": "🤖 AI 自动战斗",
-    "description": "The label for category '🤖 AI 自动战斗' in sidebar 'sidebar'"
+    "message": "🤖 ИИ-агент",
+    "description": "The label for category '🤖 ИИ-агент' in sidebar 'sidebar'"
   },
   "sidebar.sidebar.category.📎 附录": {
-    "message": "📎 附录",
-    "description": "The label for category '📎 附录' in sidebar 'sidebar'"
+    "message": "📎 Приложение",
+    "description": "The label for category '📎 Приложение' in sidebar 'sidebar'"
   }
 }

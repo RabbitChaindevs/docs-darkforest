@@ -1,26 +1,26 @@
 {
   "version.label": {
-    "message": "Next",
-    "description": "The label for version current"
+    "message": "اگلا",
+    "description": "موجودہ ورژن کا لیبل"
   },
   "sidebar.sidebar.category.🚀 快速上手": {
-    "message": "🚀 快速上手",
-    "description": "The label for category '🚀 快速上手' in sidebar 'sidebar'"
+    "message": "🚀 فوری آغاز",
+    "description": "سائڈبار میں کیٹیگری '🚀 快速上手' کا لیبل"
   },
   "sidebar.sidebar.category.🎮 玩法指南": {
-    "message": "🎮 玩法指南",
-    "description": "The label for category '🎮 玩法指南' in sidebar 'sidebar'"
+    "message": "🎮 گیم گائیڈ",
+    "description": "سائڈبار میں کیٹیگری '🎮 玩法指南' کا لیبل"
   },
   "sidebar.sidebar.category.💰 经济系统": {
-    "message": "💰 经济系统",
-    "description": "The label for category '💰 经济系统' in sidebar 'sidebar'"
+    "message": "💰 معاشی نظام",
+    "description": "سائڈبار میں کیٹیگری '💰 经济系统' کا لیبل"
   },
   "sidebar.sidebar.category.🤖 AI 自动战斗": {
-    "message": "🤖 AI 自动战斗",
-    "description": "The label for category '🤖 AI 自动战斗' in sidebar 'sidebar'"
+    "message": "🤖 AI ایجنٹ",
+    "description": "سائڈبار میں کیٹیگری '🤖 AI 自动战斗' کا لیبل"
   },
   "sidebar.sidebar.category.📎 附录": {
-    "message": "📎 附录",
-    "description": "The label for category '📎 附录' in sidebar 'sidebar'"
+    "message": "📎 ضمیمہ",
+    "description": "سائڈبار میں کیٹیگری '📎 附录' کا لیبل"
   }
 }

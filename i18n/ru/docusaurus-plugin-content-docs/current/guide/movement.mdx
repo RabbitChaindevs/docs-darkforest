@@ -1,98 +1,98 @@
 ---
 sidebar_position: 3
-title: Space Jump & Cruise
-description: Detailed breakdown of the Dark Forest movement system
+title: Космический прыжок и круиз
+description: Детальный разбор системы передвижения в Dark Forest
 ---
 
-# Space Jump & Cruise
+# Космический прыжок и круиз
 
-## Cruise
+## Круиз
 
-Cruise is the standard method of movement. The engine propels your civilization toward a target coordinate.
+Круиз — стандартный метод передвижения. Двигатель перемещает вашу цивилизацию к целевым координатам.
 
-### Conditions
-- Engine durability > 0
-- Target coordinates are within your radar range
+### Условия
+- Прочность двигателя > 0
+- Целевые координаты находятся в пределах радиуса вашего радара
 
-### Operation
+### Операция
 
 ```
 startMove(x, y, z)
 ```
 
-Enter the target coordinates `(x, y, z)` to begin cruising. You can cancel at any time before arrival (`cancelMove`).
+Введите целевые координаты `(x, y, z)` для начала круиза. Вы можете отменить в любое время до прибытия (`cancelMove`).
 
-### Speed
+### Скорость
 
 ```
-Move Speed = 10 + 5 × (engine level - 1)
+Скорость передвижения = 10 + 5 × (уровень двигателя - 1)
 
-So Lv1 = 10, Lv2 = 15, Lv10 = 55, Lv50 = 255.
+То есть Ур1 = 10, Ур2 = 15, Ур10 = 55, Ур50 = 255.
 ```
 
-The higher your engine level, the faster you move.
+Чем выше уровень вашего двигателя, тем быстрее вы двигаетесь.
 
 ---
 
-## Space Jump
+## Космический прыжок
 
-A space jump instantly teleports you to a new deterministic coordinate. It is much faster than cruising but comes with serious side effects.
+Космический прыжок мгновенно телепортирует вас к новым детерминированным координатам. Это намного быстрее круиза, но имеет серьёзные побочные эффекты.
 
-### Cost
+### Стоимость
 
-Each jump's cost increases with **historical jump count**:
+Стоимость каждого прыжка увеличивается с **историческим количеством прыжков**:
 
-| Resource | Formula | Cap |
-|----------|---------|-----|
-| **Energy** | `200,000 + 200,000 × √(historical jumps)` | 16,500,000 |
-| **DFT** | `10 + 10 × √(historical jumps)` | 1,000 DFT |
-| **Engine Durability** | 1 point | |
+| Ресурс | Формула | Потолок |
+|--------|---------|---------|
+| **Энергия** | `200 000 + 200 000 × √(исторические прыжки)` | 16 500 000 |
+| **DFT** | `10 + 10 × √(исторические прыжки)` | 1 000 DFT |
+| **Прочность двигателя** | 1 единица | |
 
-### Cooldown
+### Охлаждение
 
-After each jump, you must wait **1 hour** before jumping again.
+После каждого прыжка нужно ждать **1 час** перед следующим прыжком.
 
-### Side Effects
+### Побочные эффекты
 
-> ⚠️ Space jump inflicts heavy damage on your vessel:
+> ⚠️ Космический прыжок наносит тяжёлый урон вашему кораблю:
 >
-> **Shield HP resets to 10% of maximum**
+> **HP щита сбрасывается до 10% от максимума**
 >
-> Your defense will be extremely fragile after jumping. Make sure you jump in a safe area or prepare defensively.
+> Ваша защита будет крайне хрупкой после прыжка. Убедитесь, что вы прыгаете в безопасную зону или подготовьтесь к обороне.
 
-### Coordinate Assignment
+### Назначение координат
 
-The new coordinates after a jump are assigned by a deterministic algorithm (similar to civilization creation). You cannot manually choose your destination.
-
----
-
-## Tracking Jump
-
-A tracking jump lets you jump directly to a target civilization's location.
-
-### Conditions
-
-- Your **radar level ≥ 20**
-- The target is **within your radar scan range**
-
-### Cost
-
-Same as a regular space jump (energy + DFT + engine durability), and shares the same cooldown.
+Новые координаты после прыжка назначаются детерминированным алгоритмом (аналогично созданию цивилизации). Вы не можете вручную выбрать пункт назначения.
 
 ---
 
-## Comparison
+## Прыжок-преследование
 
-| Method | Cost | Speed | Use Case |
-|--------|------|-------|----------|
-| Cruise | Time only | Slow | Short-distance movement, exploration |
-| Space Jump | Energy + DFT + Shield HP | Instant | Long-distance travel, evading tracking jumps |
-| Tracking Jump | Energy + DFT + Shield HP | Instant | Chasing targets, assisting allies |
+Прыжок-преследование позволяет прыгнуть прямо к местоположению целевой цивилизации.
+
+### Условия
+
+- **Уровень вашего радара ≥ 20**
+- Цель **находится в радиусе сканирования вашего радара**
+
+### Стоимость
+
+Та же, что и у обычного космического прыжка (энергия + DFT + прочность двигателя), с тем же временем охлаждения.
 
 ---
 
-## Post-Alliance Non-Aggression Protocol
+## Сравнение
 
-After leaving an alliance, you and the former alliance **cannot attack each other for 24 hours** (Leave Cooldown), preventing tactical abuse of the alliance system.
+| Метод | Стоимость | Скорость | Применение |
+|-------|-----------|----------|------------|
+| Круиз | Только время | Медленно | Передвижение на короткие расстояния, исследование |
+| Космический прыжок | Энергия + DFT + HP щита | Мгновенно | Путешествие на дальние расстояния, уклонение от прыжков-преследований |
+| Прыжок-преследование | Энергия + DFT + HP щита | Мгновенно | Преследование целей, помощь союзникам |
 
-**Recommended next step: [Energy System →](/docs/guide/energy)**
+---
+
+## Протокол ненападения после выхода из альянса
+
+После выхода из альянса вы и бывший альянс **не можете атаковать друг друга в течение 24 часов** (период охлаждения при выходе), что предотвращает тактическое злоупотребление системой альянсов.
+
+**Рекомендуемый следующий шаг: [Система энергии →](/docs/guide/energy)**

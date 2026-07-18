@@ -1,102 +1,102 @@
 ---
 sidebar_position: 2
-title: Energy Market
-description: Dark Forest's order book energy market — buy and sell energy with DFT
+title: ऊर्जा बाज़ार
+description: डार्क फ़ॉरेस्ट का ऑर्डर बुक ऊर्जा बाज़ार — DFT के साथ ऊर्जा खरीदें और बेचें
 ---
 
-# Energy Market
+# ऊर्जा बाज़ार
 
-The energy market is a **decentralized order book** where players can trade energy for DFT. It is powered by the `EnergyMarket.sol` contract.
+ऊर्जा बाज़ार एक **विकेंद्रीकृत ऑर्डर बुक** है जहाँ खिलाड़ी DFT के लिए ऊर्जा का व्यापार कर सकते हैं। यह `EnergyMarket.sol` कॉन्ट्रैक्ट द्वारा संचालित है।
 
 ---
 
-## Selling Energy (Creating an Order)
+## ऊर्जा बेचना (ऑर्डर बनाना)
 
-### Operation
+### संचालन
 
 ```
 createOrder(energyAmount, dftPrice)
 ```
 
-1. Enter the **amount of energy** you want to sell
-2. Enter the **total price in DFT** you're asking for
-3. Confirm the transaction
+1. वह **ऊर्जा की मात्रा** दर्ज करें जिसे आप बेचना चाहते हैं
+2. वह **DFT में कुल मूल्य** दर्ज करें जो आप माँग रहे हैं
+3. लेन-देन की पुष्टि करें
 
-### Energy Locking
+### ऊर्जा लॉक करना
 
-When you create an order, the contract **immediately locks** your energy (marked as `energyReserved`), preventing you from spending it while the order is active.
+जब आप एक ऑर्डर बनाते हैं, तो कॉन्ट्रैक्ट आपकी ऊर्जा को **तुरंत लॉक** कर देता है (`energyReserved` के रूप में चिह्नित), जो ऑर्डर सक्रिय रहने पर इसे खर्च करने से रोकता है।
 
-### Canceling an Order
+### ऑर्डर रद्द करना
 
 ```
 cancelOrder(orderId)
 ```
 
-- The order must be at least **3 seconds** old before cancellation (prevents same-block frontrunning)
-- After cancellation, the energy is unlocked
+- रद्द करने से पहले ऑर्डर को कम से कम **3 सेकंड** पुराना होना चाहिए (उसी ब्लॉक के फ्रंटरनिंग को रोकता है)
+- रद्द करने के बाद, ऊर्जा अनलॉक हो जाती है
 
 ---
 
-## Buying Energy (Filling an Order)
+## ऊर्जा खरीदना (ऑर्डर भरना)
 
-### Operation
+### संचालन
 
 ```
 fillOrder(orderId, maxPrice)
 ```
 
-1. Browse the list of active sell orders
-2. Select an order
-3. Enter the maximum price you're willing to accept
-4. Confirm the transaction
+1. सक्रिय बिक्री ऑर्डर की सूची ब्राउज़ करें
+2. एक ऑर्डर चुनें
+3. वह अधिकतम मूल्य दर्ज करें जिसे आप स्वीकार करने को तैयार हैं
+4. लेन-देन की पुष्टि करें
 
-### Fees
+### शुल्क
 
-A **1% DFT protocol fee** is deducted from the seller's proceeds:
+विक्रेता की प्राप्ति से **1% DFT प्रोटोकॉल शुल्क** काटा जाता है:
 
 ```
-Buyer pays = order price (exact listing price)
-Seller receives = order price × 99%
-Protocol fee = order price × 1% (accumulated in contract)
+खरीदार भुगतान करता है = ऑर्डर मूल्य (सटीक सूचीबद्ध मूल्य)
+विक्रेता प्राप्त करता है = ऑर्डर मूल्य × 99%
+प्रोटोकॉल शुल्क = ऑर्डर मूल्य × 1% (कॉन्ट्रैक्ट में जमा)
 ```
 
-The 1% protocol fee accumulates in the contract and can be withdrawn by the admin.
+1% प्रोटोकॉल शुल्क कॉन्ट्रैक्ट में जमा होता है और व्यवस्थापक द्वारा निकाला जा सकता है।
 
 ---
 
-## Market Parameters
+## बाज़ार पैरामीटर
 
-| Parameter | Value |
+| पैरामीटर | मान |
 |-----------|-------|
-| Protocol Fee | 1% (deducted from seller) |
-| Minimum Order Age | 3 seconds (before cancel/fill) |
-| Order Status | active / inactive (becomes inactive after cancel or fill) |
+| प्रोटोकॉल शुल्क | 1% (विक्रेता से काटा गया) |
+| न्यूनतम ऑर्डर आयु | 3 सेकंड (रद्द/भरने से पहले) |
+| ऑर्डर स्थिति | सक्रिय / निष्क्रिय (रद्द या भरने के बाद निष्क्रिय हो जाता है) |
 
 ---
 
-## Trade Example
+## व्यापार उदाहरण
 
-### Alice Sells Energy
+### एलिस ऊर्जा बेचती है
 
-1. Alice creates a sell order: `createOrder(10000, 100 DFT)` — selling 10,000 energy for a total of 100 DFT
-2. The contract locks Alice's 10,000 energy
+1. एलिस एक बिक्री ऑर्डर बनाती है: `createOrder(10000, 100 DFT)` — 10,000 ऊर्जा कुल 100 DFT में बेच रही है
+2. कॉन्ट्रैक्ट एलिस की 10,000 ऊर्जा लॉक करता है
 
-### Bob Buys Energy
+### बॉब ऊर्जा खरीदता है
 
-1. Bob sees Alice's order
-2. Calls `fillOrder(orderId, 100)` — pays exactly 100 DFT
-3. Alice receives 99 DFT (100 - 1% fee)
-4. 1 DFT is accumulated as protocol fee
+1. बॉब एलिस का ऑर्डर देखता है
+2. `fillOrder(orderId, 100)` कॉल करता है — बिल्कुल 100 DFT का भुगतान करता है
+3. एलिस को 99 DFT मिलते हैं (100 - 1% शुल्क)
+4. 1 DFT प्रोटोकॉल शुल्क के रूप में जमा होता है
 
 ---
 
-## Strategy Tips
+## रणनीति टिप्स
 
-| Scenario | Suggestion |
+| परिदृश्य | सुझाव |
 |----------|------------|
-| Need energy urgently for battle | Accept the lowest-priced sell orders |
-| Not in a hurry | Place a limit order and wait for the right price |
-| DFT price is rising | Sell energy for DFT to profit |
-| Surplus energy | List sell orders to earn DFT |
+| युद्ध के लिए तुरंत ऊर्जा चाहिए | सबसे कम कीमत वाले बिक्री ऑर्डर स्वीकार करें |
+| जल्दी नहीं है | एक लिमिट ऑर्डर रखें और सही मूल्य की प्रतीक्षा करें |
+| DFT की कीमत बढ़ रही है | लाभ के लिए DFT के बदले ऊर्जा बेचें |
+| अतिरिक्त ऊर्जा | DFT कमाने के लिए बिक्री ऑर्डर सूचीबद्ध करें |
 
-**Recommended next step: [Daily Mint →](/docs/economy/daily-minter)**
+**अनुशंसित अगला कदम: [दैनिक मिंट →](/docs/economy/daily-minter)**

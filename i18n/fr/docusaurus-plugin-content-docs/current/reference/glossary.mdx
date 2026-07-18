@@ -1,41 +1,41 @@
 ---
 sidebar_position: 2
-title: Glossary
-description: Dark Forest game terminology explained
+title: Glossaire
+description: Terminologie du jeu Dark Forest expliquée
 ---
 
-# Glossary
+# Glossaire
 
-| Term | Description |
-|------|-------------|
-| **Civilization** | The player's in-game identity with its own levels, attributes, and coordinates |
-| **Energy** | The basic in-game resource used for upgrades, attacks, movement, and repairs |
-| **DFT** | Dark Forest Token, an ERC-20 token used for jumps, upgrades, alliance exit fines, and more |
-| **Coordinates** | A civilization's position in 3D space `(x, y, z)`, assigned via a deterministic algorithm |
-| **Total Level** | The sum of all system levels; affects daily upkeep costs |
-| **Scan Range** | Your detection radius: `1000 + 150×lv + 5×lv²`; determines who you can attack or track |
-| **Attack Power** | `900 + 10 × level²`; the core attribute of the Weapon system |
-| **Defense** | `540 + 6 × level²`; the core attribute of the Shield system |
-| **Shield HP** | `3600 + 15 × level²`; absorbs incoming damage |
-| **Engine Speed** | `10 + 5 × level`; cruise speed |
-| **Collection Rate** | `3 + 10 × √(level - 1)` energy/second |
-| **Durability** | Each system's working state, consumed over time or through use |
-| **Daily Upkeep** | `2,000 × total level / day`; proportionally deducted over time |
-| **Entry Fee** | BNB paid when creating a civilization, ranging from 0.01 to 0.05 BNB linear growth |
-| **Anchor Formula** | The formula for calculating upgrade costs based on daily output and anchor days |
-| **Anchor Days** | Level 1–100: 1–30 days; 100–1000: 30–60 days; 1000+: 60 days (capped) |
-| **Cruise** | Standard movement method — moves toward target coordinates at constant speed |
-| **Space Jump** | Instant teleport to new coordinates, costs energy + DFT, shield drops to 10% |
-| **Tracking Jump** | Instant jump to a target's location; requires Radar Lv20+ and target in range |
-| **Attack Token** | Token bucket algorithm limiting attack frequency; max 3–10 tokens |
-| **Plunder Ratio** | `5% + weapon level × 0.5%`; portion of target energy plundered on victory |
-| **New Player Protection** | Cannot be attacked for the first 24 hours after creation |
-| **Ruins** | A civilization that cannot be downgraded further after defeat; can be revived via Rebuild |
-| **Rebuild / Rebirth** | Revives a ruined civilization, costs energy + DFT, grants combat boost |
-| **Combat Boost** | +12% per rebuild, max 300% (30000 bps) |
-| **Alliance** | A player organization for collaboration, max 100 members |
-| **Leave Cooldown** | 24-hour mutual non-aggression period after leaving an alliance |
-| **Totem** | An alliance-wide buff system; donate energy to upgrade for defense bonuses |
-| **Epoch** | DailyMinter's time unit, from UTC midnight to the next UTC midnight |
-| **DELEGATECALL** | Contract architecture pattern where the main contract delegates logic to satellite contracts |
-| **Soft Gate** | When attack conditions aren't met, the game shows the reason without consuming resources |
+| Terme | Description |
+|-------|-------------|
+| **Civilisation** | L'identité du joueur dans le jeu avec ses propres niveaux, attributs et coordonnées |
+| **Énergie** | La ressource de base du jeu utilisée pour les améliorations, attaques, déplacements et réparations |
+| **DFT** | Dark Forest Token, un token ERC-20 utilisé pour les sauts, améliorations, amendes de sortie d'alliance, etc. |
+| **Coordonnées** | Position d'une civilisation dans l'espace 3D `(x, y, z)`, attribuée via un algorithme déterministe |
+| **Niveau total** | La somme de tous les niveaux de systèmes ; affecte les coûts d'entretien quotidiens |
+| **Portée de scan** | Votre rayon de détection : `1000 + 150×nv + 5×nv²` ; détermine qui vous pouvez attaquer ou poursuivre |
+| **Puissance d'attaque** | `900 + 10 × nv²` ; l'attribut principal du système d'arme |
+| **Défense** | `540 + 6 × nv²` ; l'attribut principal du système de bouclier |
+| **PV du bouclier** | `3600 + 15 × nv²` ; absorbe les dégâts entrants |
+| **Vitesse moteur** | `10 + 5 × nv` ; vitesse de croisière |
+| **Taux de collecte** | `3 + 10 × √(nv - 1)` énergie/seconde |
+| **Durabilité** | État de fonctionnement de chaque système, consommé avec le temps ou par l'utilisation |
+| **Entretien quotidien** | `2 000 × nv total / jour` ; déduit proportionnellement au fil du temps |
+| **Frais d'entrée** | BNB payé lors de la création d'une civilisation, croissance linéaire de 0,01 à 0,05 BNB |
+| **Formule d'ancrage** | Formule de calcul des coûts d'amélioration basée sur la production quotidienne et les jours d'ancrage |
+| **Jours d'ancrage** | Niveau 1–100 : 1–30 jours ; 100–1000 : 30–60 jours ; 1000+ : 60 jours (plafonné) |
+| **Croisière** | Méthode de déplacement standard — se déplace vers des coordonnées cibles à vitesse constante |
+| **Saut spatial** | Téléportation instantanée vers de nouvelles coordonnées, coûte énergie + DFT, bouclier réduit à 10 % |
+| **Saut de poursuite** | Saut instantané vers l'emplacement d'une cible ; nécessite Radar Nv20+ et cible à portée |
+| **Token d'attaque** | Algorithme de seau de tokens limitant la fréquence d'attaque ; max 3–10 tokens |
+| **Ratio de pillage** | `5 % + nv d'arme × 0,5 %` ; portion de l'énergie cible pillée en cas de victoire |
+| **Protection des nouveaux joueurs** | Impossible d'être attaqué pendant les premières 24 heures après la création |
+| **Ruines** | Une civilisation qui ne peut plus être rétrogradée après une défaite ; peut être ravivée via Reconstruction |
+| **Reconstruction / Renaissance** | Ravive une civilisation en ruines, coûte énergie + DFT, accorde un bonus de combat |
+| **Bonus de combat** | +12 % par reconstruction, max 300 % (30000 bps) |
+| **Alliance** | Organisation de joueurs pour la collaboration, max 100 membres |
+| **Délai de refroidissement de sortie** | Période de non-agression mutuelle de 24 heures après avoir quitté une alliance |
+| **Totem** | Système de buff à l'échelle de l'alliance ; donner de l'énergie pour l'améliorer pour des bonus de défense |
+| **Époque** | Unité de temps du DailyMinter, de minuit UTC au prochain minuit UTC |
+| **DELEGATECALL** | Architecture de contrat où le contrat principal délègue la logique aux contrats satellites |
+| **Porte douce** | Quand les conditions d'attaque ne sont pas remplies, le jeu montre la raison sans consommer de ressources |

@@ -1,98 +1,98 @@
 ---
 sidebar_position: 4
-title: Energy System
-description: Complete guide to acquiring, consuming, and managing energy in Dark Forest
+title: نظام الطاقة
+description: دليل كامل لاكتساب واستهلاك وإدارة الطاقة في Dark Forest
 ---
 
-# Energy System
+# نظام الطاقة
 
-Energy is the most fundamental resource in Dark Forest. Almost every operation — upgrades, attacks, movement, and repairs — requires energy.
+الطاقة هي المورد الأكثر أساسية في Dark Forest. تقريباً كل عملية — الترقيات، الهجمات، الحركة، والإصلاحات — تتطلب طاقة.
 
 ---
 
-## Earning Energy
+## كسب الطاقة
 
-### 1. Energy Collector (Passive Output)
+### 1. جامع الطاقة (الإنتاج السلبي)
 
 ```
-Collection Rate = 3 + 10 × √(collector level - 1)   energy/s
+معدل الجمع = 3 + 10 × √(مستوى الجامع - 1)   طاقة/ث
 ```
 
-For each player you invited, the rate increases further.
+لكل لاعب دعوته، يزداد المعدل أكثر.
 
-**Collector Durability**: The collector loses 1 durability per second.
+**متانة الجامع**: يفقد الجامع نقطة متانة واحدة في الثانية.
 
-| Collector Level | Output per Second | Max Collector Durability |
+| مستوى الجامع | الإنتاج في الثانية | أقصى متانة للجامع |
 |----------------|-------------------|--------------------------|
-| Lv 1 | 3 | 1 day |
-| Lv 10 | ~33 | 1 day + 18 hours |
-| Lv 50 | ~73 | 1 day + 4 days |
-| Lv 100 | ~103 | 1 day + 8.3 days |
+| المستوى 1 | 3 | يوم واحد |
+| المستوى 10 | ~33 | يوم واحد + 18 ساعة |
+| المستوى 50 | ~73 | يوم واحد + 4 أيام |
+| المستوى 100 | ~103 | يوم واحد + 8.3 أيام |
 
-> ⚠️ When collector durability runs out, production stops. You need to repair it for collection to resume.
+> ⚠️ عندما تنفد متانة الجامع، يتوقف الإنتاج. تحتاج إلى إصلاحه لاستئناف الجمع.
 
-### 2. Combat Plunder
+### 2. النهب القتالي
 
-After winning a battle against another civilization, you plunder a portion of their energy:
+بعد الفوز في معركة ضد حضارة أخرى، تنهب جزءاً من طاقتهم:
 
 ```
-Plunder Ratio = 5% + weapon level × 0.5%
+نسبة النهب = 5% + مستوى السلاح × 0.5%
 ```
 
-Plundered energy goes into a **pending pool** (pendingCombatEnergy), which you must manually claim.
+تذهب الطاقة المنهوبة إلى **مجموعة معلقة** (pendingCombatEnergy)، والتي يجب عليك المطالبة بها يدوياً.
 
-### 3. Invite Rewards
+### 3. مكافآت الدعوة
 
-For each new player you successfully invite (they enter your address when creating their civilization):
+لكل لاعب جديد تدعوه بنجاح (يدخل عنوانك عند إنشاء حضارته):
 
-- **You** receive 150 energy
-- **The invitee** receives 150 energy
+- **أنت** تتلقى 150 طاقة
+- **المدعو** يتلقى 150 طاقة
 
-### 4. Energy Market
+### 4. سوق الطاقة
 
-See [Energy Market](/docs/economy/energy-market).
+انظر [سوق الطاقة](/docs/economy/energy-market).
 
 ---
 
-## Spending Energy
+## استهلاك الطاقة
 
-| Use Case | Cost |
+| حالة الاستخدام | التكلفة |
 |----------|------|
-| **Daily Upkeep** | `2,000 × total level` / day |
-| **System Upgrades** | Anchor Formula (see Civilization guide) |
-| **Attack** | `50,000 + 50,000 × weapon level` |
-| **Space Jump** | `200,000 + 200,000 × √(jump count)`, cap 16.5M |
-| **Repair Collector** | `1 energy / second` |
-| **Repair Weapon** | `3 energy / point` |
-| **Repair Shield** | `4 energy / point` |
-| **Repair Engine** | `5 energy / point` |
-| **Shield Regen** | `regen amount × 1` (auto regen) |
-| **Shield Repair** | `repair amount × 4` (manual repair) |
-| **Alliance Shield Assist** | `repair amount × 1` (paid by ally) |
-| **Totem Donation** | Custom amount |
-| **Rebuild** | Base 500,000, increases with rebirth count |
+| **الصيانة اليومية** | `2,000 × المستوى الإجمالي` / يوم |
+| **ترقيات الأنظمة** | معادلة المرساة (انظر دليل الحضارة) |
+| **الهجوم** | `50,000 + 50,000 × مستوى السلاح` |
+| **القفز الفضائي** | `200,000 + 200,000 × √(عدد القفزات)`، الحد الأقصى 16.5M |
+| **إصلاح الجامع** | `1 طاقة / ثانية` |
+| **إصلاح السلاح** | `3 طاقة / نقطة` |
+| **إصلاح الدرع** | `4 طاقة / نقطة` |
+| **إصلاح المحرك** | `5 طاقة / نقطة` |
+| **تجديد الدرع** | `كمية التجديد × 1` (تجديد تلقائي) |
+| **إصلاح الدرع يدوياً** | `كمية الإصلاح × 4` (إصلاح يدوي) |
+| **مساعدة درع التحالف** | `كمية الإصلاح × 1` (يدفعها الحليف) |
+| **التبرع للطوطم** | مبلغ مخصص |
+| **إعادة البناء** | أساس 500,000، يزداد مع عدد الولادات الجديدة |
 
 ---
 
-## Energy Management
+## إدارة الطاقة
 
-### Daily Upkeep
+### الصيانة اليومية
 
-Upkeep is deducted proportionally over time whenever you perform any action:
+يتم خصم الصيانة بشكل متناسب مع مرور الوقت كلما قمت بأي إجراء:
 
 ```
-Current Upkeep = 2,000 × total level × (time since last action / 86400)
+الصيانة الحالية = 2,000 × المستوى الإجمالي × (الوقت منذ آخر إجراء / 86400)
 ```
 
-### Reserved Energy
+### الطاقة المحجوزة
 
-Energy placed in sell orders on the energy market is locked (`energyReserved`). Upkeep stops being deducted once `energy - reserved` reaches zero.
+الطاقة الموضوعة في أوامر بيع في سوق الطاقة تكون مقفلة (`energyReserved`). تتوقف الصيانة عن الخصم بمجرد وصول `طاقة - محجوز` إلى الصفر.
 
-### Tips
+### نصائح
 
-1. **Keep energy > 1 month's upkeep** — prevents frequent depletion from routine actions
-2. **Prioritize collector upgrades** — a high-level collector is key to passive income
-3. **Calculate costs before attacking** — make sure the plunder is worth the investment
-4. **Repair collector durability regularly** — avoid collection interruptions
+1. **احتفظ بطاقة > صيانة شهر واحد** — يمنع النضوب المتكرر من الإجراءات الروتينية
+2. **أولوية ترقية الجامع** — الجامع عالي المستوى هو مفتاح الدخل السلبي
+3. **احسب التكاليف قبل الهجوم** — تأكد من أن النهب يستحق الاستثمار
+4. **أصلح متانة الجامع بانتظام** — تجنب انقطاعات الجمع
 
-**Recommended next step: [Alliance System →](/docs/guide/alliance)**
+**الخطوة التالية الموصى بها: [نظام التحالف →](/docs/guide/alliance)**

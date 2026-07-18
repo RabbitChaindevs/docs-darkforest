@@ -1,102 +1,102 @@
 ---
 sidebar_position: 2
-title: Energy Market
-description: Dark Forest's order book energy market — buy and sell energy with DFT
+title: Mercado de Energia
+description: Mercado de energia com livro de ordens do Dark Forest — compre e venda energia com DFT
 ---
 
-# Energy Market
+# Mercado de Energia
 
-The energy market is a **decentralized order book** where players can trade energy for DFT. It is powered by the `EnergyMarket.sol` contract.
+O mercado de energia é um **livro de ordens descentralizado** onde os jogadores podem negociar energia por DFT. É alimentado pelo contrato `EnergyMarket.sol`.
 
 ---
 
-## Selling Energy (Creating an Order)
+## Vender Energia (Criar uma Ordem)
 
-### Operation
+### Operação
 
 ```
 createOrder(energyAmount, dftPrice)
 ```
 
-1. Enter the **amount of energy** you want to sell
-2. Enter the **total price in DFT** you're asking for
-3. Confirm the transaction
+1. Insira a **quantidade de energia** que deseja vender
+2. Insira o **preço total em DFT** que está pedindo
+3. Confirme a transação
 
-### Energy Locking
+### Bloqueio de Energia
 
-When you create an order, the contract **immediately locks** your energy (marked as `energyReserved`), preventing you from spending it while the order is active.
+Quando você cria uma ordem, o contrato **bloqueia imediatamente** sua energia (marcada como `energyReserved`), impedindo que você a gaste enquanto a ordem estiver ativa.
 
-### Canceling an Order
+### Cancelar uma Ordem
 
 ```
 cancelOrder(orderId)
 ```
 
-- The order must be at least **3 seconds** old before cancellation (prevents same-block frontrunning)
-- After cancellation, the energy is unlocked
+- A ordem deve ter pelo menos **3 segundos** de idade antes do cancelamento (evita frontrunning no mesmo bloco)
+- Após o cancelamento, a energia é desbloqueada
 
 ---
 
-## Buying Energy (Filling an Order)
+## Comprar Energia (Executar uma Ordem)
 
-### Operation
+### Operação
 
 ```
 fillOrder(orderId, maxPrice)
 ```
 
-1. Browse the list of active sell orders
-2. Select an order
-3. Enter the maximum price you're willing to accept
-4. Confirm the transaction
+1. Navegue pela lista de ordens de venda ativas
+2. Selecione uma ordem
+3. Insira o preço máximo que está disposto a aceitar
+4. Confirme a transação
 
-### Fees
+### Taxas
 
-A **1% DFT protocol fee** is deducted from the seller's proceeds:
+Uma **taxa de protocolo de 1% em DFT** é deduzida dos rendimentos do vendedor:
 
 ```
-Buyer pays = order price (exact listing price)
-Seller receives = order price × 99%
-Protocol fee = order price × 1% (accumulated in contract)
+Comprador paga = preço da ordem (preço exato de listagem)
+Vendedor recebe = preço da ordem × 99%
+Taxa de protocolo = preço da ordem × 1% (acumulada no contrato)
 ```
 
-The 1% protocol fee accumulates in the contract and can be withdrawn by the admin.
+A taxa de protocolo de 1% se acumula no contrato e pode ser retirada pelo administrador.
 
 ---
 
-## Market Parameters
+## Parâmetros do Mercado
 
-| Parameter | Value |
+| Parâmetro | Valor |
 |-----------|-------|
-| Protocol Fee | 1% (deducted from seller) |
-| Minimum Order Age | 3 seconds (before cancel/fill) |
-| Order Status | active / inactive (becomes inactive after cancel or fill) |
+| Taxa de Protocolo | 1% (deduzida do vendedor) |
+| Idade Mínima da Ordem | 3 segundos (antes de cancelar/executar) |
+| Status da Ordem | ativa / inativa (torna-se inativa após cancelar ou executar) |
 
 ---
 
-## Trade Example
+## Exemplo de Negociação
 
-### Alice Sells Energy
+### Alice Vende Energia
 
-1. Alice creates a sell order: `createOrder(10000, 100 DFT)` — selling 10,000 energy for a total of 100 DFT
-2. The contract locks Alice's 10,000 energy
+1. Alice cria uma ordem de venda: `createOrder(10000, 100 DFT)` — vendendo 10.000 de energia por um total de 100 DFT
+2. O contrato bloqueia os 10.000 de energia de Alice
 
-### Bob Buys Energy
+### Bob Compra Energia
 
-1. Bob sees Alice's order
-2. Calls `fillOrder(orderId, 100)` — pays exactly 100 DFT
-3. Alice receives 99 DFT (100 - 1% fee)
-4. 1 DFT is accumulated as protocol fee
+1. Bob vê a ordem de Alice
+2. Chama `fillOrder(orderId, 100)` — paga exatamente 100 DFT
+3. Alice recebe 99 DFT (100 - 1% de taxa)
+4. 1 DFT é acumulado como taxa de protocolo
 
 ---
 
-## Strategy Tips
+## Dicas de Estratégia
 
-| Scenario | Suggestion |
-|----------|------------|
-| Need energy urgently for battle | Accept the lowest-priced sell orders |
-| Not in a hurry | Place a limit order and wait for the right price |
-| DFT price is rising | Sell energy for DFT to profit |
-| Surplus energy | List sell orders to earn DFT |
+| Cenário | Sugestão |
+|---------|----------|
+| Precisa de energia urgente para batalha | Aceite as ordens de venda com o menor preço |
+| Não está com pressa | Coloque uma ordem limitada e espere o preço certo |
+| O preço do DFT está subindo | Venda energia por DFT para lucrar |
+| Excedente de energia | Liste ordens de venda para ganhar DFT |
 
-**Recommended next step: [Daily Mint →](/docs/economy/daily-minter)**
+**Próximo passo recomendado: [Mineração Diária →](/docs/economy/daily-minter)**
