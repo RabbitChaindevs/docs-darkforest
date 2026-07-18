@@ -328,58 +328,58 @@
   },
   "home.button.play": {
     "message": "Jogar Agora",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.button.guide": {
     "message": "Guia do Jogo",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.title": {
     "message": "Totalmente On-Chain",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.desc": {
     "message": "Toda a lógica do jogo executa em contratos inteligentes — dados transparentes e imutáveis. Implantado na BNB Smart Chain.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.title": {
     "message": "Construção de Civilização",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.desc": {
     "message": "Aprimore seis sistemas — Coletor, Arma, Escudo, Radar, Motor — para fortalecer sua civilização.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.title": {
     "message": "Combate Estratégico",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.desc": {
     "message": "Ataque outras civilizações para saquear recursos. Use saltos de rastreio e táticas para vencer.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.title": {
     "message": "AI Agent",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.desc": {
     "message": "Configure estratégias automatizadas para proteger sua civilização 24/7. Suporta Telegram/Discord.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.title": {
     "message": "Sistema Econômico",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.desc": {
     "message": "Tokenomics DFT, mercado de energia com livro de ordens, mineração diária — economia completa.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.title": {
     "message": "Comunidade e Alianças",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.desc": {
     "message": "Junte-se a alianças e coordene com jogadores globais para explorar a galáxia juntos.",
-    "description": ""
+    "description": "Homepage translation"
   }
 }

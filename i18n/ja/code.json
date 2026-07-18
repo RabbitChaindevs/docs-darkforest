@@ -328,58 +328,58 @@
   },
   "home.button.play": {
     "message": "今すぐプレイ",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.button.guide": {
     "message": "ゲームガイド",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.title": {
     "message": "完全オンチェーン",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.desc": {
     "message": "すべてのゲームロジックはスマートコントラクト上で実行され、透明で不変のデータを実現。BNB Smart Chain上に展開。",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.title": {
     "message": "文明構築",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.desc": {
     "message": "6つのシステム（コレクター、武器、シールド、レーダー、エンジン）をアップグレードして文明を強化。",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.title": {
     "message": "戦略的戦闘",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.desc": {
     "message": "他の文明を攻撃してリソースを略奪。追跡ジャンプと戦術で勝利を掴め。",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.title": {
     "message": "AIエージェント",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.desc": {
     "message": "自動化戦略を設定して文明を24時間365日保護。Telegram/Discord通知対応。",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.title": {
     "message": "経済システム",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.desc": {
     "message": "DFTトークノミクス、オーダーブックエネルギー市場、毎日ミント — 完全なゲーム経済。",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.title": {
     "message": "コミュニティ＆同盟",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.desc": {
     "message": "同盟に参加し、世界中のプレイヤーと協力して銀河を探索。",
-    "description": ""
+    "description": "Homepage translation"
   }
 }

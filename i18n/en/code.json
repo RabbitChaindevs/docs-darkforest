@@ -328,58 +328,58 @@
   },
   "home.button.play": {
     "message": "Play Now",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.button.guide": {
     "message": "Game Guide",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.title": {
     "message": "Fully On-Chain",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.desc": {
     "message": "All game logic runs on smart contracts — transparent, immutable data. Deployed on BNB Smart Chain.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.title": {
     "message": "Civilization Building",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.desc": {
     "message": "Upgrade six systems — Collector, Weapon, Shield, Radar, Engine — to strengthen your civilization.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.title": {
     "message": "Strategic Combat",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.desc": {
     "message": "Attack other civilizations to plunder resources. Use tracking jumps and tactics to win.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.title": {
     "message": "AI Agent",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.desc": {
     "message": "Configure automated strategies to protect your civilization 24/7. Supports Telegram/Discord.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.title": {
     "message": "Economy System",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.desc": {
     "message": "DFT tokenomics, order-book energy market, daily minting — a complete game economy.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.title": {
     "message": "Community & Alliances",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.desc": {
     "message": "Join alliances and coordinate with global players to explore the galaxy together.",
-    "description": ""
+    "description": "Homepage translation"
   }
 }

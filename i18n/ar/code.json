@@ -328,58 +328,58 @@
   },
   "home.button.play": {
     "message": "العب الآن",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.button.guide": {
     "message": "دليل اللعبة",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.title": {
     "message": "بالكامل على السلسلة",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.desc": {
     "message": "جميع منطق اللعبة يعمل عبر العقود الذكية — بيانات شفافة وغير قابلة للتغيير. منشور على BNB Smart Chain.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.title": {
     "message": "بناء الحضارة",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.desc": {
     "message": "قم بترقية ستة أنظمة — الجامع، السلاح، الدرع، الرادار، المحرك — لتقوية حضارتك.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.title": {
     "message": "القتال الاستراتيجي",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.desc": {
     "message": "اهاجم حضارات أخرى لنهب الموارد. استخدم القفزات التتبع والتكتيكات للفوز.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.title": {
     "message": "وكيل AI",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.desc": {
     "message": "قم بتكوين استراتيجيات آلية لحماية حضارتك 24/7. يدعم Telegram/Discord.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.title": {
     "message": "النظام الاقتصادي",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.desc": {
     "message": "اقتصاديات DFT، سوق الطاقة بسجل الأوامر، السك اليومي — اقتصاد ألعاب كامل.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.title": {
     "message": "المجتمع والتحالفات",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.desc": {
     "message": "انضم إلى التحالفات وتنسق مع لاعبين عالميين لاستكشاف المجرة معًا.",
-    "description": ""
+    "description": "Homepage translation"
   }
 }

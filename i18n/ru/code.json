@@ -328,58 +328,58 @@
   },
   "home.button.play": {
     "message": "Играть Сейчас",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.button.guide": {
     "message": "Руководство",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.title": {
     "message": "Полностью в Блокчейне",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.desc": {
     "message": "Вся игровая логика работает через смарт-контракты — прозрачные и неизменяемые данные. Развернуто на BNB Smart Chain.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.title": {
     "message": "Строительство Цивилизации",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.desc": {
     "message": "Улучшайте шесть систем — Сборщик, Оружие, Щит, Радар, Двигатель — чтобы усилить цивилизацию.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.title": {
     "message": "Стратегический Бой",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.desc": {
     "message": "Атакуйте другие цивилизации для захвата ресурсов. Используйте отслеживающие прыжки и тактику.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.title": {
     "message": "AI Агент",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.desc": {
     "message": "Настройте автоматические стратегии для защиты 24/7. Поддержка Telegram/Discord.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.title": {
     "message": "Экономическая Система",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.desc": {
     "message": "Токеномика DFT, рыночная книга ордеров на энергию, ежедневная эмиссия — полная игровая экономика.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.title": {
     "message": "Сообщество и Альянсы",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.desc": {
     "message": "Вступайте в альянсы и координируйтесь с игроками по всему миру для исследования галактики.",
-    "description": ""
+    "description": "Homepage translation"
   }
 }

@@ -328,58 +328,58 @@
   },
   "home.button.play": {
     "message": "Jouer Maintenant",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.button.guide": {
     "message": "Guide du Jeu",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.title": {
     "message": "Entièrement On-Chain",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.desc": {
     "message": "Toute la logique du jeu s'exécute via des contrats intelligents — données transparentes et immuables. Déployé sur BNB Smart Chain.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.title": {
     "message": "Construction de Civilisation",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.desc": {
     "message": "Améliorez six systèmes — Collecteur, Arme, Bouclier, Radar, Moteur — pour renforcer votre civilisation.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.title": {
     "message": "Combat Stratégique",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.desc": {
     "message": "Attaquez d'autres civilisations pour piller des ressources. Utilisez les sauts de pistage et la tactique.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.title": {
     "message": "AI Agent",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.desc": {
     "message": "Configurez des stratégies automatisées pour protéger votre civilisation 24/7. Telegram/Discord supporté.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.title": {
     "message": "Système Économique",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.desc": {
     "message": "Tokenomics DFT, marché d'énergie à carnet d'ordres, minage quotidien — une économie complète.",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.title": {
     "message": "Communauté et Alliances",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.desc": {
     "message": "Rejoignez des alliances et coordonnez-vous avec des joueurs du monde entier pour explorer la galaxie.",
-    "description": ""
+    "description": "Homepage translation"
   }
 }

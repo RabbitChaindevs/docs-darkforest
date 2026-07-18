@@ -328,58 +328,58 @@
   },
   "home.button.play": {
     "message": "ابھی کھیلیں",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.button.guide": {
     "message": "گیم گائیڈ",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.title": {
     "message": "مکمل طور پر آن چین",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.chain.desc": {
     "message": "تمام گیم لاجک سمارٹ کنٹریکٹس پر چلتی ہے — شفاف اور ناقابل تغیر ڈیٹا۔ BNB Smart Chain پر تعینات۔",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.title": {
     "message": "تہذیب کی تعمیر",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.civ.desc": {
     "message": "چھ نظاموں کو اپ گریڈ کریں — جمع کرنے والا، ہتھیار، ڈھال، ریڈار، انجن — اپنی تہذیب کو مضبوط بنانے کے لیے۔",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.title": {
     "message": "اسٹریٹجک جنگ",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.combat.desc": {
     "message": "وسائل لوٹنے کے لیے دوسری تہذیبوں پر حملہ کریں۔ ٹریکنگ جمپ اور حکمت عملی استعمال کریں۔",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.title": {
     "message": "AI ایجنٹ",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.agent.desc": {
     "message": "24/7 آپ کی تہذیب کی حفاظت کے لیے خودکار حکمت عملی ترتیب دیں۔ Telegram/Discord سپورٹ۔",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.title": {
     "message": "معاشی نظام",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.economy.desc": {
     "message": "DFT ٹوکینومکس، آرڈر بک انرجی مارکیٹ، روزانہ مائنٹنگ — مکمل گیم معیشت۔",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.title": {
     "message": "کمیونٹی اور اتحاد",
-    "description": ""
+    "description": "Homepage translation"
   },
   "home.feature.ally.desc": {
     "message": "اتحاد میں شامل ہوں اور عالمی کھلاڑیوں کے ساتھ مل کر کہکشاں کی تلاش کریں۔",
-    "description": ""
+    "description": "Homepage translation"
   }
 }
