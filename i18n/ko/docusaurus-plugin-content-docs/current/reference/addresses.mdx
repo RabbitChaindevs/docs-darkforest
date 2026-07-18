@@ -1,0 +1,56 @@
+---
+sidebar_position: 1
+title: 컨트랙트 주소
+description: Dark Forest의 모든 배포된 컨트랙트 주소
+---
+
+# 컨트랙트 주소
+
+모든 컨트랙트는 **BNB Smart Chain 메인넷** (체인 ID: 56)에 배포되어 있습니다.
+
+---
+
+## 핵심 컨트랙트
+
+| 컨트랙트 | 주소 | 설명 |
+|---------|------|------|
+| **DarkForest** | `0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe` | 메인 진입 컨트랙트, DELEGATECALL 디스패치 허브 |
+| **DFT Token** | `0x1266e922fe34459efda34e7ee5caf327fbf138d7` | Dark Forest 토큰 (ERC-20) |
+| **Alliance** | `0x5f810a22359b678c01e72726149d387e79cd03f2` | 동맹 시스템 |
+| **Energy Market** | `0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955` | 에너지 오더북 시장 |
+| **Daily Minter** | `0x9b1c4e550fbf1c802495e6521ee5812e4264c95f` | 일일 DFT 배분 |
+| **Agent Registry** | `0x98233227e91829f7c424099f5d3bc86cf4d57f55` | AI 에이전트 정책 레지스트리 |
+
+---
+
+## 컨트랙트 아키텍처
+
+```
+DarkForest (DELEGATECALL 진입점)
+├── DELEGATECALL → DarkForestGameplay   (문명 생성, 시스템 업그레이드)
+├── DELEGATECALL → DarkForestBattle      (공격, 방어막 수리, 방어막 재생)
+├── DELEGATECALL → DarkForestMovement    (스페이스 점프, 추적 점프, 크루즈)
+└── DELEGATECALL → DarkForestAdmin       (수집, 수리, 재건, 토템, 출금)
+
+DarkForestStorage (공유 저장소 레이아웃)
+→ 모든 위성 컨트랙트가 DarkForestStorage를 상속하여 일관된 레이아웃 유지
+```
+
+---
+
+## BscScan 링크
+
+| 컨트랙트 | 링크 |
+|---------|------|
+| DarkForest | [보기](https://bscscan.com/address/0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe) |
+| DFT Token | [보기](https://bscscan.com/token/0x1266e922fe34459efda34e7ee5caf327fbf138d7) |
+| Alliance | [보기](https://bscscan.com/address/0x5f810a22359b678c01e72726149d387e79cd03f2) |
+| Energy Market | [보기](https://bscscan.com/address/0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955) |
+| Daily Minter | [보기](https://bscscan.com/address/0x9b1c4e550fbf1c802495e6521ee5812e4264c95f) |
+| Agent Registry | [보기](https://bscscan.com/address/0x98233227e91829f7c424099f5d3bc86cf4d57f55) |
+
+---
+
+## 컨트랙트 검증
+
+모든 컨트랙트 소스 코드는 BscScan에서 검증되었습니다 (✅ 녹색 체크 표시).

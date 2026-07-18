@@ -1,0 +1,74 @@
+---
+sidebar_position: 2
+title: BSC への接続
+description: MetaMask およびその他ウォレットで BNB Smart Chain ネットワークを設定する方法
+---
+
+# BSC への接続
+
+Dark Forest は **BNB Smart Chain（BSC）** にデプロイされています。ゲームと対話するには、ウォレットを BSC ネットワークに切り替える必要があります。
+
+## BSC とは
+
+BNB Smart Chain は Binance がローンチしたブロックチェーンネットワークで、以下の特長があります：
+
+- **低い取引手数料** — 各操作は数セント未満
+- **高スループット** — 高頻度のゲーム操作向けに設計
+- **EVM 互換** — MetaMask やその他のメインストリームウォレットで動作
+
+## BSC ネットワークの自動追加
+
+最も簡単な方法は Chainlist を使用することです：
+
+1. [Chainlist](https://chainlist.org) にアクセス
+2. 「BNB Smart Chain」を検索
+3. 「Connect Wallet」をクリックして認可
+4. 「Add to MetaMask」をクリック
+5. 追加を確認
+
+## 手動設定
+
+BSC ネットワークを手動で追加することもできます：
+
+### MetaMask に BSC を追加
+
+1. MetaMask の右上にあるネットワークドロップダウンをクリック
+2. 「Add Network」をクリック
+3. 以下の詳細を入力：
+
+| 設定項目 | 値 |
+|---------|-------|
+| **ネットワーク名** | BNB Smart Chain |
+| **RPC URL** | `https://bsc-dataseed.binance.org` |
+| **チェーンID** | `56` |
+| **通貨記号** | `BNB` |
+| **ブロックエクスプローラ** | `https://bscscan.com` |
+
+4. 「Save」をクリック
+
+### バックアップ RPC ノード
+
+メイン RPC が混雑している場合、バックアップノードを使用できます：
+
+| プロバイダ | RPC URL |
+|----------|---------|
+| Binance 公式 | `https://bsc-dataseed1.binance.org` |
+| Ankr | `https://rpc.ankr.com/bsc` |
+| PublicNode | `https://bsc.publicnode.com` |
+
+## BNB の入手
+
+BSC での操作にはすべてガス代として BNB が必要です。入手方法は以下の通りです：
+
+1. **中央取引所** — Binance、OKX などで BNB を購入し、BSC ネットワークに出金
+2. **クロスチェーンブリッジ** — ブリッジを介して他のネットワークから BSC に BNB を転送
+
+:::caution
+出金時は**必ず BSC ネットワーク（BEP-20）を選択**してください。選択を間違えると資金を失う可能性があります！
+:::
+
+## 接続の確認
+
+設定後、ウォレットで BNB Smart Chain ネットワークに切り替えてください。チェーンID が `56` と表示され、残高に正しい BNB 量が表示されていれば準備完了です。
+
+ウォレットとネットワークの準備ができたら、次のステップは [DFT トークンの入手](/docs/quickstart/get-dft) です。

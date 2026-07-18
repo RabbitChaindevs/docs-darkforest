@@ -1,0 +1,147 @@
+---
+sidebar_position: 3
+title: 전략 템플릿
+description: Dark Forest AI 에이전트의 4가지 프리셋 전략 및 커스텀 설정 가이드
+---
+
+# 전략 템플릿
+
+에이전트 전략은 YAML 설정 파일로 정의됩니다.
+
+---
+
+## 전략 파일 구조
+
+```yaml
+agent:
+  name: "my-agent"
+  mode: "auto"          # auto | manual | dry-run
+
+limits:                 # 서킷 브레이커 (온체인 정책)
+  min_energy_reserve: 100000
+  min_dft_reserve: 10
+  max_attacks_per_hour: 5
+  max_upgrades_per_day: 3
+  max_single_upgrade_cost: 100
+
+combat:                 # 전투 전략
+  min_target_level: 1
+  max_target_level: 999
+  weapon_level: 1
+  only_attack_when_energy_above: 100000
+  blacklist: []         # 블랙리스트 주소
+  whitelist: []         # 화이트리스트 주소 (이 주소만 공격)
+
+defense:                # 방어 전략
+  auto_repair: true
+  min_durability_before_repair: 20
+  shield_regen_threshold: 50   # 이 % 이하에서 방어막 재생 시작
+
+collection:             # 수집 전략
+  enabled: true
+  interval_minutes: 60
+```
+
+---
+
+## 4가지 프리셋 전략
+
+### 1. 공격형 (Aggressive)
+
+```yaml
+combat:
+  max_attacks_per_hour: 10
+  min_target_level: 0.5
+  weapon_level: max
+
+collection:
+  enabled: false  # 수집 없음, 순수 전투
+```
+
+- ✅ 추천: 전투 보상을 원하는 활동량 많은 플레이어
+- ❌ 위험: 높은 에너지 소비, 역공격 위험
+
+### 2. 균형형 (Balanced)
+
+```yaml
+combat:
+  max_attacks_per_hour: 5
+  min_target_level: 0.8
+  weapon_level: balanced
+
+collection:
+  enabled: true
+  interval_minutes: 30
+
+defense:
+  auto_repair: true
+  shield_regen_threshold: 60
+```
+
+- ✅ **추천**: 공수 균형, 대부분의 플레이어에게 적합
+
+### 3. 방어형 (Defensive)
+
+```yaml
+combat:
+  max_attacks_per_hour: 1
+  only_counterattack: true  # 역공격만 수행
+
+defense:
+  auto_repair: true
+  min_durability_before_repair: 50
+  shield_regen_threshold: 80
+
+collection:
+  enabled: true
+  interval_minutes: 15
+```
+
+- ✅ 추천: 장시간 오프라인인 플레이어, 위험 회피
+
+### 4. 농사형 (Farmer)
+
+```yaml
+combat:
+  enabled: false  # 전투 없음
+
+defense:
+  auto_repair: true
+  shield_regen_threshold: 90
+
+collection:
+  enabled: true
+  interval_minutes: 5
+```
+
+- ✅ 추천: 초기 게임 발전 및 자원 축적
+
+---
+
+## 커스텀 전략
+
+```bash
+# 템플릿 복사
+cp templates/balanced.yaml my-strategy.yaml
+
+# 파라미터 편집
+vim my-strategy.yaml
+
+# 커스텀 전략 사용
+python -m dark_forest.cli run --strategy ./my-strategy.yaml
+```
+
+---
+
+## 서킷 브레이커 파라미터
+
+| 파라미터 | 설명 | 기본값 |
+|---------|------|-------|
+| `max_attacks_per_hour` | 시간당 최대 공격 횟수 | 10 |
+| `min_energy_reserve` | 최소 에너지 보유량 | 100,000 |
+| `min_dft_reserve` | 최소 DFT 보유량 | 10 |
+| `max_upgrades_per_day` | 일일 최대 업그레이드 횟수 | 5 |
+
+> ⚠️ 서킷 브레이커 파라미터는 온체인에서 강제됩니다. 에이전트가 이를 우회할 수 없습니다.
+
+**추천 다음 단계: [컨트랙트 주소 →](/docs/reference/addresses)**

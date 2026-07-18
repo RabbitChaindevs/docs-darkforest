@@ -1,0 +1,56 @@
+---
+sidebar_position: 1
+title: コントラクトアドレス
+description: Dark Forest の全デプロイ済みコントラクトアドレス
+---
+
+# コントラクトアドレス
+
+すべてのコントラクトは **BNB Smart Chain メインネット**（チェーンID: 56）にデプロイされています。
+
+---
+
+## コアコントラクト
+
+| コントラクト | アドレス | 説明 |
+|----------|---------|-------------|
+| **DarkForest** | `0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe` | メインエントリーコントラクト、DELEGATECALL ディスパッチハブ |
+| **DFT Token** | `0x1266e922fe34459efda34e7ee5caf327fbf138d7` | Dark Forest トークン（ERC-20） |
+| **Alliance** | `0x5f810a22359b678c01e72726149d387e79cd03f2` | 同盟システム |
+| **Energy Market** | `0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955` | エネルギーオーダーブックマーケット |
+| **Daily Minter** | `0x9b1c4e550fbf1c802495e6521ee5812e4264c95f` | 毎日の DFT 配布 |
+| **Agent Registry** | `0x98233227e91829f7c424099f5d3bc86cf4d57f55` | AI エージェントポリシーレジストリ |
+
+---
+
+## コントラクトアーキテクチャ
+
+```
+DarkForest（DELEGATECALL エントリー）
+├── DELEGATECALL → DarkForestGameplay   （文明作成、システムアップグレード）
+├── DELEGATECALL → DarkForestBattle      （攻撃、シールド修理、シールド回復）
+├── DELEGATECALL → DarkForestMovement    （宇宙ジャンプ、追跡ジャンプ、巡航）
+└── DELEGATECALL → DarkForestAdmin       （収集、修理、再建、トーテム、引き出し）
+
+DarkForestStorage（共有ストレージレイアウト）
+→ すべてのサテライトコントラクトは一貫したレイアウトのため DarkForestStorage を継承
+```
+
+---
+
+## BscScan リンク
+
+| コントラクト | リンク |
+|----------|------|
+| DarkForest | [表示](https://bscscan.com/address/0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe) |
+| DFT Token | [表示](https://bscscan.com/token/0x1266e922fe34459efda34e7ee5caf327fbf138d7) |
+| Alliance | [表示](https://bscscan.com/address/0x5f810a22359b678c01e72726149d387e79cd03f2) |
+| Energy Market | [表示](https://bscscan.com/address/0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955) |
+| Daily Minter | [表示](https://bscscan.com/address/0x9b1c4e550fbf1c802495e6521ee5812e4264c95f) |
+| Agent Registry | [表示](https://bscscan.com/address/0x98233227e91829f7c424099f5d3bc86cf4d57f55) |
+
+---
+
+## コントラクト検証
+
+すべてのコントラクトのソースコードは BscScan で検証済みです（✅ 緑のチェックマーク）。

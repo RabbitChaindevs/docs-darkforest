@@ -20,7 +20,7 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'zh',
-    locales: ['zh', 'en', 'hi', 'es', 'fr', 'ar', 'bn', 'pt', 'ru', 'ur'],
+    locales: ['zh', 'en', 'hi', 'es', 'fr', 'ar', 'bn', 'pt', 'ru', 'ur', 'ja', 'ko'],
     localeConfigs: {
       zh: { label: '中文' },
       en: { label: 'English' },
@@ -32,6 +32,8 @@ const config: Config = {
       pt: { label: 'Português' },
       ru: { label: 'Русский' },
       ur: { label: 'اردو', direction: 'rtl' },
+      ja: { label: '日本語' },
+      ko: { label: '한국어' },
     },
   },
 

@@ -1,0 +1,94 @@
+---
+sidebar_position: 2
+title: 5分でAIエージェントセットアップ
+description: Dark Forest で最初の AI エージェントを設定する
+---
+
+# 5分でセットアップ
+
+## 前提条件
+
+- Python 3.10+
+- アクティブな Dark Forest 文明
+- ウォレットの秘密鍵（エージェントがトランザクションに署名するため）
+
+---
+
+## ステップ1：エージェントのインストール
+
+```bash
+git clone https://github.com/dark-forest/agent.git
+cd agent
+pip install -r requirements.txt
+```
+
+## ステップ2：秘密鍵のインポート
+
+```bash
+python -m dark_forest.cli key import
+```
+
+秘密鍵は暗号化されて保存され、平文で保存されることはありません。
+
+> ⚠️ **専用のゲーム用ウォレット** を使用することを強く推奨します — 重要な資産が入っているメインウォレットは使用しないでください。
+
+## ステップ3：エージェントの認可
+
+ゲーム画面で、エージェントのウォレットアドレスに権限を設定します：
+
+- エージェントが必要とする操作権限をチェック
+- ポリシー制約を設定（攻撃頻度、リソース準備金など）
+
+## ステップ4：戦略の選択
+
+```bash
+# 利用可能な戦略を一覧表示
+python -m dark_forest.cli strategy list
+
+# バランス戦略を使用（推奨）
+python -m dark_forest.cli strategy select balanced
+```
+
+4つのプリセット戦略：
+
+| 戦略 | スタイル | 最適なユーザー |
+|----------|-------|----------|
+| `aggressive` | 積極的攻撃 | 非常にアクティブなプレイヤー |
+| `balanced` | 攻守バランス | **推奨**、ほとんどのプレイヤーに適合 |
+| `defensive` | 保守的防御 | オフラインが多いプレイヤー |
+| `farmer` | 収集重視 | 平和的な発展 |
+
+## ステップ5：起動
+
+```bash
+# 起動（デフォルトはバランス戦略）
+python -m dark_forest.cli run
+
+# 戦略を指定
+python -m dark_forest.cli run --strategy aggressive
+```
+
+## ステップ6：通知設定（オプション）
+
+### Telegram
+
+```bash
+python -m dark_forest.cli config set notify.telegram.token YOUR_BOT_TOKEN
+python -m dark_forest.cli config set notify.telegram.chat_id YOUR_CHAT_ID
+```
+
+### Discord
+
+```bash
+python -m dark_forest.cli config set notify.discord.webhook YOUR_WEBHOOK_URL
+```
+
+---
+
+## セキュリティ注意事項
+
+1. 🔐 **専用のゲーム用ウォレット** を使用し、適切な DFT/エネルギー準備金制限を設定
+2. 📉 **権限は段階的に開放** — 最初は COLLECT + REPAIR のみから始め、安定を確認してから ATTACK を追加
+3. 🔄 **定期的に確認** — エージェントのログとレポートを確認
+
+**推奨される次のステップ：[戦略テンプレート →](/docs/agent/strategies)**

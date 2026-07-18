@@ -1,0 +1,94 @@
+---
+sidebar_position: 2
+title: 5분 AI 에이전트 퀵스타트
+description: Dark Forest에서 첫 번째 AI 에이전트 설정하기
+---
+
+# 5분 퀵스타트
+
+## 사전 요구사항
+
+- Python 3.10+
+- 활성화된 Dark Forest 문명
+- 지갑의 개인키 (에이전트가 트랜잭션 서명에 사용)
+
+---
+
+## 1단계: 에이전트 설치
+
+```bash
+git clone https://github.com/dark-forest/agent.git
+cd agent
+pip install -r requirements.txt
+```
+
+## 2단계: 개인키 가져오기
+
+```bash
+python -m dark_forest.cli key import
+```
+
+개인키는 암호화되어 저장되며, 절대 평문으로 저장되지 않습니다.
+
+> ⚠️ **전용 게임 지갑**을 사용하는 것이 좋습니다 — 주요 자산이 있는 메인 지갑은 사용하지 마세요.
+
+## 3단계: 에이전트 승인
+
+게임 인터페이스에서 에이전트 지갑 주소의 권한을 설정하세요:
+
+- 에이전트가 필요한 작업 권한을 체크
+- 정책 제약 조건 설정 (공격 빈도, 자원 보유량 등)
+
+## 4단계: 전략 선택
+
+```bash
+# 사용 가능한 전략 목록
+python -m dark_forest.cli strategy list
+
+# 균형 전략 사용 (추천)
+python -m dark_forest.cli strategy select balanced
+```
+
+4가지 프리셋 전략:
+
+| 전략 | 스타일 | 추천 대상 |
+|------|-------|----------|
+| `aggressive` | 공격적 | 활동량이 많은 플레이어 |
+| `balanced` | 공수 균형 | **추천**, 대부분의 플레이어에게 적합 |
+| `defensive` | 보수적 방어 | 자주 오프라인인 플레이어 |
+| `farmer` | 수집 집중 | 평화로운 발전 |
+
+## 5단계: 실행
+
+```bash
+# 시작 (기본 balanced 전략)
+python -m dark_forest.cli run
+
+# 전략 지정
+python -m dark_forest.cli run --strategy aggressive
+```
+
+## 6단계: 알림 설정 (선택 사항)
+
+### Telegram
+
+```bash
+python -m dark_forest.cli config set notify.telegram.token YOUR_BOT_TOKEN
+python -m dark_forest.cli config set notify.telegram.chat_id YOUR_CHAT_ID
+```
+
+### Discord
+
+```bash
+python -m dark_forest.cli config set notify.discord.webhook YOUR_WEBHOOK_URL
+```
+
+---
+
+## 보안 주의사항
+
+1. 🔐 **전용 게임 지갑 사용** — 적절한 DFT/에너지 보유량 한도 설정
+2. 📉 **권한은 점진적으로 개방** — COLLECT + REPAIR만 먼저 부여하고, 안정적이라고 판단되면 ATTACK 추가
+3. 🔄 **정기적으로 확인** — 에이전트 로그와 보고서 검토
+
+**추천 다음 단계: [전략 템플릿 →](/docs/agent/strategies)**

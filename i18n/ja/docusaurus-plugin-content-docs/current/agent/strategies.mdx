@@ -1,0 +1,147 @@
+---
+sidebar_position: 3
+title: 戦略テンプレート
+description: Dark Forest AI エージェントの4つのプリセット戦略とカスタム設定ガイドの詳細
+---
+
+# 戦略テンプレート
+
+エージェント戦略は YAML 設定ファイルを使用して定義します。
+
+---
+
+## 戦略ファイル構造
+
+```yaml
+agent:
+  name: "my-agent"
+  mode: "auto"          # auto | manual | dry-run
+
+limits:                 # サーキットブレーカー（オンチェーンポリシー）
+  min_energy_reserve: 100000
+  min_dft_reserve: 10
+  max_attacks_per_hour: 5
+  max_upgrades_per_day: 3
+  max_single_upgrade_cost: 100
+
+combat:                 # 戦闘戦略
+  min_target_level: 1
+  max_target_level: 999
+  weapon_level: 1
+  only_attack_when_energy_above: 100000
+  blacklist: []         # ブラックリストアドレス
+  whitelist: []         # ホワイトリストアドレス（これらのみ攻撃）
+
+defense:                # 防御戦略
+  auto_repair: true
+  min_durability_before_repair: 20
+  shield_regen_threshold: 50   # この%を下回ったらシールド回復開始
+
+collection:             # 収集戦略
+  enabled: true
+  interval_minutes: 60
+```
+
+---
+
+## 4つのプリセット戦略
+
+### 1. アグレッシブ
+
+```yaml
+combat:
+  max_attacks_per_hour: 10
+  min_target_level: 0.5
+  weapon_level: max
+
+collection:
+  enabled: false  # 収集なし、純粋な戦闘
+```
+
+- ✅ 適している：戦闘報酬を求める非常にアクティブなプレイヤー
+- ❌ リスク：高いエネルギー消費、反撃のリスク
+
+### 2. バランス
+
+```yaml
+combat:
+  max_attacks_per_hour: 5
+  min_target_level: 0.8
+  weapon_level: balanced
+
+collection:
+  enabled: true
+  interval_minutes: 30
+
+defense:
+  auto_repair: true
+  shield_regen_threshold: 60
+```
+
+- ✅ **推奨**：攻守のバランスがとれており、ほとんどのプレイヤーに適合
+
+### 3. ディフェンシブ
+
+```yaml
+combat:
+  max_attacks_per_hour: 1
+  only_counterattack: true  # 反撃のみ
+
+defense:
+  auto_repair: true
+  min_durability_before_repair: 50
+  shield_regen_threshold: 80
+
+collection:
+  enabled: true
+  interval_minutes: 15
+```
+
+- ✅ 適している：長期オフラインでリスクを避けたいプレイヤー
+
+### 4. ファーマー
+
+```yaml
+combat:
+  enabled: false  # 戦闘なし
+
+defense:
+  auto_repair: true
+  shield_regen_threshold: 90
+
+collection:
+  enabled: true
+  interval_minutes: 5
+```
+
+- ✅ 適している：ゲーム初期の発展とリソース蓄積
+
+---
+
+## カスタム戦略
+
+```bash
+# テンプレートをコピー
+cp templates/balanced.yaml my-strategy.yaml
+
+# パラメータを編集
+vim my-strategy.yaml
+
+# カスタム戦略を使用
+python -m dark_forest.cli run --strategy ./my-strategy.yaml
+```
+
+---
+
+## サーキットブレーカーパラメータ
+
+| パラメータ | 説明 | デフォルト値 |
+|-----------|-------------|---------|
+| `max_attacks_per_hour` | 1時間あたりの最大攻撃回数 | 10 |
+| `min_energy_reserve` | 最小エネルギー準備金 | 100,000 |
+| `min_dft_reserve` | 最小 DFT 準備金 | 10 |
+| `max_upgrades_per_day` | 1日あたりの最大アップグレード回数 | 5 |
+
+> ⚠️ サーキットブレーカーパラメータはオンチェーンで強制されます。エージェントはこれらを回避できません。
+
+**推奨される次のステップ：[コントラクトアドレス →](/docs/reference/addresses)**

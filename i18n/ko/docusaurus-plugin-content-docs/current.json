@@ -1,0 +1,26 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.sidebar.category.🚀 快速上手": {
+    "message": "🚀 빠른 시작",
+    "description": "The label for category '🚀 快速上手' in sidebar 'sidebar'"
+  },
+  "sidebar.sidebar.category.🎮 玩法指南": {
+    "message": "🎮 게임 가이드",
+    "description": "The label for category '🎮 玩法指南' in sidebar 'sidebar'"
+  },
+  "sidebar.sidebar.category.💰 经济系统": {
+    "message": "💰 경제 시스템",
+    "description": "The label for category '💰 经济系统' in sidebar 'sidebar'"
+  },
+  "sidebar.sidebar.category.🤖 AI 自动战斗": {
+    "message": "🤖 AI 에이전트",
+    "description": "The label for category '🤖 AI 自动战斗' in sidebar 'sidebar'"
+  },
+  "sidebar.sidebar.category.📎 附录": {
+    "message": "📎 참고",
+    "description": "The label for category '📎 附录' in sidebar 'sidebar'"
+  }
+}

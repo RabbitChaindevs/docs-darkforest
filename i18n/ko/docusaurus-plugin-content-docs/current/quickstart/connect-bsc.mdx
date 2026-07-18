@@ -1,0 +1,74 @@
+---
+sidebar_position: 2
+title: BSC에 연결하기
+description: BNB Smart Chain 네트워크에 MetaMask 및 기타 지갑을 설정하는 방법
+---
+
+# BSC에 연결하기
+
+Dark Forest는 **BNB Smart Chain (BSC)**에 배포되어 있습니다. 게임과 상호작용하려면 지갑을 BSC 네트워크로 전환해야 합니다.
+
+## BSC란?
+
+BNB Smart Chain은 바이낸스가 출시한 블록체인 네트워크로, 다음과 같은 특징을 제공합니다:
+
+- **낮은 트랜잭션 수수료** — 각 작업당 1센트 미만의 비용
+- **높은 처리량** — 고빈도 게임 상호작용에 최적화
+- **EVM 호환** — MetaMask 및 기타 주류 지갑과 호환
+
+## BSC 네트워크 자동 추가
+
+가장 쉬운 방법은 Chainlist를 사용하는 것입니다:
+
+1. [Chainlist](https://chainlist.org)를 방문하세요
+2. "BNB Smart Chain"을 검색하세요
+3. "Connect Wallet"을 클릭하고 승인하세요
+4. "Add to MetaMask"를 클릭하세요
+5. 추가를 확인하세요
+
+## 수동 설정
+
+BSC 네트워크를 수동으로 추가할 수도 있습니다:
+
+### MetaMask에 BSC 추가하기
+
+1. MetaMask 우측 상단의 네트워크 드롭다운을 클릭하세요
+2. "Add Network"를 클릭하세요
+3. 다음 세부 정보를 입력하세요:
+
+| 설정 | 값 |
+|------|-----|
+| **네트워크 이름** | BNB Smart Chain |
+| **RPC URL** | `https://bsc-dataseed.binance.org` |
+| **체인 ID** | `56` |
+| **통화 기호** | `BNB` |
+| **블록 탐색기** | `https://bscscan.com` |
+
+4. "Save"를 클릭하세요
+
+### 백업 RPC 노드
+
+메인 RPC가 혼잡한 경우 백업 노드를 사용할 수 있습니다:
+
+| 제공자 | RPC URL |
+|--------|---------|
+| Binance 공식 | `https://bsc-dataseed1.binance.org` |
+| Ankr | `https://rpc.ankr.com/bsc` |
+| PublicNode | `https://bsc.publicnode.com` |
+
+## BNB 받기
+
+BSC의 모든 작업에는 가스비로 BNB가 필요합니다. BNB를 얻는 방법은 다음과 같습니다:
+
+1. **중앙화 거래소** — Binance, OKX 등에서 BNB를 구매하고 BSC 네트워크로 출금
+2. **크로스체인 브릿지** — 브릿지를 통해 다른 네트워크에서 BSC로 BNB 전송
+
+:::caution
+출금 시 **BSC 네트워크(BEP-20)를 선택했는지 반드시 확인하세요**. 그렇지 않으면 자금을 잃을 수 있습니다!
+:::
+
+## 연결 확인
+
+설정이 완료되면 지갑에서 BNB Smart Chain 네트워크로 전환하세요. 체인 ID가 `56`으로 표시되고 잔액에 올바른 BNB 금액이 표시되면 준비가 완료된 것입니다.
+
+지갑과 네트워크가 준비되면, 다음 단계는 [DFT 토큰 받기](/docs/quickstart/get-dft)입니다.
