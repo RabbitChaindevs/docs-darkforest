@@ -20,10 +20,18 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'zh',
-    locales: ['zh', 'en'],
+    locales: ['zh', 'en', 'hi', 'es', 'fr', 'ar', 'bn', 'pt', 'ru', 'ur'],
     localeConfigs: {
       zh: { label: '中文' },
       en: { label: 'English' },
+      hi: { label: 'हिन्दी' },
+      es: { label: 'Español' },
+      fr: { label: 'Français' },
+      ar: { label: 'العربية', direction: 'rtl' },
+      bn: { label: 'বাংলা' },
+      pt: { label: 'Português' },
+      ru: { label: 'Русский' },
+      ur: { label: 'اردو', direction: 'rtl' },
     },
   },
 
@@ -57,11 +65,11 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'sidebar',
           position: 'left',
-          label: '📚 文档',
+          label: '📚 Docs',
         },
         {
           href: 'https://darkforest.uk',
-          label: '🎮 游戏',
+          label: '🎮 Game',
           position: 'right',
         },
         {
@@ -79,24 +87,24 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: '文档',
+          title: 'Docs',
           items: [
-            { label: '快速上手', to: '/docs/quickstart/install-wallet' },
-            { label: '玩法指南', to: '/docs/guide/civilization' },
-            { label: '经济系统', to: '/docs/economy/dft-overview' },
+            { label: 'Quickstart', to: '/docs/quickstart/install-wallet' },
+            { label: 'Game Guide', to: '/docs/guide/civilization' },
+            { label: 'Economy', to: '/docs/economy/dft-overview' },
           ],
         },
         {
-          title: '社区',
+          title: 'Community',
           items: [
             { label: 'Discord', href: 'https://discord.gg/darkforest' },
             { label: 'Twitter', href: 'https://twitter.com/darkforest' },
           ],
         },
         {
-          title: '更多',
+          title: 'More',
           items: [
-            { label: '游戏官网', href: 'https://darkforest.uk' },
+            { label: 'Game Website', href: 'https://darkforest.uk' },
             { label: 'GitHub', href: 'https://github.com/RabbitChaindevs/docs-darkforest' },
           ],
         },

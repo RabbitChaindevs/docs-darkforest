@@ -1,0 +1,56 @@
+---
+sidebar_position: 1
+title: Contract Addresses
+description: All deployed contract addresses for Dark Forest
+---
+
+# Contract Addresses
+
+All contracts are deployed on **BNB Smart Chain Mainnet** (Chain ID: 56).
+
+---
+
+## Core Contracts
+
+| Contract | Address | Description |
+|----------|---------|-------------|
+| **DarkForest** | `0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe` | Main entry contract, DELEGATECALL dispatch hub |
+| **DFT Token** | `0x1266e922fe34459efda34e7ee5caf327fbf138d7` | Dark Forest token (ERC-20) |
+| **Alliance** | `0x5f810a22359b678c01e72726149d387e79cd03f2` | Alliance system |
+| **Energy Market** | `0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955` | Energy order book market |
+| **Daily Minter** | `0x9b1c4e550fbf1c802495e6521ee5812e4264c95f` | Daily DFT distribution |
+| **Agent Registry** | `0x98233227e91829f7c424099f5d3bc86cf4d57f55` | AI Agent policy registry |
+
+---
+
+## Contract Architecture
+
+```
+DarkForest (DELEGATECALL entry)
+├── DELEGATECALL → DarkForestGameplay   (create civ, upgrade systems)
+├── DELEGATECALL → DarkForestBattle      (attack, repair shield, shield regen)
+├── DELEGATECALL → DarkForestMovement    (space jump, tracking jump, cruise)
+└── DELEGATECALL → DarkForestAdmin       (collect, repair, rebuild, totem, withdraw)
+
+DarkForestStorage (shared storage layout)
+→ All satellite contracts inherit DarkForestStorage for consistent layout
+```
+
+---
+
+## BscScan Links
+
+| Contract | Link |
+|----------|------|
+| DarkForest | [View](https://bscscan.com/address/0x96ee7c1a3cd81858a6638917de2a1efd691ae2fe) |
+| DFT Token | [View](https://bscscan.com/token/0x1266e922fe34459efda34e7ee5caf327fbf138d7) |
+| Alliance | [View](https://bscscan.com/address/0x5f810a22359b678c01e72726149d387e79cd03f2) |
+| Energy Market | [View](https://bscscan.com/address/0x69f8dad1b4c9ceaf00bc48ed2216931ba78c5955) |
+| Daily Minter | [View](https://bscscan.com/address/0x9b1c4e550fbf1c802495e6521ee5812e4264c95f) |
+| Agent Registry | [View](https://bscscan.com/address/0x98233227e91829f7c424099f5d3bc86cf4d57f55) |
+
+---
+
+## Contract Verification
+
+All contract source code has been verified on BscScan (✅ green checkmark).

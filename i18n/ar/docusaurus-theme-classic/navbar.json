@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "Dark Forest",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Dark Forest Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.📚 Docs": {
+    "message": "📚 Docs",
+    "description": "Navbar item with label 📚 Docs"
+  },
+  "item.label.🎮 Game": {
+    "message": "🎮 Game",
+    "description": "Navbar item with label 🎮 Game"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

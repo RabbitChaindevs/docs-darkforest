@@ -1,0 +1,93 @@
+---
+sidebar_position: 6
+title: Totem System
+description: Dark Forest alliance totems — donating, upgrading, and defense bonuses
+---
+
+# Totem System
+
+The totem is an alliance-wide buff system. Members donate energy to upgrade it, granting defense bonuses to all members.
+
+---
+
+## How It Works
+
+1. **Donate energy**: Alliance members donate energy to the totem pool
+2. **Accumulate to the threshold**: Once the totem's energy reaches the upgrade cost, the leader triggers the upgrade
+3. **Receive the bonus**: All members gain a defense bonus
+
+---
+
+## Donating Energy
+
+### Operation
+
+```
+donateToTotem(allianceId, amount)
+```
+
+- Each donation resets your donation timer (48-hour expiry)
+- Only members with valid donations benefit from the totem's bonus
+
+### Donation Requirements
+
+- Each donation must be spaced by a minimum interval (anti-spam)
+- The donation expires after 48 hours (must re-donate to stay active)
+
+---
+
+## Upgrading the Totem
+
+### Cost Formula
+
+```
+Next Upgrade Cost = 20,000,000 × N × (N + 5) / 10
+Where N = current totem level + 1
+```
+
+| Level | Energy Required |
+|-------|----------------|
+| Lv 0 → 1 | 12,000,000 |
+| Lv 1 → 2 | 42,000,000 |
+| Lv 2 → 3 | 96,000,000 |
+| Lv 10 → 11 | 330,000,000 |
+
+### Operation
+
+Only the **alliance leader** can trigger upgrades:
+
+```
+upgradeTotem(allianceId)
+```
+
+The upgrade consumes energy from the totem pool and increases the totem level by 1.
+
+---
+
+## Totem Effect
+
+```
+Alliance Defense Bonus = (total members - 1) × 8 × (1 + totem level × 0.5%)
+```
+
+| Totem Level | Bonus Coefficient |
+|-------------|-------------------|
+| Lv 0 | 0% (no bonus) |
+| Lv 10 | +5% |
+| Lv 20 | +10% |
+| Lv 100 | +50% |
+
+Example: a 50-member alliance with a level 20 totem:
+```
+Bonus = (50-1) × 8 × (1 + 20 × 0.5%) = 392 × 1.1 = 431.2 defense
+```
+
+---
+
+## Strategy Tips
+
+1. **Members should donate regularly** — small frequent donations are more effective than one large lump sum
+2. **Leaders should upgrade promptly** — upgrade as soon as the totem pool reaches the threshold
+3. **High totem level + many allies = significant defensive advantage**
+
+**Recommended next step: [DFT Token Overview →](/docs/economy/dft-overview)**

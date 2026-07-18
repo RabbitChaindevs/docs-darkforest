@@ -1,0 +1,59 @@
+---
+sidebar_position: 4
+title: Create Your First Civilization
+description: Complete guide to creating a civilization in Dark Forest
+---
+
+# Create Your First Civilization
+
+## Prerequisites
+
+- MetaMask installed and connected to BSC mainnet
+- **0.01 ~ 0.05 BNB** in your wallet (entry fee, which grows linearly over time from the minimum to the maximum)
+- At least **1 DFT** (for subsequent upgrades)
+
+## Creation Steps
+
+### Step 1: Access the Game
+
+Open **[darkforest.uk](https://darkforest.uk)** and click **"Connect Wallet"** in the top-right corner.
+
+### Step 2: Name Your Civilization
+
+The civilization name can be **1–32 bytes**, supporting letters, numbers, and symbols.
+
+### Step 3: Enter an Invite Code (Optional)
+
+If you have an inviter's wallet address, you can enter it here. Both you and the inviter will receive **150 Energy** as a reward.
+
+### Step 4: Confirm Creation
+
+Click **"Create Civilization"** — MetaMask will pop up a transaction confirmation. The transaction includes:
+
+- **Entry fee**: 0.01 BNB (minimum, increases linearly to 0.05 BNB over 365 days)
+- **Gas fee**: A small amount of BNB
+
+Confirm and wait for the transaction to finalize on-chain (about 3–5 seconds).
+
+## Initial State
+
+After successful creation, your civilization starts with:
+
+| Attribute | Initial Value |
+|-----------|---------------|
+| Energy | **2,000** |
+| Health | **3,000** |
+| Scan Range | **1,000** |
+| All System Levels | **Lv 1** (Collector, Weapon, Shield, Radar, Engine) |
+| Shield HP | **3,615** (3600 + 15 × 1²) |
+| Position | Deterministic coordinates (derived from your address and a nonce) |
+
+## Coordinate Assignment
+
+Your civilization is assigned a **deterministic coordinate** `(x, y, z)`, computed via a hash of your wallet address, creation time, and the total number of civilizations. Each civilization's coordinates are unique.
+
+## New Player Protection
+
+> 🛡️ Newly created civilizations have a **24-hour** protection period. During this time, other players cannot attack you.
+
+**Recommended next step: [Civilization Development & Upgrades →](/docs/guide/civilization)**

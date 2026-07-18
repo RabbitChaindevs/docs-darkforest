@@ -1,0 +1,147 @@
+---
+sidebar_position: 3
+title: Strategy Templates
+description: Detailed breakdown of Dark Forest AI Agent's four preset strategies and custom configuration guide
+---
+
+# Strategy Templates
+
+Agent strategies are defined using YAML configuration files.
+
+---
+
+## Strategy File Structure
+
+```yaml
+agent:
+  name: "my-agent"
+  mode: "auto"          # auto | manual | dry-run
+
+limits:                 # Circuit breaker (on-chain policy)
+  min_energy_reserve: 100000
+  min_dft_reserve: 10
+  max_attacks_per_hour: 5
+  max_upgrades_per_day: 3
+  max_single_upgrade_cost: 100
+
+combat:                 # Combat strategy
+  min_target_level: 1
+  max_target_level: 999
+  weapon_level: 1
+  only_attack_when_energy_above: 100000
+  blacklist: []         # Blacklisted addresses
+  whitelist: []         # Whitelisted addresses (only attack these)
+
+defense:                # Defense strategy
+  auto_repair: true
+  min_durability_before_repair: 20
+  shield_regen_threshold: 50   # Start shield regen below this %
+
+collection:             # Collection strategy
+  enabled: true
+  interval_minutes: 60
+```
+
+---
+
+## Four Preset Strategies
+
+### 1. Aggressive
+
+```yaml
+combat:
+  max_attacks_per_hour: 10
+  min_target_level: 0.5
+  weapon_level: max
+
+collection:
+  enabled: false  # No gathering, pure combat
+```
+
+- ✅ Good for: highly active players who want combat rewards
+- ❌ Risk: high energy consumption, risk of being counterattacked
+
+### 2. Balanced
+
+```yaml
+combat:
+  max_attacks_per_hour: 5
+  min_target_level: 0.8
+  weapon_level: balanced
+
+collection:
+  enabled: true
+  interval_minutes: 30
+
+defense:
+  auto_repair: true
+  shield_regen_threshold: 60
+```
+
+- ✅ **Recommended**: balanced offense and defense, suitable for most players
+
+### 3. Defensive
+
+```yaml
+combat:
+  max_attacks_per_hour: 1
+  only_counterattack: true  # Only counterattack
+
+defense:
+  auto_repair: true
+  min_durability_before_repair: 50
+  shield_regen_threshold: 80
+
+collection:
+  enabled: true
+  interval_minutes: 15
+```
+
+- ✅ Good for: players who are offline for long periods and want to avoid risk
+
+### 4. Farmer
+
+```yaml
+combat:
+  enabled: false  # No combat
+
+defense:
+  auto_repair: true
+  shield_regen_threshold: 90
+
+collection:
+  enabled: true
+  interval_minutes: 5
+```
+
+- ✅ Good for: early-game development and resource accumulation
+
+---
+
+## Custom Strategy
+
+```bash
+# Copy the template
+cp templates/balanced.yaml my-strategy.yaml
+
+# Edit parameters
+vim my-strategy.yaml
+
+# Use custom strategy
+python -m dark_forest.cli run --strategy ./my-strategy.yaml
+```
+
+---
+
+## Circuit Breaker Parameters
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `max_attacks_per_hour` | Max attacks per hour | 10 |
+| `min_energy_reserve` | Minimum energy reserve | 100,000 |
+| `min_dft_reserve` | Minimum DFT reserve | 10 |
+| `max_upgrades_per_day` | Max upgrades per day | 5 |
+
+> ⚠️ Circuit breaker parameters are enforced on-chain. The agent cannot bypass them.
+
+**Recommended next step: [Contract Addresses →](/docs/reference/addresses)**

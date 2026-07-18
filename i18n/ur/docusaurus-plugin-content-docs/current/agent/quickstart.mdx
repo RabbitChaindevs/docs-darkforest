@@ -1,0 +1,94 @@
+---
+sidebar_position: 2
+title: 5-Minute AI Agent Quickstart
+description: Configure your first AI Agent in Dark Forest
+---
+
+# 5-Minute Quickstart
+
+## Prerequisites
+
+- Python 3.10+
+- An active Dark Forest civilization
+- Your wallet's private key (for the agent to sign transactions)
+
+---
+
+## Step 1: Install the Agent
+
+```bash
+git clone https://github.com/dark-forest/agent.git
+cd agent
+pip install -r requirements.txt
+```
+
+## Step 2: Import Your Private Key
+
+```bash
+python -m dark_forest.cli key import
+```
+
+The private key is stored encrypted, never in plain text.
+
+> ⚠️ It is highly recommended to use a **dedicated game wallet** — do not use your main wallet that holds significant assets.
+
+## Step 3: Authorize the Agent
+
+In the game interface, set permissions for your agent's wallet address:
+
+- Check the operation permissions the agent needs
+- Set policy constraints (attack frequency, resource reserves, etc.)
+
+## Step 4: Choose a Strategy
+
+```bash
+# List available strategies
+python -m dark_forest.cli strategy list
+
+# Use the balanced strategy (recommended)
+python -m dark_forest.cli strategy select balanced
+```
+
+Four preset strategies:
+
+| Strategy | Style | Best For |
+|----------|-------|----------|
+| `aggressive` | Aggressive attacker | Highly active players |
+| `balanced` | Balanced offense/defense | **Recommended**, suits most players |
+| `defensive` | Conservative defense | Players who are often offline |
+| `farmer` | Focus on gathering | Peaceful development |
+
+## Step 5: Launch
+
+```bash
+# Start (default balanced strategy)
+python -m dark_forest.cli run
+
+# Specify a strategy
+python -m dark_forest.cli run --strategy aggressive
+```
+
+## Step 6: Configure Notifications (Optional)
+
+### Telegram
+
+```bash
+python -m dark_forest.cli config set notify.telegram.token YOUR_BOT_TOKEN
+python -m dark_forest.cli config set notify.telegram.chat_id YOUR_CHAT_ID
+```
+
+### Discord
+
+```bash
+python -m dark_forest.cli config set notify.discord.webhook YOUR_WEBHOOK_URL
+```
+
+---
+
+## Security Reminders
+
+1. 🔐 **Use a dedicated game wallet** with reasonable DFT/energy reserve limits
+2. 📉 **Open permissions gradually** — start with only COLLECT + REPAIR, then add ATTACK once you're confident it's stable
+3. 🔄 **Check in regularly** — review the agent's logs and reports
+
+**Recommended next step: [Strategy Templates →](/docs/agent/strategies)**

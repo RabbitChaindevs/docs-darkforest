@@ -1,0 +1,107 @@
+---
+sidebar_position: 1
+title: Civilization Development & Upgrades
+description: Detailed breakdown of Dark Forest's six systems and upgrade strategies
+---
+
+# Civilization Development & Upgrades
+
+Your civilization is made up of **six systems**, each of which can be independently upgraded. System levels determine your collection efficiency, combat power, and survivability.
+
+---
+
+## The Six Systems
+
+| System ID | Name | Function | Core Formula |
+|-----------|------|----------|--------------|
+| 0 | **Energy Collector** | Passive energy per second | `3 + 10 × √(level - 1)` energy/s |
+| 1 | **Weapon System** | Attack power | `900 + 10 × level²` |
+| 2 | **Shield System** | Defense & shield HP | HP: `3600 + 15 × level²`, Defense: `540 + 6 × level²` |
+| 3 | **Radar System** | Scan range | `1000 + 150 × level + 5 × level²` |
+| 4 | **Engine System** | Movement speed | `10 + 5 × (level-1)` → Lv1=10, Lv10=55 |
+
+---
+
+## Upgrade Costs
+
+Upgrade costs are calculated using the **Anchor Formula**, based on the system type and current level:
+
+### Level Brackets
+
+| Level Range | Anchor Days (cost equivalent) |
+|-------------|-------------------------------|
+| 1 – 100 | 1 → 30 days of energy/DFT output |
+| 100 – 1000 | 30 → 60 days of output |
+| 1000+ | 60 days of output (capped) |
+
+### System Upgrade Multipliers
+
+| System | Energy/DFT Multiplier |
+|--------|----------------------|
+| Collector (0) | 1× |
+| Weapon (1) | 4× |
+| Shield (2) | 4× |
+| Radar (3) | 8× |
+| Engine (4) | 16× |
+
+### Upgrade Cost Formula
+
+```
+Upgrade Cost = Anchor Days × Daily Output × System Multiplier
+```
+
+"Daily Output" scales with your civilization's level — the higher your level, the more you produce per day, creating a **positive feedback loop**.
+
+---
+
+## Daily Upkeep
+
+Your civilization consumes energy every day as maintenance:
+
+```
+Daily Upkeep = 2,000 × Total Level
+```
+
+Upkeep is deducted from your energy proportionally over time and is settled automatically whenever you perform any action (via `_deductUpkeep`).
+
+> ⚠️ If you don't have enough energy to cover upkeep, your systems will still function, but your energy balance will go negative. You'll need to replenish it promptly.
+
+---
+
+## Durability System
+
+Each system has durability that decreases over time or with use:
+
+| System | Base Durability | Per-Level Increase |
+|--------|----------------|--------------------|
+| Collector | 86,400 seconds (1 day) | +7,200 seconds (2 hours) |
+| Weapon | 60 | +15 |
+| Shield | 40 | +10 |
+| Engine | 30 | +6 |
+
+### Durability Consumption
+
+- **Collector**: decays over time, losing 1 durability per second
+- **Weapon**: loses 1 durability per attack (at 0 durability, attack power is halved)
+- **Shield**: loses 1 durability each time it's hit
+- **Engine**: loses 1 durability per jump
+
+### Repair Costs
+
+| System | Repair Cost |
+|--------|-------------|
+| Collector | 1 energy/second |
+| Weapon | 3 energy/point |
+| Shield | 4 energy/point |
+| Engine | 5 energy/point |
+
+---
+
+## Upgrade Strategy Tips
+
+1. **Prioritize the Collector** — energy is the foundation of everything. A high-level collector lets you accumulate resources faster
+2. **Balance Weapon and Shield** — Weapon level affects attack power and plunder ratio; Shield level affects HP and defense
+3. **Radar determines your attack range** — you can only attack targets within your radar's reach
+4. **Engine affects movement speed** — exploration and pursuit both depend on engine upgrades
+
+**Recommended next step: [Attack & Defense →](/docs/guide/battle)**

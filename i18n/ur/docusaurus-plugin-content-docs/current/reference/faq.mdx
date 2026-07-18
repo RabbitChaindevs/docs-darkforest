@@ -1,0 +1,148 @@
+---
+sidebar_position: 3
+title: FAQ
+description: Frequently asked questions about Dark Forest
+---
+
+# FAQ
+
+## Getting Started
+
+### How much does it cost to create a civilization?
+
+The entry fee starts at **0.01 BNB** and grows linearly to **0.05 BNB** (reaching the maximum after 365 days). You also need a small amount of BNB for gas fees.
+
+### What is DFT used for?
+
+DFT is used for space jumps, system upgrades, rebuilding a civilization, alliance exit fines, and buying energy on the energy market.
+
+### How long does new player protection last?
+
+**24 hours**. During this period, other players cannot attack you.
+
+---
+
+## Gameplay
+
+### Why can't I attack a certain civilization?
+
+These are the possible soft gate reasons (no resources are consumed):
+
+- The target is in new player protection (< 24 hours old)
+- You and the target are in the same alliance
+- There's an active exit cooldown between you (24 hours)
+- The target is outside your radar range
+- You are the target
+
+### I'm running low on energy. What can I do?
+
+- Upgrade your **Energy Collector** for higher passive output
+- **Plunder** energy by attacking other civilizations
+- Buy energy on the **Energy Market** using DFT
+- **Invite new players** for reward energy
+- Cut back on unnecessary actions (e.g., non-essential shield repairs)
+
+### Why did my shield drop to zero after a space jump?
+
+Space jumps inflict heavy damage on your vessel: **Shield HP resets to 10% of maximum**. Be careful after jumping:
+
+1. Repair your shield immediately after jumping
+2. Avoid jumping near combat zones
+3. Alliance members can assist with repairs after a jump
+
+### What happens when durability hits zero?
+
+| System | Durability = 0 Consequence |
+|--------|---------------------------|
+| Collector | Stops producing energy |
+| Weapon | Attack power is halved |
+| Shield | Shield becomes ineffective (no defense) |
+| Engine | Cannot cruise or jump |
+
+---
+
+## Economy
+
+### What is the total supply of DFT?
+
+**~4.2 trillion (4,206,900,000,000) DFT** — this is the hard cap. Approximately 1.15 trillion DFT is minted daily and distributed among active players.
+
+### Are there fees for trading DFT?
+
+A **2.5% total fee** (1% development + 1.5% marketing) applies only when trading on a DEX like PancakeSwap. Regular transfers are fee-free.
+
+### Can unclaimed DFT from the daily mint accumulate?
+
+**No.** DFT from each epoch must be claimed within that epoch. If not claimed, the next `distribute()` call burns the remainder.
+
+---
+
+## Alliance
+
+### Is there a penalty for leaving an alliance?
+
+Yes, you must pay **100 DFT + 10 DFT × current member count**. This DFT is distributed to the remaining alliance members.
+
+### How long after leaving an alliance can I attack again?
+
+**24-hour cooldown**. During this period, you and the former alliance cannot attack each other.
+
+### What is the maximum alliance size?
+
+**100 members.**
+
+---
+
+## Rebuild (Rebirth)
+
+### What conditions are needed to rebuild?
+
+Your civilization must be in **ruins state** (defeated, with all systems reduced to Lv 1).
+
+### Does rebuilding reset newbie protection?
+
+Yes. Rebuilding resets `creationTime` to the current timestamp, so the **24-hour newbie protection restarts**.
+
+### What is the maximum health cap?
+
+**20,000**. Initial health is 3,000. Health does not regenerate automatically in combat and can only be reset to 10,000 via rebuilding.
+
+### How much does a rebuild cost?
+
+- **Energy**: `500,000 × (10000 + rebirth count × 1200) / 10000`, cap 10,000,000 (20×)
+- **DFT**: `100 + 10 × rebirth count`, cap 2,000 DFT
+
+### What are the benefits of rebuilding?
+
+Each rebuild grants **+12% (1200 bps)** combat boost, benefiting both attack and defense. Stacks up to **300% (30000 bps)**.
+
+---
+
+## AI Agent
+
+### Is the Agent safe?
+
+The agent system has multiple layers of security:
+
+1. **Permission bitmask**: fine-grained control over each operation
+2. **On-chain policies**: circuit breaker parameters that cannot be bypassed
+3. **Instantly revocable**: `revokeAgent()` takes effect immediately
+4. **Encrypted storage**: private keys are encrypted locally
+
+We recommend using a **dedicated game wallet** to run an agent.
+
+### Can the agent auto-attack?
+
+Yes, as long as you grant the `ATTACK` permission and set `autoAttack: true`. You can also configure blacklists and whitelists to control attack targets.
+
+---
+
+## Technical
+
+### Is the contract source code open?
+
+Yes. All contract source code is open-source on GitHub and verified on BscScan.
+
+### How can I view transaction details?
+
+Paste your transaction hash (TXID) into [BscScan](https://bscscan.com).

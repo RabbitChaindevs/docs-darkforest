@@ -1,0 +1,98 @@
+---
+sidebar_position: 4
+title: Energy System
+description: Complete guide to acquiring, consuming, and managing energy in Dark Forest
+---
+
+# Energy System
+
+Energy is the most fundamental resource in Dark Forest. Almost every operation — upgrades, attacks, movement, and repairs — requires energy.
+
+---
+
+## Earning Energy
+
+### 1. Energy Collector (Passive Output)
+
+```
+Collection Rate = 3 + 10 × √(collector level - 1)   energy/s
+```
+
+For each player you invited, the rate increases further.
+
+**Collector Durability**: The collector loses 1 durability per second.
+
+| Collector Level | Output per Second | Max Collector Durability |
+|----------------|-------------------|--------------------------|
+| Lv 1 | 3 | 1 day |
+| Lv 10 | ~33 | 1 day + 18 hours |
+| Lv 50 | ~73 | 1 day + 4 days |
+| Lv 100 | ~103 | 1 day + 8.3 days |
+
+> ⚠️ When collector durability runs out, production stops. You need to repair it for collection to resume.
+
+### 2. Combat Plunder
+
+After winning a battle against another civilization, you plunder a portion of their energy:
+
+```
+Plunder Ratio = 5% + weapon level × 0.5%
+```
+
+Plundered energy goes into a **pending pool** (pendingCombatEnergy), which you must manually claim.
+
+### 3. Invite Rewards
+
+For each new player you successfully invite (they enter your address when creating their civilization):
+
+- **You** receive 150 energy
+- **The invitee** receives 150 energy
+
+### 4. Energy Market
+
+See [Energy Market](/docs/economy/energy-market).
+
+---
+
+## Spending Energy
+
+| Use Case | Cost |
+|----------|------|
+| **Daily Upkeep** | `2,000 × total level` / day |
+| **System Upgrades** | Anchor Formula (see Civilization guide) |
+| **Attack** | `50,000 + 50,000 × weapon level` |
+| **Space Jump** | `200,000 + 200,000 × √(jump count)`, cap 16.5M |
+| **Repair Collector** | `1 energy / second` |
+| **Repair Weapon** | `3 energy / point` |
+| **Repair Shield** | `4 energy / point` |
+| **Repair Engine** | `5 energy / point` |
+| **Shield Regen** | `regen amount × 1` (auto regen) |
+| **Shield Repair** | `repair amount × 4` (manual repair) |
+| **Alliance Shield Assist** | `repair amount × 1` (paid by ally) |
+| **Totem Donation** | Custom amount |
+| **Rebuild** | Base 500,000, increases with rebirth count |
+
+---
+
+## Energy Management
+
+### Daily Upkeep
+
+Upkeep is deducted proportionally over time whenever you perform any action:
+
+```
+Current Upkeep = 2,000 × total level × (time since last action / 86400)
+```
+
+### Reserved Energy
+
+Energy placed in sell orders on the energy market is locked (`energyReserved`). Upkeep stops being deducted once `energy - reserved` reaches zero.
+
+### Tips
+
+1. **Keep energy > 1 month's upkeep** — prevents frequent depletion from routine actions
+2. **Prioritize collector upgrades** — a high-level collector is key to passive income
+3. **Calculate costs before attacking** — make sure the plunder is worth the investment
+4. **Repair collector durability regularly** — avoid collection interruptions
+
+**Recommended next step: [Alliance System →](/docs/guide/alliance)**

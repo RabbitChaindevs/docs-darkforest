@@ -1,0 +1,152 @@
+---
+sidebar_position: 2
+title: Attack & Defense
+description: Complete breakdown of the Dark Forest combat system
+---
+
+# Attack & Defense
+
+## Attack Conditions
+
+### Who Can You Attack?
+
+- The target must exist and not be destroyed (not in ruin state)
+- The target must not be in its **24-hour new player protection** window
+- The target must be within your **radar scan range** (distance ≤ your radar range)
+- You cannot attack yourself
+- You cannot attack members of your own alliance (you must leave first)
+- You cannot attack someone who left your alliance in the last **24 hours** (mutual cooldown)
+
+### Soft Gate
+
+If an attack condition isn't met, the attempt **does not consume any resources** — it simply tells you why the attack failed. This lets you experiment freely without worrying about wasted energy.
+
+---
+
+## Attack Cost
+
+Each successful attack is limited to **1 attack per second**, and consumes:
+
+| Resource | Cost |
+|----------|------|
+| **Energy** | `50,000 + 50,000 × weapon level` |
+| **Weapon Durability** | 1 point (when weapon durability > 0) |
+| **Attack Token** | 1 token |
+
+---
+
+## Attack Token System
+
+Attack tokens use a **token bucket algorithm** to limit attack frequency:
+
+| Parameter | Formula | Description |
+|-----------|---------|-------------|
+| **Max Tokens** | `3 + weapon level / 10`, cap **10** | Auto-recover over time |
+| **Recovery Interval** | `(300 - weapon level × 10) / 100` seconds, min **1s** | 1 token per interval |
+| **Cost** | 1 token per attack | |
+
+> 💡 The higher your weapon level, the faster your attack tokens recover and the higher your cap.
+
+---
+
+## Damage Calculation
+
+### Attacker
+
+```
+Base Attack = 900 + 10 × attacker weapon level²
+If weapon durability = 0, attack is halved
+Final Attack = Base Attack × (1 + combat boost / 10000)
+```
+
+### Defender
+
+```
+Base Defense = 540 + 6 × defender shield level²
+Alliance Defense Bonus = (allies - 1) × 8 × (1 + totem level × 0.5%)
+Final Defense = Base Defense × (1 + combat boost / 10000) + Alliance Bonus
+```
+
+### Final Damage
+
+```
+Shield Damage = Attack + 200 - Defense (if > 0)
+Health Damage = (Attack - Defense) × 2 (if > 0)
+
+If Shield Damage > remaining Shield HP:
+  overflow × 3 converts to Health Damage
+```
+
+---
+
+## Plunder
+
+After winning a battle, you plunder energy from the target:
+
+```
+Plunder Ratio = 5% + weapon level × 0.5%
+Plundered Energy = target's current energy × plunder ratio
+```
+
+Plundered energy goes into a **pending combat energy** pool, which you must manually claim.
+
+---
+
+## Defeat & Destruction
+
+### Defeat
+
+When a target's health reaches zero:
+
+1. **All remaining energy is plundered** into your pending pool
+2. The target has one random system **downgraded** (on BSC: downgrades the highest-level system; on chains with beacon chain randomness: randomly picks from Collector/Weapon/Shield/Engine)
+3. If the downgraded system's level is still ≥ 1, the civilization survives and its durability is restored to 50%
+4. If all systems are level 1 (cannot be downgraded further), the civilization becomes **ruins**
+5. The kill plunder stacks **on top of** the regular attack plunder
+
+### Ruins
+
+A civilization in ruins:
+- Is removed from the active civilization list
+- Cannot be attacked
+- Can be revived via the **Rebuild** function
+
+### Combat Boost (Rebirth Boost)
+
+Each Rebuild grants **+1200 bps** (12%) combat boost, stacking up to **30000 bps** (3× multiplier).
+Both attack and defense benefit from this boost.
+
+---
+
+## Shield Regeneration
+
+### Auto Regeneration
+
+```
+Regen Amount = 50 + shield level²
+Energy Cost = regen amount (1:1 ratio)
+```
+
+### Manual Repair
+
+```
+Energy Cost = repair amount × 4
+```
+
+### Alliance Assistance
+
+```
+Energy Cost = repair amount × 1 (paid by ally)
+Allies can repair shields for each other
+```
+
+---
+
+## Defense Strategy
+
+1. **Keep energy reserves > 7× daily upkeep** — prevents energy depletion that would stop shield regeneration
+2. **Repair durability regularly** — systems at zero durability are extremely vulnerable
+3. **Upgrade shield level** — shield HP and defense both scale with level squared
+4. **Join an alliance and upgrade the totem** — alliance defense bonuses are significant
+
+**Recommended next step: [Space Jump & Cruise →](/docs/guide/movement)**
