@@ -40,7 +40,7 @@
     "description": "The label of footer link with label=GitHub linking to https://github.com/RabbitChaindevs/docs-darkforest"
   },
   "copyright": {
-    "message": "© 2026 Dark Forest. Construído na BNB Chain.",
+    "message": "© 2026 Dark Forest. Construído na BNB Chain. [{commitHash}]",
     "description": "The footer copyright"
   }
 }

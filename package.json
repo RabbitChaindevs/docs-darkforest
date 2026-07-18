@@ -14,7 +14,9 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "prebuild": "node -e \"const h=require('child_process').execSync('git rev-parse --short HEAD').toString().trim(); const fs=require('fs'); const path=require('path'); const base='i18n'; for (const d of fs.readdirSync(base)) { const fp=path.join(base,d,'docusaurus-theme-classic','footer.json'); if (fs.existsSync(fp)) { let c=fs.readFileSync(fp,'utf-8'); if (c.includes('{commitHash}')) { fs.writeFileSync(fp, c.replace(/{commitHash}/g, h)); console.log('  commitHash: '+h+' -> '+fp); } } }\"",
+    "postbuild": "git checkout -- i18n/*/docusaurus-theme-classic/footer.json"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",

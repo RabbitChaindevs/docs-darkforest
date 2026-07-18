@@ -1,8 +1,22 @@
 import {themes as prismThemes} from 'prism-react-renderer'
 import type {Config} from '@docusaurus/types'
 import type * as Preset from '@docusaurus/preset-classic'
+import {execSync} from 'child_process'
+
+function getCommitHash(): string {
+  try {
+    return execSync('git rev-parse --short HEAD', {encoding: 'utf-8'}).trim()
+  } catch {
+    return 'dev'
+  }
+}
+
+const commitHash = getCommitHash()
 
 const config: Config = {
+  customFields: {
+    commitHash,
+  },
   title: 'Dark Forest',
   tagline: '链上星际文明策略游戏官方文档',
   favicon: 'img/favicon.svg',
@@ -111,7 +125,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `© ${new Date().getFullYear()} Dark Forest. Built on BNB Chain.`,
+      copyright: `© ${new Date().getFullYear()} Dark Forest. Built on BNB Chain. [{commitHash}]`,
     },
     prism: {
       theme: prismThemes.github,

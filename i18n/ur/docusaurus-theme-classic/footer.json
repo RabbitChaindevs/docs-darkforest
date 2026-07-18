@@ -40,7 +40,7 @@
     "description": "فوٹر لنک کا لیبل جس کا لیبل=GitHub ہے"
   },
   "copyright": {
-    "message": "© 2026 ڈارک فاریسٹ۔ BNB Chain پر بنایا گیا۔",
+    "message": "© 2026 ڈارک فاریسٹ۔ BNB Chain پر بنایا گیا۔ [{commitHash}]",
     "description": "فوٹر کاپی رائٹ"
   }
 }

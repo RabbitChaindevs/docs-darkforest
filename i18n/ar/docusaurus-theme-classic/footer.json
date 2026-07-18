@@ -40,7 +40,7 @@
     "description": "تسمية رابط التذييل GitHub"
   },
   "copyright": {
-    "message": "© 2026 Dark Forest. مبني على BNB Chain.",
+    "message": "© 2026 Dark Forest. مبني على BNB Chain. [{commitHash}]",
     "description": "حقوق النشر في التذييل"
   }
 }
