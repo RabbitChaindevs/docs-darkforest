@@ -31,13 +31,23 @@ export default function LocaleDropdownNavbarItem(): JSX.Element {
         window.location.href = newPath + search + hash
       }}
       style={{
-        background: 'transparent',
-        color: 'inherit',
-        border: '1px solid var(--ifm-color-emphasis-300)',
+        background: 'var(--ifm-navbar-background-color)',
+        color: 'var(--ifm-navbar-link-color)',
+        border: '1px solid var(--ifm-color-primary)',
         borderRadius: 'var(--ifm-global-radius)',
-        padding: '0.15rem 1.5rem 0.15rem 0.4rem',
+        padding: '0.15rem 1.5rem 0.15rem 0.5rem',
         fontSize: '0.85rem',
         cursor: 'pointer',
+        boxShadow: '0 0 0 0 transparent',
+        transition: 'box-shadow 0.2s, opacity 0.2s',
+      }}
+      onMouseEnter={e => {
+        e.target.style.boxShadow = '0 0 6px var(--ifm-color-primary-darker)'
+        e.target.style.opacity = '1'
+      }}
+      onMouseLeave={e => {
+        e.target.style.boxShadow = '0 0 0 0 transparent'
+        e.target.style.opacity = '0.85'
       }}
     >
       {i18n.locales.map(loc => (
