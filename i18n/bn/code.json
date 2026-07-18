@@ -325,5 +325,61 @@
   "theme.tags.tagsPageTitle": {
     "message": "ট্যাগ",
     "description": "The title of the tag list page"
+  },
+  "home.button.play": {
+    "message": "এখনই খেলুন",
+    "description": ""
+  },
+  "home.button.guide": {
+    "message": "গেম গাইড",
+    "description": ""
+  },
+  "home.feature.chain.title": {
+    "message": "সম্পূর্ণ অন-চেইন",
+    "description": ""
+  },
+  "home.feature.chain.desc": {
+    "message": "সমস্ত গেম লজিক স্মার্ট কন্ট্রাক্টে চলে — স্বচ্ছ ও অপরিবর্তনীয় ডেটা। BNB Smart Chain-এ স্থাপিত।",
+    "description": ""
+  },
+  "home.feature.civ.title": {
+    "message": "সভ্যতা নির্মাণ",
+    "description": ""
+  },
+  "home.feature.civ.desc": {
+    "message": "ছয়টি সিস্টেম আপগ্রেড করুন — কালেক্টর, অস্ত্র, ঢাল, রাডার, ইঞ্জিন — আপনার সভ্যতাকে শক্তিশালী করতে।",
+    "description": ""
+  },
+  "home.feature.combat.title": {
+    "message": "কৌশলগত যুদ্ধ",
+    "description": ""
+  },
+  "home.feature.combat.desc": {
+    "message": "সম্পদ লুট করতে অন্যান্য সভ্যতা আক্রমণ করুন। ট্র্যাকিং জাম্প ও কৌশল ব্যবহার করে জিতুন।",
+    "description": ""
+  },
+  "home.feature.agent.title": {
+    "message": "AI এজেন্ট",
+    "description": ""
+  },
+  "home.feature.agent.desc": {
+    "message": "24/7 আপনার সভ্যতা রক্ষায় স্বয়ংক্রিয় কৌশল কনফিগার করুন। Telegram/Discord সমর্থন।",
+    "description": ""
+  },
+  "home.feature.economy.title": {
+    "message": "অর্থনৈতিক ব্যবস্থা",
+    "description": ""
+  },
+  "home.feature.economy.desc": {
+    "message": "DFT টোকেনোমিক্স, অর্ডার-বুক এনার্জি মার্কেট, দৈনিক মিন্টিং — সম্পূর্ণ গেম অর্থনীতি।",
+    "description": ""
+  },
+  "home.feature.ally.title": {
+    "message": "সম্প্রদায় ও জোট",
+    "description": ""
+  },
+  "home.feature.ally.desc": {
+    "message": "জোটে যোগ দিন এবং বিশ্বব্যাপী খেলোয়াড়দের সাথে গ্যালাক্সি অন্বেষণ করুন।",
+    "description": ""
   }
 }

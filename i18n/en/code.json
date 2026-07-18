@@ -325,5 +325,61 @@
   "theme.tags.tagsPageTitle": {
     "message": "Tags",
     "description": "The title of the tag list page"
+  },
+  "home.button.play": {
+    "message": "Play Now",
+    "description": ""
+  },
+  "home.button.guide": {
+    "message": "Game Guide",
+    "description": ""
+  },
+  "home.feature.chain.title": {
+    "message": "Fully On-Chain",
+    "description": ""
+  },
+  "home.feature.chain.desc": {
+    "message": "All game logic runs on smart contracts — transparent, immutable data. Deployed on BNB Smart Chain.",
+    "description": ""
+  },
+  "home.feature.civ.title": {
+    "message": "Civilization Building",
+    "description": ""
+  },
+  "home.feature.civ.desc": {
+    "message": "Upgrade six systems — Collector, Weapon, Shield, Radar, Engine — to strengthen your civilization.",
+    "description": ""
+  },
+  "home.feature.combat.title": {
+    "message": "Strategic Combat",
+    "description": ""
+  },
+  "home.feature.combat.desc": {
+    "message": "Attack other civilizations to plunder resources. Use tracking jumps and tactics to win.",
+    "description": ""
+  },
+  "home.feature.agent.title": {
+    "message": "AI Agent",
+    "description": ""
+  },
+  "home.feature.agent.desc": {
+    "message": "Configure automated strategies to protect your civilization 24/7. Supports Telegram/Discord.",
+    "description": ""
+  },
+  "home.feature.economy.title": {
+    "message": "Economy System",
+    "description": ""
+  },
+  "home.feature.economy.desc": {
+    "message": "DFT tokenomics, order-book energy market, daily minting — a complete game economy.",
+    "description": ""
+  },
+  "home.feature.ally.title": {
+    "message": "Community & Alliances",
+    "description": ""
+  },
+  "home.feature.ally.desc": {
+    "message": "Join alliances and coordinate with global players to explore the galaxy together.",
+    "description": ""
   }
 }

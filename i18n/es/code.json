@@ -325,5 +325,61 @@
   "theme.tags.tagsPageTitle": {
     "message": "Etiquetas",
     "description": "The title of the tag list page"
+  },
+  "home.button.play": {
+    "message": "Jugar Ahora",
+    "description": ""
+  },
+  "home.button.guide": {
+    "message": "Guía del Juego",
+    "description": ""
+  },
+  "home.feature.chain.title": {
+    "message": "Totalmente en Cadena",
+    "description": ""
+  },
+  "home.feature.chain.desc": {
+    "message": "Toda la lógica del juego se ejecuta en contratos inteligentes — datos transparentes e inmutables. Desplegado en BNB Smart Chain.",
+    "description": ""
+  },
+  "home.feature.civ.title": {
+    "message": "Construcción de Civilización",
+    "description": ""
+  },
+  "home.feature.civ.desc": {
+    "message": "Mejora seis sistemas — Recolector, Arma, Escudo, Radar, Motor — para fortalecer tu civilización.",
+    "description": ""
+  },
+  "home.feature.combat.title": {
+    "message": "Combate Estratégico",
+    "description": ""
+  },
+  "home.feature.combat.desc": {
+    "message": "Ataca otras civilizaciones para saquear recursos. Usa saltos de rastreo y tácticas para ganar.",
+    "description": ""
+  },
+  "home.feature.agent.title": {
+    "message": "AI Agent",
+    "description": ""
+  },
+  "home.feature.agent.desc": {
+    "message": "Configura estrategias automatizadas para proteger tu civilización 24/7. Soporta Telegram/Discord.",
+    "description": ""
+  },
+  "home.feature.economy.title": {
+    "message": "Sistema Económico",
+    "description": ""
+  },
+  "home.feature.economy.desc": {
+    "message": "Tokenómica DFT, mercado de energía de libro de órdenes, acuñación diaria — una economía completa.",
+    "description": ""
+  },
+  "home.feature.ally.title": {
+    "message": "Comunidad y Alianzas",
+    "description": ""
+  },
+  "home.feature.ally.desc": {
+    "message": "Únete a alianzas y coordina con jugadores globales para explorar la galaxia juntos.",
+    "description": ""
   }
 }

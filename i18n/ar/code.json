@@ -325,5 +325,61 @@
   "theme.tags.tagsPageTitle": {
     "message": "الوسوم",
     "description": "عنوان صفحة قائمة الوسوم"
+  },
+  "home.button.play": {
+    "message": "العب الآن",
+    "description": ""
+  },
+  "home.button.guide": {
+    "message": "دليل اللعبة",
+    "description": ""
+  },
+  "home.feature.chain.title": {
+    "message": "بالكامل على السلسلة",
+    "description": ""
+  },
+  "home.feature.chain.desc": {
+    "message": "جميع منطق اللعبة يعمل عبر العقود الذكية — بيانات شفافة وغير قابلة للتغيير. منشور على BNB Smart Chain.",
+    "description": ""
+  },
+  "home.feature.civ.title": {
+    "message": "بناء الحضارة",
+    "description": ""
+  },
+  "home.feature.civ.desc": {
+    "message": "قم بترقية ستة أنظمة — الجامع، السلاح، الدرع، الرادار، المحرك — لتقوية حضارتك.",
+    "description": ""
+  },
+  "home.feature.combat.title": {
+    "message": "القتال الاستراتيجي",
+    "description": ""
+  },
+  "home.feature.combat.desc": {
+    "message": "اهاجم حضارات أخرى لنهب الموارد. استخدم القفزات التتبع والتكتيكات للفوز.",
+    "description": ""
+  },
+  "home.feature.agent.title": {
+    "message": "وكيل AI",
+    "description": ""
+  },
+  "home.feature.agent.desc": {
+    "message": "قم بتكوين استراتيجيات آلية لحماية حضارتك 24/7. يدعم Telegram/Discord.",
+    "description": ""
+  },
+  "home.feature.economy.title": {
+    "message": "النظام الاقتصادي",
+    "description": ""
+  },
+  "home.feature.economy.desc": {
+    "message": "اقتصاديات DFT، سوق الطاقة بسجل الأوامر، السك اليومي — اقتصاد ألعاب كامل.",
+    "description": ""
+  },
+  "home.feature.ally.title": {
+    "message": "المجتمع والتحالفات",
+    "description": ""
+  },
+  "home.feature.ally.desc": {
+    "message": "انضم إلى التحالفات وتنسق مع لاعبين عالميين لاستكشاف المجرة معًا.",
+    "description": ""
   }
 }

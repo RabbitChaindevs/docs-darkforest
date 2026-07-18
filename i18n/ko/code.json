@@ -325,5 +325,61 @@
   "theme.tags.tagsPageTitle": {
     "message": "태그",
     "description": "The title of the tag list page"
+  },
+  "home.button.play": {
+    "message": "지금 플레이",
+    "description": ""
+  },
+  "home.button.guide": {
+    "message": "게임 가이드",
+    "description": ""
+  },
+  "home.feature.chain.title": {
+    "message": "완전 온체인",
+    "description": ""
+  },
+  "home.feature.chain.desc": {
+    "message": "모든 게임 로직이 스마트 컨트랙트에서 실행됩니다 — 투명하고 불변한 데이터. BNB Smart Chain에 배포됨.",
+    "description": ""
+  },
+  "home.feature.civ.title": {
+    "message": "문명 건설",
+    "description": ""
+  },
+  "home.feature.civ.desc": {
+    "message": "6가지 시스템(수집기, 무기, 방패, 레이더, 엔진)을 업그레이드하여 문명을 강화하세요.",
+    "description": ""
+  },
+  "home.feature.combat.title": {
+    "message": "전략 전투",
+    "description": ""
+  },
+  "home.feature.combat.desc": {
+    "message": "다른 문명을 공격하여 자원을 약탈하세요. 추적 점프와 전술을 사용해 승리하세요.",
+    "description": ""
+  },
+  "home.feature.agent.title": {
+    "message": "AI 에이전트",
+    "description": ""
+  },
+  "home.feature.agent.desc": {
+    "message": "자동화 전략을 설정하여 24/7 문명을 보호하세요. Telegram/Discord 알림 지원.",
+    "description": ""
+  },
+  "home.feature.economy.title": {
+    "message": "경제 시스템",
+    "description": ""
+  },
+  "home.feature.economy.desc": {
+    "message": "DFT 토크노믹스, 주문장 에너지 시장, 일일 발행 — 완벽한 게임 경제.",
+    "description": ""
+  },
+  "home.feature.ally.title": {
+    "message": "커뮤니티 및 연합",
+    "description": ""
+  },
+  "home.feature.ally.desc": {
+    "message": "연합에 가입하고 전 세계 플레이어와 함께 은하계를 탐험하세요.",
+    "description": ""
   }
 }

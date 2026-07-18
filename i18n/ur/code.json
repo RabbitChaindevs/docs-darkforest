@@ -325,5 +325,61 @@
   "theme.tags.tagsPageTitle": {
     "message": "ٹیگز",
     "description": "ٹیگ لسٹ صفحہ کا عنوان"
+  },
+  "home.button.play": {
+    "message": "ابھی کھیلیں",
+    "description": ""
+  },
+  "home.button.guide": {
+    "message": "گیم گائیڈ",
+    "description": ""
+  },
+  "home.feature.chain.title": {
+    "message": "مکمل طور پر آن چین",
+    "description": ""
+  },
+  "home.feature.chain.desc": {
+    "message": "تمام گیم لاجک سمارٹ کنٹریکٹس پر چلتی ہے — شفاف اور ناقابل تغیر ڈیٹا۔ BNB Smart Chain پر تعینات۔",
+    "description": ""
+  },
+  "home.feature.civ.title": {
+    "message": "تہذیب کی تعمیر",
+    "description": ""
+  },
+  "home.feature.civ.desc": {
+    "message": "چھ نظاموں کو اپ گریڈ کریں — جمع کرنے والا، ہتھیار، ڈھال، ریڈار، انجن — اپنی تہذیب کو مضبوط بنانے کے لیے۔",
+    "description": ""
+  },
+  "home.feature.combat.title": {
+    "message": "اسٹریٹجک جنگ",
+    "description": ""
+  },
+  "home.feature.combat.desc": {
+    "message": "وسائل لوٹنے کے لیے دوسری تہذیبوں پر حملہ کریں۔ ٹریکنگ جمپ اور حکمت عملی استعمال کریں۔",
+    "description": ""
+  },
+  "home.feature.agent.title": {
+    "message": "AI ایجنٹ",
+    "description": ""
+  },
+  "home.feature.agent.desc": {
+    "message": "24/7 آپ کی تہذیب کی حفاظت کے لیے خودکار حکمت عملی ترتیب دیں۔ Telegram/Discord سپورٹ۔",
+    "description": ""
+  },
+  "home.feature.economy.title": {
+    "message": "معاشی نظام",
+    "description": ""
+  },
+  "home.feature.economy.desc": {
+    "message": "DFT ٹوکینومکس، آرڈر بک انرجی مارکیٹ، روزانہ مائنٹنگ — مکمل گیم معیشت۔",
+    "description": ""
+  },
+  "home.feature.ally.title": {
+    "message": "کمیونٹی اور اتحاد",
+    "description": ""
+  },
+  "home.feature.ally.desc": {
+    "message": "اتحاد میں شامل ہوں اور عالمی کھلاڑیوں کے ساتھ مل کر کہکشاں کی تلاش کریں۔",
+    "description": ""
   }
 }

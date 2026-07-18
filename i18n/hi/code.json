@@ -325,5 +325,61 @@
   "theme.tags.tagsPageTitle": {
     "message": "टैग",
     "description": "The title of the tag list page"
+  },
+  "home.button.play": {
+    "message": "अभी खेलें",
+    "description": ""
+  },
+  "home.button.guide": {
+    "message": "गेम गाइड",
+    "description": ""
+  },
+  "home.feature.chain.title": {
+    "message": "पूरी तरह ऑन-चेन",
+    "description": ""
+  },
+  "home.feature.chain.desc": {
+    "message": "सभी गेम लॉजिक स्मार्ट कॉन्ट्रैक्ट पर चलता है — पारदर्शी और अपरिवर्तनीय डेटा। BNB Smart Chain पर तैनात।",
+    "description": ""
+  },
+  "home.feature.civ.title": {
+    "message": "सभ्यता निर्माण",
+    "description": ""
+  },
+  "home.feature.civ.desc": {
+    "message": "छह प्रणालियों को अपग्रेड करें — कलेक्टर, हथियार, ढाल, रडार, इंजन — अपनी सभ्यता को मजबूत करने के लिए।",
+    "description": ""
+  },
+  "home.feature.combat.title": {
+    "message": "रणनीतिक युद्ध",
+    "description": ""
+  },
+  "home.feature.combat.desc": {
+    "message": "संसाधन लूटने के लिए अन्य सभ्यताओं पर हमला करें। ट्रैकिंग जंप और रणनीति का उपयोग करें।",
+    "description": ""
+  },
+  "home.feature.agent.title": {
+    "message": "AI एजेंट",
+    "description": ""
+  },
+  "home.feature.agent.desc": {
+    "message": "24/7 आपकी सभ्यता की रक्षा के लिए स्वचालित रणनीतियाँ कॉन्फ़िगर करें। Telegram/Discord समर्थन।",
+    "description": ""
+  },
+  "home.feature.economy.title": {
+    "message": "आर्थिक प्रणाली",
+    "description": ""
+  },
+  "home.feature.economy.desc": {
+    "message": "DFT टोकनॉमिक्स, ऑर्डर-बुक ऊर्जा बाजार, दैनिक मिंटिंग — एक पूर्ण गेम अर्थव्यवस्था।",
+    "description": ""
+  },
+  "home.feature.ally.title": {
+    "message": "समुदाय और गठबंधन",
+    "description": ""
+  },
+  "home.feature.ally.desc": {
+    "message": "गठबंधन में शामिल हों और वैश्विक खिलाड़ियों के साथ मिलकर आकाशगंगा का अन्वेषण करें।",
+    "description": ""
   }
 }

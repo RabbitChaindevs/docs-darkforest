@@ -325,5 +325,61 @@
   "theme.tags.tagsPageTitle": {
     "message": "Теги",
     "description": "The title of the tag list page"
+  },
+  "home.button.play": {
+    "message": "Играть Сейчас",
+    "description": ""
+  },
+  "home.button.guide": {
+    "message": "Руководство",
+    "description": ""
+  },
+  "home.feature.chain.title": {
+    "message": "Полностью в Блокчейне",
+    "description": ""
+  },
+  "home.feature.chain.desc": {
+    "message": "Вся игровая логика работает через смарт-контракты — прозрачные и неизменяемые данные. Развернуто на BNB Smart Chain.",
+    "description": ""
+  },
+  "home.feature.civ.title": {
+    "message": "Строительство Цивилизации",
+    "description": ""
+  },
+  "home.feature.civ.desc": {
+    "message": "Улучшайте шесть систем — Сборщик, Оружие, Щит, Радар, Двигатель — чтобы усилить цивилизацию.",
+    "description": ""
+  },
+  "home.feature.combat.title": {
+    "message": "Стратегический Бой",
+    "description": ""
+  },
+  "home.feature.combat.desc": {
+    "message": "Атакуйте другие цивилизации для захвата ресурсов. Используйте отслеживающие прыжки и тактику.",
+    "description": ""
+  },
+  "home.feature.agent.title": {
+    "message": "AI Агент",
+    "description": ""
+  },
+  "home.feature.agent.desc": {
+    "message": "Настройте автоматические стратегии для защиты 24/7. Поддержка Telegram/Discord.",
+    "description": ""
+  },
+  "home.feature.economy.title": {
+    "message": "Экономическая Система",
+    "description": ""
+  },
+  "home.feature.economy.desc": {
+    "message": "Токеномика DFT, рыночная книга ордеров на энергию, ежедневная эмиссия — полная игровая экономика.",
+    "description": ""
+  },
+  "home.feature.ally.title": {
+    "message": "Сообщество и Альянсы",
+    "description": ""
+  },
+  "home.feature.ally.desc": {
+    "message": "Вступайте в альянсы и координируйтесь с игроками по всему миру для исследования галактики.",
+    "description": ""
   }
 }

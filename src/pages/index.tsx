@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link'
+import Translate from '@docusaurus/Translate'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import type { ReactNode } from 'react'
@@ -22,19 +23,19 @@ function HomepageHeader() {
         <Link
           className="button button--primary button--lg"
           to="/docs/quickstart/install-wallet">
-          🚀 开始玩
+          🚀 <Translate id="home.button.play">开始玩</Translate>
         </Link>
         <Link
           className="button button--secondary button--lg"
           to="/docs/guide/civilization">
-          📖 玩法指南
+          📖 <Translate id="home.button.guide">玩法指南</Translate>
         </Link>
       </div>
     </header>
   )
 }
 
-function Feature({title, description, icon}: {title: string; description: string; icon: string}) {
+function Feature({title, description, icon}: {title: ReactNode; description: ReactNode; icon: string}) {
   return (
     <div style={{
       padding: '1.5rem',
@@ -49,33 +50,33 @@ function Feature({title, description, icon}: {title: string; description: string
 
 const features = [
   {
-    title: '完全上链',
-    description: '所有游戏逻辑由智能合约执行，数据公开透明、不可篡改。部署在 BNB Smart Chain。',
+    title: <Translate id="home.feature.chain.title">完全上链</Translate>,
+    description: <Translate id="home.feature.chain.desc">所有游戏逻辑由智能合约执行，数据公开透明、不可篡改。部署在 BNB Smart Chain。</Translate>,
     icon: '🔗',
   },
   {
-    title: '文明建设',
-    description: '升级六大系统 - 采集、武器、护盾、雷达、引擎、总等级，提升你的文明实力。',
+    title: <Translate id="home.feature.civ.title">文明建设</Translate>,
+    description: <Translate id="home.feature.civ.desc">升级六大系统 — 采集、武器、护盾、雷达、引擎、总等级，提升你的文明实力。</Translate>,
     icon: '🏛️',
   },
   {
-    title: '策略战斗',
-    description: '攻击其他文明掠夺资源，使用追踪跳跃和战术配合克敌制胜。',
+    title: <Translate id="home.feature.combat.title">策略战斗</Translate>,
+    description: <Translate id="home.feature.combat.desc">攻击其他文明掠夺资源，使用追踪跳跃和战术配合克敌制胜。</Translate>,
     icon: '⚔️',
   },
   {
-    title: 'AI Agent',
-    description: '配置自动化策略，24/7 守护你的文明，支持 Telegram/Discord 通知。',
+    title: <Translate id="home.feature.agent.title">AI Agent</Translate>,
+    description: <Translate id="home.feature.agent.desc">配置自动化策略，24/7 守护你的文明，支持 Telegram/Discord 通知。</Translate>,
     icon: '🤖',
   },
   {
-    title: '经济系统',
-    description: 'DFT 代币经济、订单簿能源市场、每日铸造 - 完整的游戏经济生态。',
+    title: <Translate id="home.feature.economy.title">经济系统</Translate>,
+    description: <Translate id="home.feature.economy.desc">DFT 代币经济、订单簿能源市场、每日铸造 — 完整的游戏经济生态。</Translate>,
     icon: '💰',
   },
   {
-    title: '社区联盟',
-    description: '加入联盟，与全球玩家协同作战，共同探索星际。',
+    title: <Translate id="home.feature.ally.title">社区联盟</Translate>,
+    description: <Translate id="home.feature.ally.desc">加入联盟，与全球玩家协同作战，共同探索星际。</Translate>,
     icon: '🤝',
   },
 ]
