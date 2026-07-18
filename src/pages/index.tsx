@@ -22,7 +22,7 @@ function HomepageHeader() {
       <div style={{display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap'}}>
         <Link
           className="button button--primary button--lg"
-          to="/docs/quickstart/install-wallet">
+          to="https://darkforest.uk">
           🚀 <Translate id="home.button.play">开始玩</Translate>
         </Link>
         <Link
